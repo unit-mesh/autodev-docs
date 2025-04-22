@@ -6,6 +6,7 @@ const sidebars = {
 			type: 'category',
 			label: 'Basic Features',
 			items: [
+				'features/features',
 				'features/auto-test',
 				'features/chat-with-code',
 				'features/code-completion',

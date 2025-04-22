@@ -121,7 +121,6 @@
   transform: translateX(5px);
 }
 
-/* Comparison Table Section */
 .comparisonSection {
   padding: 4rem 0;
   background-color: var(--ifm-color-emphasis-100);
