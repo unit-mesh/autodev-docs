@@ -1,7 +1,7 @@
 ---
 layout: default
 title: AutoDev Coder
-nav_order: 4
+slug: autodev-coder
 ---
 
 太长不读性：
@@ -54,3 +54,4 @@ PS：由于 AutoDev 1.5.1 在 JetBrains 市场等待审批，而老外们正在�
 ## FAQ：AutoDev 指令
 
 AutoDev 采用的是相关上下文策略，所以在指令上与其它工具有所差异。详细见：https://github.com/unit-mesh/auto-dev
+

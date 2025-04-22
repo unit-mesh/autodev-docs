@@ -8,6 +8,10 @@ nav_order: 9
 而在这个版本中，我们开始构建一个新的 AI Agent 语言：DevIns，即 Development Instruction。即 DevIns 可以让用户更快速描述软件开发任务，
 同时，还可以自动化处理来自 AI Agent 返回的内容。
 
+Introduction paragraph text here.
+
+<!-- truncate -->
+
 诸如于：`/write:README.md\n```\n# Hello, World!```\n"，AutoDev 将会翻译并执行这个指令，将 `# Hello, World!` 写入到 `README.md` 文件中。
 除此，在这个版本的 DevIns 里，还可以执行补丁、提交代码、运行测试。
 
@@ -96,3 +100,5 @@ DevIns 的默认文件后缀依旧是 `.devin`，还没有改为 `.devins` —�
 4. 构建跨平台的 DevIns 编译器
 
 如果大家有兴趣，欢迎加入我们的开发，或者提出你的建议。
+
+`

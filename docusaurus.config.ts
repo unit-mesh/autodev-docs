@@ -33,6 +33,7 @@ const config = {
           editUrl: 'https://github.com/unit-mesh/auto-dev/tree/master/docs/',
         },
         blog: {
+          blogSidebarCount: 'ALL',
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.

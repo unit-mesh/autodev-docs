@@ -22,6 +22,10 @@ With AutoDev Composer, you can handle everything directly within IntelliJ IDEA.
 
 As an amateur project, we’ve put in a lot of effort to make this happen! 😊
 
+Introduction paragraph text here.
+
+<!-- truncate -->
+
 ---
 
 ### **Decoding AutoDev Composer System Prompts**
@@ -122,3 +126,4 @@ flowcharts, sequence diagrams, and more.
 [https://github.com/unit-mesh/auto-dev/releases](https://github.com/unit-mesh/auto-dev/releases)
 
 ---  
+`
