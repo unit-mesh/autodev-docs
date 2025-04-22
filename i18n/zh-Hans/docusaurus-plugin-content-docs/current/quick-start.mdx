@@ -1,0 +1,125 @@
+---
+title: 快速入门
+description: 几分钟内开始使用 AutoDev
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 安装与设置
+
+<Tabs>
+  <TabItem value="marketplace" label="JetBrains 插件市场" default>
+    直接从 JetBrains 插件市场安装：[AutoDev Sketch](https://plugins.jetbrains.com/plugin/26988-autodev-sketch)
+
+    **注意：** 该插件在 JetBrains 插件市场中名为 `AutoDev Sketch`，ID 为 `com.unitmesh.autodev`。与自定义仓库和 GitHub 发布版本不同。
+
+    此版本适用于 IDE 2024.1 及更新版本 (241+)。
+  </TabItem>
+  <TabItem value="repository" label="自定义仓库">
+    1. 前往 `设置` → `插件` → `插件市场` → `管理插件仓库`
+    2. 添加以下 URL：
+    ```
+    https://plugin.unitmesh.cc/updatePlugins.xml
+    ```
+  </TabItem>
+  <TabItem value="github" label="GitHub 发布版本">
+    1. 从 [GitHub Releases](https://github.com/unit-mesh/auto-dev/releases) 下载适合的版本
+        - AutoDev-*-222.zip — 适用于 2022.2 到 2023.2 版本
+        - AutoDev-*-233.zip — 适用于 2023.3 版本
+        - AutoDev-*-241.zip — 适用于 2024.1 及更新版本
+    2. 在 JetBrains IDE 中从磁盘安装插件
+  </TabItem>
+</Tabs>
+
+## 配置
+
+安装后，在 `设置` → `工具` → `AutoDev` 中配置插件
+
+### 默认 LLM
+
+支持的提供商：Deepseek ([#96](https://github.com/unit-mesh/auto-dev/issues/96))，Moonshot AI，ChatGLM ([#90](https://github.com/unit-mesh/auto-dev/issues/960))
+
+<Tabs>
+  <TabItem value="basic" label="基础配置" default>
+    1. 在 `设置` → `工具` → `AutoDev` 中打开 AutoDev 配置
+    2. 配置 `LLM 服务器地址`，例如：
+        - Deepseek: `https://api.deepseek.com/chat/completions`
+        - OpenAI: `https://api.openai.com/v1/chat/completions`
+    3. 输入您的 `LLM 密钥`（API 密钥）
+    4. 使用 [JsonPath](https://github.com/json-path/JsonPath) 设置 `自定义响应格式`，例如：
+        - `$.choices[0].delta.content`
+    5. 配置 `自定义请求格式`，例如：
+        - `{ "customFields": {"model": "deepseek-chat", "stream": true }}`
+  </TabItem>
+  <TabItem value="advanced" label="高级配置">
+    有关更详细的配置选项，请参见 [自定义 LLM 服务器](/custom/llm-server)
+  </TabItem>
+</Tabs>
+
+### 附加模型
+
+可用的模型类型：
+- `Plan`：用于推理和规划（推荐：DeepSeek R1）
+- `Completion`：用于代码补全
+- `FastApply`：用于修复补丁生成（例如，`Kortix/FastApply-1.5B-v1.0`）
+- `Others`：通用占位符
+- ~~Act~~：（尚未就绪）用于执行操作（例如，`DeepSeek V3`，`Qwen 72B`）
+- ~~Embedding~~：（尚未就绪）用于嵌入函数（例如，`sentence-transformers/all-MiniLM-L6-v2`）
+
+<Tabs>
+  <TabItem value="deepseek" label="DeepSeek R1" default>
+    ```json
+    {
+      "name": "DeepSeek R1",
+      "url": "https://api.deepseek.com/chat/completions",
+      "auth": {
+        "type": "Bearer",
+        "token": "sk-ii"
+      },
+      "requestFormat": "{ \"customFields\": {\"model\": \"deepseek-reasoner\", \"stream\": true}}",
+      "responseFormat": "$.choices[0].delta.content",
+      "modelType": "Plan"
+    }
+    ```
+  </TabItem>
+  <TabItem value="glm" label="GLM4-Plus">
+    ```json
+    {
+      "name": "GLM4-Plus",
+      "url": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "auth": {
+        "type": "Bearer",
+        "token": "sk-ii"
+      },
+      "requestFormat": "{ \"customFields\": {\"model\": \"glm-4-plus\", \"stream\": true}}",
+      "responseFormat": "$.choices[0].delta.content",
+      "modelType": "FastApply"
+    }
+    ```
+  </TabItem>
+  <TabItem value="dify" label="DifyAI">
+    ```json
+    {
+       "name": "DifyAI",
+       "description": "Dify Example",
+       "url": "https://api.dify.ai/v1/completion-messages",
+       "auth": {
+          "type": "Bearer",
+          "token": "app-abcd"
+       },
+       "requestFormat": "{\"fields\": {\"inputs\": {\"feature\": \"$content\"}, \"response_mode\": \"streaming\", \"user\": \"phodal\" }}",
+       "responseFormat": "$.answer",
+       "modelType": "Others"
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+配置字段：
+- **URL**：包含端点路径的 LLM 服务器地址
+- **Auth**：认证信息（目前仅支持 Bearer 令牌）
+- **RequestFormat**：API 请求的 JSON 结构
+- **ResponseFormat**：用于从响应中提取内容的 JsonPath
+- **ModelType**：模型类型（见上面列表）
+

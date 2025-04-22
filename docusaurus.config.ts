@@ -11,13 +11,25 @@ const config = {
   favicon: 'img/favicon.ico',
   url: 'https://ide.unitmesh.cc',
   baseUrl: '/',
+  trailingSlash: false,
   organizationName: 'unit-mesh',
   projectName: 'auto-dev',
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['en', 'zh-Hans'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-US',
+        label: 'English',
+        path: 'en',
+      },
+      'zh-Hans': {
+        htmlLang: 'zh-CN',
+        label: '简体中文',
+      },
+    },
   },
 
   presets: [
@@ -26,6 +38,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'docs',
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
@@ -87,7 +100,7 @@ const config = {
               items: [
                 {
                   label: 'Tutorial',
-                  to: '/docs/intro',
+                  to: '/intro',
                 },
               ],
             },
