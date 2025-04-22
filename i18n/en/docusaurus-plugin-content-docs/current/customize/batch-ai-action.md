@@ -13,10 +13,10 @@ Through the `batchFileRegex` configuration, you can specify the file to be proce
 
 **Entry point**: `Right-click` on the project -> `AutoDev AI AutoAction` -> `Batch AI Action`
 
-## 批量 AI 操作（Chinese example）
+## Batch AI Action (Chinese Example Translated)
 
-核心点：`batchFileRegex` 用于匹配批量文件，`codeOnly: true` 只将纯代码部分放入文件，`interaction: ReplaceCurrentFile`
-用于替换当前文件。
+Key points：`batchFileRegex` is used to match batch files, `codeOnly: true` only puts the pure code part into the file，`interaction: ReplaceCurrentFile`
+ is used to replace the current filee.
 
 ```markdown
 ---
@@ -25,10 +25,10 @@ batchFileRegex: "**/*.ts"
 codeOnly: true
 ---
 
-重构用户的代码。要求：
+Refactor the user's code. Requirements:
 
-- 请在一个代码块返回重构完的所有代码，方便直接复制粘贴。
-- 请不要添加额外的代码，只修改用户的代码。
+- Please return all the refactored code in one code block, so that it can be copied and pasted directly.
+- Please do not add extra code, only modify the user's code.
 
 ${all}
 ```

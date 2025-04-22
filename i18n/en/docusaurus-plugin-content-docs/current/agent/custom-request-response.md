@@ -12,7 +12,7 @@ response format under the `connector` field.
 
 ```json
 {
-  "name": "内部 API 集成",
+  "name": "Internal API Integration",
   "url": "http://127.0.0.1:8765/api/agent/api-market",
   "auth": {
     "type": "Bearer",
