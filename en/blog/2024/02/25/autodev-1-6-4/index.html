@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">AutoDev 1.6.4：HarmonyOS 应用开发体验提升 | AutoDev - Open Source AI Coding Wizard</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://ide.unitmesh.cc/en/blog/2024/02/25/autodev-1-6-4"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="AutoDev 1.6.4：HarmonyOS 应用开发体验提升 | AutoDev - Open Source AI Coding Wizard"><meta data-rh="true" name="description" content="生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新"><meta data-rh="true" property="og:description" content="生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2024-02-25T00:00:00.000Z"><link data-rh="true" rel="icon" href="/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ide.unitmesh.cc/en/blog/2024/02/25/autodev-1-6-4"><link data-rh="true" rel="alternate" href="https://ide.unitmesh.cc/en/blog/2024/02/25/autodev-1-6-4" hreflang="en"><link data-rh="true" rel="alternate" href="https://ide.unitmesh.cc/blog/2024/02/25/autodev-1-6-4" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://ide.unitmesh.cc/blog/2024/02/25/autodev-1-6-4" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://ide.unitmesh.cc/en/blog/2024/02/25/autodev-1-6-4","mainEntityOfPage":"https://ide.unitmesh.cc/en/blog/2024/02/25/autodev-1-6-4","url":"https://ide.unitmesh.cc/en/blog/2024/02/25/autodev-1-6-4","headline":"AutoDev 1.6.4：HarmonyOS 应用开发体验提升","name":"AutoDev 1.6.4：HarmonyOS 应用开发体验提升","description":"生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新","datePublished":"2024-02-25T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://ide.unitmesh.cc/en/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/en/blog/rss.xml" title="AutoDev - Open Source AI Coding Wizard RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/en/blog/atom.xml" title="AutoDev - Open Source AI Coding Wizard Atom Feed"><link rel="stylesheet" href="/en/assets/css/styles.2b0bd33a.css">
+<script src="/en/assets/js/runtime~main.59ac63ad.js" defer="defer"></script>
+<script src="/en/assets/js/main.3f54f355.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/en/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/en/"><div class="navbar__logo"><img src="/en/img/logo.svg" alt="AutoDev Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/en/img/logo.svg" alt="AutoDev Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">AutoDev</b></a><a class="navbar__item navbar__link" href="/en/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/en/blog">Blog</a></div><div class="navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_nlXk"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>English</a><ul class="dropdown__menu"><li><a href="/en/blog/2024/02/25/autodev-1-6-4" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="en">English</a></li><li><a href="/blog/2024/02/25/autodev-1-6-4" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="zh-Hans">简体中文</a></li></ul></div><a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">Recent posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/01/11/autodev-2-0-preview">AutoDev Composer：the Intellij IDEA Cursor Alternative</a></li></ul></div><div role="group"><h3 class="yearGroupHeading_rMGB">2024</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2024/03/17/autodev-devins-language">Agent Language - DevIns</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2024/03/07/autodev-1-7-0">AutoDev 1.7.0：AutoDev AI Agent</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/en/blog/2024/02/25/autodev-1-6-4">AutoDev 1.6.4：HarmonyOS 应用开发体验提升</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2024/01/26/autodev-1-6-0">AutoDev 1.6.0 精准页面生成与 SQL 生成</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2024/01/12/autodev-1-5-3">AutoDev 1.5.3 精准测试生成</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/autodev-coder">AutoDev Coder</a></li></ul></div><div role="group"><h3 class="yearGroupHeading_rMGB">2023</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2023/10/22/autodev-1-4-0">AutoDev 1.4 规模化 AI 研发辅助</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/autodev-1-0-0">AutoDev 1.0 发布，全流程 AI 辅助编程</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/autodev-0-7-0">AutoDev 0.7.0 - 生成规范化代码，深入开发者日常</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">AutoDev 1.6.4：HarmonyOS 应用开发体验提升</h1><div class="container_mt6G margin-vert--md"><time datetime="2024-02-25T00:00:00.000Z">February 25, 2024</time> · <!-- -->9 min read</div></header><div id="__blog-post-container" class="markdown"><p>生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新
+的理念、开发工具 DevEco Studio、新的语言 ArkTS、新的 UI 框架 ArkUI 等等。从模式上来说，它与生成式 AI 结合企业内部的基础设施过程非常相似。</p>
+<p>因此，我们开始在 AutoDev 中探索如何结合这些新知识的可能性，同时降低开发人员的学习负担。</p>
+<p>源码：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="鸿蒙操作系统--生成式-ai-的三个试验式功能">鸿蒙操作系统 + 生成式 AI 的三个试验式功能<a href="#鸿蒙操作系统--生成式-ai-的三个试验式功能" class="hash-link" aria-label="Direct link to 鸿蒙操作系统 + 生成式 AI 的三个试验式功能" title="Direct link to 鸿蒙操作系统 + 生成式 AI 的三个试验式功能">​</a></h2>
+<p>在初步听鸿蒙团队介绍完 HarmonyOS 的一些自研工具之后，便有了三个在 AutoDev 试验的思路：</p>
+<ul>
+<li>添加 ArkTS 支持。ArkTS 是鸿蒙生态中基于 TypeScript 扩展的应用开发语言。</li>
+<li>自动 ArkUI 页面生成。ArkUI 是一套构建分布式应用界面的声明式 UI 开发框架。它与我们先前引入的 AutoPage
+并没有太多的区别，可以结合思维链进行代码和 UI 生成。</li>
+<li>UI 布局迁移。即将其它语言、框架编写的代码，交由生成式 AI 转化成适用于鸿蒙的代码。</li>
+</ul>
+<p>作为阅读过 Gradle、Intellij Community、DevEcoStudio 源码，以及《前端架构：从入门到微前端》作者，我大抵算是对于 TypeScript、
+ArkUI、
+声明式 UI 有一定的经验，所以我自信的开始了 AutoDev 的新功能开发 —— 然后就踩了一堆坑。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-arkts-语言的-ai-支持">1. ArkTS 语言的 AI 支持<a href="#1-arkts-语言的-ai-支持" class="hash-link" aria-label="Direct link to 1. ArkTS 语言的 AI 支持" title="Direct link to 1. ArkTS 语言的 AI 支持">​</a></h2>
+<p>在我下载安装完 DevEco Studio 之后，发现 AutoDev 居然不支持 TypeScript？？？经过我在 WebStorm 反复测试后，发现是 IDE 的关系。结合
+PSIViewer 插件后，
+才发现差异之后，DevEco Studio 的 JavaScript/TypeScript
+语言是自己实现的，诸如于：<code>com.huawei.ace.language.psi.impl.JavaScriptIdentifierNameImpl</code>。</p>
+<p>原因不外乎：</p>
+<ul>
+<li>Intellij 平台中的 JavaScript 插件是收费的，没有开源版本。</li>
+<li>鸿蒙直接针对于 TypeScript 语法进行扩展，会比实现一个新的更简单。</li>
+</ul>
+<p>所以 DevEco Studio 自研了一个 JavaScript/TypeScript 模块，支持 JavaScript 语法高亮、代码提示、代码格式化等功能。与此同时，DevEco
+Studio
+添加了 ArkTS 语言，即 TypeScript 扩展语法。</p>
+<p>这就意味着，使用 DevEco Studio + AutoDev 时，会出现三种新的文件类型：</p>
+<ul>
+<li>Huawei JavaScript</li>
+<li>Huawei TypeScript</li>
+<li>Huawei ArkTS</li>
+</ul>
+<p>头疼。。</p>
+<p>为此，在 AutoDev 中采取的方法是，其于标准 PSI 做初步的抽象，以实现对于文档生成的支持。而如果要做好则需要：</p>
+<ol>
+<li>基于反射来重复利用 JavaScript PSI</li>
+<li>融入 DevEco Studio 的 JavaScript 支持</li>
+</ol>
+<p>当然，考虑到调试上的难度，以前代码中各种现的 xxStudio 字眼（新的自研 IDE 平台？？），我暂时放弃了上述的做法：大体上鸿蒙 IDE
+会有自己的 AI 能力。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-autoarkuirag-增强的-arkui-代码生成">2. AutoArkUI：RAG 增强的 ArkUI 代码生成<a href="#2-autoarkuirag-增强的-arkui-代码生成" class="hash-link" aria-label="Direct link to 2. AutoArkUI：RAG 增强的 ArkUI 代码生成" title="Direct link to 2. AutoArkUI：RAG 增强的 ArkUI 代码生成">​</a></h2>
+<blockquote>
+<p>ArkUI 是一套构建分布式应用界面的声明式 UI 开发框架。</p>
+</blockquote>
+<p>与 ArkTS 相比，要结合 ArkUI 显得稍微复杂一些。 所以，我在当前版本里考虑的是：结合经典 UI 的元素生成页面，即：</p>
+<ul>
+<li>布局。诸如于：线性布局（Row、Column）、层叠布局（Stack）、弹性布局（Flex）等。</li>
+<li>组件。诸如于：按钮（Button）、单选框（Radio）、切换按钮（Toggle）等。</li>
+</ul>
+<p>而由于 ChatGPT 是不包含 HarmonyOS 的最新知识的，所以需要采用类似于 AutoPage 的两步生成特性。</p>
+<ol>
+<li>分析用户的需求，选择合适的布局与组件。</li>
+<li>根据用户的需求与详细的布局、组件信息，生成对应的 ArkUI 代码。</li>
+</ol>
+<p>上述的两步便是 AutoDev 中 AutoArkUi 生成 UI 的特性，详细可以参考 AutoDev 的代码，以及对应的 prompt。如下是对应的步骤 1 的
+prompt：</p>
+<ul>
+<li>User: // maybe send Android Layout code, maybe some requirements</li>
+<li>Your Answer: [FlexLayout, Button, CheckBox, Checkbox, Button]</li>
+</ul>
+<p>考虑到编程语言 DSL（领域特定语言）极易受用户语言的影响，所以采用的是英语的方式，避免无端生成中文 DSL 。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-迁移-androidios小程序-应用">3. 迁移 Android/iOS/小程序 应用<a href="#3-迁移-androidios小程序-应用" class="hash-link" aria-label="Direct link to 3. 迁移 Android/iOS/小程序 应用" title="Direct link to 3. 迁移 Android/iOS/小程序 应用">​</a></h2>
+<p>生成式 AI 具备极好的代码翻译能力。诸如于 IBM 在 Cobol 转化为 Java 上的工程化设计，以及我们在 AutoDev 中设计的遗留系统改造能力，其所针对的
+都是生成 AI 在这方面的能力。</p>
+<p>所以，我们也在 AutoDev 中内置了这个功能，只是当前支持的只是布局上的迁移。但是，考虑到这种生成方式依旧有一系列的问题，有待我们进一步寻找更好的方式。
+类似的问题在生成 ArkUI 也是存在的。</p>
+<p>相似的，这个功能目前是与 AutoArkUI 融合在一起的，理论上通过静态代码分析是最简单的，有待未来进一步完善。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-rag-增强的聊天上下文c-napi-等">4. RAG 增强的聊天上下文：C++ NAPI 等<a href="#4-rag-增强的聊天上下文c-napi-等" class="hash-link" aria-label="Direct link to 4. RAG 增强的聊天上下文：C++ NAPI 等" title="Direct link to 4. RAG 增强的聊天上下文：C++ NAPI 等">​</a></h2>
+<p>在试验了多次之后，会发现对于 HarmonyOS 这种新知识，ChatGPT 是不知道的。所以，需要基于 AutoDev 的上下文接口，创建基于
+HarmonyOS 的上下文。
+当然的版本（1.6.4）里， 添加的是：<code>This project is a HarmonyOS project.</code> （毫无意义的废话），再结合不同语言来写一些上下文：</p>
+<ul>
+<li>TypeScript/JavaScript/ArkTS. Which use TypeScript (ArkTS) as the main language, and use Flutter like TypeScript UI
+framework.</li>
+<li>CPP/&quot;C/C++&quot;/CCE. Which use C++ as the main language, and NAPI for building native Addons.</li>
+</ul>
+<p>大体来说，就是告诉 AI：</p>
+<ul>
+<li>编写 ArkUI/前端代码的时候，考虑一下这个项目是类似于 Flutter 的声明式 UI 。</li>
+<li>编写原生代码的时候，考虑一下这个项目是基于 NAPI 来构建插件的。</li>
+</ul>
+<p>当然了，这些是基于我的初步理解所构建的上下文，</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="未来">未来<a href="#未来" class="hash-link" aria-label="Direct link to 未来" title="Direct link to 未来">​</a></h2>
+<p>考虑到上述的功能，就是几小时内实现的，就不要有太高的期望了。</p>
+<p>当前版本依旧有诸多问题：</p>
+<ul>
+<li>转换 Android 布局易瞎编。除了需要知道更多的转换规则，还需要知识更多的属性，而这些部分是通过传统的代码分析工具解决的</li>
+<li>组件和布局信息的 hardcode。懂的都懂</li>
+<li>缺少示例代码。没有动态生成的示例代码，使得 RAG 的效果是有限的</li>
+<li>诸如于 C++ 语言的支持</li>
+<li>微信小程序等小程序平台的转换</li>
+</ul>
+<p>然而我并非 Android、小程序应用迁移到鸿蒙应用的专家，所以还是有一系列的挑战。等我心情好的时候，再考虑写一些更好玩的新特性。</p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/unit-mesh/auto-dev/tree/master/docs/blog/2024-02-25-autodev-1-6-4.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/en/blog/2024/03/07/autodev-1-7-0"><div class="pagination-nav__sublabel">Newer post</div><div class="pagination-nav__label">AutoDev 1.7.0：AutoDev AI Agent</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/en/blog/2024/01/26/autodev-1-6-0"><div class="pagination-nav__sublabel">Older post</div><div class="pagination-nav__label">AutoDev 1.6.0 精准页面生成与 SQL 生成</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#鸿蒙操作系统--生成式-ai-的三个试验式功能" class="table-of-contents__link toc-highlight">鸿蒙操作系统 + 生成式 AI 的三个试验式功能</a></li><li><a href="#1-arkts-语言的-ai-支持" class="table-of-contents__link toc-highlight">1. ArkTS 语言的 AI 支持</a></li><li><a href="#2-autoarkuirag-增强的-arkui-代码生成" class="table-of-contents__link toc-highlight">2. AutoArkUI：RAG 增强的 ArkUI 代码生成</a></li><li><a href="#3-迁移-androidios小程序-应用" class="table-of-contents__link toc-highlight">3. 迁移 Android/iOS/小程序 应用</a></li><li><a href="#4-rag-增强的聊天上下文c-napi-等" class="table-of-contents__link toc-highlight">4. RAG 增强的聊天上下文：C++ NAPI 等</a></li><li><a href="#未来" class="table-of-contents__link toc-highlight">未来</a></li></ul></div></div></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/en/docs/intro">Tutorial</a></li></ul></div><div class="col footer__col"><div class="footer__title">Blog</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/en/blog">Blog</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Unit Mesh. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
