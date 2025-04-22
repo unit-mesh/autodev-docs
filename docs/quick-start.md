@@ -6,66 +6,119 @@ description: Get started with AutoDev in minutes
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Quick Start
-
-This guide will help you get started with AutoDev quickly.
-
-## Installation
+# Installation and Setup
 
 <Tabs>
-  <TabItem value="intellij" label="IntelliJ IDEA" default>
-    You can install AutoDev from the JetBrains Marketplace:
+  <TabItem value="marketplace" label="JetBrains Marketplace" default>
+    Install directly from JetBrains Marketplace Repository: [AutoDev Sketch](https://plugins.jetbrains.com/plugin/26988-autodev-sketch)
 
-    1. Open IntelliJ IDEA
-    2. Go to `Settings` > `Plugins`
-    3. Search for "AutoDev"
-    4. Click `Install`
-    5. Restart IntelliJ IDEA
+    **Note:** The plugin is named `AutoDev Sketch` in the JetBrains Marketplace, and the ID is `com.unitmesh.autodev`. It's different from the one in the custom repository and GitHub releases.
+
+    This version works for IDE versions 2024.1 and newer (241+).
   </TabItem>
-  <TabItem value="vscode" label="VSCode">
-    You can install AutoDev from the VSCode Marketplace:
-
-    1. Open VSCode
-    2. Go to the Extensions view
-    3. Search for "AutoDev"
-    4. Click `Install`
-    5. Reload VSCode
+  <TabItem value="repository" label="Custom Repository">
+    1. Go to `Settings` → `Plugins` → `Marketplace` → `Manage Plugin Repositories`
+    2. Add the following URL:
+    ```
+    https://plugin.unitmesh.cc/updatePlugins.xml
+    ```
+  </TabItem>
+  <TabItem value="github" label="GitHub Releases">
+    1. Download the appropriate version from [GitHub Releases](https://github.com/unit-mesh/auto-dev/releases)
+        - AutoDev-*-222.zip — For versions 2022.2 to 2023.2
+        - AutoDev-*-233.zip — For version 2023.3
+        - AutoDev-*-241.zip — For version 2024.1 and newer
+    2. Install the plugin from disk in the JetBrains IDE
   </TabItem>
 </Tabs>
 
 ## Configuration
 
-After installation, you need to configure AutoDev:
+After installation, configure the plugin in `Settings` → `Tools` → `AutoDev`
 
-1. Go to `Settings` > `Tools` > `AutoDev`
-2. Configure your LLM server settings
-3. (Optional) Configure custom prompts and agents
+### Default LLM
 
-## Basic Usage
+Supported providers: Deepseek ([#96](https://github.com/unit-mesh/auto-dev/issues/96)),  Moonshot AI, ChatGLM([#90](https://github.com/unit-mesh/auto-dev/issues/960))
 
-### Code Generation
+<Tabs>
+  <TabItem value="basic" label="Basic Configuration" default>
+    1. Open AutoDev Config in `Settings` → `Tools` → `AutoDev`
+    2. Configure `LLM Server Address`, examples:
+        - Deepseek: `https://api.deepseek.com/chat/completions`
+        - OpenAI: `https://api.openai.com/v1/chat/completions`
+    3. Enter your `LLM Key` (API Key)
+    4. Set `Custom Response Format` using [JsonPath](https://github.com/json-path/JsonPath), example:
+        - `$.choices[0].delta.content`
+    5. Configure `Custom Request Format`, example:
+        - `{ "customFields": {"model": "deepseek-chat", "stream": true }}`
+  </TabItem>
+  <TabItem value="advanced" label="Advanced Configuration">
+    For more detailed configuration options, see [Customize LLM Server](/custom/llm-server)
+  </TabItem>
+</Tabs>
 
-1. Create a new file or open an existing one
-2. Use the context menu or keyboard shortcut to access AutoDev features
-3. Select the type of code you want to generate
-4. Follow the prompts to complete the generation
+### Additional Model
 
-### Chat with AI
+Available model types:
+- `Plan`: For reasoning and planning (recommended: DeepSeek R1)
+- ~~Act~~: (Not Ready yet) For action execution (e.g., DeepSeek V3, Qwen 72B)
+- `Completion`: For code completion
+- ~~Embedding~~: (Not Ready yet) For embedding functions (e.g., sentence-transformers/all-MiniLM-L6-v2)
+- `FastApply`: For fix patch generation (e.g., Kortix/FastApply-1.5B-v1.0)
+- `Others`: Generic placeholder
 
-1. Select the code you want to discuss
-2. Use the context menu or keyboard shortcut to open the chat
-3. Type your question or request
-4. Get AI-powered assistance
+<Tabs>
+  <TabItem value="deepseek" label="DeepSeek R1" default>
+    ```json
+    {
+      "name": "DeepSeek R1",
+      "url": "https://api.deepseek.com/chat/completions",
+      "auth": {
+        "type": "Bearer",
+        "token": "sk-ii"
+      },
+      "requestFormat": "{ \"customFields\": {\"model\": \"deepseek-reasoner\", \"stream\": true}}",
+      "responseFormat": "$.choices[0].delta.content",
+      "modelType": "Plan"
+    }
+    ```
+  </TabItem>
+  <TabItem value="glm" label="GLM4-Plus">
+    ```json
+    {
+      "name": "GLM4-Plus",
+      "url": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "auth": {
+        "type": "Bearer",
+        "token": "sk-ii"
+      },
+      "requestFormat": "{ \"customFields\": {\"model\": \"glm-4-plus\", \"stream\": true}}",
+      "responseFormat": "$.choices[0].delta.content",
+      "modelType": "FastApply"
+    }
+    ```
+  </TabItem>
+  <TabItem value="dify" label="DifyAI">
+    ```json
+    {
+       "name": "DifyAI",
+       "description": "Dify Example",
+       "url": "https://api.dify.ai/v1/completion-messages",
+       "auth": {
+          "type": "Bearer",
+          "token": "app-abcd"
+       },
+       "requestFormat": "{\"fields\": {\"inputs\": {\"feature\": \"$content\"}, \"response_mode\": \"streaming\", \"user\": \"phodal\" }}",
+       "responseFormat": "$.answer",
+       "modelType": "Others"
+    }
+    ```
+  </TabItem>
+</Tabs>
 
-### Auto Testing
-
-1. Open a test file or create a new one
-2. Use the context menu or keyboard shortcut to generate tests
-3. Review and modify the generated tests as needed
-4. Run the tests to verify functionality
-
-## Next Steps
-
-- Learn about [Features](/docs/features)
-- Explore [Customization](/docs/customize)
-- Check out [Troubleshooting](/docs/troubleshooting) if you encounter issues 
+Configuration fields:
+- **URL**: LLM Server Address with endpoint path
+- **Auth**: Authentication information (currently Bearer token only)
+- **RequestFormat**: JSON structure for API requests
+- **ResponseFormat**: JsonPath to extract content from responses
+- **ModelType**: Type of model (see list above)
