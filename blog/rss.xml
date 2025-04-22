@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>AutoDev - Open Source AI Coding Wizard Blog</title>
+        <link>https://unit-mesh.github.io/auto-dev/blog</link>
+        <description>AutoDev - Open Source AI Coding Wizard Blog</description>
+        <lastBuildDate>Tue, 22 Apr 2025 07:15:44 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-Hans</language>
+        <item>
+            <title><![CDATA[AutoDev 0.7.0 - 生成规范化代码，深入开发者日常]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[几个月前，我们朝着探索：如何结合 AIGC 的研发效能提升的目标？开源了 AutoDev，如 GitHub 所介绍的：]]></description>
+            <content:encoded><![CDATA[<p>几个月前，我们朝着探索：**如何结合 AIGC 的研发效能提升的目标？**开源了 AutoDev，如 GitHub 所介绍的：</p>
+<blockquote>
+<p>AutoDev 是一款基于 JetBrains IDE 的 LLM/AI 辅助编程插件。AutoDev 能够与您的需求管理系统（例如 Jira、Trello、Github Issue 等）直接对接。在 IDE 中，您只需简单点击，AutoDev 会根据您的需求自动为您生成代码。您所需做的，仅仅是对生成的代码进行质量检查。</p>
+</blockquote>
+<p>随着，我们对于 LLM 能力边界的探索，发现了一些更有意思的模式，这些探索的模式也融入了 AutoDev 中。</p>
+<p>PS：在 JetBrains 插件中搜索 <code>AutoDev</code> 并安装，配置上你的 LLM，如 OpenAI 及其代理、开源 LLM 等即可使用。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-autodev对于-genai--软件研发结合的理解">WHY AutoDev？对于 GenAI + 软件研发结合的理解<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#why-autodev%E5%AF%B9%E4%BA%8E-genai--%E8%BD%AF%E4%BB%B6%E7%A0%94%E5%8F%91%E7%BB%93%E5%90%88%E7%9A%84%E7%90%86%E8%A7%A3" class="hash-link" aria-label="WHY AutoDev？对于 GenAI + 软件研发结合的理解的直接链接" title="WHY AutoDev？对于 GenAI + 软件研发结合的理解的直接链接">​</a></h2>
+<p>于生成式 AI 来说，我们依旧保持先前分享时相似的观点：</p>
+<ol>
+<li>GenAI 可以在研发流程的几乎每个环节产生提效作用。</li>
+<li>对于标准化流程提效比较明显，不规范的小团队提升有限。</li>
+<li>由于  prompt 编写需要耗费时间，提效需要落地到工具上。</li>
+</ol>
+<p>所以，在设计 AutoDev 时，我们的目标是：</p>
+<ol>
+<li>端到端集成，降低交互成本。即从 prompt 编写到与 LLM 交互，再复制回工具中。</li>
+<li>自动收集 prompt 的上下文生成内容、代码</li>
+<li>最后由人来修复 AI 生成的代码。</li>
+</ol>
+<p>那么，手动整理规范、自动收集上下文，以提升生成内容的质量，便是我们做工具里所要探索的。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-07-新特性">AutoDev 0.7 新特性<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#autodev-07-%E6%96%B0%E7%89%B9%E6%80%A7" class="hash-link" aria-label="AutoDev 0.7 新特性的直接链接" title="AutoDev 0.7 新特性的直接链接">​</a></h2>
+<p>从四月份的大 DEMO，到如今的新版本里，我们持续研究了 GitHub Copilot、JetBrains AI Assistant、Cursor、Bloop 等 IDE/编辑器的代码、实现逻辑等。每个工具都有其独特的卖点，再结合我日常的一引起开发习惯，添加了一系列探索性的新功能。</p>
+<p>详细见 GitHub：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="特性-1架构规范与代码规范内建">特性 1：架构规范与<strong>代码规范内建</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#%E7%89%B9%E6%80%A7-1%E6%9E%B6%E6%9E%84%E8%A7%84%E8%8C%83%E4%B8%8E%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%86%85%E5%BB%BA" class="hash-link" aria-label="特性-1架构规范与代码规范内建的直接链接" title="特性-1架构规范与代码规范内建的直接链接">​</a></h3>
+<p>LLM 的复读机模式（生成机机制），会根据当前上下文的编程习惯，复读出相似的代码。即在使用诸如 GitHub Copilot 这一类的 AI 代码生成功能时，它会根据我们如何处理 API，来生成新的 API 代码。如果我们的代码使用了 Swagger 注解生成 API 代码，那么在同一个 Controller 下也会生成相似的代码。</p>
+<p>这也意味着问题：如果前人写的代码是不规范的，那么生成的代码亦是不规范的。因此，我们在 AutoDev 添加了配置 CRUD 模板代码的规范：</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"spec"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"controller"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"- 在 Controller 中使用 BeanUtils.copyProperties 进行 DTO 转换 Entity"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"service"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"- Service 层应该使用构造函数注入或者 setter 注入，不要使用 @Autowired 注解注入。"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"entity"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"- Entity 类应该使用 JPA 注解进行数据库映射"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"repository"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"- Repository 接口应该继承 JpaRepository 接口，以获得基本的 CRUD 操作"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"ddl"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"-  字段应该使用 NOT NULL 约束，确保数据的完整性"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>在一些特殊的场景下，只有这个规范是不够的，还需要配置示例代码。在有了这个配置之后，当我们在生成 Controller、Service 等代码时，可以直接用上述的规范生成。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="特性-2深入开发者日常编程活动">特性 2：深入开发者日常编程活动<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#%E7%89%B9%E6%80%A7-2%E6%B7%B1%E5%85%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%97%A5%E5%B8%B8%E7%BC%96%E7%A8%8B%E6%B4%BB%E5%8A%A8" class="hash-link" aria-label="特性 2：深入开发者日常编程活动的直接链接" title="特性 2：深入开发者日常编程活动的直接链接">​</a></h3>
+<p>在四月份发布的时候 ，AutoDev 集成了基本的编程活动能力：AI 填充代码、添加代码注释、重构代码、解释代码等等。</p>
+<p>而在开发 AutoDev 自身功能的时候，我们发现了一些更有意思的需求，也集成到了 IDE 中。</p>
+<ul>
+<li>一键生成提交信息。在我们使用 IDEA 的 UI 功能写提交信息时，可以一键生成参考的提交信息。</li>
+<li>一键生成发布日志。在提交历史中，选中多个 commit，根据提交信息，来生成 CHANGELOG。</li>
+<li>错误信息一键分析。编写代码时，DEBUG 遇到错误，选中错误信息，可以自动结合错误代码，发送给 LLM 进行分析。</li>
+<li>代码测试代码。</li>
+</ul>
+<p>再加上，AutoDev 最擅长的拉取需求进行自动 CRUD 的功能，在功能上更加完备了。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="特性-3多语言的-ai-辅助支持">特性 3：<strong>多语言的 AI 辅助支持</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#%E7%89%B9%E6%80%A7-3%E5%A4%9A%E8%AF%AD%E8%A8%80%E7%9A%84-ai-%E8%BE%85%E5%8A%A9%E6%94%AF%E6%8C%81" class="hash-link" aria-label="特性-3多语言的-ai-辅助支持的直接链接" title="特性-3多语言的-ai-辅助支持的直接链接">​</a></h3>
+<p>四月份，我们发现 LLM 非常擅长于 CRUD，所以选中了 Java 语言作为测试与场景，只构建了 Java 语言的自动 CRUD 功能。而像我最近几年经常用的 Kotlin、Rust、TypeScript，都没有支持，而这就对我不友好了。</p>
+<p>于是，参考了 Intellij Rust 的模块化结构，重新组织了分层、模块，并以 Intellij Plugin 的扩展点 （XML + Java）重塑了整个应用的基础架构。</p>
+<p>以下围绕新架构下产生的新扩展点：</p>
+<ul>
+<li>语言数据结构扩展点。原先的设计中，这部分用于在 token 不够时，使用 UML 来表达原来的代码。随后，我们参考（抄袭）了 JetBrains AI Assistant 的语言扩展点功能，即不同的语言的数据结构在自身的扩展中实现。</li>
+<li>语言 prompt 扩展点。不同语言也有自身的 prompt 差异，这些差异也被移到各自的模块中实现。</li>
+<li>自定义 CRUD 工作流。现有的 CRUD 实现，绑定的是 Java 语言特性，而每个语言有自身的不同实现方式，也交由语言自身去实现。</li>
+</ul>
+<p>当然了，当前依旧只有 Java/Kotlin 支持是最好的。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="特征-4更广泛的-llm-支持">特征 4：更广泛的 LLM 支持<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#%E7%89%B9%E5%BE%81-4%E6%9B%B4%E5%B9%BF%E6%B3%9B%E7%9A%84-llm-%E6%94%AF%E6%8C%81" class="hash-link" aria-label="特征 4：更广泛的 LLM 支持的直接链接" title="特征 4：更广泛的 LLM 支持的直接链接">​</a></h3>
+<p>AutoDev 在设计初衷面向我们的第二个假设是：每个大公司都会推出自己的 LLM。每个 LLM 都有自身的特点，所以我们需要有更多的 LLM 支持。</p>
+<ul>
+<li>OpenAI 及其代理。目前是测试最多的，也是最完整的。</li>
+<li>Azure OpenAI。作为一个在国内合法使用 OpenAI 的渠道，我们也在先前的版本中进行了初步的支持，并逐步地完善了这个功能。</li>
+<li>其它 LLM。虽然，还没有找到合适的国内 LLM API 进行适配，但是已经在接口上构建了这样的能力。</li>
+</ul>
+<p>欢迎大家结合自己的 LLM 尝试。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="特征-5更智能的-prompt-策略">特征 5：更智能的 prompt 策略<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#%E7%89%B9%E5%BE%81-5%E6%9B%B4%E6%99%BA%E8%83%BD%E7%9A%84-prompt-%E7%AD%96%E7%95%A5" class="hash-link" aria-label="特征 5：更智能的 prompt 策略的直接链接" title="特征 5：更智能的 prompt 策略的直接链接">​</a></h3>
+<p>回到我们 5 月份的那篇《**<a href="https://www.phodal.com/blog/llm-context-engineering/" target="_blank" rel="noopener noreferrer">上下文工程：基于 Github Copilot 的实时能力分析与思考</a>》**里，我们详细分析了 GitHub Copilot 的 prompt 策略。围绕于这个策略，会有基本的 promptElements 诸如：<code>BeforeCursor</code>, <code>AfterCursor</code>, <code>SimilarFile</code>, <code>ImportedFile</code>, <code>LanguageMarker</code>, <code>PathMarker</code>, <code>RetrievalSnippet</code> 等。</p>
+<p>在发现了 JetBrains AI Assistant 也在尝试使用类似的方式来构建其 prompt 策略时。我们也进一步参考，并完善了 AutoDev 的 prompt 策略，以让其更智能。</p>
+<ul>
+<li>代码上下文策略。<!-- -->
+<ul>
+<li>Java 语言 + CRUD 模式下，会尝试按相关代码（BeforeCursor）、调用代码的所有方法、调用代码行、相关代码的 UML 等方式构建。</li>
+<li>Java 语言其它模式下，会使用 DtModel 来构建类 UML 的注释，作为相关任务的参考。</li>
+<li>Python 语言，会根据 import 来相似代码段来构建生成 prompt 作为注释，作为 LLM 的参考。</li>
+</ul>
+</li>
+<li>计算策略。剩下的则是根据 token 是否超限，来不分配适合的上下文。</li>
+</ul>
+<p>作为一个所谓的 “智能上下文” 策略，现有的策略还需要进一步优化。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="其它">其它<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-0-7-0#%E5%85%B6%E5%AE%83" class="hash-link" aria-label="其它的直接链接" title="其它的直接链接">​</a></h2>
+<p>有兴趣的话，欢迎来 GitHub 讨论代码：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a> 。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev 1.0 发布，全流程 AI 辅助编程]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[四月，在那篇《AutoDev：AI 突破研发效能，探索平台工程新机遇》，我们初步拟定了 AI 对于研发的影响。我们有了几个基本的假设：]]></description>
+            <content:encoded><![CDATA[<p>四月，在那篇《<strong>AutoDev：AI 突破研发效能，探索平台工程新机遇》</strong>，我们初步拟定了 AI 对于研发的影响。我们有了几个基本的假设：</p>
+<ul>
+<li>中大型企业将<strong>至少拥有一个</strong>私有化的大语言模型。</li>
+<li>只有构建端到端工具才能借助 AI 实现增质提效。</li>
+</ul>
+<p>围绕于这些假设，我们开始构建 AutoDev，将并将它开源。也在我的博客里，写下开发中的所有心得，以期望能帮助到国内的企业构建自己的
+AI 辅助编程能力。</p>
+<p>作为一个开源项目，还是先上 GitHub 地址：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a> 。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="围绕开发者体验设计三种辅助模式">围绕开发者体验，设计三种辅助模式<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E5%9B%B4%E7%BB%95%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E4%B8%89%E7%A7%8D%E8%BE%85%E5%8A%A9%E6%A8%A1%E5%BC%8F" class="hash-link" aria-label="围绕开发者体验，设计三种辅助模式的直接链接" title="围绕开发者体验，设计三种辅助模式的直接链接">​</a></h2>
+<p>起初，我并没有一个明确的开发蓝图。作为一个天天写代码的、所谓的专家级程序员，我是看我缺什么功能便写什么功能。</p>
+<p>随后，围绕于所有的功能，我将其总结为三种辅助模式：</p>
+<ul>
+<li>聊天模式</li>
+<li>Copilot 模式</li>
+<li>补全模式</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="自动模式规范化的代码生成">自动模式：规范化的代码生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E8%87%AA%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%A7%84%E8%8C%83%E5%8C%96%E7%9A%84%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90" class="hash-link" aria-label="自动模式：规范化的代码生成的直接链接" title="自动模式：规范化的代码生成的直接链接">​</a></h3>
+<p>触发方式：自动模式都在 Context Actions 下，即与上下文相关的 actions。方式自然是那个那能的快捷键：<strong>⌥⏎</strong> (macOS) 或者 *
+<em>Alt+Enter</em>* (Windows/Linux)。</p>
+<p>设计的初衷是：类似于我们在先前设计 ClickPrompt 时的一键模式。而代码并不是像网的各种炫酷的
+demo，你需要考虑团队已有的软件规范和约定，否则生成的代码依旧是不可用的。于是，围绕于可配置，以及一些隐性知识的场景，我们构建了三个体现
+AutoDev 的 auto 的场景：</p>
+<ul>
+<li>自动 CRUD。读取需求系统的需求，由一个手动编码的 agent，来不断进行交互。寻找合适的 controller，修改方法，添加新的方法等等。当前支持
+Kotlin、JavaScript 语言。</li>
+<li>自动生成测试。根据选定的类、方法，一键生成测试，并自动运行（在 RunConfiguration 合适的情况下）。当前支持
+JavaScript、Kotlin、Java 语言。</li>
+<li>自动代码补全。根据光标位置，自动进行代码填充。由于精力不够，在不同语言能力有些差异，在 Java 语言下，会结合读取<strong>代码规范</strong>；在
+Kotlin、Java 语言会根据参数、返回值自动添加类作为上下文；在其它语言下，会通过“类似”（不要问是不是抄的）于 GitHub
+Copilot、JetBrains AI Assistant 的相似度算法进行计算。</li>
+</ul>
+<p>每个自动模式都包含了一系列的<strong>自动上下文</strong>工作。如下图为<strong>可见的</strong>、自动代码补全的上下文示例：</p>
+<p><img decoding="async" loading="lazy" src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4896c2bb-7356-4d15-a7d8-344e61b7b8db/Untitled.png" alt="Untitled" class="img_ev3q"></p>
+<p>在这个上下文里，结合了一些配置好的规范，以及 BlogController 类相关的 field、parameters、return type，诸如 BlogService 等。</p>
+<p>除此，还有一些隐藏的上下文，诸如于，我们在 AutoDev 配置中声名的语言：</p>
+<div class="language-kotlin codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-kotlin codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">You MUST Use 中文 </span><span class="token keyword" style="color:#00009f">to</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> your answer </span><span class="token operator" style="color:#393A34">!</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>所以，其实吧，因为只有这么两个 “中文”，目测有大概 50% 的机率不会触发，我在考虑要不要重复三遍。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="伴随模式围绕日常体验设计">伴随模式：围绕日常体验设计<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E4%BC%B4%E9%9A%8F%E6%A8%A1%E5%BC%8F%E5%9B%B4%E7%BB%95%E6%97%A5%E5%B8%B8%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1" class="hash-link" aria-label="伴随模式：围绕日常体验设计的直接链接" title="伴随模式：围绕日常体验设计的直接链接">​</a></h3>
+<p>在设计伴随模式时，除了围绕于自己的需求设计，还调研、参考了一系列现有工具的实现，诸如于 AI Commit 等等。</p>
+<p>由于，伴随模式都需要等待 LLM 返回结果，所以就都扔到 <code>AutoDev Chat</code> 模式下了。</p>
+<p>不过，我现在发现了在 JetBrains AI Assistant 出来之后，它成了 AutoDev 的最大竞争对手，当然也是参考对象。诸如于，下图的 Explain
+with AI、Explain error message with AI 的体验就做得很好。在这一点上，确实有待我进一步学习的。</p>
+<p>像 AutoDev，你只能选中，然后再 Fix This。</p>
+<p>除了上述的功能，你还可以用 AutoDev 来：</p>
+<ul>
+<li>生成提交信息</li>
+<li>生成 release note</li>
+<li>解释代码</li>
+<li>重构代码</li>
+<li>…………</li>
+</ul>
+<p>总之，别人有的，AutoDev 都可以有，还可以让你直接 create DDL。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="聊天模式一个边缘的功能">聊天模式：一个边缘的功能<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%BC%8F%E4%B8%80%E4%B8%AA%E8%BE%B9%E7%BC%98%E7%9A%84%E5%8A%9F%E8%83%BD" class="hash-link" aria-label="聊天模式：一个边缘的功能的直接链接" title="聊天模式：一个边缘的功能的直接链接">​</a></h3>
+<p>在腾出了时间之后，我们重新设计（其实是借鉴了 JetBrains，谁让他不支持广大的中国区用户）了 AutoDev 的 UI，并且支持一键 Chat
+的方式，如图一中的 Context Actions。</p>
+<p>你可以在这里和它聊天。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="llm-as-copilot-的思考">LLM as Copilot 的思考<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#llm-as-copilot-%E7%9A%84%E6%80%9D%E8%80%83" class="hash-link" aria-label="LLM as Copilot 的思考的直接链接" title="LLM as Copilot 的思考的直接链接">​</a></h2>
+<p>对于现阶段来说，LLM 是一个 Copilot。它不会不改变软件工程的专业分工，但增强每个专业技术，基于AI的研发工具平台辅助工程师完成任务，影响个体工作。</p>
+<p>它应该<strong>解决“我懒得做”及“我重复做”的事儿</strong>，诸如于写单元测试、编写代码、解决 issue、提交代码等等。作为一个程序员，我们应该多挖一些坑，多做一些有创造性的设计。</p>
+<p>在 AutoDev 里，我们关注的是：AI 如何更好地辅助人类完成工作，并且它应该是伴随在工程师的 IDE 旅程上，尽可能让工程师不离开 IDE
+就可以工作。</p>
+<p>而对于 LLM as Copilot 这一理念来说，越来越多的工具将完善一点。</p>
+<p>作为一个资深的 AI 应用工程师，我们正在思考 <strong>LLM as Co-Integrator</strong> 将如何真正的提升效能。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="faq">FAQ<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#faq" class="hash-link" aria-label="FAQ的直接链接" title="FAQ的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="如何接入国产私有化-llm-">如何接入国产、私有化 LLM ？<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E5%A6%82%E4%BD%95%E6%8E%A5%E5%85%A5%E5%9B%BD%E4%BA%A7%E7%A7%81%E6%9C%89%E5%8C%96-llm-" class="hash-link" aria-label="如何接入国产、私有化 LLM ？的直接链接" title="如何接入国产、私有化 LLM ？的直接链接">​</a></h3>
+<p>在项目的源码里，我们提供了一个 Custom LLM Server 的 Python 接口示例，需要将接口转为 AutoDev 所能接受的。由于精力有限，我只测试过公司内部部署的
+ChatGLM2，所以接口并不是很完善。如果大家有其它需要，可以来 GitHub issue 讨论。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="为什么只有-intellij-版本">为什么只有 Intellij 版本？<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89-intellij-%E7%89%88%E6%9C%AC" class="hash-link" aria-label="为什么只有 Intellij 版本？的直接链接" title="为什么只有 Intellij 版本？的直接链接">​</a></h3>
+<p>作为一个开发过新的语言插件、深入过 Intellij Community、Android Studio 源码，并且优化过 Harmony OS IDE 架构的人，我真的只擅长
+JetBrains IDE 的开发。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="什么时候会有-vs-code-版">什么时候会有 VS Code 版？<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E6%9C%89-vs-code-%E7%89%88" class="hash-link" aria-label="什么时候会有 VS Code 版？的直接链接" title="什么时候会有 VS Code 版？的直接链接">​</a></h3>
+<p>简单来说：短期内不会有。</p>
+<p>虽然，我也认真研究过 VS Code、X Editor 等编辑器的源码，但是兄弟姐妹们，VS Code 只是一个编辑器，不是一个 IDE
+啊，它缺少太多的接口了。而如果只是简单的功能，现有的开源版本已经有很好的实现了。</p>
+<p>除了上面的原因，还有：</p>
+<p>其一：集成度低，开发困难。方式 1：VS Code 的 Tokenization 引擎是基于 TextMate 语法，那由 ****Oniguruma 结合又长又臭的正则表达式实现，非常不
+靠谱；方式 2：基于 LSP 引擎，据我先前所试的，远景很美好。</p>
+<p>其二：没有可供参考的代码和实现样板。如我们的 README 所提及：JetBrain plugin development is no walk in the park! Oops, we
+cheekily borrowed some code from the GitHub Copilot, JetBrains Community version and the super cool JetBrains AI
+Assistant plugin in our codebase. But fret not, we are working our magic to clean it up diligently!</p>
+<p>所以，理想的方式是像 GitHub Copilot 一样，开发一套 IDE 无关的 Agent 机制，结合 TreeSitter 来实现编程语言相关的处理。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="其它">其它<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-0-0#%E5%85%B6%E5%AE%83" class="hash-link" aria-label="其它的直接链接" title="其它的直接链接">​</a></h2>
+<p>AutoDev 的思想是将 LLM（Large Language Model）作为辅助开发者的 Copilot，通过提供辅助工具来解决一些繁琐的任务，让工程师能够更专注于有创造性的设计和思考。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev 1.4 规模化 AI 研发辅助]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[在过去的两个月里，随着 Thoughtworks 内部的大规模 AI 辅助软件交付（AI4SoftwareDelivery）的展开 —— 在全球，有上千名的]]></description>
+            <content:encoded><![CDATA[<p>在过去的两个月里，随着 Thoughtworks 内部的大规模 AI 辅助软件交付（AI4SoftwareDelivery）的展开 —— 在全球，有上千名的
+Thoughtworker 这一个涉及不同角色、不同地区，以及几十场内部分享的活动。</p>
+<p>我们也在 AutoDev 加入了更多的新特性，以持续探索如何在 IDE 里更好的协助团队进行提效。为此，作为目前国内最好的开源 AI
+辅助编程工具，我们在 AutoDev 1.4.0 引入了几个比较有趣的特性，以探索规模化的 AI 研发提效。</p>
+<p>AutoDev GitHub：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="团队-prompts代码化-prompt以在团队扩散">团队 Prompts：代码化 Prompt，以在团队扩散<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#%E5%9B%A2%E9%98%9F-prompts%E4%BB%A3%E7%A0%81%E5%8C%96-prompt%E4%BB%A5%E5%9C%A8%E5%9B%A2%E9%98%9F%E6%89%A9%E6%95%A3" class="hash-link" aria-label="团队 Prompts：代码化 Prompt，以在团队扩散的直接链接" title="团队 Prompts：代码化 Prompt，以在团队扩散的直接链接">​</a></h2>
+<p>为了响应我同事们对于 TDD （测试驱动开发）的热情，即 #49 issue 中对于《支持TDD开发模式，根据指定测试生成对应实现》，我们构建了
+Team Prompts 的功能。现在，你可以在你的代码库里，直接编写 Prompt，AutoDev 将读取您编写的 Prompt，并成为 AI 辅助功能的一部分。</p>
+<p><img decoding="async" loading="lazy" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/ba3432d7-a5ac-428b-9d05-6d088dd5940a/5cecc645-e9fd-466a-8adc-2f69b15299e3/Untitled.png" alt="Untitled" class="img_ev3q"></p>
+<p>这意味着：</p>
+<ul>
+<li>您可以在团队里，共享你的 prompt，而不再是个性化的配置。</li>
+<li>您组织里的不同团队，可以在各自的团队里分享自己的 AI 经验。</li>
+<li>您不再需要定制更多的 IDE 需求，只需要提供接口能力即可。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="team-prompts-示例">Team Prompts 示例<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#team-prompts-%E7%A4%BA%E4%BE%8B" class="hash-link" aria-label="Team Prompts 示例的直接链接" title="Team Prompts 示例的直接链接">​</a></h3>
+<p>让我们来看一个简单的示例，首先你需要在你的代码库里创建（或者配置） Prompt 文件夹，然后使用编写你的一系列 Prompt，诸如于 TDD
+里可以是：</p>
+<ul>
+<li>Tasking.vm，用于根据需求拆分出对应的测试用例。</li>
+<li>TDD-Red.vm，根据生成的测试用例，编写第一个失败的测试。</li>
+<li>TDD-Green.vm，根据生成的测试，编写、优化对应的实现代码。</li>
+<li>TDD-Refactor.vm，重构实现的代码。</li>
+</ul>
+<p>在这些 prompt 文件里，只需要根据 AutoDev 的配置文件引入对应的上下文变量（参考：<a href="https://ide.unitmesh.cc/variables" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/variables</a> ） 即可。诸如：</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">---</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">priority: 2023</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">interaction: ChatPanel</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">---</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">```user```</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">你是一个资深的软件开发工程师，你擅长使用 TDD 的方式来开发软件，你需要根据新的测试用例，来改进原有的代码实现。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">原有的实现代码是：$context.underTestFileCode($methodName)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">新的测试代码是：</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">${selection}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">请根据新的测试，优化 class under test 部分的代码。请返回对应的方法的代码，使用 ``` 开始你的代码块：</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Prompt 开头的部分是一个 Markdown 的 YAML FrontMatter，用于做一些简单的配置，在这里的 priority 用于配置菜单中的优先级，interaction
+即是用于配置交互方式，如：</p>
+<ul>
+<li><code>ChatPanel</code> 用于直接输出在右侧的聊天窗口；</li>
+<li><code>AppendCursorStream</code> 则是用 Stream （打字机效果）的方式在当前文档输出。</li>
+</ul>
+<p>Context 则是内置的一些系统函数，用于提供额外的能力支持。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="team-prompts-vs-custom-prompt">Team Prompts vs Custom Prompt<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#team-prompts-vs-custom-prompt" class="hash-link" aria-label="Team Prompts vs Custom Prompt的直接链接" title="Team Prompts vs Custom Prompt的直接链接">​</a></h3>
+<p>在 AutoDev 1.1 中，我们提供了 Custom Prompt 的功能，它的主要意图是为个人提供一些个性化的配置，而 Team Prompts
+则是针对于团队来提供团队统一的配置能力。</p>
+<p>通过 Team Prompts 这样的方式，我们可以编写一系列适用于不同场景的 AI 指令，并快速分享给团队的所有人。</p>
+<p>我们将持续演进 Team Prompts，以更方便地让大家使用。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="自定义活文档持续辅助遗留系统重构">自定义活文档：持续辅助遗留系统重构<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B4%BB%E6%96%87%E6%A1%A3%E6%8C%81%E7%BB%AD%E8%BE%85%E5%8A%A9%E9%81%97%E7%95%99%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%9E%84" class="hash-link" aria-label="自定义活文档：持续辅助遗留系统重构的直接链接" title="自定义活文档：持续辅助遗留系统重构的直接链接">​</a></h2>
+<p>与普通的文档生成、注释生成相对，我们觉得从底层支持对于代码的注释生成，进而辅助系统进行重构显得更有意义。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-文档生成">AutoDev 文档生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#autodev-%E6%96%87%E6%A1%A3%E7%94%9F%E6%88%90" class="hash-link" aria-label="AutoDev 文档生成的直接链接" title="AutoDev 文档生成的直接链接">​</a></h3>
+<p>在参考了 JetBrains AI Assistant 的文档生成思想之后，我们也在 AutoDev 中添加了文档生成这种聊胜于无的功能 —— 从个人角度而言，在有了
+AIGC 之后，这种功能象征意义大于实际意义。直到我需要我为 Chocolate Factory 添加文档的时候，发现这个功能真好用。</p>
+<p>没啥说的，选中一个类、方法、变量，右键一下，或者按一下 Alt + Enter 就可以生成了。如果原先的方法和类中已经有文档，那么将会根据现有的代码和文档重新生成（大概率，取决于
+AI 的脾气了）。</p>
+<p>如果您在实现的一个对外的 SDK，那么我更建议你采用我们在《*
+*<a href="https://dx.phodal.com/docs/patterns/document-engineering.html" target="_blank" rel="noopener noreferrer">开发者体验：探索与重塑</a>**》中定义的《<strong>文档工程</strong>
+》的方式。诸如于我们在 Chocolate Factory 中提供的，根据测试用例代码和注释来生成真正可靠的代码。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="自定义活文档生成">自定义活文档生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B4%BB%E6%96%87%E6%A1%A3%E7%94%9F%E6%88%90" class="hash-link" aria-label="自定义活文档生成的直接链接" title="自定义活文档生成的直接链接">​</a></h3>
+<p>作为曾经的遗留系统重构专家，写过几个流行的重构工具、电子书，以及我们公司同事在大型保险公司的经历来看，直接根据代码生成注解形式的文档，可以大大节省阅读大量的成本。并且在已有的代码 +
+新的文档的注释基础上，我们可以更好地构建 RAG 能力，进而快速从代码中梳理出真正有用的知识。</p>
+<p>为此在 AutoDev 里，只需要添加一些 examples，就可以让 LLM 来生成对应的文档。示例：</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token property" style="color:#36acaa">"documentations"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"title"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"Living Documentation"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"prompt"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"编写 Living Documentation。按如下的格式返回："</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"start"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">""</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"end"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">""</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"type"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"annotated"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"example"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"question"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"..."</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"answer"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"..."</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>再根据不同的场景，生成对应的注解格式，所以你也可以用它来生成 Swagger 注解，这样就可以直接生成 API 文档了。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="代码检视">代码检视<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#%E4%BB%A3%E7%A0%81%E6%A3%80%E8%A7%86" class="hash-link" aria-label="代码检视的直接链接" title="代码检视的直接链接">​</a></h2>
+<p>如我们在先前的文档《*
+<em><a href="https://www.phodal.com/blog/llm-empowered-software-engineering-code-review/" target="_blank" rel="noopener noreferrer">AIGC 重塑软件工程 Code Review 篇</a></em>*
+》所介绍，我们是通过在 AutoDev 结合 DevOps 平台来共同完成代码检视的。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ide-侧应该如何检视代码">IDE 侧应该如何检视代码<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#ide-%E4%BE%A7%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%A3%80%E8%A7%86%E4%BB%A3%E7%A0%81" class="hash-link" aria-label="IDE 侧应该如何检视代码的直接链接" title="IDE 侧应该如何检视代码的直接链接">​</a></h3>
+<p>在 IDE 侧，我们更推荐的方式是理解业务场景，结合部分的语法问题进行 review。其主要原则是，从我们日常的工作习惯来说，我们会选取多次提交（诸如一个需求的所有代码提交），再进行
+Code Review。又或者是单个文件在历史周期上的变化，所以我们在设计上也是围绕于日常的使用习惯来配置的。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="结合需求系统的-code-review">结合需求系统的 Code Review<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#%E7%BB%93%E5%90%88%E9%9C%80%E6%B1%82%E7%B3%BB%E7%BB%9F%E7%9A%84-code-review" class="hash-link" aria-label="结合需求系统的 Code Review的直接链接" title="结合需求系统的 Code Review的直接链接">​</a></h3>
+<p>对于考虑 AIGC 来进行研发提效的团队而言，大部分的团队已经具备了相当 DevOps 成熟度，诸如于在提交信息里结合需求 ID
+来进行提交，诸如于 <code>feat(devops): init first review command #8</code>。</p>
+<p>在这种场景之下，AutoDev 会根据这里的 8 去获取对应的需求系统的信息，以此作为业务上下文，来补充我们所需要的业务上下文，进而作为
+LLM 的补充信息。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-4-0#%E6%80%BB%E7%BB%93" class="hash-link" aria-label="总结的直接链接" title="总结的直接链接">​</a></h2>
+<p>作为一个开源项目，我们依旧有大量地不足，如果你遇到什么问题，欢迎在 GitHub 提出
+issue：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a> 。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev 1.5.3 精准测试生成]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[去年年初，我们开源 AutoDev 的初衷是：]]></description>
+            <content:encoded><![CDATA[<p>去年年初，我们开源 AutoDev 的初衷是：</p>
+<blockquote>
+<p>AutoDev 是一款基于 JetBrains IDE 的开源 AI 辅助编程插件。AutoDev 能够与您的需求管理系统（例如 Jira、Trello、Github Issue
+等）直接对接。在 IDE 中，您只需简单点击，AutoDev 会根据您的需求自动为您生成代码。您所需做的，仅仅是对生成的代码进行质量检查。 @</p>
+</blockquote>
+<p>而今我们在朝这一目标的努力又更进一步了：一键生成精准的单元测试。在这篇文章中，我们将介绍从 1.4 版本（适用于团队的 Team AI）到
+1.5.3 版本的一些特性：</p>
+<ul>
+<li>精准的自动化测试生成。增强了静态代码分析能力，使得生成的构造函数更加准确；优化针对于 Spring 项目区分如何测试
+Controller、Service 的 prompt；提供不同类型的测试模板能力。</li>
+<li>本地模型强化。提供了适合于 AutoDev 的 AutoDev Coder 数据集与模型；支持本地的数据记录功能，方便于进行数据蒸馏；支持部分的系统
+prompt 覆盖，即你可以更好的使用自己的模型。</li>
+<li>多语言注释文档。新增 JavaScript、Rust、 Python 语言的支持，并且优化了 Kotlin 的文档生成逻辑。</li>
+<li>自动流程优化。添加了 PrePush Review，即在 commit 之前，你可以使用 AI 来 review；大大简化提交信息生成的上下文，区分文件变更、依赖变更等场景，使生成的
+token 更少。</li>
+</ul>
+<p>欢迎来加入我们：<a href="https://github.com/unit-mesh/auto-dev/%EF%BC%8C%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev/，构建自己的</a> AI 辅助全流程编码助手。</p>
+<p>在开发的过程中，我们选取了 ArchGuard 作为 AutoDev 全流程 AI 辅助的试点，ArchGuard 是一个使用 Kotlin
+编写的开源架构治理平台。在过程中持续积累数据和经验，以更好地支撑 Kotlin 语言的使用体验。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-精准测试生成">1. 精准测试生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#1-%E7%B2%BE%E5%87%86%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90" class="hash-link" aria-label="1. 精准测试生成的直接链接" title="1. 精准测试生成的直接链接">​</a></h2>
+<p>结合在 ArchGuard 项目中生成了 90 个测试类 200+ 测试的用例经验，我们持续优化了的测试生成逻辑（估计还有一些 bug）。</p>
+<p>因此，在 AutoDev 中有概率<strong>直接生成</strong>直接可用的单元测试。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="精准上下文">精准上下文<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#%E7%B2%BE%E5%87%86%E4%B8%8A%E4%B8%8B%E6%96%87" class="hash-link" aria-label="精准上下文的直接链接" title="精准上下文的直接链接">​</a></h3>
+<p>在当前的版本里，测试的上下文除了会包含相关的类信息，还有完整的输入和输出类信息。即通过静态代码分析，获取 Service
+相关的信息，也会获取每个函数的输入和输出等等信息。当一个被测试类是一个 Spring 相关的类，会判断是否是 Controller 和
+Service，再给定一些测试规则。</p>
+<p>代码实现参考 <code>JavaTestContextProvider</code>、<code>KotlinTestContextProvider</code> 的实现。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="单元测试模板团队-ai">单元测试模板：团队 AI<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A8%A1%E6%9D%BF%E5%9B%A2%E9%98%9F-ai" class="hash-link" aria-label="单元测试模板：团队 AI的直接链接" title="单元测试模板：团队 AI的直接链接">​</a></h3>
+<p>在 ArchGuard 中，由于不可知的历史原因，需要编写一些特殊的注解 —— 而模型并非每次都能生成想要的。考虑到，这样的情况也会出现在大部分的项目中。因此，针对于
+Controller 和 Service 与其它测试，你可以自定义单元测试的模板。</p>
+<p>每个项目的测试逻辑是不一样的，加上我们推荐采用 prompt 即代码的方式来管理，你更可以将它分享给你的团队。</p>
+<p>相关文档：<a href="https://ide.unitmesh.cc/customize/custom-test-template.html" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/customize/custom-test-template.html</a> 。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="api-测试数据精准生成">API 测试数据精准生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#api-%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E7%B2%BE%E5%87%86%E7%94%9F%E6%88%90" class="hash-link" aria-label="API 测试数据精准生成的直接链接" title="API 测试数据精准生成的直接链接">​</a></h3>
+<p>相似的，在使用 AutoDev 的 API 测试数据生成功能时，我们也结合静态代码分析优化了对应的上下文能力，可以直接生成可用的测试数据。</p>
+<p>详细见：<code>JavaTestDataBuilder</code> 和 <code>KotlinTestDataBuilder</code> 相关实现。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-针对本地模型优化">2. 针对本地模型优化<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#2-%E9%92%88%E5%AF%B9%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B%E4%BC%98%E5%8C%96" class="hash-link" aria-label="2. 针对本地模型优化的直接链接" title="2. 针对本地模型优化的直接链接">​</a></h2>
+<p>现在，只需要通过打开 AutoDev 配置页的 <code>AutoDev Coder</code> ，你可以针对私有化的模型做更多的配置。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="公开模型数据的蒸馏">公开模型数据的蒸馏<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#%E5%85%AC%E5%BC%80%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E8%92%B8%E9%A6%8F" class="hash-link" aria-label="公开模型数据的蒸馏的直接链接" title="公开模型数据的蒸馏的直接链接">​</a></h3>
+<p>为了更好的测试公开的大语言模型，以及进行内部模型与工具的适配。我们在新版本中添加了 <code>Recording Instruction In Local</code>
+的功能，即您可以记录与 AI 交互的数据，并以此作为内部模型微调与评估的样本。</p>
+<p>同时，还方便于进行对应的 AutoDev Debug。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="插件-prompt-覆盖">插件 prompt 覆盖<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#%E6%8F%92%E4%BB%B6-prompt-%E8%A6%86%E7%9B%96" class="hash-link" aria-label="插件 prompt 覆盖的直接链接" title="插件 prompt 覆盖的直接链接">​</a></h3>
+<p>通过配置页，同样可以配置诸如<code>Explain code</code>、<code>Refactor code</code>、<code>Fix issue</code>、<code>Generate test</code>四个基本的 AutoDev Chat 相关的
+prompt。</p>
+<p>在进一步优化和构建内部的上下文之后，也将使用模板的方式释放出更多上下文接口。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-多语言文档">3. 多语言文档<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#3-%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%96%87%E6%A1%A3" class="hash-link" aria-label="3. 多语言文档的直接链接" title="3. 多语言文档的直接链接">​</a></h2>
+<p>在文档上，现在可以支持 Python、 Rust、 JavaScript 语言的注释文档生成。同时，由于 OpenAI 经常为 Kotlin
+类生成无用的函数注释，我们也针对这个功能进行了优化，只选取类前的注释代码。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-自动流程优化">4. 自动流程优化<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#4-%E8%87%AA%E5%8A%A8%E6%B5%81%E7%A8%8B%E4%BC%98%E5%8C%96" class="hash-link" aria-label="4. 自动流程优化的直接链接" title="4. 自动流程优化的直接链接">​</a></h2>
+<p>自动化是 AutoDev 追求的主要特性，我们也在今年针对于日常开发流程初了更多的设计。在这个版本里，主要提供两个新特性。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="prepush-检视">PrePush 检视<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#prepush-%E6%A3%80%E8%A7%86" class="hash-link" aria-label="PrePush 检视的直接链接" title="PrePush 检视的直接链接">​</a></h3>
+<p>即在代码提交前，你可以让 AI 来辅助你进行一些初步的 review，以避免出现一些不必要的错误。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="更流畅的提交信息生成">更流畅的提交信息生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#%E6%9B%B4%E6%B5%81%E7%95%85%E7%9A%84%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%E7%94%9F%E6%88%90" class="hash-link" aria-label="更流畅的提交信息生成的直接链接" title="更流畅的提交信息生成的直接链接">​</a></h3>
+<p>在 ArchGuard 项目中使用 AutoDev 重构时，我们生成了 167 次的提交信息，占所有功能的 1/3
+。也因此，我们花了更多的时间在生成更好的提交信息上 —— 如何更好地控制 token。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="其它">其它<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-5-3#%E5%85%B6%E5%AE%83" class="hash-link" aria-label="其它的直接链接" title="其它的直接链接">​</a></h2>
+<p>未来我们还将关注于：</p>
+<ul>
+<li>流程自动化的强化。即支持更好的向前和向后流程接入，加速开发人员的编码速度。</li>
+<li>交互体验优化。我们已经在代码库中引入了更好的加载和出错显示，未来也将持续丰富，毕竟没有 UX，交互上都是靠抄。</li>
+<li>测试覆盖率的提升。在过去的一段时间里，由于 UI 测试速度缓慢，并且在 IDE 架构复杂，AutoDev
+的测试覆盖率是相对较低。而在静态分析相关的场景，则需要进行充分的测试，所以我们在为 AutoDev 添加更多的单元测试，以使得它更加稳定。</li>
+</ul>
+<p>如果你也有兴趣，欢迎来挖坑：<a href="https://github.com/unit-mesh/auto-dev/" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev/</a> 。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev 1.6.0 精准页面生成与 SQL 生成]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-0</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-0</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[AutoPage：精准页面生成]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autopage精准页面生成">AutoPage：精准页面生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-0#autopage%E7%B2%BE%E5%87%86%E9%A1%B5%E9%9D%A2%E7%94%9F%E6%88%90" class="hash-link" aria-label="AutoPage：精准页面生成的直接链接" title="AutoPage：精准页面生成的直接链接">​</a></h2>
+<p>在 1.6.0 版本中，针对于 React 框架，我们提供了精准的页面生成能力。即在生成页面时，会根据页面的上下文，生成对应的页面。</p>
+<p>详细见：<a href="https://ide.unitmesh.cc/workflow/auto-page.html" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/workflow/auto-page.html</a> 。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autosql精准-sql-生成">AutoSQL：精准 SQL 生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-0#autosql%E7%B2%BE%E5%87%86-sql-%E7%94%9F%E6%88%90" class="hash-link" aria-label="AutoSQL：精准 SQL 生成的直接链接" title="AutoSQL：精准 SQL 生成的直接链接">​</a></h2>
+<p>在 1.6.0 版本中，我们提供了精准的 SQL 生成能力。即在生成 SQL 时，会根据 SQL 的上下文，生成对应的 SQL。</p>
+<p>详细见：<a href="https://ide.unitmesh.cc/workflow/auto-sql.html" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/workflow/auto-sql.html</a> 。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prompt-override">Prompt Override<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-0#prompt-override" class="hash-link" aria-label="Prompt Override的直接链接" title="Prompt Override的直接链接">​</a></h2>
+<p>Prompt 覆写功能，即你可以自定义你的 Prompt，详细见：<a href="https://ide.unitmesh.cc/customize/prompt-override.html" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/customize/prompt-override.html</a> 。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev 1.6.4：HarmonyOS 应用开发体验提升]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新]]></description>
+            <content:encoded><![CDATA[<p>生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新
+的理念、开发工具 DevEco Studio、新的语言 ArkTS、新的 UI 框架 ArkUI 等等。从模式上来说，它与生成式 AI 结合企业内部的基础设施过程非常相似。</p>
+<p>因此，我们开始在 AutoDev 中探索如何结合这些新知识的可能性，同时降低开发人员的学习负担。</p>
+<p>源码：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="鸿蒙操作系统--生成式-ai-的三个试验式功能">鸿蒙操作系统 + 生成式 AI 的三个试验式功能<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4#%E9%B8%BF%E8%92%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E7%94%9F%E6%88%90%E5%BC%8F-ai-%E7%9A%84%E4%B8%89%E4%B8%AA%E8%AF%95%E9%AA%8C%E5%BC%8F%E5%8A%9F%E8%83%BD" class="hash-link" aria-label="鸿蒙操作系统 + 生成式 AI 的三个试验式功能的直接链接" title="鸿蒙操作系统 + 生成式 AI 的三个试验式功能的直接链接">​</a></h2>
+<p>在初步听鸿蒙团队介绍完 HarmonyOS 的一些自研工具之后，便有了三个在 AutoDev 试验的思路：</p>
+<ul>
+<li>添加 ArkTS 支持。ArkTS 是鸿蒙生态中基于 TypeScript 扩展的应用开发语言。</li>
+<li>自动 ArkUI 页面生成。ArkUI 是一套构建分布式应用界面的声明式 UI 开发框架。它与我们先前引入的 AutoPage
+并没有太多的区别，可以结合思维链进行代码和 UI 生成。</li>
+<li>UI 布局迁移。即将其它语言、框架编写的代码，交由生成式 AI 转化成适用于鸿蒙的代码。</li>
+</ul>
+<p>作为阅读过 Gradle、Intellij Community、DevEcoStudio 源码，以及《前端架构：从入门到微前端》作者，我大抵算是对于 TypeScript、
+ArkUI、
+声明式 UI 有一定的经验，所以我自信的开始了 AutoDev 的新功能开发 —— 然后就踩了一堆坑。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-arkts-语言的-ai-支持">1. ArkTS 语言的 AI 支持<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4#1-arkts-%E8%AF%AD%E8%A8%80%E7%9A%84-ai-%E6%94%AF%E6%8C%81" class="hash-link" aria-label="1. ArkTS 语言的 AI 支持的直接链接" title="1. ArkTS 语言的 AI 支持的直接链接">​</a></h2>
+<p>在我下载安装完 DevEco Studio 之后，发现 AutoDev 居然不支持 TypeScript？？？经过我在 WebStorm 反复测试后，发现是 IDE 的关系。结合
+PSIViewer 插件后，
+才发现差异之后，DevEco Studio 的 JavaScript/TypeScript
+语言是自己实现的，诸如于：<code>com.huawei.ace.language.psi.impl.JavaScriptIdentifierNameImpl</code>。</p>
+<p>原因不外乎：</p>
+<ul>
+<li>Intellij 平台中的 JavaScript 插件是收费的，没有开源版本。</li>
+<li>鸿蒙直接针对于 TypeScript 语法进行扩展，会比实现一个新的更简单。</li>
+</ul>
+<p>所以 DevEco Studio 自研了一个 JavaScript/TypeScript 模块，支持 JavaScript 语法高亮、代码提示、代码格式化等功能。与此同时，DevEco
+Studio
+添加了 ArkTS 语言，即 TypeScript 扩展语法。</p>
+<p>这就意味着，使用 DevEco Studio + AutoDev 时，会出现三种新的文件类型：</p>
+<ul>
+<li>Huawei JavaScript</li>
+<li>Huawei TypeScript</li>
+<li>Huawei ArkTS</li>
+</ul>
+<p>头疼。。</p>
+<p>为此，在 AutoDev 中采取的方法是，其于标准 PSI 做初步的抽象，以实现对于文档生成的支持。而如果要做好则需要：</p>
+<ol>
+<li>基于反射来重复利用 JavaScript PSI</li>
+<li>融入 DevEco Studio 的 JavaScript 支持</li>
+</ol>
+<p>当然，考虑到调试上的难度，以前代码中各种现的 xxStudio 字眼（新的自研 IDE 平台？？），我暂时放弃了上述的做法：大体上鸿蒙 IDE
+会有自己的 AI 能力。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-autoarkuirag-增强的-arkui-代码生成">2. AutoArkUI：RAG 增强的 ArkUI 代码生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4#2-autoarkuirag-%E5%A2%9E%E5%BC%BA%E7%9A%84-arkui-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90" class="hash-link" aria-label="2. AutoArkUI：RAG 增强的 ArkUI 代码生成的直接链接" title="2. AutoArkUI：RAG 增强的 ArkUI 代码生成的直接链接">​</a></h2>
+<blockquote>
+<p>ArkUI 是一套构建分布式应用界面的声明式 UI 开发框架。</p>
+</blockquote>
+<p>与 ArkTS 相比，要结合 ArkUI 显得稍微复杂一些。 所以，我在当前版本里考虑的是：结合经典 UI 的元素生成页面，即：</p>
+<ul>
+<li>布局。诸如于：线性布局（Row、Column）、层叠布局（Stack）、弹性布局（Flex）等。</li>
+<li>组件。诸如于：按钮（Button）、单选框（Radio）、切换按钮（Toggle）等。</li>
+</ul>
+<p>而由于 ChatGPT 是不包含 HarmonyOS 的最新知识的，所以需要采用类似于 AutoPage 的两步生成特性。</p>
+<ol>
+<li>分析用户的需求，选择合适的布局与组件。</li>
+<li>根据用户的需求与详细的布局、组件信息，生成对应的 ArkUI 代码。</li>
+</ol>
+<p>上述的两步便是 AutoDev 中 AutoArkUi 生成 UI 的特性，详细可以参考 AutoDev 的代码，以及对应的 prompt。如下是对应的步骤 1 的
+prompt：</p>
+<ul>
+<li>User: // maybe send Android Layout code, maybe some requirements</li>
+<li>Your Answer: [FlexLayout, Button, CheckBox, Checkbox, Button]</li>
+</ul>
+<p>考虑到编程语言 DSL（领域特定语言）极易受用户语言的影响，所以采用的是英语的方式，避免无端生成中文 DSL 。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-迁移-androidios小程序-应用">3. 迁移 Android/iOS/小程序 应用<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4#3-%E8%BF%81%E7%A7%BB-androidios%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%BA%94%E7%94%A8" class="hash-link" aria-label="3. 迁移 Android/iOS/小程序 应用的直接链接" title="3. 迁移 Android/iOS/小程序 应用的直接链接">​</a></h2>
+<p>生成式 AI 具备极好的代码翻译能力。诸如于 IBM 在 Cobol 转化为 Java 上的工程化设计，以及我们在 AutoDev 中设计的遗留系统改造能力，其所针对的
+都是生成 AI 在这方面的能力。</p>
+<p>所以，我们也在 AutoDev 中内置了这个功能，只是当前支持的只是布局上的迁移。但是，考虑到这种生成方式依旧有一系列的问题，有待我们进一步寻找更好的方式。
+类似的问题在生成 ArkUI 也是存在的。</p>
+<p>相似的，这个功能目前是与 AutoArkUI 融合在一起的，理论上通过静态代码分析是最简单的，有待未来进一步完善。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-rag-增强的聊天上下文c-napi-等">4. RAG 增强的聊天上下文：C++ NAPI 等<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4#4-rag-%E5%A2%9E%E5%BC%BA%E7%9A%84%E8%81%8A%E5%A4%A9%E4%B8%8A%E4%B8%8B%E6%96%87c-napi-%E7%AD%89" class="hash-link" aria-label="4. RAG 增强的聊天上下文：C++ NAPI 等的直接链接" title="4. RAG 增强的聊天上下文：C++ NAPI 等的直接链接">​</a></h2>
+<p>在试验了多次之后，会发现对于 HarmonyOS 这种新知识，ChatGPT 是不知道的。所以，需要基于 AutoDev 的上下文接口，创建基于
+HarmonyOS 的上下文。
+当然的版本（1.6.4）里， 添加的是：<code>This project is a HarmonyOS project.</code> （毫无意义的废话），再结合不同语言来写一些上下文：</p>
+<ul>
+<li>TypeScript/JavaScript/ArkTS. Which use TypeScript (ArkTS) as the main language, and use Flutter like TypeScript UI
+framework.</li>
+<li>CPP/"C/C++"/CCE. Which use C++ as the main language, and NAPI for building native Addons.</li>
+</ul>
+<p>大体来说，就是告诉 AI：</p>
+<ul>
+<li>编写 ArkUI/前端代码的时候，考虑一下这个项目是类似于 Flutter 的声明式 UI 。</li>
+<li>编写原生代码的时候，考虑一下这个项目是基于 NAPI 来构建插件的。</li>
+</ul>
+<p>当然了，这些是基于我的初步理解所构建的上下文，</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="未来">未来<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-6-4#%E6%9C%AA%E6%9D%A5" class="hash-link" aria-label="未来的直接链接" title="未来的直接链接">​</a></h2>
+<p>考虑到上述的功能，就是几小时内实现的，就不要有太高的期望了。</p>
+<p>当前版本依旧有诸多问题：</p>
+<ul>
+<li>转换 Android 布局易瞎编。除了需要知道更多的转换规则，还需要知识更多的属性，而这些部分是通过传统的代码分析工具解决的</li>
+<li>组件和布局信息的 hardcode。懂的都懂</li>
+<li>缺少示例代码。没有动态生成的示例代码，使得 RAG 的效果是有限的</li>
+<li>诸如于 C++ 语言的支持</li>
+<li>微信小程序等小程序平台的转换</li>
+</ul>
+<p>然而我并非 Android、小程序应用迁移到鸿蒙应用的专家，所以还是有一系列的挑战。等我心情好的时候，再考虑写一些更好玩的新特性。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev 1.7.0：AutoDev AI Agent]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-1-7-0</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-1-7-0</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[在开源 AI IDE 插件 AutoDev 的  #51 issue 中，我们设计了 AutoDev 的 AI]]></description>
+            <content:encoded><![CDATA[<p>在开源 AI IDE 插件 AutoDev 的  <a href="https://github.com/unit-mesh/auto-dev/issues/51" target="_blank" rel="noopener noreferrer">#51</a> issue 中，我们设计了 AutoDev 的 AI
+Agent 能力，半年后我们终于交付了这个功能。</p>
+<p>在 AutoDev 1.7.0 中，你将可以接入内部的 AI Agent，并将其无缝与现有的 AI 辅助能力结合在一起。</p>
+<p>本文将使用结合 AI Agent 作为 demo，来展示如何使用 AutoDev 无疑 Agent
+能力。详细见文档：<a href="https://ide.unitmesh.cc/agent/agent.html" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/agent/agent.html</a> ，或者阅读代码。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="自定义-ai-agent">自定义 AI Agent<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-7-0#%E8%87%AA%E5%AE%9A%E4%B9%89-ai-agent" class="hash-link" aria-label="自定义 AI Agent的直接链接" title="自定义 AI Agent的直接链接">​</a></h2>
+<p>背景：如我们所知，通用的大语言模型是缺乏内部的相关资料的，我们需要结合 RAG 来做扩展。而在这些场景下，由于我们的资料可能会一直在更新，在
+IDE 上做类似的功能是不合适的。为此，我们应该在服务端实现类似的能力，并将接口暴露给 IDE 。</p>
+<p>因此，我们基于先前的自定义 LLM 经验，设计了 AutoDev 的自定义 AI Agent 能力，方便于</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-直接返回结果示例内部--api--集成">1. 直接返回结果示例：内部  API  集成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-7-0#1-%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E7%A4%BA%E4%BE%8B%E5%86%85%E9%83%A8--api--%E9%9B%86%E6%88%90" class="hash-link" aria-label="1. 直接返回结果示例：内部  API  集成的直接链接" title="1. 直接返回结果示例：内部  API  集成的直接链接">​</a></h2>
+<p>典型场景：</p>
+<ul>
+<li>模型不了解的知识。在学习鸿蒙应用的开发时，也可以在内部部署对应的 API，来加速学习。</li>
+<li>内部知识。当内部包含大量的领域知识、规范、 API 信息等场景</li>
+</ul>
+<p>在这些场景下，可以直接使用 <code>Direct</code> 作为返回类型，集成对应的 AI Agent。对应的配置示例：</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"name"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"内部 API 集成"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"url"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"http://127.0.0.1:8765/api/agent/api-market"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"responseAction"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"Direct"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>即，直接返回并处理对应的内容。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-返回检索结果示例组件库集成">2. 返回检索结果示例：组件库集成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-7-0#2-%E8%BF%94%E5%9B%9E%E6%A3%80%E7%B4%A2%E7%BB%93%E6%9E%9C%E7%A4%BA%E4%BE%8B%E7%BB%84%E4%BB%B6%E5%BA%93%E9%9B%86%E6%88%90" class="hash-link" aria-label="2. 返回检索结果示例：组件库集成的直接链接" title="2. 返回检索结果示例：组件库集成的直接链接">​</a></h2>
+<p>典型场景：</p>
+<ul>
+<li>结合知识检索。即需要的是某一类的知识，而只需要基于这些知识进一步往下沟通。诸如于，我需要让 AI
+选择合适的组件，那么就需要拥有所有的组件信息，以进一步向下编码。</li>
+</ul>
+<p>在这些场景下，可以直接使用 <code>TextChunk</code> 作为返回类型，集成对应的 AI Agent。对应的配置示例：</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"name"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"组件库查询"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"url"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"http://127.0.0.1:8765/api/agent/component-list"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"responseAction"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"TextChunk"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>即，AI 返回的是检索的结果，我可以基于结果来进行下一步聊天。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-webview-结果示例低代码页面生成">3. WebView 结果示例：低代码页面生成<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-7-0#3-webview-%E7%BB%93%E6%9E%9C%E7%A4%BA%E4%BE%8B%E4%BD%8E%E4%BB%A3%E7%A0%81%E9%A1%B5%E9%9D%A2%E7%94%9F%E6%88%90" class="hash-link" aria-label="3. WebView 结果示例：低代码页面生成的直接链接" title="3. WebView 结果示例：低代码页面生成的直接链接">​</a></h2>
+<p>典型场景：</p>
+<ul>
+<li>前端页面生成。</li>
+<li>低代码页面生成。</li>
+</ul>
+<p>这两种场景颇为相似，由于 AI 生成的前端代码问题多，往往需要结合内部的组件库或者 RAG 来进行。虽然如此，RAG
+在这两种场景下结果也不好。与之相比，直接由 AI 生成一个原型图，交由产品经理和 UX 、 Dev 聊天显得更有价值。</p>
+<p>在这些场景下，可以直接使用 <code>WebView</code> 作为返回类型，集成对应的 AI Agent。对应的配置示例：</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"name"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"页面生成"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"url"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"http://127.0.0.1:8765/api/agent/ux"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"auth"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"type"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"Bearer"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"token"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"eyJhbGci"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"responseAction"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"WebView"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>即，返回的结果是一个 WebView，后续在聊天中会展示对应的页面。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="小结">小结<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-1-7-0#%E5%B0%8F%E7%BB%93" class="hash-link" aria-label="小结的直接链接" title="小结的直接链接">​</a></h2>
+<p>在 IDE 里，我们可以将 AI Agent 视为一系列的能力插件，用于加速我们的开发过程。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev Composer：the Intellij IDEA Cursor Alternative]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[A little over two weeks ago, after the release of DeepSeek V3, we introduced multi-file editing capabilities for Shire.]]></description>
+            <content:encoded><![CDATA[<p>A little over two weeks ago, after the release of DeepSeek V3, we introduced multi-file editing capabilities for Shire.</p>
+<p>Following extensive testing, we discovered that DeepSeek V3 performs exceptionally well in programming scenarios,
+especially in multi-file editing contexts.</p>
+<p>This inspired us to add a new feature—<strong>AutoDev Composer</strong>—to AutoDev, which had long lacked major updates. In
+developing this feature, we drew inspiration from a number of mature tools:</p>
+<ul>
+<li>The impressive <strong>Sketch rendering mechanism</strong> on Shire</li>
+<li>Complex <strong>system prompts</strong> from tools like Cursor and WindSurf</li>
+<li>The bug-ridden <strong>StreamDiff mode</strong> from Continue</li>
+<li>…and more</li>
+</ul>
+<p>Now, there’s no need to switch to a VSCode-like IDE to craft prompts and then return to IntelliJ IDEA for debugging.
+With AutoDev Composer, you can handle everything directly within IntelliJ IDEA.</p>
+<p>As an amateur project, we’ve put in a lot of effort to make this happen! 😊</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="decoding-autodev-composer-system-prompts"><strong>Decoding AutoDev Composer System Prompts</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#decoding-autodev-composer-system-prompts" class="hash-link" aria-label="decoding-autodev-composer-system-prompts的直接链接" title="decoding-autodev-composer-system-prompts的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="project-context"><strong>Project Context</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#project-context" class="hash-link" aria-label="project-context的直接链接" title="project-context的直接链接">​</a></h4>
+<p>In Composer mode, you can still experience our understanding of software engineering and our extensive expertise in
+software component analysis. Below is the basic contextual prompt for AutoDev Composer:</p>
+<div class="language-markdown codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-markdown codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token list punctuation" style="color:#393A34">-</span><span class="token plain"> The USER's OS version is Mac OS X 15.2 x86_64</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token list punctuation" style="color:#393A34">-</span><span class="token plain"> The absolute path of the USER's workspaces is: /Users/phodal/IdeaProjects/untitled</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token list punctuation" style="color:#393A34">-</span><span class="token plain"> This workspace uses Gradle and Java JDK_11</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token list punctuation" style="color:#393A34">-</span><span class="token plain"> The user's shell is /bin/bash</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token list punctuation" style="color:#393A34">-</span><span class="token plain"> User's workspace context is: This project uses MariaDB 11.5.2-MariaDB, Spring Boot 2.7.10, Spring MVC, and JDBC to</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  build RESTful APIs.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token list punctuation" style="color:#393A34">-</span><span class="token plain"> Current time is: 2025-01-20 11:23:59  </span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>We gather system, workspace, toolchain, database, and language environment information to help you work more
+efficiently. For example, when writing CRUD code, AutoDev generates corresponding code based on your database
+information.</p>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="tool-context"><strong>Tool Context</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#tool-context" class="hash-link" aria-label="tool-context的直接链接" title="tool-context的直接链接">​</a></h4>
+<p>Unlike FunctionTool, we firmly believe that DSLs (Domain-Specific Languages) are the best approach for generative AI
+solutions. Therefore, AutoDev adopts a DevIns DSL tool-calling mechanism:</p>
+<div class="language-markdown codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-markdown codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">tool</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain">name: file, desc: Read the content of a file by project relative path, example:  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">devin</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Locate a specific file (the file must exist in the specified path)  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">/file:.github/dependabot.yml#L1C1-L2C12  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Search globally by file name (case-sensitive, no path required)  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">/file:PythonFrameworkContextProvider.kt  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">devin</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain">  </span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Since the tool’s documentation is part of the code and test suite, it allows for the generation of precise and reliable
+prompts.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="thought-process"><strong>Thought Process</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#thought-process" class="hash-link" aria-label="thought-process的直接链接" title="thought-process的直接链接">​</a></h3>
+<p>Given the complexity of the AutoDev DSL tools, we referenced WindSurf’s prompt generation approach and introduced a
+step-by-step <strong>thought process</strong>:</p>
+<div class="language-markdown codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-markdown codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token title important punctuation" style="color:#393A34">#</span><span class="token title important"> Step 1. Create `routes.py`</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">I’ve created </span><span class="token code-snippet code keyword" style="color:#00009f">`routes.py`</span><span class="token plain"> to define the </span><span class="token code-snippet code keyword" style="color:#00009f">`/upload`</span><span class="token plain"> and </span><span class="token code-snippet code keyword" style="color:#00009f">`/query`</span><span class="token plain"> endpoints. Additionally, I’ve added </span><span class="token code-snippet code keyword" style="color:#00009f">`/`</span><span class="token plain"> as the endpoint</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">for </span><span class="token code-snippet code keyword" style="color:#00009f">`main.html`</span><span class="token plain">.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token title important punctuation" style="color:#393A34">#</span><span class="token title important"> Step 2. Create `main.js`</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">I’ve created a dedicated </span><span class="token code-snippet code keyword" style="color:#00009f">`main.js`</span><span class="token plain"> file to store all the interactive front-end code. It defines UI elements for</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">displaying windows and buttons and creates event listeners for these buttons.  </span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>This allows us to provide additional examples for the AI model, which has proven to learn remarkably well.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-developer-experience-sketch-mode"><strong>AutoDev Developer Experience: Sketch Mode</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#autodev-developer-experience-sketch-mode" class="hash-link" aria-label="autodev-developer-experience-sketch-mode的直接链接" title="autodev-developer-experience-sketch-mode的直接链接">​</a></h3>
+<p>Although AutoDev is now an amateur project, we firmly believe that understanding developer experience is at the core of
+AI-assisted development. For this reason, we’ve introduced Sketch mode from Shire’s intelligent agent language into
+AutoDev Composer. With Sketch, you can transform code into <em>everything</em>.</p>
+<p>Simply put, Markdown is rendered with various UIs to enable better interactivity.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="diff-sketch-mode"><strong>Diff Sketch Mode</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#diff-sketch-mode" class="hash-link" aria-label="diff-sketch-mode的直接链接" title="diff-sketch-mode的直接链接">​</a></h4>
+<p>With Diff Sketch mode, you can quickly understand AI-generated code changes and decide how to handle them: view the
+source file, examine the diff, or apply the changes directly.</p>
+<p>Since we currently lack the capacity to offer a diff model like Cursor, we’ve implemented a repair model. When patches
+cannot be accurately identified, the model is called again for corrections.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="terminal-sketch-mode"><strong>Terminal Sketch Mode</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#terminal-sketch-mode" class="hash-link" aria-label="terminal-sketch-mode的直接链接" title="terminal-sketch-mode的直接链接">​</a></h4>
+<p>In AutoDev, the Terminal Sketch mode allows you to execute scripts or pop out a terminal (similar to Cursor), enabling
+you to run commands and view the results conveniently.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="mermaid-and-plantuml-sketch-modes"><strong>Mermaid and PlantUML Sketch Modes</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#mermaid-and-plantuml-sketch-modes" class="hash-link" aria-label="mermaid-and-plantuml-sketch-modes的直接链接" title="mermaid-and-plantuml-sketch-modes的直接链接">​</a></h4>
+<p>When you install the Mermaid or PlantUML plugins, you can use their respective Sketch modes to convert your code into
+flowcharts, sequence diagrams, and more.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="other"><strong>Other</strong><a href="https://unit-mesh.github.io/auto-dev/blog/autodev-2-0-preview#other" class="hash-link" aria-label="other的直接链接" title="other的直接链接">​</a></h3>
+<p><strong>Download and try it out:</strong><br>
+<a href="https://github.com/unit-mesh/auto-dev/releases" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev/releases</a></p>
+<hr>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev Coder]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/autodev-coder</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/autodev-coder</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[太长不读性：]]></description>
+            <content:encoded><![CDATA[<p>太长不读性：</p>
+<p>适用于 AutoDev 的编码大模型 AutoDev Coder 6.7B 第一个<strong>勉强可用</strong>的版本出来的。</p>
+<ul>
+<li>HuggingFace 首页：<a href="https://huggingface.co/unit-mesh/autodev-coder" target="_blank" rel="noopener noreferrer">https://huggingface.co/unit-mesh</a> （暂时没有资质提供直接下载，🐶🐶）。</li>
+<li>数据集下载地址：<a href="https://huggingface.co/datasets/unit-mesh/autodev-datasets" target="_blank" rel="noopener noreferrer">https://huggingface.co/datasets/unit-mesh/autodev-datasets</a></li>
+</ul>
+<p>PS：由于 AutoDev 1.5.1 在 JetBrains 市场等待审批，而老外们正在休完假，所以模型在 1.5.1 上的体验会比 1.5.0 <strong>略微</strong>好一点。</p>
+<p>除此，在有了更好的算力支持，经过更好的补全测试之后，我们也会将原来的 Inlay 补全模式加回来。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-coder-67b-v1-试验版">AutoDev Coder 6.7B v1 试验版<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-coder#autodev-coder-67b-v1-%E8%AF%95%E9%AA%8C%E7%89%88" class="hash-link" aria-label="AutoDev Coder 6.7B v1 试验版的直接链接" title="AutoDev Coder 6.7B v1 试验版的直接链接">​</a></h2>
+<p>当前版本基于 LLaMA 架构下的 DeepSeek Coder 6.7b instruct 模型微调的。</p>
+<p>注意事项：作为试验版，主要是为了磨合模型、数据工具与 IDE 插件，以达成更好的协调。因此，在生成质量还需要进一步提高。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-coder-64k-数据集">AutoDev Coder 64k 数据集<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-coder#autodev-coder-64k-%E6%95%B0%E6%8D%AE%E9%9B%86" class="hash-link" aria-label="AutoDev Coder 64k 数据集的直接链接" title="AutoDev Coder 64k 数据集的直接链接">​</a></h2>
+<p>如下是 AutoDev Coder v1 64k 的指令组成：</p>
+<table><thead><tr><th>文件名</th><th>选取的指令数</th></tr></thead><tbody><tr><td>java_oss.jsonl</td><td>4000</td></tr><tr><td>python_oss.jsonl</td><td>4000</td></tr><tr><td>code_bugfix_cleaned_5K.json</td><td>4000</td></tr><tr><td>codeGPT_CN_cleaned_20K.json</td><td>15000</td></tr><tr><td>code_summarization_CN_cleaned_10K.json</td><td>8000</td></tr><tr><td>code_generation_CN_cleaned_5K.json</td><td>4000</td></tr><tr><td>summary.jsonl</td><td>25000</td></tr></tbody></table>
+<p>其中的 summary.jsonl 是由我们开源的代码微调数据框架 UnitGen 生成（<a href="https://github.com/unit-mesh/unit-gen%EF%BC%89%E3%80%82" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/unit-gen）。</a></p>
+<p>我们挑选了几十个开源软件 Java 和 Kotlin 语言，根据 AutoDev 插件的指令生成，主要分为三类：</p>
+<ul>
+<li>补全（行内、行间、块间）</li>
+<li>文档生成</li>
+<li>注释生成</li>
+</ul>
+<p>详细说明可以见 UnitGen 项目和文档：<a href="https://github.com/unit-mesh/unit-gen%E3%80%82" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/unit-gen。</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="faqautodev-coder-模型评估">FAQ：AutoDev Coder 模型评估<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-coder#faqautodev-coder-%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0" class="hash-link" aria-label="FAQ：AutoDev Coder 模型评估的直接链接" title="FAQ：AutoDev Coder 模型评估的直接链接">​</a></h2>
+<p>暂时还在设计中。由于我们需要结合 AutoDev 指令与不同的语言如 Java、 Kotlin 、TypeScript 等语言，而非各种开源模型中喜欢用的 Python 体系，所以需要重新思考怎么设计。</p>
+<p>我们前期采用 OSS Instruct 等指令集作为自然语言生成代码的补充，后来发现有一半的指令（～50，000 ）与 Python 相关，后来从中刷选出 Java 大概在 ~5，000 左右。在 AutoDev 中采用结果并不是很好。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="faqautodev-指令">FAQ：AutoDev 指令<a href="https://unit-mesh.github.io/auto-dev/blog/autodev-coder#faqautodev-%E6%8C%87%E4%BB%A4" class="hash-link" aria-label="FAQ：AutoDev 指令的直接链接" title="FAQ：AutoDev 指令的直接链接">​</a></h2>
+<p>AutoDev 采用的是相关上下文策略，所以在指令上与其它工具有所差异。详细见：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Agent Language - DevIns]]></title>
+            <link>https://unit-mesh.github.io/auto-dev/blog/devins-language</link>
+            <guid>https://unit-mesh.github.io/auto-dev/blog/devins-language</guid>
+            <pubDate>Tue, 22 Apr 2025 07:15:44 GMT</pubDate>
+            <description><![CDATA[在上一个版本中，我们构建了 AutoDev 的自定义 Agent 功能，即用户可以通过自定义能力来构建自己的智能体，以实现对于软件开发任务的智能辅助。]]></description>
+            <content:encoded><![CDATA[<p>在上一个版本中，我们构建了 AutoDev 的自定义 Agent 功能，即用户可以通过自定义能力来构建自己的智能体，以实现对于软件开发任务的智能辅助。
+而在这个版本中，我们开始构建一个新的 AI Agent 语言：DevIns，即 Development Instruction。即 DevIns 可以让用户更快速描述软件开发任务，
+同时，还可以自动化处理来自 AI Agent 返回的内容。</p>
+<p>诸如于：<code>/write:README.md\n```\n# Hello, World!```\n"，AutoDev 将会翻译并执行这个指令，将 </code># Hello, World!<code>写入到</code>README.md` 文件中。
+除此，在这个版本的 DevIns 里，还可以执行补丁、提交代码、运行测试。</p>
+<p>PS：其实原来是叫 DevIn，但是无奈 Devin AI 项目发布了 demo 视频，所以改名为 DevIns。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-devins">Why DevIns？<a href="https://unit-mesh.github.io/auto-dev/blog/devins-language#why-devins" class="hash-link" aria-label="Why DevIns？的直接链接" title="Why DevIns？的直接链接">​</a></h2>
+<p>在 AutoDev 项目中，我们通过<strong>构建上下文感知</strong>与<strong>自定义能力</strong>，来实现对于软件开发任务的智能辅助，如自动测试生成与运行、UI
+自动生成等。而当
+我们在 AutoDev 构建了越来越多的智能体之后，发现所有与模型的交互都是通过<strong>指令文本</strong>（instruction）。即用户通过指令文本来与智能体进行交互，
+而智能体返回内容，并对编辑器或者 IDE 进行操作。</p>
+<p>如在 AutoDev 的自定义 prompt 中，我们可以通过：<code>解释选中的代码：$selction</code> 来让 AI 为我们解释选中的代码，而这里的 <code>解释</code>
+就可以看作是一个指令。</p>
+<p>所以，我们开始思考，是否可以通过<strong>自然语言</strong>来与智能体进行交互？即用户可以通过自然语言来描述自己的需求，而模型可以回复对应的指令文本，以实现
+对编辑器或者 IDE 的操作，进而实现对软件开发任务的自动化辅助。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="devins-语言是什么">DevIns 语言是什么？<a href="https://unit-mesh.github.io/auto-dev/blog/devins-language#devins-%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88" class="hash-link" aria-label="DevIns 语言是什么？的直接链接" title="DevIns 语言是什么？的直接链接">​</a></h2>
+<blockquote>
+<p>DevIns 是一个界于自然语言与指令文本之间的交互语言，其中自然语言用于描述软件开发任务，而指令文本用于与智能体和 IDE 进行交互。</p>
+</blockquote>
+<p>简单来说，DevIns 是一个可交互、可编译、可执行的文本语言。你可以通过 DevIns 来描述软件开发任务，诸如于：解析代码、生成代码、运行测试等等，而后
+执行运行，DevIns 编译器将根据你调用的指令，生成对应的指令文本，并将其发送给智能体，智能体将返回对应的结果，并对编辑器或者 IDE
+进行操作。</p>
+<p>你可以将你的需求描述成自然语言：</p>
+<div class="language-devin codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-devin codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">解释代码 /file:src/main/java/com/example/Controller.java</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>而后，AutoDev 将会结合上下文，并将其编译成对应的指令文本，即读取 <code>src/main/java/com/example/Controller.java</code> 文件内容。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="devins-agent-指令">DevIns Agent 指令<a href="https://unit-mesh.github.io/auto-dev/blog/devins-language#devins-agent-%E6%8C%87%E4%BB%A4" class="hash-link" aria-label="DevIns Agent 指令的直接链接" title="DevIns Agent 指令的直接链接">​</a></h3>
+<p>除了基本的读取文件内容、代码变更、自定义变量信息，DevIns 还支持更多的指令，诸如于：写入文件、运行测试、提交代码等。 根据预先设计的指令，
+对应的操作可以是：</p>
+<ul>
+<li><code>/write</code>，结合路径信息，对指令的代码进行操作</li>
+<li><code>/run</code>，运行对应的测试</li>
+<li><code>/patch</code>，根据 AI 返回的内容，执行对应的 patch</li>
+<li><code>/commit</code>，提交代码</li>
+</ul>
+<p>诸如于于生成内容，可以是：</p>
+<p>/write<!-- -->:src<!-- -->/main/java/com/example/Controller.java#L1-L5</p>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class Controller {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void method() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println("Hello, World!");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>详细见：<a href="https://ide.unitmesh.cc/devins" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/devins</a></p>
+<p>别担心指令的复杂度，我们在 IDE 开发上拥有丰富的经验，为此在 DevIns 构建了 “非常” 强大的交互能力 —— 智能补全与提示。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="在-ide-中使用-devins">在 IDE 中使用 DevIns<a href="https://unit-mesh.github.io/auto-dev/blog/devins-language#%E5%9C%A8-ide-%E4%B8%AD%E4%BD%BF%E7%94%A8-devins" class="hash-link" aria-label="在 IDE 中使用 DevIns的直接链接" title="在 IDE 中使用 DevIns的直接链接">​</a></h3>
+<p>在安装完 AutoDev 1.7.2  版本的插件后，新建一个 <code>hello.devins</code> 文件，就可以开始编写 DevIns 指令了，然后点击运行即可。如下图所示：</p>
+<p><img decoding="async" loading="lazy" src="https://unitmesh.cc/auto-dev/autodev-devins.png" alt="AutoDev DevIns" class="img_ev3q"></p>
+<p>是不是非常简单。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="为什么名为-devins">为什么名为 DevIns？<a href="https://unit-mesh.github.io/auto-dev/blog/devins-language#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%90%8D%E4%B8%BA-devins" class="hash-link" aria-label="为什么名为 DevIns？的直接链接" title="为什么名为 DevIns？的直接链接">​</a></h2>
+<p>几周前，当我们开始设计这个语言时，我们的名字意图是：AutoDev Input Language，即 AutoDev 的输入语言，我们称其为 DevIn ——
+我们搜索了一下， 并没有发现类似的项目。 而当语言接近发布的时候， 在社交媒体上更火的 Devin AI 项目也刚好发布了 demo 视频。</p>
+<p>WTF????</p>
+<p>考虑到两者的相似性，我们决定将其重新命名为 DevIns，即 Development Instruction。 改名字并不是一件容易的事，有大量的代码需要修改，
+还有大量的文档需要更新（虽然没有），除此还有 JetBrains 的插件市场、仓库等等。 而由于 JetBrains 的审核机制，
+DevIns 的默认文件后缀依旧是 <code>.devin</code>，还没有改为 <code>.devins</code> —— 实在是改不动了。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="下一步">下一步<a href="https://unit-mesh.github.io/auto-dev/blog/devins-language#%E4%B8%8B%E4%B8%80%E6%AD%A5" class="hash-link" aria-label="下一步的直接链接" title="下一步的直接链接">​</a></h2>
+<p>在接下来的版本中，我们考虑：</p>
+<ol>
+<li>强化 DevIns 语言与智能体的交互方式（类似于 Jupyter Notebook？）</li>
+<li>结合 AutoDev 的自定义 Agent 能力，构建更多的智能体</li>
+<li>设计更丰富的 DevIns 指令，以让 AI 来实现更多的软件开发任务</li>
+<li>构建跨平台的 DevIns 编译器</li>
+</ol>
+<p>如果大家有兴趣，欢迎加入我们的开发，或者提出你的建议。</p>]]></content:encoded>
+        </item>
+    </channel>
+</rss>
