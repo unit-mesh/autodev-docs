@@ -133,12 +133,12 @@ const sidebars = {
 		},
 		'troubleshooting',
 		{
-			type: 'usecases',
+			type: 'category',
 			label: 'Usecases',
 			items: [
 				'usecases/usecases'
 			],
-		}
+		},
 	],
 }
 
