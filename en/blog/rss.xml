@@ -4,7 +4,7 @@
         <title>AutoDev - Open Source AI Coding Wizard Blog</title>
         <link>https://ide.unitmesh.cc/en/blog</link>
         <description>AutoDev - Open Source AI Coding Wizard Blog</description>
-        <lastBuildDate>Tue, 22 Apr 2025 07:34:29 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Apr 2025 07:40:49 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[AutoDev 0.7.0 - 生成规范化代码，深入开发者日常]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-0-7-0</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-0-7-0</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[几个月前，我们朝着探索：如何结合 AIGC 的研发效能提升的目标？开源了 AutoDev，如 GitHub 所介绍的：]]></description>
             <content:encoded><![CDATA[<p>几个月前，我们朝着探索：**如何结合 AIGC 的研发效能提升的目标？**开源了 AutoDev，如 GitHub 所介绍的：</p>
 <blockquote>
@@ -91,7 +91,7 @@
             <title><![CDATA[AutoDev 1.0 发布，全流程 AI 辅助编程]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-1-0-0</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-1-0-0</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[四月，在那篇《AutoDev：AI 突破研发效能，探索平台工程新机遇》，我们初步拟定了 AI 对于研发的影响。我们有了几个基本的假设：]]></description>
             <content:encoded><![CDATA[<p>四月，在那篇《<strong>AutoDev：AI 突破研发效能，探索平台工程新机遇》</strong>，我们初步拟定了 AI 对于研发的影响。我们有了几个基本的假设：</p>
 <ul>
@@ -181,7 +181,7 @@ Assistant plugin in our codebase. But fret not, we are working our magic to clea
             <title><![CDATA[AutoDev 1.4 规模化 AI 研发辅助]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-1-4-0</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-1-4-0</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[在过去的两个月里，随着 Thoughtworks 内部的大规模 AI 辅助软件交付（AI4SoftwareDelivery）的展开 —— 在全球，有上千名的]]></description>
             <content:encoded><![CDATA[<p>在过去的两个月里，随着 Thoughtworks 内部的大规模 AI 辅助软件交付（AI4SoftwareDelivery）的展开 —— 在全球，有上千名的
 Thoughtworker 这一个涉及不同角色、不同地区，以及几十场内部分享的活动。</p>
@@ -257,7 +257,7 @@ issue：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noo
             <title><![CDATA[AutoDev 1.5.3 精准测试生成]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-1-5-3</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-1-5-3</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[去年年初，我们开源 AutoDev 的初衷是：]]></description>
             <content:encoded><![CDATA[<p>去年年初，我们开源 AutoDev 的初衷是：</p>
 <blockquote>
@@ -328,7 +328,7 @@ prompt。</p>
             <title><![CDATA[AutoDev 1.6.0 精准页面生成与 SQL 生成]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-1-6-0</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-1-6-0</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[AutoPage：精准页面生成]]></description>
             <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autopage精准页面生成">AutoPage：精准页面生成<a href="https://ide.unitmesh.cc/en/blog/autodev-1-6-0#autopage%E7%B2%BE%E5%87%86%E9%A1%B5%E9%9D%A2%E7%94%9F%E6%88%90" class="hash-link" aria-label="Direct link to AutoPage：精准页面生成" title="Direct link to AutoPage：精准页面生成">​</a></h2>
 <p>在 1.6.0 版本中，针对于 React 框架，我们提供了精准的页面生成能力。即在生成页面时，会根据页面的上下文，生成对应的页面。</p>
@@ -343,7 +343,7 @@ prompt。</p>
             <title><![CDATA[AutoDev 1.6.4：HarmonyOS 应用开发体验提升]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-1-6-4</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-1-6-4</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新]]></description>
             <content:encoded><![CDATA[<p>生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新
 的理念、开发工具 DevEco Studio、新的语言 ArkTS、新的 UI 框架 ArkUI 等等。从模式上来说，它与生成式 AI 结合企业内部的基础设施过程非常相似。</p>
@@ -445,7 +445,7 @@ framework.</li>
             <title><![CDATA[AutoDev 1.7.0：AutoDev AI Agent]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-1-7-0</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-1-7-0</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[在开源 AI IDE 插件 AutoDev 的  #51 issue 中，我们设计了 AutoDev 的 AI]]></description>
             <content:encoded><![CDATA[<p>在开源 AI IDE 插件 AutoDev 的  <a href="https://github.com/unit-mesh/auto-dev/issues/51" target="_blank" rel="noopener noreferrer">#51</a> issue 中，我们设计了 AutoDev 的 AI
 Agent 能力，半年后我们终于交付了这个功能。</p>
@@ -492,7 +492,7 @@ IDE 上做类似的功能是不合适的。为此，我们应该在服务端实�
             <title><![CDATA[AutoDev Composer：the Intellij IDEA Cursor Alternative]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-2-0-preview</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-2-0-preview</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[A little over two weeks ago, after the release of DeepSeek V3, we introduced multi-file editing capabilities for Shire.]]></description>
             <content:encoded><![CDATA[<p>A little over two weeks ago, after the release of DeepSeek V3, we introduced multi-file editing capabilities for Shire.</p>
 <p>Following extensive testing, we discovered that DeepSeek V3 performs exceptionally well in programming scenarios,
@@ -557,7 +557,7 @@ flowcharts, sequence diagrams, and more.</p>
             <title><![CDATA[AutoDev Coder]]></title>
             <link>https://ide.unitmesh.cc/en/blog/autodev-coder</link>
             <guid>https://ide.unitmesh.cc/en/blog/autodev-coder</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[太长不读性：]]></description>
             <content:encoded><![CDATA[<p>太长不读性：</p>
 <p>适用于 AutoDev 的编码大模型 AutoDev Coder 6.7B 第一个<strong>勉强可用</strong>的版本出来的。</p>
@@ -591,7 +591,7 @@ flowcharts, sequence diagrams, and more.</p>
             <title><![CDATA[Agent Language - DevIns]]></title>
             <link>https://ide.unitmesh.cc/en/blog/devins-language</link>
             <guid>https://ide.unitmesh.cc/en/blog/devins-language</guid>
-            <pubDate>Tue, 22 Apr 2025 07:34:29 GMT</pubDate>
+            <pubDate>Tue, 22 Apr 2025 07:40:49 GMT</pubDate>
             <description><![CDATA[在上一个版本中，我们构建了 AutoDev 的自定义 Agent 功能，即用户可以通过自定义能力来构建自己的智能体，以实现对于软件开发任务的智能辅助。]]></description>
             <content:encoded><![CDATA[<p>在上一个版本中，我们构建了 AutoDev 的自定义 Agent 功能，即用户可以通过自定义能力来构建自己的智能体，以实现对于软件开发任务的智能辅助。
 而在这个版本中，我们开始构建一个新的 AI Agent 语言：DevIns，即 Development Instruction。即 DevIns 可以让用户更快速描述软件开发任务，
