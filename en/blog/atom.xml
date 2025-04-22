@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ide.unitmesh.cc/en/blog</id>
     <title>AutoDev - Open Source AI Coding Wizard Blog</title>
-    <updated>2025-04-22T08:41:49.000Z</updated>
+    <updated>2025-04-22T08:42:49.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ide.unitmesh.cc/en/blog"/>
     <subtitle>AutoDev - Open Source AI Coding Wizard Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[AutoDev 0.7.0 - 生成规范化代码，深入开发者日常]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-0-7-0</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-0-7-0"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[几个月前，我们朝着探索：如何结合 AIGC 的研发效能提升的目标？开源了 AutoDev，如 GitHub 所介绍的：]]></summary>
         <content type="html"><![CDATA[<p>几个月前，我们朝着探索：**如何结合 AIGC 的研发效能提升的目标？**开源了 AutoDev，如 GitHub 所介绍的：</p>
 <blockquote>
@@ -90,7 +90,7 @@
         <title type="html"><![CDATA[AutoDev 1.0 发布，全流程 AI 辅助编程]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-1-0-0</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-1-0-0"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[四月，在那篇《AutoDev：AI 突破研发效能，探索平台工程新机遇》，我们初步拟定了 AI 对于研发的影响。我们有了几个基本的假设：]]></summary>
         <content type="html"><![CDATA[<p>四月，在那篇《<strong>AutoDev：AI 突破研发效能，探索平台工程新机遇》</strong>，我们初步拟定了 AI 对于研发的影响。我们有了几个基本的假设：</p>
 <ul>
@@ -180,7 +180,7 @@ Assistant plugin in our codebase. But fret not, we are working our magic to clea
         <title type="html"><![CDATA[AutoDev 1.4 规模化 AI 研发辅助]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-1-4-0</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-1-4-0"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[在过去的两个月里，随着 Thoughtworks 内部的大规模 AI 辅助软件交付（AI4SoftwareDelivery）的展开 —— 在全球，有上千名的]]></summary>
         <content type="html"><![CDATA[<p>在过去的两个月里，随着 Thoughtworks 内部的大规模 AI 辅助软件交付（AI4SoftwareDelivery）的展开 —— 在全球，有上千名的
 Thoughtworker 这一个涉及不同角色、不同地区，以及几十场内部分享的活动。</p>
@@ -256,7 +256,7 @@ issue：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noo
         <title type="html"><![CDATA[AutoDev 1.5.3 精准测试生成]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-1-5-3</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-1-5-3"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[去年年初，我们开源 AutoDev 的初衷是：]]></summary>
         <content type="html"><![CDATA[<p>去年年初，我们开源 AutoDev 的初衷是：</p>
 <blockquote>
@@ -327,7 +327,7 @@ prompt。</p>
         <title type="html"><![CDATA[AutoDev 1.6.0 精准页面生成与 SQL 生成]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-1-6-0</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-1-6-0"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[AutoPage：精准页面生成]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autopage精准页面生成">AutoPage：精准页面生成<a href="https://ide.unitmesh.cc/en/blog/autodev-1-6-0#autopage%E7%B2%BE%E5%87%86%E9%A1%B5%E9%9D%A2%E7%94%9F%E6%88%90" class="hash-link" aria-label="Direct link to AutoPage：精准页面生成" title="Direct link to AutoPage：精准页面生成">​</a></h2>
 <p>在 1.6.0 版本中，针对于 React 框架，我们提供了精准的页面生成能力。即在生成页面时，会根据页面的上下文，生成对应的页面。</p>
@@ -342,7 +342,7 @@ prompt。</p>
         <title type="html"><![CDATA[AutoDev 1.6.4：HarmonyOS 应用开发体验提升]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-1-6-4</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-1-6-4"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新]]></summary>
         <content type="html"><![CDATA[<p>生成式 AI 在软件研发和知识管理上，有着非常大的潜力，也因此这项技术被越来越多的企业所采用。而在一些新兴的技术上，诸如于鸿蒙操作系统，它带来了一些新
 的理念、开发工具 DevEco Studio、新的语言 ArkTS、新的 UI 框架 ArkUI 等等。从模式上来说，它与生成式 AI 结合企业内部的基础设施过程非常相似。</p>
@@ -444,7 +444,7 @@ framework.</li>
         <title type="html"><![CDATA[AutoDev 1.7.0：AutoDev AI Agent]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-1-7-0</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-1-7-0"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[在开源 AI IDE 插件 AutoDev 的  #51 issue 中，我们设计了 AutoDev 的 AI]]></summary>
         <content type="html"><![CDATA[<p>在开源 AI IDE 插件 AutoDev 的  <a href="https://github.com/unit-mesh/auto-dev/issues/51" target="_blank" rel="noopener noreferrer">#51</a> issue 中，我们设计了 AutoDev 的 AI
 Agent 能力，半年后我们终于交付了这个功能。</p>
@@ -491,7 +491,7 @@ IDE 上做类似的功能是不合适的。为此，我们应该在服务端实�
         <title type="html"><![CDATA[AutoDev Composer：the Intellij IDEA Cursor Alternative]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-2-0-preview</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-2-0-preview"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[A little over two weeks ago, after the release of DeepSeek V3, we introduced multi-file editing capabilities for Shire.]]></summary>
         <content type="html"><![CDATA[<p>A little over two weeks ago, after the release of DeepSeek V3, we introduced multi-file editing capabilities for Shire.</p>
 <p>Following extensive testing, we discovered that DeepSeek V3 performs exceptionally well in programming scenarios,
@@ -556,7 +556,7 @@ flowcharts, sequence diagrams, and more.</p>
         <title type="html"><![CDATA[AutoDev Coder]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-coder</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-coder"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[太长不读性：]]></summary>
         <content type="html"><![CDATA[<p>太长不读性：</p>
 <p>适用于 AutoDev 的编码大模型 AutoDev Coder 6.7B 第一个<strong>勉强可用</strong>的版本出来的。</p>
@@ -588,9 +588,9 @@ flowcharts, sequence diagrams, and more.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Agent Language - DevIns]]></title>
-        <id>https://ide.unitmesh.cc/en/blog/devins-language</id>
-        <link href="https://ide.unitmesh.cc/en/blog/devins-language"/>
-        <updated>2025-04-22T08:41:49.000Z</updated>
+        <id>https://ide.unitmesh.cc/en/blog/autodev-devins-language</id>
+        <link href="https://ide.unitmesh.cc/en/blog/autodev-devins-language"/>
+        <updated>2025-04-22T08:42:49.000Z</updated>
         <summary type="html"><![CDATA[在上一个版本中，我们构建了 AutoDev 的自定义 Agent 功能，即用户可以通过自定义能力来构建自己的智能体，以实现对于软件开发任务的智能辅助。]]></summary>
         <content type="html"><![CDATA[<p>在上一个版本中，我们构建了 AutoDev 的自定义 Agent 功能，即用户可以通过自定义能力来构建自己的智能体，以实现对于软件开发任务的智能辅助。
 而在这个版本中，我们开始构建一个新的 AI Agent 语言：DevIns，即 Development Instruction。即 DevIns 可以让用户更快速描述软件开发任务，
@@ -598,7 +598,7 @@ flowcharts, sequence diagrams, and more.</p>
 <p>诸如于：<code>/write:README.md\n```\n# Hello, World!```\n"，AutoDev 将会翻译并执行这个指令，将 </code># Hello, World!<code>写入到</code>README.md` 文件中。
 除此，在这个版本的 DevIns 里，还可以执行补丁、提交代码、运行测试。</p>
 <p>PS：其实原来是叫 DevIn，但是无奈 Devin AI 项目发布了 demo 视频，所以改名为 DevIns。</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-devins">Why DevIns？<a href="https://ide.unitmesh.cc/en/blog/devins-language#why-devins" class="hash-link" aria-label="Direct link to Why DevIns？" title="Direct link to Why DevIns？">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-devins">Why DevIns？<a href="https://ide.unitmesh.cc/en/blog/autodev-devins-language#why-devins" class="hash-link" aria-label="Direct link to Why DevIns？" title="Direct link to Why DevIns？">​</a></h2>
 <p>在 AutoDev 项目中，我们通过<strong>构建上下文感知</strong>与<strong>自定义能力</strong>，来实现对于软件开发任务的智能辅助，如自动测试生成与运行、UI
 自动生成等。而当
 我们在 AutoDev 构建了越来越多的智能体之后，发现所有与模型的交互都是通过<strong>指令文本</strong>（instruction）。即用户通过指令文本来与智能体进行交互，
@@ -607,7 +607,7 @@ flowcharts, sequence diagrams, and more.</p>
 就可以看作是一个指令。</p>
 <p>所以，我们开始思考，是否可以通过<strong>自然语言</strong>来与智能体进行交互？即用户可以通过自然语言来描述自己的需求，而模型可以回复对应的指令文本，以实现
 对编辑器或者 IDE 的操作，进而实现对软件开发任务的自动化辅助。</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="devins-语言是什么">DevIns 语言是什么？<a href="https://ide.unitmesh.cc/en/blog/devins-language#devins-%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88" class="hash-link" aria-label="Direct link to DevIns 语言是什么？" title="Direct link to DevIns 语言是什么？">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="devins-语言是什么">DevIns 语言是什么？<a href="https://ide.unitmesh.cc/en/blog/autodev-devins-language#devins-%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88" class="hash-link" aria-label="Direct link to DevIns 语言是什么？" title="Direct link to DevIns 语言是什么？">​</a></h2>
 <blockquote>
 <p>DevIns 是一个界于自然语言与指令文本之间的交互语言，其中自然语言用于描述软件开发任务，而指令文本用于与智能体和 IDE 进行交互。</p>
 </blockquote>
@@ -617,7 +617,7 @@ flowcharts, sequence diagrams, and more.</p>
 <p>你可以将你的需求描述成自然语言：</p>
 <div class="language-devin codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-devin codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">解释代码 /file:src/main/java/com/example/Controller.java</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>而后，AutoDev 将会结合上下文，并将其编译成对应的指令文本，即读取 <code>src/main/java/com/example/Controller.java</code> 文件内容。</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="devins-agent-指令">DevIns Agent 指令<a href="https://ide.unitmesh.cc/en/blog/devins-language#devins-agent-%E6%8C%87%E4%BB%A4" class="hash-link" aria-label="Direct link to DevIns Agent 指令" title="Direct link to DevIns Agent 指令">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="devins-agent-指令">DevIns Agent 指令<a href="https://ide.unitmesh.cc/en/blog/autodev-devins-language#devins-agent-%E6%8C%87%E4%BB%A4" class="hash-link" aria-label="Direct link to DevIns Agent 指令" title="Direct link to DevIns Agent 指令">​</a></h3>
 <p>除了基本的读取文件内容、代码变更、自定义变量信息，DevIns 还支持更多的指令，诸如于：写入文件、运行测试、提交代码等。 根据预先设计的指令，
 对应的操作可以是：</p>
 <ul>
@@ -631,18 +631,18 @@ flowcharts, sequence diagrams, and more.</p>
 <div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class Controller {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void method() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println("Hello, World!");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>详细见：<a href="https://ide.unitmesh.cc/devins" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/devins</a></p>
 <p>别担心指令的复杂度，我们在 IDE 开发上拥有丰富的经验，为此在 DevIns 构建了 “非常” 强大的交互能力 —— 智能补全与提示。</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="在-ide-中使用-devins">在 IDE 中使用 DevIns<a href="https://ide.unitmesh.cc/en/blog/devins-language#%E5%9C%A8-ide-%E4%B8%AD%E4%BD%BF%E7%94%A8-devins" class="hash-link" aria-label="Direct link to 在 IDE 中使用 DevIns" title="Direct link to 在 IDE 中使用 DevIns">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="在-ide-中使用-devins">在 IDE 中使用 DevIns<a href="https://ide.unitmesh.cc/en/blog/autodev-devins-language#%E5%9C%A8-ide-%E4%B8%AD%E4%BD%BF%E7%94%A8-devins" class="hash-link" aria-label="Direct link to 在 IDE 中使用 DevIns" title="Direct link to 在 IDE 中使用 DevIns">​</a></h3>
 <p>在安装完 AutoDev 1.7.2  版本的插件后，新建一个 <code>hello.devins</code> 文件，就可以开始编写 DevIns 指令了，然后点击运行即可。如下图所示：</p>
 <p><img decoding="async" loading="lazy" src="https://unitmesh.cc/auto-dev/autodev-devins.png" alt="AutoDev DevIns" class="img_ev3q"></p>
 <p>是不是非常简单。</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="为什么名为-devins">为什么名为 DevIns？<a href="https://ide.unitmesh.cc/en/blog/devins-language#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%90%8D%E4%B8%BA-devins" class="hash-link" aria-label="Direct link to 为什么名为 DevIns？" title="Direct link to 为什么名为 DevIns？">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="为什么名为-devins">为什么名为 DevIns？<a href="https://ide.unitmesh.cc/en/blog/autodev-devins-language#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%90%8D%E4%B8%BA-devins" class="hash-link" aria-label="Direct link to 为什么名为 DevIns？" title="Direct link to 为什么名为 DevIns？">​</a></h2>
 <p>几周前，当我们开始设计这个语言时，我们的名字意图是：AutoDev Input Language，即 AutoDev 的输入语言，我们称其为 DevIn ——
 我们搜索了一下， 并没有发现类似的项目。 而当语言接近发布的时候， 在社交媒体上更火的 Devin AI 项目也刚好发布了 demo 视频。</p>
 <p>WTF????</p>
 <p>考虑到两者的相似性，我们决定将其重新命名为 DevIns，即 Development Instruction。 改名字并不是一件容易的事，有大量的代码需要修改，
 还有大量的文档需要更新（虽然没有），除此还有 JetBrains 的插件市场、仓库等等。 而由于 JetBrains 的审核机制，
 DevIns 的默认文件后缀依旧是 <code>.devin</code>，还没有改为 <code>.devins</code> —— 实在是改不动了。</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="下一步">下一步<a href="https://ide.unitmesh.cc/en/blog/devins-language#%E4%B8%8B%E4%B8%80%E6%AD%A5" class="hash-link" aria-label="Direct link to 下一步" title="Direct link to 下一步">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="下一步">下一步<a href="https://ide.unitmesh.cc/en/blog/autodev-devins-language#%E4%B8%8B%E4%B8%80%E6%AD%A5" class="hash-link" aria-label="Direct link to 下一步" title="Direct link to 下一步">​</a></h2>
 <p>在接下来的版本中，我们考虑：</p>
 <ol>
 <li>强化 DevIns 语言与智能体的交互方式（类似于 Jupyter Notebook？）</li>
