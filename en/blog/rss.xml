@@ -4,10 +4,306 @@
         <title>AutoDev - Open Source AI Coding Wizard Blog</title>
         <link>https://ide.unitmesh.cc/en/blog</link>
         <description>AutoDev - Open Source AI Coding Wizard Blog</description>
-        <lastBuildDate>Sat, 11 Jan 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 26 Mar 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[最强开源 AI 编程工具 AutoDev 2.0 正式发布！智能体 x 开源生态 = 无限可能]]></title>
+            <link>https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0</link>
+            <guid>https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0</guid>
+            <pubDate>Wed, 26 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[PS：在我们等待了几个月之后，国内终于有模型（DS V3-0324）能支持 AutoDev 的能力，也因此是时候发布 AutoDev 2.0 了！]]></description>
+            <content:encoded><![CDATA[<p>PS：在我们等待了几个月之后，国内终于有模型（DS V3-0324）能支持 AutoDev 的能力，也因此是时候发布 AutoDev 2.0 了！</p>
+<p>2023 年 4 月，我们开始了 AutoDev 的第一个功能：AutoCRUD，经过两年的快速迭代，我们干掉了这个功能。因为新的 AutoDev 2.0 来了，智能体
+驱动的 AI 编程改变了我们过去的架构。在 AutoDev 2.0 中，你可以：</p>
+<ul>
+<li>编码智能体 Sketch 进行自动化编程</li>
+<li>自动化编程的规划器 AutoDev Planner</li>
+<li>系统迁移 Bridge 辅助旧系统重构</li>
+<li>观察者 Observer，动态观察 IDE 中的代码变化</li>
+<li>模型协议 MCP 接入工具生态</li>
+<li>在不同场景使用多种开源模型（编程、推理、Apply、补全等）</li>
+<li>……</li>
+</ul>
+<p>更棒的是 AutoDev 2.0 是开源的，你可以自由使用、修改、分享，让我们一起来探索这个无限可能的世界！与此同时，我们是最好的
+JetBrains IDE 平台上的第二代 AI 编程工具，你可以尽情利用 JetBrains 的插件生态，让 AutoDev 2.0 更加强大！</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="编码智能体-sketch">编码智能体 Sketch<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E7%BC%96%E7%A0%81%E6%99%BA%E8%83%BD%E4%BD%93-sketch" class="hash-link" aria-label="Direct link to 编码智能体 Sketch" title="Direct link to 编码智能体 Sketch">​</a></h2>
+<p>我们开发 AutoDev 2.0 的动机来源于：DeepSeek V3 模型的推出。我们在 Shire 智能体语言上构建了 Sketch View，并率先将其应用到多文件编程支持。
+随后，我们将其应用到 AutoDev 2.0 中，通过丰富的 IDEA 插件生态，来构建更好的 IDE 编程体验。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="交互式决策视图sketch-view">交互式决策视图：Sketch View<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%86%B3%E7%AD%96%E8%A7%86%E5%9B%BEsketch-view" class="hash-link" aria-label="Direct link to 交互式决策视图：Sketch View" title="Direct link to 交互式决策视图：Sketch View">​</a></h3>
+<p>Sketch View 提供了是一种新的交互式视图，它可以帮助你更好地理解架构、进行决策。Sketch View 的特点有：</p>
+<ul>
+<li><strong>交互式设计</strong>。多种化的 Patch/Diff 处理， 并针对生成代码进行 Lint 检查等</li>
+<li><strong>开发者体验</strong>。前端应用在启动 dev 服务时， 自动打开 WebView 查看编译正确</li>
+<li><strong>质量与安全</strong>。生成依赖文件时，可提供依赖的安全检查</li>
+</ul>
+<p>并且，你还可以用它来查看代码的结构，以及更好地编写代码。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="隔离环境的工具调用devins">隔离环境的工具调用：DevIns<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E9%9A%94%E7%A6%BB%E7%8E%AF%E5%A2%83%E7%9A%84%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8devins" class="hash-link" aria-label="Direct link to 隔离环境的工具调用：DevIns" title="Direct link to 隔离环境的工具调用：DevIns">​</a></h3>
+<p>我们在 AutoDev 1.0 中设计了 DevIns DSL 来构建隔离环境的指令抽象，基于 DevIns 指令，AutoDev 可以：</p>
+<ul>
+<li><strong>安全操作</strong>。对指令进行更安全的检查，诸如 Shell、SQL，而不是依赖于 LLM 的不靠谱分析。</li>
+<li><strong>模型无关</strong>。即可以在不同的模型上使用 CoT 来进行工具调用，而不依赖于 function tool。</li>
+<li><strong>关键上下文</strong>。即基于 IDE 的 PSI 接口丰富了语法分析计算与架构视图，提供系统的关键上下文。</li>
+</ul>
+<p>同时，DevIns 能和 MCP 生态非常好的结合在一起，以便于更好地调用工具。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="可见的任务规划autodev-planner">可见的任务规划：AutoDev Planner<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E5%8F%AF%E8%A7%81%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%A7%84%E5%88%92autodev-planner" class="hash-link" aria-label="Direct link to 可见的任务规划：AutoDev Planner" title="Direct link to 可见的任务规划：AutoDev Planner">​</a></h2>
+<p>Planner 是 Sketch 的核心功能，它提供了一种新的任务规划体验。你可以通过 AutoDev Planner 来：</p>
+<ul>
+<li><strong>可见的任务规划</strong>。通过 Pin 及 Planner ToolWindow 的可以看到当前的任务进度</li>
+<li><strong>动态的任务规划</strong>。AI 会根据上下文动态调整任务规划（取决于模型，有时候并不会实时更新）</li>
+<li><strong>手动执行未完成的任务</strong>。用户可以手动执行未完成的任务，以便更好地调整任务规划</li>
+</ul>
+<p>结合诸如于 DeepSeek R1 这一类推理模型，AutoDev Planner 可以更好地规划任务，以适应用户需求。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="被动式错误观测observer">被动式错误观测：Observer<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E8%A2%AB%E5%8A%A8%E5%BC%8F%E9%94%99%E8%AF%AF%E8%A7%82%E6%B5%8Bobserver" class="hash-link" aria-label="Direct link to 被动式错误观测：Observer" title="Direct link to 被动式错误观测：Observer">​</a></h2>
+<p>Observer 是在 Sketch 中新增的一个功能，它可以帮助你更好地观察代码的变化。Observer 可以观察：</p>
+<ul>
+<li>测试失败。当测试失败时，Observer 可以自动带上上下文（相关代码）发给模型</li>
+<li>构建失败。当构建失败时，诸如 Gradle、Maven 的构建日志会被自动发送给模型</li>
+<li>添加依赖失败。当添加依赖失败时，Observer 会自动将问题反馈给模型</li>
+<li>……</li>
+</ul>
+<p>通过被动式的错误观测，AutoDev 可以更好地理解代码的变化，以提升开发效率。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="旧系统改造智能体autodev-bridge试验性">旧系统改造智能体：AutoDev Bridge（试验性）<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E6%97%A7%E7%B3%BB%E7%BB%9F%E6%94%B9%E9%80%A0%E6%99%BA%E8%83%BD%E4%BD%93autodev-bridge%E8%AF%95%E9%AA%8C%E6%80%A7" class="hash-link" aria-label="Direct link to 旧系统改造智能体：AutoDev Bridge（试验性）" title="Direct link to 旧系统改造智能体：AutoDev Bridge（试验性）">​</a></h2>
+<p>Bridge 是我们针对遗留系统迁移的一个新功能，它主要包括：</p>
+<ul>
+<li>迁移路径。基于"探索-感知-响应"框架，通过大型语言模型智能生成系统迁移路径</li>
+<li>架构视图。利用 AI 进行工具调用对现有系统进行深度扫描，生成符合C4模型标准的架构蓝图</li>
+<li>业务逻辑分析。结合抽象语法树(AST)解析和运行时调用链追踪技术，实现业务逻辑的精准还原</li>
+<li>执行迁移。生成包括单元测试、集成测试和端到端测试在内的多层次验证方案，确保迁移后系统功能完整性</li>
+</ul>
+<p>作为一个试验性功能，AutoDev Bridge 并没有完全成熟，但是我们相信它会在未来的迁移中发挥重要作用。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="devops-生态集成双向-mcp">DevOps 生态集成：双向 MCP<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#devops-%E7%94%9F%E6%80%81%E9%9B%86%E6%88%90%E5%8F%8C%E5%90%91-mcp" class="hash-link" aria-label="Direct link to DevOps 生态集成：双向 MCP" title="Direct link to DevOps 生态集成：双向 MCP">​</a></h2>
+<p>MCP（模型上下文协议）是一个非常好的开放协议，它可以帮助 AI 智能体更好地理解上下文。在 AutoDev 2.0 中，我们将 MCP 与 JetBrains
+插件生态
+进行了双向集成，以便于更好地调用工具。</p>
+<ul>
+<li>MCP 即工具。通过 DevIns 指令对 MCP 进行封装，来调用第三方工具</li>
+<li>AutoDev 即服务。将 AutoDev 作为一个 MCP 服务，可以被任何 Agent Tool 调用</li>
+</ul>
+<p>如此一来，将 AutoDev 与整个工具生态进行了无缝集成，丰富系统的上下文能力，降低幻觉的产生。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="其它">其它<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E5%85%B6%E5%AE%83" class="hash-link" aria-label="Direct link to 其它" title="Direct link to 其它">​</a></h2>
+<p>我们重新写了 UI 配图页面，详细参考新文档进行配置：<a href="https://ide.unitmesh.cc/quick-start" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/quick-start</a></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-1x-功能">AutoDev 1.x 功能<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#autodev-1x-%E5%8A%9F%E8%83%BD" class="hash-link" aria-label="Direct link to AutoDev 1.x 功能" title="Direct link to AutoDev 1.x 功能">​</a></h3>
+<p>AutoDev 1.x 的功能依然保留，删除了一些用得比较少的功能，如 AutoCRUD。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="工具问题依旧效率真能提升吗">工具问题依旧，效率真能提升吗？<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98%E4%BE%9D%E6%97%A7%E6%95%88%E7%8E%87%E7%9C%9F%E8%83%BD%E6%8F%90%E5%8D%87%E5%90%97" class="hash-link" aria-label="Direct link to 工具问题依旧，效率真能提升吗？" title="Direct link to 工具问题依旧，效率真能提升吗？">​</a></h3>
+<p>哪怕效率提升再多，效能提升依然有限。你们在写代码上的时间到底有多少？？？？？？？？？？？？</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="安装-autodev-20">安装 AutoDev 2.0<a href="https://ide.unitmesh.cc/en/blog/2025/03/26/autodev-2-0#%E5%AE%89%E8%A3%85-autodev-20" class="hash-link" aria-label="Direct link to 安装 AutoDev 2.0" title="Direct link to 安装 AutoDev 2.0">​</a></h3>
+<p>你可以通过 GitHub 来下载最新版本的 AutoDev 插件：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a> 。</p>
+<p>也可以 <code>Settings</code> → <code>Plugins</code> → <code>Marketplace</code> → <code>Manage Plugin Repositories</code> → <code>Add</code>，添加
+<a href="https://plugin.unitmesh.cc/updatePlugins.xml" target="_blank" rel="noopener noreferrer">https://plugin.unitmesh.cc/updatePlugins.xml</a> 然后搜索 <code>AutoDev</code> 进行安装。</p>
+<p>我们还在努力重新上架到 JetBrains 插件市场，但是你还可以通过下载源码来手动安装。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev Planner]]></title>
+            <link>https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner</link>
+            <guid>https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner</guid>
+            <pubDate>Tue, 18 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[最近，我们在 AutoDev 上构建了新的功能：AutoDev Planner，它是一个基于 DeepSeek R1 推理模型构建的编码任务规划功能。当然了，除了 DeepSeek]]></description>
+            <content:encoded><![CDATA[<p>最近，我们在 AutoDev 上构建了新的功能：AutoDev Planner，它是一个基于 DeepSeek R1 推理模型构建的编码任务规划功能。当然了，除了 DeepSeek
+R1 之外，你也可以使用其它模型。</p>
+<p>在 AutoDev Planner 中，AI 将会根据你的输入和收集的上下文，生成一个用于后续编码的任务计划。随后，这个编码计划可以用其它指令遵循更好的模型，比如
+DeepSeek V3，来生成代码、编辑代码等。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="引子-1ai-编码任务的进度显性化">引子 1：AI 编码任务的进度显性化<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#%E5%BC%95%E5%AD%90-1ai-%E7%BC%96%E7%A0%81%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%98%BE%E6%80%A7%E5%8C%96" class="hash-link" aria-label="Direct link to 引子 1：AI 编码任务的进度显性化" title="Direct link to 引子 1：AI 编码任务的进度显性化">​</a></h2>
+<p>在进行 AI 编码 Agent 的设计时，一个非常有意思的点是，用户对于编码任务的感知是怎样的，即用户应该能显性看到进度，还是隐性感知进度。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="copilot-workspace早期的-ai-显性任务">Copilot Workspace：早期的 AI 显性任务<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#copilot-workspace%E6%97%A9%E6%9C%9F%E7%9A%84-ai-%E6%98%BE%E6%80%A7%E4%BB%BB%E5%8A%A1" class="hash-link" aria-label="Direct link to Copilot Workspace：早期的 AI 显性任务" title="Direct link to Copilot Workspace：早期的 AI 显性任务">​</a></h3>
+<p>去年，我尝试使用 GitHub Copilot Workspace 来帮助我进行前端的开发工作。我尝试了几十个小的需求点，哪怕只是简单的 i18n 翻译，它的表现并没有
+我想象中的那么好，大抵是受限于 GPT 4 的能力限制。而 Copilot Workspace 的思路确实非常不错：</p>
+<ul>
+<li>Brainstorm。对用户的 Task 进行头脑风暴（Brainstorm）</li>
+<li>Task。将 Task 转换为一个可编辑的 Plan</li>
+<li>Execute。执行 Plan，生成代码 Pull Request</li>
+<li>PR。将变更以 Pull Request 的形式提交</li>
+</ul>
+<p>你可以显性看到 AI 思考、编辑、执行的过程，当然它没有动态的去调整他的计划，而是一次性生成（基于 2024 年的认知）。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cursorai-隐性任务下的自动化重试">Cursor：AI 隐性任务下的自动化重试<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#cursorai-%E9%9A%90%E6%80%A7%E4%BB%BB%E5%8A%A1%E4%B8%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E9%87%8D%E8%AF%95" class="hash-link" aria-label="Direct link to Cursor：AI 隐性任务下的自动化重试" title="Direct link to Cursor：AI 隐性任务下的自动化重试">​</a></h3>
+<p>回到，最近一年多特别火热的 AI 编码工具 Cursor，它构建了非常好的 AI Editor 体验，用户抛出一个问题。它会：</p>
+<ul>
+<li>自动收集 IDE 中的上下文</li>
+<li>对代码进行编辑</li>
+<li>在代码出现 Lint 问题时，自动修复；在代码出现错误时，自动重试</li>
+<li>……</li>
+</ul>
+<p>你可以通过文字大概理解 AI 到底干了点什么，但是很快大量地重试，让你感知不到过程的存在。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="jetbrains-junie动态的-ai-任务规划">JetBrains Junie：动态的 AI 任务规划<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#jetbrains-junie%E5%8A%A8%E6%80%81%E7%9A%84-ai-%E4%BB%BB%E5%8A%A1%E8%A7%84%E5%88%92" class="hash-link" aria-label="Direct link to JetBrains Junie：动态的 AI 任务规划" title="Direct link to JetBrains Junie：动态的 AI 任务规划">​</a></h3>
+<p>JetBrains Junie 算是最新 AI 编码工具，它构建了一个动态的 AI 任务规划体验。用户抛出一个问题。它会：</p>
+<ul>
+<li>结合分析问题，理解用户意图，生成一个任务计划</li>
+<li>按步骤执行每个任务，并根据需求再获取上下文</li>
+<li>在任务执行过程中，动态调整计划，以适应用户需求</li>
+</ul>
+<p>在过程中，你可以看到它的计划在不断调整和迭代，直到最终完成用户的 issue 或者不能完成。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="引子-2推理模型规划任务的想象空间">引子 2：推理模型规划任务的想象空间<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#%E5%BC%95%E5%AD%90-2%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B%E8%A7%84%E5%88%92%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%83%B3%E8%B1%A1%E7%A9%BA%E9%97%B4" class="hash-link" aria-label="Direct link to 引子 2：推理模型规划任务的想象空间" title="Direct link to 引子 2：推理模型规划任务的想象空间">​</a></h2>
+<p>众所周知，2024 年底的推理模型或者说“可深度思考模型”，带来了更多的想象空间与可能性。我们在 AutoDev Sketch（类 Cursor Composer 自动编码 Agent）
+中做了一系列的实验， 发现与其它的国内模型相比，DeepSeek R1 在相同上下文的情况下，比普通模型更容易生成更好的工具调用（ 基于DevIns 指令）。
+与 DeepSeek V3 相比，DeepSeek R1 调用了更多的工具。</p>
+<p>理想情况下，我们应该用 R1 进行首轮工具对话和第二轮的任务规划，但是 R1 的速度确实太慢了，从时间上来算相当于多调用了一轮 API。但是，依旧可以
+看到 R1 的优势，相信大家也有相似的感受和体验。</p>
+<p>当然我们没有做大规模的实验，毕竟构建非常好的测试数据集是特别花费时间的。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-planneragent-编程的任务规划">AutoDev Planner：Agent 编程的任务规划<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#autodev-planneragent-%E7%BC%96%E7%A8%8B%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%A7%84%E5%88%92" class="hash-link" aria-label="Direct link to AutoDev Planner：Agent 编程的任务规划" title="Direct link to AutoDev Planner：Agent 编程的任务规划">​</a></h2>
+<p>基于上述的思考，我们构建了新的拟人功能：AutoDev Planner 以强化 Sketch 的任务规划能力。AutoDev Planner 的核心功能是：</p>
+<ul>
+<li>可见的任务规划。通过 Pin 及 Planner ToolWindow 的可以看到当前的任务进度</li>
+<li>动态的任务规划。AI 会根据上下文动态调整任务规划（取决于模型，有时候并不会实时更新）</li>
+<li>手动执行未完成的任务。用户可以手动执行未完成的任务，以便更好地调整任务规划</li>
+<li>规划 Review。用户可以手动调用模型来 Review 任务规划（为什么不是自动的，因为 token 对普通用户来说是非常昂贵的）</li>
+</ul>
+<p>总体思路还是非常简单的，就只是调用模型生成计划，然后展示这个交互。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="关键点-1基于推理模型的任务规划">关键点 1：基于推理模型的任务规划<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#%E5%85%B3%E9%94%AE%E7%82%B9-1%E5%9F%BA%E4%BA%8E%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%A7%84%E5%88%92" class="hash-link" aria-label="Direct link to 关键点 1：基于推理模型的任务规划" title="Direct link to 关键点 1：基于推理模型的任务规划">​</a></h3>
+<p>由于推理模型与普通的模型在理解 prompt 和遵循指令的能力是有差异的，我们原先用于 V3 的 prompt 并不适用于 R1。因此，我们需要重新设计 prompt
+以适应 R1 的能力。</p>
+<p>简单来说，就是当完成了初步的上下文收集之后， 而且用户配置了推理模型之后，我们会调用 R1 来生成一个任务计划。这个任务计划会包含：任务、步骤及
+其相关的进度情况，随后我们会将这个计划展示给用户。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="关键点-2任务规划的可交互性">关键点 2：任务规划的可交互性<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#%E5%85%B3%E9%94%AE%E7%82%B9-2%E4%BB%BB%E5%8A%A1%E8%A7%84%E5%88%92%E7%9A%84%E5%8F%AF%E4%BA%A4%E4%BA%92%E6%80%A7" class="hash-link" aria-label="Direct link to 关键点 2：任务规划的可交互性" title="Direct link to 关键点 2：任务规划的可交互性">​</a></h3>
+<p>与其它的 AI 编码工具不同，我们认为任务规划是一个非常重要的交互，因此我们提供了一些交互功能：</p>
+<ul>
+<li>任务的状态显示：<!-- -->
+<ul>
+<li>完成的任务将会被标记为完成</li>
+<li>未完成的任务可以手动执行</li>
+</ul>
+</li>
+<li>Pin。用户可以将任务 Pin 到 IDE 的某个位置，以便更好地关注</li>
+<li>文件交互。考虑到模型的能力，当文件出现在任务中，可以点击文件名打开文件</li>
+<li>编辑。当用户觉得任务规划不合适时，可以暂停并及时调整任务。</li>
+<li>review。用户可以手动调用模型来 Review 任务规划</li>
+</ul>
+<p>通过可视化任务来构建更好的 AI 编码体验，这是 AutoDev Planner 的初衷。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="https://ide.unitmesh.cc/en/blog/2025/03/18/autodev-planner#%E6%80%BB%E7%BB%93" class="hash-link" aria-label="Direct link to 总结" title="Direct link to 总结">​</a></h2>
+<p>AutoDev Planner 是一个基于推理模型的任务规划功能，它可以帮助用户更好地理解 AI 编码任务的进度，以及更好地调整任务规划。当然，它还有很多不足之处，
+欢迎在 GitHub 上提出 issue 和 PR。</p>
+<p>欢迎下载最新版本体验：<a href="https://github.com/unit-mesh/auto-dev/releases" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev/releases</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev MCP]]></title>
+            <link>https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp</link>
+            <guid>https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp</guid>
+            <pubDate>Wed, 12 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[在 Agentic Coding 这一话题下，工具使用（Tool Use/Function calling）是一个非常有意思的话题。完成一个软件开发任务，需要使用到大量的工具，]]></description>
+            <content:encoded><![CDATA[<p>在 Agentic Coding 这一话题下，工具使用（Tool Use/Function calling）是一个非常有意思的话题。完成一个软件开发任务，需要使用到大量的工具，
+除去在 IDE 及其插件生态本身提供的功能外，还会使用到大量的外部工具，如 Git、Docker、Kubernetes、Jenkins 等等。如何让 AI
+知道更多工具的存在以及如何使用这些工具，是一个非常有意思的话题。</p>
+<p>所以，我花了一天的时间在 AutoDev 中实现了相关的功能，即 AutoDev 作为一个 MCP 服务，可以被任何 Agent Tool 调用；AutoDev 作为一个
+MCP 客户端，可以调用任何 MCP 服务。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="引子-1从渐进性-ai-agent-方案到-autodev-即-mcp-服务">引子 1：从渐进性 AI Agent 方案，到 AutoDev 即 MCP 服务<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#%E5%BC%95%E5%AD%90-1%E4%BB%8E%E6%B8%90%E8%BF%9B%E6%80%A7-ai-agent-%E6%96%B9%E6%A1%88%E5%88%B0-autodev-%E5%8D%B3-mcp-%E6%9C%8D%E5%8A%A1" class="hash-link" aria-label="Direct link to 引子 1：从渐进性 AI Agent 方案，到 AutoDev 即 MCP 服务" title="Direct link to 引子 1：从渐进性 AI Agent 方案，到 AutoDev 即 MCP 服务">​</a></h2>
+<p>在更庞大的 AI Agent 话题之下，比如自动化的 Computer Use 场景下，IDE 也只是一个可调用的 Agent 工具。从当前的 AI Agent
+进度来看，现在的 Agent Tool 使用是一种渐进式的 AI Agent 方案 —— 毕竟写过 E2E 测试的同学都知道：操作 UI 的效率是非常之低的；以至于我们在编写
+AutoDev 时，并没有写多少 UI 自动化测试。</p>
+<p>我们现在考虑的 AI Coding 是以 IDE 为中心的，但是还存在一个场景是以 Agent Tool 为中心的。即：</p>
+<ul>
+<li>Agent 通过操纵 Browser 去获取需求信息；</li>
+<li>Agent 打开 IDE 去编写代码；</li>
+<li>Agent 打开 DevOps 工具去发布代码；</li>
+<li>……</li>
+</ul>
+<p>既然借助 Agent Tool 来调用工具是 2025 年的一个趋势，那么我们为什么不将 AutoDev 作为一个 MCP 服务呢？即 AutoDev 作为一个
+MCP 服务，让任何 Agent Tool 都可以调用 AutoDev 的服务。哪怕是 Cursor、Cline、GitHub Copilot 等等，都可以调用 AutoDev 的服务，以获取
+IDE 中的高质量上下文。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="引子-2从-mcp-即-agent-tool-生态到-mcp-服务即-autodev-指令">引子 2：从 MCP 即 Agent Tool 生态，到 MCP 服务即 AutoDev 指令<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#%E5%BC%95%E5%AD%90-2%E4%BB%8E-mcp-%E5%8D%B3-agent-tool-%E7%94%9F%E6%80%81%E5%88%B0-mcp-%E6%9C%8D%E5%8A%A1%E5%8D%B3-autodev-%E6%8C%87%E4%BB%A4" class="hash-link" aria-label="Direct link to 引子 2：从 MCP 即 Agent Tool 生态，到 MCP 服务即 AutoDev 指令" title="Direct link to 引子 2：从 MCP 即 Agent Tool 生态，到 MCP 服务即 AutoDev 指令">​</a></h2>
+<p>在过去，我们在 AutoDev 中优先考虑的是借助 IDE 的生态，以及自身的插件体系，以实现 AI 更好的支持端到端的开发流程。但是，随着我们在
+AutoDev 集成了更丰富的插件能力之后，我们依然需要大量的 Agent Tool。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="agent-tool-决定-ai-ide-的基线能力">Agent Tool 决定 AI IDE 的基线能力<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#agent-tool-%E5%86%B3%E5%AE%9A-ai-ide-%E7%9A%84%E5%9F%BA%E7%BA%BF%E8%83%BD%E5%8A%9B" class="hash-link" aria-label="Direct link to Agent Tool 决定 AI IDE 的基线能力" title="Direct link to Agent Tool 决定 AI IDE 的基线能力">​</a></h3>
+<p>不可否认，在我们研究了大量的 AI Coding 工具之后，我们会发现，大量的 AI Editor 基于 VSCode 时在 tool 上提供的能力非常之相似，以至于我们
+可以用一张图来描述它们的能力。但是，在 IDE 上的 AI Coding 插件则提供了更加丰富的能力，如 AST、Debug、FQN 查找等等。</p>
+<p>典型的基于 VSCode 的 AI Coding 工具，提供了十个左右的工具，而基于 JetBrains 的 AI Coding 插件（如 AutoDev、JetBrains
+Junie）则提供了 20 个左右的工具，而这些只是基础的 IDE 上的能力。</p>
+<p>而随着 AI Coding 进一步向需求、部署、运维等方向发展，相关的工具生态势必会更加丰富。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mcp-开源生态已经形成">MCP 开源生态已经形成<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#mcp-%E5%BC%80%E6%BA%90%E7%94%9F%E6%80%81%E5%B7%B2%E7%BB%8F%E5%BD%A2%E6%88%90" class="hash-link" aria-label="Direct link to MCP 开源生态已经形成" title="Direct link to MCP 开源生态已经形成">​</a></h3>
+<p>MCP（Model Context Protocol）是由 Anthropic 公司（Claude 模型） 推出的一个协议，它通过提供一种标准化的接口，LLM
+应用可以访问外部信息、工具和资源。尽管我们在 AutoDev 提供了强大的自定义能力，诸如于 Custom Agent 等能力，但是：</p>
+<ul>
+<li>有些工具是我们无法预知的，如某些公司内部的工具；</li>
+<li>MCP 等工具的生态是非常丰富的，并且正在成为一个标准。（尽管国内可能有一些不同）</li>
+</ul>
+<p>但是，自打 Cursor、Cline 等编程工具引入了 MCP 之后，大量的 MCP 服务已经在国外形成了一个生态，特别是已经有了非常多的开源实现。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-x-mcp双向赋能">AutoDev x MCP：双向赋能<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#autodev-x-mcp%E5%8F%8C%E5%90%91%E8%B5%8B%E8%83%BD" class="hash-link" aria-label="Direct link to AutoDev x MCP：双向赋能" title="Direct link to AutoDev x MCP：双向赋能">​</a></h2>
+<p>基于上述的思考，我们基于 MCP 相关的插件（MCP Plugin）和生态（io.modelcontextprotocol），构建了 AutoDev x MCP 的双向赋能方案。即：</p>
+<ul>
+<li>AutoDev 作为一个 MCP 服务，可以被任何 Agent Tool 调用；</li>
+<li>AutoDev 作为一个 MCP 客户端，可以调用任何 MCP 服务。</li>
+</ul>
+<p>通过这两种方式来沉淀我们在 MCP 方面的能力。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-作为-mcp-服务端">AutoDev 作为 MCP 服务端<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#autodev-%E4%BD%9C%E4%B8%BA-mcp-%E6%9C%8D%E5%8A%A1%E7%AB%AF" class="hash-link" aria-label="Direct link to AutoDev 作为 MCP 服务端" title="Direct link to AutoDev 作为 MCP 服务端">​</a></h3>
+<p>我们基于 JetBrains 的 MCP 方案，提供构建了 AutoDev 作为一个 MCP 服务的能力（注：需要在配置中开启 MCP 能力）。你只需要通过 JSON 来配置即可
+，如下是 Cline 插件中的配置示例：</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"mcpServers"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"AutoDev"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"command"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"npx"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"args"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">"-y"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">"@jetbrains/mcp-proxy"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"disabled"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">false</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"autoApprove"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>在当前的版本里，我们只基于官方提供的能力，加了一些数据库相关的能力，其它能力需要等有合适的国产 MCP 服务后再进行扩展。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-作为-mcp-客户端">AutoDev 作为 MCP 客户端<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#autodev-%E4%BD%9C%E4%B8%BA-mcp-%E5%AE%A2%E6%88%B7%E7%AB%AF" class="hash-link" aria-label="Direct link to AutoDev 作为 MCP 客户端" title="Direct link to AutoDev 作为 MCP 客户端">​</a></h3>
+<p>相似的，你需要在 AutoDev 的 Custom Agent 页面配置相关的 MCP 服务，如下是 MCP 官方提供的示例</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"mcpServers"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"filesystem"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"command"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"npx"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"args"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">"-y"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">"@modelcontextprotocol/server-filesystem"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">"/Volumes/source/ai/auto-dev"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>随后，这个 MCP 服务提供的工具，就可以在 AutoDev 中被调用了。如下是转换为 DevIns 后的示例：</p>
+<p>/list_directory</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token property" style="color:#36acaa">"path"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"/Volumes/source/ai/autocrud/docs/mcp"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>现在，借助于强大的 AutoDev DevIns Command，你可以在 AutoDev 中调用任何 MCP 服务，当然 Agent 也是可以的。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="其它">其它<a href="https://ide.unitmesh.cc/en/blog/2025/03/12/autodev-mcp#%E5%85%B6%E5%AE%83" class="hash-link" aria-label="Direct link to 其它" title="Direct link to 其它">​</a></h2>
+<p>人生苦短，我有 AI。</p>
+<ul>
+<li>详细文档见：<a href="https://ide.unitmesh.cc/mcp" target="_blank" rel="noopener noreferrer">https://ide.unitmesh.cc/mcp</a></li>
+<li>欢迎下载和使用最新版本 AutoDev（v2.0.0-rc.2）进行体验。下载地址：<a href="https://github.com/unit-mesh/auto-dev/releases/tag/v2.0.0-rc.2" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev/releases/tag/v2.0.0-rc.2</a></li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AutoDev Bridge]]></title>
+            <link>https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge</link>
+            <guid>https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge</guid>
+            <pubDate>Thu, 06 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[在 2023 年，基于当时的模型能力有限，我们在 AutoDev 设计了一系列的遗留系统功能的特性。而在 2025 年，经过自动编程智能体]]></description>
+            <content:encoded><![CDATA[<p>在 2023 年，基于当时的模型能力有限，我们在 AutoDev 设计了一系列的遗留系统功能的特性。而在 2025 年，经过自动编程智能体
+AutoDev Sketch 的一系列
+迭代，我们开始思考如何将 AI 智能体应用到遗留系统中，便产生了 AutoDev Bridge 这个想法。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="为什么大模型能做得更好">为什么大模型能做得更好？<a href="https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%83%BD%E5%81%9A%E5%BE%97%E6%9B%B4%E5%A5%BD" class="hash-link" aria-label="Direct link to 为什么大模型能做得更好？" title="Direct link to 为什么大模型能做得更好？">​</a></h2>
+<p>过去，我们公司 Thoughtworks 在这方面有非常多的积累，包括从迁移策略的设计、安全防护网的搭建等等，但是不论哪种迁移模型（绞杀者、修缮者等）最后
+都是需要人工介入的。而在 2025 年，已经有越来越多的 AI 智能体能够做到自动化迁移，因此我们进一步完善了我们的开源方案。</p>
+<p>在遗留系统迁移上，为什么大模型能做得更好呢？</p>
+<ul>
+<li>设计合理的路径规划。通常来说，优先基于成本考虑，而大模型作为一个知识库，能非常好的给你成本评估。</li>
+<li>生成架构蓝图。结合目录结构、依赖信息、API，AI 能针对于当前系统描绘出初步的架构蓝图。</li>
+<li>提炼代码中的业务知识。结合 AST 等，分析现有代码的业务逻辑，再基于其重写。</li>
+<li>跨语言翻译。与生成代码不同的是，LLM 能非常好的将其翻译成目标语言，只需要几十秒到几分钟的时间。</li>
+<li>迁移防护网的增强。即生成自动化测试来验证迁移的正确性，实现实现精准回归测试。（注：在前端依然有所不足）</li>
+<li>……</li>
+</ul>
+<p>所以，我们只需要思考两件事：</p>
+<ul>
+<li>如何让 AI 能借助工具更好地理解遗留系统？</li>
+<li>如何借助降低迁移的风险？</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-bridge-如何加速老旧系统迁移">AutoDev Bridge 如何加速老旧系统迁移？<a href="https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge#autodev-bridge-%E5%A6%82%E4%BD%95%E5%8A%A0%E9%80%9F%E8%80%81%E6%97%A7%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB" class="hash-link" aria-label="Direct link to AutoDev Bridge 如何加速老旧系统迁移？" title="Direct link to AutoDev Bridge 如何加速老旧系统迁移？">​</a></h2>
+<p>基于对遗留系统迁移的理解，我们设计了 AutoDev Bridge 的初步方案。它主要包括：</p>
+<ul>
+<li>LLM 生成的迁移方案。（基于“探索-感知-响应”方案）</li>
+<li>基于 C4 的当前架构现状分析。（基于 AI 工具调用）</li>
+<li>结合 AST 与调用链的业务逻辑分析。（AI 理解代码）</li>
+<li>生成迁移测试用例。</li>
+<li>AI 辅助的代码翻译。</li>
+<li>……</li>
+</ul>
+<p>借助与 IDE 的紧密集成，AutoDev Bridge 能获得非常准确的 IDE 上下文，以进一步降低 AI 幻觉的产生。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="探索-感知-响应llm-生成的迁移方案">探索-感知-响应：LLM 生成的迁移方案<a href="https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge#%E6%8E%A2%E7%B4%A2-%E6%84%9F%E7%9F%A5-%E5%93%8D%E5%BA%94llm-%E7%94%9F%E6%88%90%E7%9A%84%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88" class="hash-link" aria-label="Direct link to 探索-感知-响应：LLM 生成的迁移方案" title="Direct link to 探索-感知-响应：LLM 生成的迁移方案">​</a></h3>
+<p>在过去，我们将遗留系统迁移定义为 Cynefin 中的复杂问题，即你无法预测结果，只能通过实践来发现。于是乎，我们参考了 Cynefin
+的思想，设计了现有的
+AutoDev Bridge 的思维框架，即你要先探索、再感知、再响应。由于，我们预期的是模型在行动前是需要有一个蓝图（C4
+模型），所以我们将这个过程分为三个阶段：</p>
+<ul>
+<li>探索：通过初步调用工具，获取系统的基本信息，如目录结构、依赖关系等。</li>
+<li>感知：基于探索的结果，生成初步的架构蓝图、迁移方案。</li>
+<li>响应：进行迁移方案的验证、生成迁移测试用例、生成迁移代码。</li>
+</ul>
+<p>落地到国内的模型能力下，就会由由 V3 来进行探索，R1 进行方案设计，由 V3 进行响应。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="面向架构视图的工具设计">面向架构视图的工具设计<a href="https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge#%E9%9D%A2%E5%90%91%E6%9E%B6%E6%9E%84%E8%A7%86%E5%9B%BE%E7%9A%84%E5%B7%A5%E5%85%B7%E8%AE%BE%E8%AE%A1" class="hash-link" aria-label="Direct link to 面向架构视图的工具设计" title="Direct link to 面向架构视图的工具设计">​</a></h3>
+<p>为了更好让 AI 理解当前系统的架构，我们面向架构视图设计了一系列的工具。</p>
+<table><thead><tr><th>工具名称 (name)</th><th>描述 (desc)</th></tr></thead><tbody><tr><td>componentView</td><td>列出当前项目的所有UI组件列表，如React、Vue组件</td></tr><tr><td>containerView</td><td>列出当前项目的所有模块</td></tr><tr><td>webApiView</td><td>列出当前项目的所有Web API</td></tr><tr><td>stylingView</td><td>列出当前项目的所有CSS、SCSS类</td></tr><tr><td>dir</td><td>获取当前层级的目录结构</td></tr><tr><td>history</td><td>获取当前文件的历史提交信息</td></tr><tr><td>knowledge</td><td>从 API 调用链进行分析，默认 depth = 2（不可修改），即 Controller 到 Repository 的调用链</td></tr></tbody></table>
+<p>注：显然 DeepSeek 不能很好理解 C4 模型，还需要进一步的优化。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="业务知识提取与理解">业务知识提取与理解<a href="https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge#%E4%B8%9A%E5%8A%A1%E7%9F%A5%E8%AF%86%E6%8F%90%E5%8F%96%E4%B8%8E%E7%90%86%E8%A7%A3" class="hash-link" aria-label="Direct link to 业务知识提取与理解" title="Direct link to 业务知识提取与理解">​</a></h3>
+<p>在业务逻辑分析中，我们主要是基于 API 的 AST 与调用链的业务逻辑分析。即先通过 <code>webApiView</code> 获取所有的 API，再通过
+<code>knowledge</code> 获取 API 的调用链。 如：</p>
+<div class="language-devin codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-devin codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">/knowledge:GET#/api/blog/*</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>在有了从 Controller 到 Repository 的调用链后，AI 就可以非常好地理解当前 API 的业务逻辑。</p>
+<p>当然，这只是一个简单的示例，实际上，AI 还需要结合搜索等工具，进一步获得更多的上下文。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="https://ide.unitmesh.cc/en/blog/2025/03/06/autodev-bridge#%E6%80%BB%E7%BB%93" class="hash-link" aria-label="Direct link to 总结" title="Direct link to 总结">​</a></h2>
+<p>随着，我们研究的进一步深入，我们会逐步完善这个方案，以实现更好的自动化迁移。</p>
+<p>欢迎在 GitHub 上持续关注我们：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[AutoDev Composer：the Intellij IDEA Cursor Alternative]]></title>
             <link>https://ide.unitmesh.cc/en/blog/2025/01/11/autodev-2-0-preview</link>
