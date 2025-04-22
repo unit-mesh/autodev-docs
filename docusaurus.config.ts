@@ -62,6 +62,11 @@ const config = {
               label: 'Docs',
             },
             {
+              to: '/blog',
+              label: 'Blog',
+              position: 'left',
+            },
+            {
               type: 'localeDropdown',
               position: 'right',
             },
@@ -85,6 +90,15 @@ const config = {
               ],
             },
             {
+              title: 'Blog',
+              items: [
+                {
+                  label: 'Blog',
+                  to: '/blog',
+                },
+              ],
+            },
+            {
               title: 'Community',
               items: [
                 {
@@ -104,3 +118,4 @@ const config = {
 };
 
 module.exports = config;
+
