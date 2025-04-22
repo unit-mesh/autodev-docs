@@ -16,6 +16,7 @@ permalink: /scenes/tdd
 
 ## Tasking
 
+```markdown
     ---
     interaction: AppendCursorStream
     ---
@@ -49,9 +50,11 @@ permalink: /scenes/tdd
     ###
     Q: ${selection}
     A: ###
-    
+```
+
 ## TDD Red
-    
+
+```markdown    
     ---
     interaction: AppendCursorStream
     ---
@@ -86,5 +89,5 @@ permalink: /scenes/tdd
     
     ${selection}
     
-    请根据新的测试，优化 class under test 部分的代码。请返回对应的方法的代码，使用 ``` 开始你的代码块：
-    
+    请根据新的测试，优化 class under test 部分的代码。请返回对应的方法的代码，使用 ``` 开始你的代码块： 
+```

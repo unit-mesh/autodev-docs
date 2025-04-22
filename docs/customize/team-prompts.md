@@ -56,6 +56,7 @@ interaction type:
 
 variables list: [https://ide.unitmesh.cc/variables](https://ide.unitmesh.cc/variables)
 
+```markdown
     ---
     interaction: AppendCursorStream
     ---
@@ -73,6 +74,7 @@ variables list: [https://ide.unitmesh.cc/variables](https://ide.unitmesh.cc/vari
     The user's requirement is: ${selection}
     
     Please use ```@Test to begin writing your code block:
+```
 
 full TDD
 example: [https://github.com/unit-mesh/untitled/tree/english/prompts](https://github.com/unit-mesh/untitled/tree/english/prompts)
@@ -81,6 +83,7 @@ example: [https://github.com/unit-mesh/untitled/tree/english/prompts](https://gi
 
 变量列表： [AutoDev 模板变量](/customize/variables)。
 
+```markdown
     ---
     interaction: AppendCursorStream
     ---
@@ -106,6 +109,7 @@ example: [https://github.com/unit-mesh/untitled/tree/english/prompts](https://gi
     ###
     Question: ${selection}
     Answer: ###
+```
 
 完整的 TDD
 示例：[https://github.com/unit-mesh/untitled/tree/master/prompts](https://github.com/unit-mesh/untitled/tree/master/prompts)
@@ -115,6 +119,7 @@ example: [https://github.com/unit-mesh/untitled/tree/english/prompts](https://gi
 核心点：`batchFileRegex` 用于匹配批量文件，`codeOnly: true` 只将纯代码部分放入文件，`interaction: ReplaceCurrentFile`
 用于替换当前文件。
 
+```markdown
     ---
     interaction: ReplaceCurrentFile
     batchFileRegex: "**/*.ts"
@@ -125,5 +130,4 @@ example: [https://github.com/unit-mesh/untitled/tree/english/prompts](https://gi
     要求：只在一个 markdown 代码块返回重构完的代码
     
     ${all}
-
-
+```

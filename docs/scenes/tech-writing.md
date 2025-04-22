@@ -18,6 +18,7 @@ create prompts files in your project.
 
 ## Analysis domain
 
+```markdown
     ---
     type: QuickAction
     name: Trend Analysis
@@ -54,9 +55,11 @@ create prompts files in your project.
     
     ```user```
     ${selection}
-    
+```
+
 ## Continue writing    
-    
+
+```markdown    
     ---
     type: QuickAction
     name: Continue Writing
@@ -75,9 +78,11 @@ create prompts files in your project.
     **user**
     
     ${beforeCursor}
+```
 
 ## Summarize
-    
+
+```markdown    
     ---
     type: QuickAction
     name: Summarize
@@ -94,4 +99,4 @@ create prompts files in your project.
     
     ```user```
     ${beforeCursor}
-
+```

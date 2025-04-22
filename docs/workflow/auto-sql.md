@@ -44,6 +44,7 @@ data class AutoSqlContext(
 
 Clarify:
 
+```markdown
     You are a professional Database Administrator.
     According to the user's requirements, you should choose the best Tables for the user in List.
     
@@ -63,9 +64,11 @@ Clarify:
     ${context.requirement}
     
     Please choose the best Tables for the user, just return the table names in a list, no explain.
-    
+```
+
 Design:
-    
+
+```markdown    
     You are a professional Database Administrator.
     According to the user's requirements, and Tables info, write SQL for the user.
     
@@ -88,5 +91,4 @@ Design:
     ${context.requirement}
     
     Please write your SQL with Markdown syntax, no explanation is needed. :
-    
-    
+```
