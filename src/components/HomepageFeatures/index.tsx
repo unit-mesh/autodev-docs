@@ -13,7 +13,7 @@ const FeatureList: FeatureItem[] = [
     title: '智能体规划复杂任务',
     description: (
       <>
-        自主规划并执行包括文件编辑、代码检索、构建、执行、测试和版本控制在内的复杂软件工程任务链。
+        AutoDev Planner 可以借助强大的推理模型能力，自主规划并执行包括文件编辑、代码检索、构建、执行、测试和版本控制在内的复杂软件工程任务链。
       </>
     ),
   },
@@ -29,7 +29,7 @@ const FeatureList: FeatureItem[] = [
     title: '自定义提升生产力',
     description: (
       <>
-        您可以在 AutoDev 自定义模型、自定义提示词和自定义代码生成器等，并扩展 AutoDev 的功能。
+        您可以在 AutoDev 自定义模型、自定义提示词和自定义代码生成器等，并通过构建自己的 AutoDev 分支，来提升生产力。
       </>
     ),
   },
