@@ -86,7 +86,6 @@ function QuickLinks() {
   );
 }
 
-// Comparison table section
 function ComparisonTable() {
   return (
     <section className={styles.comparisonSection}>
@@ -99,9 +98,9 @@ function ComparisonTable() {
           <table className={styles.comparisonTable}>
             <thead>
             <tr>
-              <th>功能</th>
+              <th className={styles.featureCell}>功能</th>
               <th>传统 AI 助手</th>
-              <th>AutoDev</th>
+              <th className={styles.advantageCell}>AutoDev</th>
             </tr>
             </thead>
             <tbody>
@@ -178,7 +177,7 @@ function Community() {
   const resources = [
     { title: 'GitHub', description: '为我们的仓库加星标，报告问题，并为代码库做出贡献', link: 'https://github.com/username/autodev', icon: <div className={styles.communityIconGithub} /> },
     { title: '研究论文', description: '阅读我们在 arXiv 上的学术论文，了解 AutoDev 背后的研究', link: '', icon: <div className={styles.communityIconPaper} /> },
-    { title: 'Discord', description: '加入我们的 Wechat 社区，与其他开发者交流并获取支持', link: '', icon: <div className={styles.communityIconDiscord} /> },
+    { title: '微信群', description: '加入我们的 Wechat 社区，与其他开发者交流并获取支持（添加 phodal02 为好友，注明：AutoDev）', link: '', icon: <div className={styles.communityIconDiscord} /> },
   ];
 
   return (
@@ -222,3 +221,4 @@ export default function HomepageFeatures(): ReactNode {
     </>
   );
 }
+

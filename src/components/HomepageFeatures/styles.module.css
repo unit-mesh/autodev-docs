@@ -124,21 +124,27 @@
 .comparisonSection {
   padding: 4rem 0;
   background-color: var(--ifm-color-emphasis-100);
+  width: 100%;
 }
 
 .tableWrapper {
   overflow-x: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .comparisonTable {
   width: 100%;
   border-collapse: collapse;
   margin: 0 auto;
-  max-width: 900px;
+  display: inline-table;
+  table-layout: fixed; /* Add fixed layout for better width control */
 }
 
 .comparisonTable th,
 .comparisonTable td {
+  width: 35%;
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
@@ -156,6 +162,7 @@
 .advantageCell {
   color: var(--ifm-color-primary);
   font-weight: 500;
+  width: 40%; /* Set width for AutoDev column */
 }
 
 .advantage,
