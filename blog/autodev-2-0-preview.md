@@ -2,7 +2,6 @@
 layout: default
 title: AutoDev Composer：the Intellij IDEA Cursor Alternative
 nav_order: 9
-parent: What's New
 ---
 
 A little over two weeks ago, after the release of DeepSeek V3, we introduced multi-file editing capabilities for Shire.

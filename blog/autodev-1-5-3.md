@@ -2,7 +2,6 @@
 layout: default
 title: AutoDev 1.5.3 精准测试生成
 nav_order: 5
-parent: What's New
 ---
 
 去年年初，我们开源 AutoDev 的初衷是：

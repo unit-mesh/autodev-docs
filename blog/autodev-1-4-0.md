@@ -1,8 +1,6 @@
 ---
 layout: default
 title: AutoDev 1.4 规模化 AI 研发辅助
-nav_order: 3
-parent: What's New
 ---
 
 在过去的两个月里，随着 Thoughtworks 内部的大规模 AI 辅助软件交付（AI4SoftwareDelivery）的展开 —— 在全球，有上千名的
