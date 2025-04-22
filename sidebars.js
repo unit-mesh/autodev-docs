@@ -25,6 +25,7 @@ const sidebars = {
 			type: 'category',
 			label: 'Customize Features',
 			items: [
+				'customize/customize',
 				'customize/batch-ai-action',
 				'customize/custom-action',
 				'customize/custom-ext-contenxt-agent',
@@ -32,7 +33,6 @@ const sidebars = {
 				'customize/custom-llm-server',
 				'customize/custom-quick-action',
 				'customize/custom-test-template',
-				'customize/customize',
 				'customize/prompt-override',
 				'customize/team-prompts',
 				'customize/variables',
