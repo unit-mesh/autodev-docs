@@ -40,20 +40,7 @@ const sidebars = {
 		},
 		{
 			type: 'category',
-			label: 'Agent',
-			items: [
-				'agent/agent',
-				'agent/agent-action',
-				'agent/custom-ai-agent',
-				'agent/custom-request-response',
-				'agent/server-example',
-				'agent/bridge/bridge',
-				'agent/bridge/bridge-tool',
-			],
-		},
-		{
-			type: 'category',
-			label: 'AutoDev Sketch/Composer',
+			label: 'Agentic Coding',
 			items: [
 				'composer/composer',
 				'composer/planner',
@@ -63,6 +50,19 @@ const sidebars = {
 				'composer/workspace',
 				'composer/composer-prompting',
 				'composer/custom-ai-composer',
+				'agent/bridge/bridge',
+				'agent/bridge/bridge-tool',
+			],
+		},
+		{
+			type: 'category',
+			label: 'Custom Remote Agent',
+			items: [
+				'agent/agent',
+				'agent/agent-action',
+				'agent/custom-ai-agent',
+				'agent/custom-request-response',
+				'agent/server-example',
 			],
 		},
 		{
@@ -132,7 +132,13 @@ const sidebars = {
 		  ],
 		},
 		'troubleshooting',
-		// 'usecases',
+		{
+			type: 'usecases',
+			label: 'Usecases',
+			items: [
+				'usecases/usecases'
+			],
+		}
 	],
 }
 
