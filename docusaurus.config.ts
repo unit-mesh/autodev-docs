@@ -6,27 +6,15 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'AutoDev',
+  title: 'AutoDev - Open Source AI Coding Wizard',
   tagline: 'The AI-powered coding wizard with multilingual support',
   favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
   url: 'https://unit-mesh.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/auto-dev/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'unit-mesh', // Usually your GitHub org/user name.
-  projectName: 'auto-dev', // Usually your repo name.
-
+  organizationName: 'unit-mesh',
+  projectName: 'auto-dev',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['en', 'zh-Hans'],
@@ -61,8 +49,6 @@ const config = {
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
-        // Replace with your project's social card
-        image: 'img/docusaurus-social-card.jpg',
         navbar: {
           title: 'AutoDev',
           logo: {

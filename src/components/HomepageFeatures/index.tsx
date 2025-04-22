@@ -10,18 +10,10 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: '生成完整工程',
+    title: '智能体规划复杂任务',
     description: (
       <>
-        只需简单描述需求，AI 代理即可自动生成完整的、可直接运行的代码库，包括前端、后端、数据库和部署配置。
-      </>
-    ),
-  },
-  {
-    title: '安全开发，尽在掌控',
-    description: (
-      <>
-        所有操作都在隔离的 Docker 容器内运行，提供安全的沙盒环境。定义细粒度的护栏和权限，精确控制代理可执行的操作，确保代码完整性和用户隐私。
+        自主规划并执行包括文件编辑、代码检索、构建、执行、测试和版本控制在内的复杂软件工程任务链。
       </>
     ),
   },
@@ -29,16 +21,15 @@ const FeatureList: FeatureItem[] = [
     title: '全面的上下文感知',
     description: (
       <>
-        为 AI 代理提供完整的项目上下文——文件、编译器输出、构建/测试日志、静态分析结果以及一个专用工具库。这使其能够做出明智决策并有效执行任务。
+        AutoDev 能为 AI 提供完整的项目上下文——文件、编译器输出、构建/测试日志、静态分析结果等——以便 AI 进行更好的决策。
       </>
     ),
   },
   {
-    title: '多智能体协作编排',
+    title: '自定义提升生产力',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        您可以在 AutoDev 自定义模型、自定义提示词和自定义代码生成器等，并扩展 AutoDev 的功能。
       </>
     ),
   },
@@ -46,7 +37,7 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--3')}>
+    <div className={clsx('col col--4')}>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
