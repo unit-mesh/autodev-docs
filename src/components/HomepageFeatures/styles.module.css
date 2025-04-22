@@ -5,7 +5,265 @@
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureCard {
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featureCard:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.featureIcon {
+  margin-bottom: 1rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Feature icons - these would be replaced with actual SVG icons in a real implementation */
+.featureIconBrain {
+  width: 100%;
+  height: 100%;
+  background-color: #e0f2fe;
+  border-radius: 50%;
+  position: relative;
+}
+
+.featureIconBrain::after {
+  content: "🧠";
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.featureIconCode {
+  width: 100%;
+  height: 100%;
+  background-color: #f3e8ff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.featureIconCode::after {
+  content: "💻";
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.featureIconSettings {
+  width: 100%;
+  height: 100%;
+  background-color: #fef3c7;
+  border-radius: 50%;
+  position: relative;
+}
+
+.featureIconSettings::after {
+  content: "⚙️";
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Quick Links Section */
+.quickLinks {
+  padding: 4rem 0;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.quickLinkCard {
+  display: block;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--ifm-color-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--ifm-font-color-base);
+  position: relative;
+}
+
+.quickLinkCard:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  text-decoration: none;
+  color: var(--ifm-color-primary);
+}
+
+.quickLinkArrow {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--ifm-color-primary);
+  transition: transform 0.3s ease;
+}
+
+.quickLinkCard:hover .quickLinkArrow {
+  transform: translateX(5px);
+}
+
+/* Comparison Table Section */
+.comparisonSection {
+  padding: 4rem 0;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.comparisonTable th {
+  background-color: var(--ifm-color-emphasis-100);
+  font-weight: bold;
+}
+
+.featureCell {
+  font-weight: bold;
+}
+
+.advantageCell {
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.advantage,
+.disadvantage {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkIcon {
+  color: var(--ifm-color-success);
+  font-weight: bold;
+}
+
+.xIcon {
+  color: var(--ifm-color-danger);
+  font-weight: bold;
+}
+
+/* Community Section */
+.communitySection {
+  padding: 4rem 0;
+  background-color: var(--ifm-color-emphasis-900);
+  color: var(--ifm-color-white);
+}
+
+.communitySection h2,
+.communitySection p {
+  color: var(--ifm-color-white);
+}
+
+.communityCard {
+  display: block;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--ifm-color-emphasis-800);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--ifm-color-white);
+}
+
+.communityCard:hover {
+  background-color: var(--ifm-color-emphasis-700);
+  transform: translateY(-5px);
+  text-decoration: none;
+  color: var(--ifm-color-white);
+}
+
+.communityCardIcon {
+  margin-bottom: 1rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Community icons - these would be replaced with actual SVG icons in a real implementation */
+.communityIconGithub {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.communityIconGithub::after {
+  content: "🐙";
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.communityIconPaper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.communityIconPaper::after {
+  content: "📄";
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.communityIconDiscord {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.communityIconDiscord::after {
+  content: "💬";
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 996px) {
+  .comparisonTable th,
+  .comparisonTable td {
+    padding: 0.75rem;
+  }
 }

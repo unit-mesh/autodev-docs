@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'AutoDev - Open Source AI Coding Wizard',
-  tagline: 'The AI-powered coding wizard with multilingual support',
+  tagline: 'Empower AI agents to autonomously build, test, and manage code',
   favicon: 'img/favicon.ico',
   url: 'https://ide.unitmesh.cc',
   baseUrl: '/',

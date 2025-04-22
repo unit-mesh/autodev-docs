@@ -8,6 +8,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(to right, var(--ifm-color-primary-darkest), var(--ifm-color-primary-dark));
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +21,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
