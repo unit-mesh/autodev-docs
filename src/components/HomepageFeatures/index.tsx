@@ -58,9 +58,9 @@ function Feature({title, description, icon}: FeatureItem) {
 function QuickLinks() {
   const links = [
     { title: '安装指南', description: '快速在您的环境中设置 AutoDev', link: '/quick-start' },
-    { title: '核心概念', description: '了解 AutoDev 背后的基本原理', link: '/intro' },
     { title: 'AI 程序员', description: '探索 AutoDev Sketch 自动编码', link: '/composer' },
-    { title: '配置', description: '学习如何根据您的特定需求自定义 AutoDev', link: '/customize' },
+    { title: '定制化', description: '学习如何根据您的特定需求自定义 AutoDev', link: '/customize' },
+    { title: '智能体语言', description: '了解 AI 程序员背后的智能体工具', link: '/devins/quick-start' },
   ];
 
   return (

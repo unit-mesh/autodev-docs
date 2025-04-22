@@ -69,11 +69,11 @@ const sidebars = {
 			type: 'category',
 			label: 'AI Agent Language',
 			items: [
+				'devins/quick-start',
 				'devins/devins',
-				'devins/development',
 				'devins/devins-language',
 				'devins/orchestration',
-				'devins/quick-start',
+				'devins/development',
 			],
 		},
 		{
