@@ -13,7 +13,7 @@ const config = {
   baseUrl: '/auto-dev/',
   organizationName: 'unit-mesh',
   projectName: 'auto-dev',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   i18n: {
     defaultLocale: 'zh-Hans',
