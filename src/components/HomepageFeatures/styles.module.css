@@ -124,6 +124,7 @@
 /* Comparison Table Section */
 .comparisonSection {
   padding: 4rem 0;
+  background-color: var(--ifm-color-emphasis-100);
 }
 
 .tableWrapper {
@@ -145,7 +146,7 @@
 }
 
 .comparisonTable th {
-  background-color: var(--ifm-color-emphasis-100);
+  background-color: var(--ifm-color-emphasis-200);
   font-weight: bold;
 }
 
@@ -178,92 +179,36 @@
 /* Community Section */
 .communitySection {
   padding: 4rem 0;
-  background-color: var(--ifm-color-emphasis-900);
-  color: var(--ifm-color-white);
-}
-
-.communitySection h2,
-.communitySection p {
-  color: var(--ifm-color-white);
+  background-color: var(--ifm-color-emphasis-0);
 }
 
 .communityCard {
-  display: block;
   height: 100%;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 8px;
-  background-color: var(--ifm-color-emphasis-800);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: var(--ifm-color-white);
-}
-
-.communityCard:hover {
-  background-color: var(--ifm-color-emphasis-700);
-  transform: translateY(-5px);
-  text-decoration: none;
-  color: var(--ifm-color-white);
-}
-
-.communityCardIcon {
-  margin-bottom: 1rem;
-  width: 50px;
-  height: 50px;
+  background-color: var(--ifm-color-emphasis-100);
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-/* Community icons - these would be replaced with actual SVG icons in a real implementation */
-.communityIconGithub {
-  width: 100%;
-  height: 100%;
-  position: relative;
+.communityCard h3 {
+  margin-bottom: 1rem;
 }
 
-.communityIconGithub::after {
-  content: "🐙";
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.communityCard p {
+  margin-bottom: 1.5rem;
 }
 
-.communityIconPaper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.communityIconPaper::after {
-  content: "📄";
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.communityIconDiscord {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.communityIconDiscord::after {
-  content: "💬";
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Responsive adjustments */
 @media screen and (max-width: 996px) {
   .comparisonTable th,
   .comparisonTable td {
     padding: 0.75rem;
+  }
+
+  .communityCard {
+    margin-bottom: 2rem;
   }
 }
