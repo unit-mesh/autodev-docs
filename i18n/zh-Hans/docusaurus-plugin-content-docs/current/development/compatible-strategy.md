@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: 兼容性策略

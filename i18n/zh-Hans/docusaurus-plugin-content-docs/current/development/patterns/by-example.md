@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: 示例模式

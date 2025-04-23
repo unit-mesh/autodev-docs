@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: DevIns 快速入门

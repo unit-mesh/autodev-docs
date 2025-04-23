@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: Git 提交规范

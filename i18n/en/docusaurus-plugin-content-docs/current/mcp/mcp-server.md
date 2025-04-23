@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: AutoDev as MCP Server

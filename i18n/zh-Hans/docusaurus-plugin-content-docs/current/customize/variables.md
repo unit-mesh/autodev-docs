@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: 变量

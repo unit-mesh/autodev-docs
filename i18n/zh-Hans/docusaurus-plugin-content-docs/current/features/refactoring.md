@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: 代码重构

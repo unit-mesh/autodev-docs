@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: Sketch 快速入门

@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: DevIns 语言规范

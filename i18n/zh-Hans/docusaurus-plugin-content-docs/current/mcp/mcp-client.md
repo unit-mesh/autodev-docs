@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: AutoDev 作为 MCP 客户端

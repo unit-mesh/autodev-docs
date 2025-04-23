@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: 草图观察器

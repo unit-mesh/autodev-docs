@@ -1,5 +1,3 @@
-
-
 ---
 layout: default
 title: Tech Writing

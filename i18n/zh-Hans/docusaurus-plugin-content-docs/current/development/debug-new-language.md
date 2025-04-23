@@ -1,10 +1,9 @@
-
-
 ---
 layout: default
 title: 调试新语言支持
 nav_order: 2
 parent: 开发指南
+---
 
 在JetBrains的IDE中，某些语言的支持不够完善，有些语言甚至完全没有官方支持。
 
