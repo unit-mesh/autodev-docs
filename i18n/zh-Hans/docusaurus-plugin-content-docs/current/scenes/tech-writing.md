@@ -1,27 +1,29 @@
+
+
 ---
 layout: default
-title: Tech Writing
+title: 技术写作
 nav_order: 4
-parent: Scenes
+parent: 场景应用
 permalink: /scenes/tech-writing
 ---
 
-- Scene: Tech Writing
-- Used features: Custom Team Prompts
+- 场景: 技术写作
+- 使用功能: 自定义团队提示
 
-1. Analysis domain
-2. Generate outline
-3. Continue writing
-4. Summarize
+1. 领域分析
+2. 生成大纲
+3. 继续写作
+4. 总结归纳
 
-create prompts files in your project.
+在您的项目中创建提示文件。
 
-## Analysis domain
+## 领域分析
 
 ```markdown
     ---
     type: QuickAction
-    name: Trend Analysis
+    name: 趋势分析
     category: Generate
     language: Markdown
     interaction: AppendCursorStream
@@ -35,11 +37,11 @@ create prompts files in your project.
     ${selection}
     
 
-## Generate outline
+## 生成大纲
     
     ---
     type: QuickAction
-    name: Outline
+    name: 大纲生成
     category: Generate
     language: Markdown
     interaction: AppendCursorStream
@@ -48,44 +50,44 @@ create prompts files in your project.
     ```system```
     
     
-    You are an assistant helping to draft an outline for a document. Use this format, replacing text in brackets with the result. Do not include the brackets in the output:
-    
-    # [Title of document]
-    [Bulleted list outline of document, in markdown format]
+    你是一个协助起草文档大纲的助手。使用以下格式，将括号内的内容替换为实际结果，不要在输出中包含括号：
+
+    # [文档标题]
+    [使用Markdown格式的文档要点列表]
     
     ```user```
     ${selection}
 ```
 
-## Continue writing    
+## 继续写作    
 
 ```markdown    
     ---
     type: QuickAction
-    name: Continue Writing
+    name: 继续写作
     category: Default
     language: Markdown
     interaction: AppendCursorStream
     ---
     **system**
     
-    You are an assistant helping a user write a document. Output how the document continues, no more than 3 sentences. Output in markdown format. Do not use links.
+    你是一个协助用户撰写文档的助手。输出文档的后续内容，不超过3句话。使用Markdown格式，不要使用链接。
     
-    Use this format, replacing text in brackets with the result. Do not include the brackets in the output:
+    使用以下格式，将括号内的内容替换为实际结果，不要在输出中包含括号：
     
-    [Continuation of the document in markdown format, no more than 3 sentences.]
+    [使用Markdown格式的文档后续内容，不超过3句话]
     
     **user**
     
     ${beforeCursor}
 ```
 
-## Summarize
+## 总结归纳
 
 ```markdown    
     ---
     type: QuickAction
-    name: Summarize
+    name: 总结归纳
     category: Generate
     language: markdown
     interaction: AppendCursorStream
@@ -93,9 +95,9 @@ create prompts files in your project.
     
     ```system```
     
-    You are an assistant helping summarize a document. Use this format, replacing text in brackets with the result. Do not include the brackets in the output:
+    你是一个协助总结文档的助手。使用以下格式，将括号内的内容替换为实际结果，不要在输出中包含括号：
     
-    [One-paragaph summary of the document using the identified language.].
+    [使用识别语言对文档进行单段落总结]
     
     ```user```
     ${beforeCursor}

@@ -1,59 +1,59 @@
+
+
 ---
 layout: default
-title: Code Review
+title: 代码审查
 nav_order: 12
-parent: Development
+parent: 开发流程
 ---
 
-## Code Review
+## 代码审查
 
-### Sample
+### 示例
 
-link: https://github.com/domvwt/chatgpt-code-review/blob/main/chatgpt_code_review/query.py
+链接: https://github.com/domvwt/chatgpt-code-review/blob/main/chatgpt_code_review/query.py
 
 ```
-   Please review the code below and identify any syntax or logical errors, suggest
-   ways to refactor and improve code quality, enhance performance, address security
-   concerns, and align with best practices. Provide specific examples for each area
-   and limit your recommendations to three per category.
+   请审查以下代码并识别任何语法或逻辑错误，建议重构和提升代码质量的方法，
+   优化性能，解决安全隐患，并遵循最佳实践。每个类别请提供具体示例，
+   每个类别建议不超过三条。
    
-   Use the following response format, keeping the section headings as-is, and provide
-   your feedback. Use bullet points for each response. The provided examples are for
-   illustration purposes only and should not be repeated.
+   请使用以下响应格式，保持章节标题不变，并提供您的反馈。每个建议使用项目符号。
+   提供的示例仅用于说明目的，请勿重复使用。
    
-   **Syntax and logical errors (example)**:
-   - Incorrect indentation on line 12
-   - Missing closing parenthesis on line 23
+   **语法和逻辑错误（示例）**:
+   - 第12行缩进错误
+   - 第23行缺少闭合括号
    
-   **Code refactoring and quality (example)**:
-   - Replace multiple if-else statements with a switch case for readability
-   - Extract repetitive code into separate functions
+   **代码重构与质量（示例）**:
+   - 用 switch case 替代多个 if-else 语句以提高可读性
+   - 将重复代码提取为独立函数
    
-   **Performance optimization (example)**:
-   - Use a more efficient sorting algorithm to reduce time complexity
-   - Cache results of expensive operations for reuse
+   **性能优化（示例）**:
+   - 使用更高效的排序算法降低时间复杂度
+   - 缓存高成本运算结果以供复用
    
-   **Security vulnerabilities (example)**:
-   - Sanitize user input to prevent SQL injection attacks
-   - Use prepared statements for database queries
+   **安全漏洞（示例）**:
+   - 对用户输入进行消毒处理以防止SQL注入攻击
+   - 使用预处理语句进行数据库查询
    
-   **Best practices (example)**:
-   - Add meaningful comments and documentation to explain the code
-   - Follow consistent naming conventions for variables and functions
+   **最佳实践（示例）**:
+   - 添加有意义的注释和文档说明代码
+   - 遵循统一的变量和函数命名规范
 
-## Final
+## 最终审查
+ 
+   您是一位经验丰富的软件开发人员，我需要您对以下代码进行专业审查：
    
-   You are a seasoned software developer, and I'm seeking your expertise to review the following code:
-   
-   - Focus on critical algorithms, logical flow, and design decisions within the code. Discuss how these changes impact the core functionality and the overall structure of the code.
-   - Identify and highlight any potential issues or risks introduced by these code changes. This will help reviewers pay special attention to areas that may require improvement or further analysis.
-   - Emphasize the importance of compatibility and consistency with the existing codebase. Ensure that the code adheres to the established standards and practices for code uniformity and long-term maintainability.
+   - 重点关注代码中的核心算法、逻辑流程和设计决策。讨论这些变更如何影响核心功能和整体代码结构
+   - 识别并突出显示这些代码变更引入的潜在问题或风险。这将帮助审查人员特别注意需要改进或深入分析的领域
+   - 强调与现有代码库的兼容性和一致性。确保代码符合既定的标准和实践，保证代码统一性和长期可维护性
      
-     You are working on a project that uses Spring MVC,Spring WebFlux,JDBC to build business logic.
+     当前项目使用 Spring MVC、Spring WebFlux、JDBC 构建业务逻辑。
    
-     The following user stories are related to these changes:
-     预定会议室
-     Commit Message: feat(meeting): add repository #6\n\nCode Changes:\n\nIndex: src/main/java/cc/unitmesh/untitled/demo/repository/MeetingRepository.java
+     相关用户故事：
+     会议室预定功能
+     提交信息: feat(meeting): add repository #6\n\n代码变更:\n\nIndex: src/main/java/cc/unitmesh/untitled/demo/repository/MeetingRepository.java
      new file mode 100644
      --- /dev/null
      +++ b/src/main/java/cc/unitmesh/untitled/demo/repository/MeetingRepository.java
@@ -68,14 +68,14 @@ link: https://github.com/domvwt/chatgpt-code-review/blob/main/chatgpt_code_revie
    +public interface MeetingRepository extends CrudRepository<BlogPost, Long> {
    +
    +}
-   As your Tech lead, I am only concerned with key code review issues. Please provide me with a critical summary.
-   Submit your key insights under 5 sentences in here:
+   作为技术主管，我只关注关键代码审查问题。请提供关键性总结。
+   请用5句话内提交您的核心见解：
 ```
 
-## Commit Message Generate 
+## 提交信息生成 
 
-### Strategy
+### 策略
 
-- filter key patch message.
-- combine with commit message and code diff.
-- find history commit message as examples.
+- 过滤关键补丁信息
+- 结合提交信息和代码差异
+- 参考历史提交信息作为示例

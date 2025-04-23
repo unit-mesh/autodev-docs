@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Prompt Strategy
@@ -7,42 +9,42 @@ nav_order: 98
 
 # Prompt Strategy
 
-AutoDev Prompt 生成策略是 AutoDev 的核心功能，它可以根据你的代码上下文，生成最佳的代码提示。
+The AutoDev Prompt Generation Strategy is the core functionality of AutoDev, which can generate optimal code suggestions based on your code context.
 
 ![AutoDev Prompt Example](https://unitmesh.cc/auto-dev/autodev-prompt-strategy-1.png)
 
-通常来说，一个指令对应的 prompt 会由以下五部分组成：
+Typically, a prompt corresponding to an instruction consists of the following five components:
 
-- Action 类型。比如：`Code complete`，`Translate to Kotlin` 等。
-- 语言上下文 （结合规范）。比如：`Java`，`Kotlin`，`Python` 对应的规范。
-- 技术栈上下文 （结合规范）。比如 Controller，Service，Repository 对应的规范。
-- 相关上下文(ClassProvider)。比如：当前文件，当前文件夹，当前项目，当前项目的所有文件等。
-- 代码(PsiElement)。当前的代码
+- Action type. For example: `Code complete`, `Translate to Kotlin`, etc.
+- Language context (combined with specifications). For example: specifications corresponding to `Java`, `Kotlin`, `Python`.
+- Technology stack context (combined with specifications). For example: specifications for Controller, Service, Repository.
+- Relevant context (ClassProvider). For example: current file, current directory, current project, all files in the current project.
+- Code (PsiElement). Current code.
 
-不同语言会基于自己的模块，实现 ContextPrompter，比如 JavaContextPrompter，KotlinContextPrompter 等。
+Different languages implement ContextPrompter through their own modules, such as JavaContextPrompter, KotlinContextPrompter, etc.
 
-## Prompt 架构
+## Prompt Architecture
 
-因此，AutoDev 参考了 Intellij Rust、JetBrains AI Assistant 的模块化架构方式，如下图所示：
+Therefore, AutoDev adopts a modular architecture inspired by Intellij Rust and JetBrains AI Assistant, as shown in the following diagram:
 
 ![AutoDev Prompt Example](https://unitmesh.cc/auto-dev/autodev-prompt-strategy-2.png)
 
-由每个语言模块基于抽象接口实现对应的：**语言上下文**、**技术栈上下文**，为此需要读取依赖相关的信息，如 gradle，maven，package.json 等。
+Each language module implements the corresponding **language context** and **technology stack context** based on abstract interfaces. This requires reading dependency-related information such as gradle, maven, package.json, etc.
 
-## 相关上下文
+## Relevant Context
 
-AutoDev 提供了以下几种相关上下文：
+AutoDev provides the following types of relevant context:
 
-- 基于静态代码分析的方式，即结合 import 语法和函数的输入、输出，生成对应的上下文信息。
-  - 对应实现类：[JavaContextPrompter]
-- 通过 Cosine Similarity 来计算最近打开 20 个文件代码块的相似度。即 GitHub Copilot、JetBrains AI Assistant 的实现方式之一。
-  - 对应实现类：[SimilarChunksWithPaths]
+- Static code analysis approach: Generates corresponding context information by combining import syntax and function input/output.
+  - Corresponding implementation class: [JavaContextPrompter]
+- Cosine Similarity calculation for code chunk similarity among the 20 most recently opened files. This is one of the implementation methods used by GitHub Copilot and JetBrains AI Assistant.
+  - Corresponding implementation class: [SimilarChunksWithPaths]
 
 ![AutoDev Similar Chunk](https://unitmesh.cc/auto-dev/autodev-prompt-strategy-3.png)
 
-## 隐藏细节的双 prompt
+## Dual-Prompt for Hidden Details
 
-在 AutoDev 中，复杂的 prompt 会被分为两个 prompt 来实现，如下图所示：
+In AutoDev, complex prompts are implemented through two separate prompts, as shown below:
 
 ```kotlin
 abstract class ContextPrompter {
@@ -52,8 +54,7 @@ abstract class ContextPrompter {
 }
 ```
 
-- displayPrompt: 用于展示给用户的 prompt，比如：`Code complete`，`Translate to Kotlin` 等。
-- requestPrompt: 用于请求 AI 服务的 prompt，比如：`Code complete:\n${METHOD_INPUT_OUTPUT}\n${SPEC_controller}\n\n${SELECTION}`。
+- `displayPrompt`: The prompt displayed to users, e.g., `Code complete`, `Translate to Kotlin`.
+- `requestPrompt`: The prompt sent to AI services, e.g., `Code complete:\n${METHOD_INPUT_OUTPUT}\n${SPEC_controller}\n\n${SELECTION}`.
 
-根据不同的情况，会在展示给用户的 prompt 中隐藏一些细节，比如相关代码块，输入输出等。
-
+Depending on the scenario, certain details (such as related code chunks, input/output) may be hidden in the user-facing prompt.

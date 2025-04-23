@@ -1,50 +1,45 @@
+
+
 ---
 layout: default
-title: Compatible Strategy
+title: 兼容性策略
 nav_order: 3
-parent: Development
+parent: 开发指南
 ---
 
-In JetBrains' IDE, it is important to note that APIs can undergo changes, leading to potential incompatibility issues
-between the plugin and the latest IDE versions. To address this, it is necessary to configure a compatibility strategy
-for the plugin.
+在 JetBrains 的 IDE 生态中，需要注意 API 可能会发生变更，导致插件与新版本 IDE 出现兼容性问题。为此，需要为插件配置兼容性策略。
 
-Within AutoDev, we employ the following strategies:
+AutoDev 采用以下兼容策略：
 
-1. **Latest APIs:** We support versions 233 to 241 and beyond, representing JetBrains' IDEs where AI plugin development
-   began.
+1. **前沿 API 支持：** 支持 233 至 241 及更高版本，这些版本代表 JetBrains 开始进行 AI 插件开发的 IDE 平台
 
-2. **Stable APIs:** Our compatibility extends to versions 222 to 232, which are widely utilized within enterprise
-   environments and ensure stability.
+2. **稳定 API 支持：** 兼容 222 至 232 版本，这些版本在企业环境中广泛使用并确保稳定性
 
-By adopting these strategies, we aim to enhance the plugin's compatibility with various JetBrains IDE versions, catering
-to both cutting-edge and established enterprise development environments.
+通过采用这些策略，我们致力于提升插件对不同 JetBrains IDE 版本的兼容性，兼顾前沿开发环境和企业级稳定环境的需求。
 
-## Gradle Configuration for Compatibility
+## Gradle 兼容性配置
 
-To ensure compatibility with different IDE versions, we can configure the plugin in the Gradle config, such as
-`gradle.properties`:
+为确保插件适配不同 IDE 版本，可以在 Gradle 配置文件中进行设置（如 `gradle.properties`）:
 
 ```properties
-# Supported platforms: 222, 233
+# 支持的平台版本：222, 233
 platformVersion=233
 ```
 
-By specifying the platform version, we can ensure that the plugin is compatible with the desired IDE versions.
+通过指定平台版本，可以确保插件与目标 IDE 版本保持兼容。
 
-### Platform Version Configuration
+### 平台版本配置
 
-According to the different platform versions, we can configure the plugin by `gradle-{version}.properties`.
-For example, in `gradle-222.properties`:
+根据不同的平台版本，可以通过 `gradle-{version}.properties` 文件进行配置。例如在 `gradle-222.properties` 中：
 
 ```properties
 pluginSinceBuild=222.*
 pluginUntilBuild=232.*
 ```
 
-### Gradle SourceSets
+### Gradle 源集配置
 
-We can also configure the plugin in the Gradle source sets, such as `src/main/{version}/kotlin` in `build.gradle.kts`:
+也可以在 Gradle 源集（sourceSets）中进行配置，例如在 `build.gradle.kts` 中配置 `src/main/{version}/kotlin`：
 
 ```kotlin
 allprojects {
@@ -72,5 +67,4 @@ allprojects {
 }
 ```
 
-By configuring the plugin in the Gradle source sets, we can ensure that the plugin is compatible with different IDE
-versions, catering to both cutting-edge and established enterprise development environments.
+通过 Gradle 源集的配置方式，可以确保插件适配不同 IDE 版本，同时满足前沿开发需求和企业级稳定环境的双重需求。

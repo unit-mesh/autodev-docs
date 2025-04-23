@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Prompt Override
@@ -10,10 +12,10 @@ prompt.
 
 ## How to use
 
-create a folder named `prompt/` in your project root directory, then create the prompt file which defined in
+Create a folder named `prompt/` in your project root directory, then create the prompt file which defined in
 Supported Action.
 
-For example, create a file named `prompts/sql/sql-gen-clarify.vm`, will override the clarify prompt of AutoSQL/GenSQL
+For example, creating a file named `prompts/sql/sql-gen-clarify.vm` will override the clarify prompt of AutoSQL/GenSQL.
 
 ## Supported Action
 
@@ -52,6 +54,6 @@ For example, create a file named `prompts/sql/sql-gen-clarify.vm`, will override
     └── generate-dockerfile.vm
 ```
 
-The system's built-in Prompt files are located in the `src/main/resources/genius/` directory. You can customize your own prompts by referring to these files (keeping the variable names consistent).
+The built-in prompt files are located in the `src/main/resources/genius/` directory. You can reference these files for customization (keep variable names consistent).
 
 For details, see: https://github.com/unit-mesh/auto-dev/tree/master/core/src/main/resources/genius

@@ -1,13 +1,15 @@
+
+
 ---
 layout: default
-title: Code Review
-parent: Basic Features
+title: 代码审查
+parent: 基础功能
 nav_order: 9
 permalink: /features/code-review
 ---
 
-1. select commit in the Git panel (`Cmd` + `9`), and right-click to show the context-menu 
+1. 在Git面板中选择提交（快捷键 `Cmd` + `9`），右键点击显示上下文菜单
 
-<img src="https://unitmesh.cc/auto-dev/works-with-git.png" alt="Code Review" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/works-with-git.png" alt="代码审查" width="600px"/>
 
-impl code: [CodeReviewAction](https://github.com/unit-mesh/auto-dev/blob/master/exts/ext-git/src/main/kotlin/cc/unitmesh/git/actions/vcs/CodeReviewAction.kt)
+实现代码：[CodeReviewAction](https://github.com/unit-mesh/auto-dev/blob/master/exts/ext-git/src/main/kotlin/cc/unitmesh/git/actions/vcs/CodeReviewAction.kt)

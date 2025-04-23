@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: AutoTest
@@ -5,38 +7,38 @@ nav_order: 5
 parent: Development
 ---
 
-# AutoTest Design
+# 自动化测试设计
 
-## Design Principle 
+## 设计原则
 
-Create rule:
+创建规则：
 
-- if test code exists and LLM returns with import syntax, AutoDev will replace all code.
-- if test code exists and LLM returns with no import syntax, AutoDev will insert test code after the last import statement.
-- if test code does not exist, AutoDev will insert test code.
+- 若测试代码已存在且LLM返回包含import语句，AutoDev将替换所有代码
+- 若测试代码已存在且LLM返回不包含import语句，AutoDev将在最后一个import语句后插入测试代码
+- 若测试代码不存在，AutoDev将直接插入测试代码
 
-Run rule:
+运行规则：
 
-- if run configuration exists, AutoDev will create a new run configuration.
-- if run configuration does not exist, AutoDev will create a new run configuration.
+- 若运行配置已存在，AutoDev将创建新的运行配置
+- 若运行配置不存在，AutoDev将创建新的运行配置
 
-For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/devti/provider/AutoTestService.kt) 
+更多细节请参考[AutoTestService](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/devti/provider/AutoTestService.kt)
 
-## Test Prompts
+## 测试提示模板
 
 ```markdown
-    Write unit test for the following Kotlin code.
+    为以下Kotlin代码编写单元测试。
     
-    You are working on a project that uses Spring MVC, Spring WebFlux to build RESTful APIs.
-    - You MUST use should_xx_xx style for test method name, You MUST use given-when-then style.
-    - Test file should be complete and compilable, without need for further actions.
-    - Ensure that each test focuses on a single use case to maintain clarity and readability.
-    - Instead of using `@BeforeEach` methods for setup, include all necessary code initialization within each individual test method, do not write parameterized tests.
-    - This project uses JUnit 5, you should import `org.junit.jupiter.api.Test` and use `@Test` annotation.
-    - Use appropriate Spring test annotations such as `@MockBean`, `@Autowired`, `@WebMvcTest`, `@DataJpaTest`, `@AutoConfigureTestDatabase`, `@AutoConfigureMockMvc`, `@SpringBootTest` etc.
-      Here is a template as example
+    您正在使用Spring MVC和Spring WebFlux构建RESTful API的项目中工作。
+    - 测试方法名必须使用should_xx_xx格式，必须使用given-when-then结构
+    - 测试文件应完整且可直接编译，无需额外操作
+    - 确保每个测试仅关注单一用例以保持清晰可读
+    - 不要使用@BeforeEach进行初始化，所有必要代码都应包含在单个测试方法中，不要编写参数化测试
+    - 项目使用JUnit 5，需导入`org.junit.jupiter.api.Test`并使用@Test注解
+    - 使用合适的Spring测试注解如@MockBean、@Autowired、@WebMvcTest、@DataJpaTest、@AutoConfigureTestDatabase、@AutoConfigureMockMvc、@SpringBootTest等
+      参考模板示例：
     \```Kotlin
-    // You Must use @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+    // 必须使用@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     @ExtendWith(SpringExtension::class)
     class PluginControllerTest {
@@ -45,7 +47,7 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     
         @BeforeEach
         fun setup() {
-            // You can use MockMvcBuilders.standaloneSetup() to build mockMvc
+            // 可使用MockMvcBuilders.standaloneSetup()构建mockMvc
             mockMvc = MockMvcBuilders.standaloneSetup(PluginController()).build()
         }
     
@@ -59,9 +61,9 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     
     \```
     
-    - Kotlin API version: 1.9
+    - Kotlin API版本：1.9
     
-    // here are related classes:
+    // 相关类信息：
     // 'package: com.thoughtworks.archguard.evolution.domain.BadSmellSuite
     // class BadSmellSuite {
     //   id
@@ -87,7 +89,7 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     //   + fun getBadSmellSuiteWithSelectedInfoBySystemId(systemId: Long): List<BadSmellSuiteWithSelected>
     // }
     
-    // here is current class information:
+    // 当前类信息：
     // 'package: com.thoughtworks.archguard.evolution.controller.EvolutionBadSmellController
     // '@RestController, @RequestMapping("/api/evolution")
     // class EvolutionBadSmellController {
@@ -96,7 +98,7 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     //   + @GetMapping("/badsmell-thresholds/system/{systemId}")     fun getThresholdsBySystemId(@PathVariable("systemId") systemId: Long): List<BadSmellSuiteWithSelected>
     // }
     
-    Code:
+    代码：
     // import com.thoughtworks.archguard.evolution.domain.BadSmellSuite
     // import com.thoughtworks.archguard.evolution.domain.BadSmellSuiteWithSelected
     // import com.thoughtworks.archguard.evolution.domain.BadSmellThresholdService
@@ -121,37 +123,36 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     }
     \```
     
-    Start  with `import` syntax here:
+    请从import语句开始编写：
 ```
 
-## Resources
+## 资源
 
 ### TestSpark
 
-TestSpark 目前支持两种测试生成策略：
-- 基于 LLM 的测试生成（使用 OpenAI 和 JetBrains 内部 AI Assistant 平台）
-- 基于本地搜索的测试生成（使用 EvoSuite）
+TestSpark目前支持两种测试生成策略：
+- 基于LLM的测试生成（使用OpenAI和JetBrains内部AI Assistant平台）
+- 基于本地搜索的测试生成（使用EvoSuite）
 
-#### Method 1: LLM gen prompt example
+#### 方法一：LLM生成提示示例
 
 GitHub: [TestSpark](https://github.com/JetBrains-Research/TestSpark/blob/development/src/main/resources/defaults/TestSpark.properties)
 
 ```vtl
-Generate unit tests in $LANGUAGE for $NAME to achieve 100% line coverage for this class.
-Dont use @Before and @After test methods.
-Make tests as atomic as possible.
-All tests should be for $TESTING_PLATFORM.
-In case of mocking, use $MOCKING_FRAMEWORK. But, do not use mocking for all tests.
-Name all methods according to the template - [MethodUnderTest][Scenario]Test, and use only English letters.
-The source code of class under test is as follows:
+为$NAME生成$LANGUAGE单元测试以实现100%行覆盖。
+不要使用@Before和@After测试方法。
+保持测试原子性。
+所有测试应基于$TESTING_PLATFORM。
+如需mock请使用$MOCKING_FRAMEWORK，但不要所有测试都使用mock。
+测试方法命名遵循[MethodUnderTest][Scenario]Test模板，仅使用英文字母。
+被测类源码：
 $CODE
-Here are some information about other methods and classes used by the class under test. Only use them for creating objects, not your own ideas.
+以下是被测类使用的方法和类的相关信息，请仅用于创建对象：
 $METHODS
 $POLYMORPHISM
 $TEST_SAMPLE
 ```
 
-#### Method 2: EvoSuite gen 
+#### 方法二：EvoSuite生成
 
-[EvoSuite](https://www.evosuite.org/) 是一个工具，可以自动生成带有 Java 代码编写的类断言的测试用例。
-
+[EvoSuite](https://www.evosuite.org/) 是一个能够自动生成带有Java断言测试的工具。

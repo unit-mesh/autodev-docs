@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Project Rule
@@ -5,19 +7,17 @@ parent: AutoDev Sketch/Composer
 nav_order: 3
 ---
 
-# Project Rule
+# 项目规则
 
-Notes: We prefer to use [prompts override](https://ide.unitmesh.cc/customize/prompt-override.html) to customize the
-prompt, but if you want to use the project rule, you can use the following method to customize the prompt.
+注：我们推荐优先使用[提示词覆盖](https://ide.unitmesh.cc/customize/prompt-override.html)来定制提示词，但若需要项目级规则，可以通过以下方式自定义提示词。
 
-Since @2.0.2 version, AutoDev supports project rule. The project rule is a set of rules that are used to validate the
-project structure and configuration. The project rule is defined under `prompts/rules` directory. 
+自@2.0.2版本起，AutoDev开始支持项目规则。项目规则是一组用于验证项目结构和配置的规则集合，相关规则文件存放在`prompts/rules`目录下。
 
-## Project Rule Example
+## 项目规则示例
 
-The project rule is a Markdown file that contains the following fields:
+项目规则以Markdown文件形式存在，包含以下字段：
 
-For example, the project rule file is defined as follows:
+示例项目规则文件结构如下：
 
 ```bash
 prompts/rules/
@@ -25,11 +25,10 @@ prompts/rules/
 ├── controller.md
 ├── repository.md
 ├── rpc.md
-└── README.md  # will always load this file default !!
+└── README.md  # 该文件会被默认始终加载！！
 ```
 
-Then the AutoDev will auto handle the project rule by RuleInsCommand, you can use the following command to check the project
-rule:
+AutoDev将通过RuleInsCommand自动处理项目规则，您可以使用以下命令查看项目规则：
 
 ```devin
 /rule:service

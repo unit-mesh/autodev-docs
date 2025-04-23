@@ -1,23 +1,24 @@
+
+
 ---
 layout: default
-title: Custom Quick Action
-parent: Customize Features
+title: 自定义快速操作
+parent: 功能定制
 nav_order: 10
 permalink: /custom/quick-action
 ---
 
-# Custom Quick Action
+# 自定义快速操作
 
-QuickAction will trigger by `control` + BACK_SLASH(`\`) key. The default behavior is to show a Input Dialog, and you can
-input your prompt.
+QuickAction 通过 `control` + 反斜杠(`\`) 键触发。默认行为是显示输入对话框，您可以在其中输入提示词。
 
-## Customize
+## 自定义配置
 
-Demo project: [https://github.com/unit-mesh/untitled](https://github.com/unit-mesh/untitled)
+示例项目：[https://github.com/unit-mesh/untitled](https://github.com/unit-mesh/untitled)
 
-For more, see in example: [https://github.com/unit-mesh/untitled/tree/master/prompts/quick](https://github.com/unit-mesh/untitled/tree/master/prompts/quick)
+完整示例参考：[https://github.com/unit-mesh/untitled/tree/master/prompts/quick](https://github.com/unit-mesh/untitled/tree/master/prompts/quick)
 
-You can custom task by your own, by put prompts files under `prompts/quick`:
+通过在 `prompts/quick` 目录下放置提示文件即可自定义任务：
 
 ```markdown
 ---
@@ -29,11 +30,11 @@ interaction: AppendCursorStream
 ---
 **system**
 
-You are an assistant helping a user write a document. Output how the document continues, no more than 3 sentences. Output in markdown format. Do not use links.
+你是一个协助用户撰写文档的助手。输出文档的后续内容，不超过3句话。使用markdown格式输出，不要使用链接。
 
-Use this format, replacing text in brackets with the result. Do not include the brackets in the output:
+请按照以下格式替换方括号中的内容，输出时不要包含方括号：
 
-[Continuation of the document in markdown format, no more than 3 sentences.]
+[用markdown格式续写文档内容，不超过3句话]
 
 **user**
 

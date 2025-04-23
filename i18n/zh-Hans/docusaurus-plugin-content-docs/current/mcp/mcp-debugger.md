@@ -1,16 +1,18 @@
+
+
 ---
 layout: default
-title: MCP Debugger
+title: MCP 调试器
 nav_order: 4
 parent: MCP
 permalink: /mcp/mcp-debugger
 ---
 
-## AutoDev MCP debugger
+## AutoDev MCP 调试器
 
-<img src="https://unitmesh.cc/auto-dev/mcp-debugger.png" alt="Inline Chat" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/mcp-debugger.png" alt="内联聊天" width="600px"/>
 
-create a file end with `.mcp.json` in your project root directory, and add the following content:
+在项目根目录下创建以 `.mcp.json` 结尾的文件，并添加以下内容：
 
 ```json
 {
@@ -27,13 +29,12 @@ create a file end with `.mcp.json` in your project root directory, and add the f
 }
 ```
 
-Then, click show preview in File toolbar, you can see:
+然后点击文件工具栏中的"显示预览"，您可以看到：
 
-- MCP Server/Tool LIST
-- MCP Model Configured
-- MCP Chat input box
+- MCP 服务器/工具列表
+- 已配置的 MCP 模型
+- MCP 聊天输入框
 
-After send a message, you can see the response in the console:
+发送消息后，可以在控制台查看响应：
 
-<img src="https://unitmesh.cc/auto-dev/mcp-debugger-chat.png" alt="Inline Chat" width="600px"/>
-
+<img src="https://unitmesh.cc/auto-dev/mcp-debugger-chat.png" alt="内联聊天" width="600px"/>

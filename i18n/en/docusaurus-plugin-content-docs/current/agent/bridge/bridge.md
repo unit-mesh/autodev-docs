@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: AutoDev Bridge
@@ -7,7 +9,7 @@ parent: Agent
 permalink: /bridge
 ---
 
-Video demo (Bilibili) - 中文：[Watch the video](https://www.bilibili.com/video/BV1RwRNYEE1A/)
+Video demo (Bilibili) - Chinese: [Watch the video](https://www.bilibili.com/video/BV1RwRNYEE1A/)
 
 # AutoDev Bridge - Legacy Code Migration
 
@@ -15,19 +17,19 @@ Required tool:
 
 - [SCC](https://github.com/boyter/scc)
 
-Required plugin:
+Required plugins:
 
 - [OpenRewrite](https://plugins.jetbrains.com/plugin/23814-openrewrite) (Intellij IDEA Ultimate)
 - [Endpoints](https://plugins.jetbrains.com/plugin/16890-endpoints) (Intellij IDEA Ultimate)
 
 ### Custom Bridge
 
-follow [Prompt Override](/customize/prompt-override), the AI Composer can be customized. in the `prompt/code` folder,
+Following [Prompt Override](/customize/prompt-override), the AI Composer can be customized. In the `prompt/code` folder,
 you can create a file named `bridge.vm` to override the composer prompt.
 
 ### Custom Reasoner model
 
-Refs to [New Config (2.0.0-beta.4+)](/quick-start#new-config-200-beta4)
+Refer to [New Config (2.0.0-beta.4+)](/quick-start#new-config-200-beta4)
 
 ### Docker 
 
@@ -51,13 +53,9 @@ https://docs.docker.com/go/buildx/
 Failed to deploy '<unknown> Dockerfile: ../../../../shire.Dockerfile': Image build failed with exit code 1.
 ```
 
-Refs: https://github.com/abiosoft/colima/discussions/273
+Reference: https://github.com/abiosoft/colima/discussions/273
 
 ```bash
 brew install docker-buildx
 docker buildx install
 ```
-
-
-
-

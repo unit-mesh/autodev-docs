@@ -1,87 +1,82 @@
+
+
 ---
 title: AutoDev Bridge
 ---
 
-在 2023 年，基于当时的模型能力有限，我们在 AutoDev 设计了一系列的遗留系统功能的特性。而在 2025 年，经过自动编程智能体
-AutoDev Sketch 的一系列
-迭代，我们开始思考如何将 AI 智能体应用到遗留系统中，便产生了 AutoDev Bridge 这个想法。
+In 2023, given the limited capabilities of models at that time, we designed a series of legacy system features in AutoDev. By 2025, through successive iterations of the autonomous programming agent AutoDev Sketch, we began exploring how to apply AI agents to legacy systems, which led to the conception of AutoDev Bridge.
 
-## 为什么大模型能做得更好？
+## Why Can Large Language Models Perform Better?
 
-过去，我们公司 Thoughtworks 在这方面有非常多的积累，包括从迁移策略的设计、安全防护网的搭建等等，但是不论哪种迁移模型（绞杀者、修缮者等）最后
-都是需要人工介入的。而在 2025 年，已经有越来越多的 AI 智能体能够做到自动化迁移，因此我们进一步完善了我们的开源方案。
+Previously, our company Thoughtworks had accumulated extensive experience in this domain, including migration strategy design and safety net construction. However, regardless of the migration pattern used (Strangler, Rehabilitator, etc.), human intervention was always ultimately required. By 2025, an increasing number of AI agents have demonstrated capabilities for automated migration, prompting us to refine our open-source solution.
 
-在遗留系统迁移上，为什么大模型能做得更好呢？
+Why can large language models perform better in legacy system migration?
 
-- 设计合理的路径规划。通常来说，优先基于成本考虑，而大模型作为一个知识库，能非常好的给你成本评估。
-- 生成架构蓝图。结合目录结构、依赖信息、API，AI 能针对于当前系统描绘出初步的架构蓝图。
-- 提炼代码中的业务知识。结合 AST 等，分析现有代码的业务逻辑，再基于其重写。
-- 跨语言翻译。与生成代码不同的是，LLM 能非常好的将其翻译成目标语言，只需要几十秒到几分钟的时间。
-- 迁移防护网的增强。即生成自动化测试来验证迁移的正确性，实现实现精准回归测试。（注：在前端依然有所不足）
-- ……
+- **Designing reasonable path planning**. Typically prioritizing cost considerations, LLMs serve as excellent knowledge bases for cost assessment.
+- **Generating architectural blueprints**. By analyzing directory structures, dependency information, and APIs, AI can outline preliminary architectural blueprints for existing systems.
+- **Extracting business knowledge from code**. Through AST analysis and other methods, AI can interpret business logic in existing code and rewrite based on it.
+- **Cross-language translation**. Unlike regular code generation, LLMs can effectively translate code into target languages within seconds to minutes.
+- **Enhanced migration safety nets**. Generating automated tests to validate migration correctness enables precise regression testing (Note: Frontend implementations still have limitations).
+- ......
 
-所以，我们只需要思考两件事：
+Therefore, we only need to focus on two key considerations:
 
-- 如何让 AI 能借助工具更好地理解遗留系统？
-- 如何借助降低迁移的风险？
+- How can AI better understand legacy systems with tool assistance?
+- How to reduce migration risks?
 
-## AutoDev Bridge 如何加速老旧系统迁移？
+## How Does AutoDev Bridge Accelerate Legacy System Migration?
 
-基于对遗留系统迁移的理解，我们设计了 AutoDev Bridge 的初步方案。它主要包括：
+Based on our understanding of legacy system migration, we designed the initial implementation of AutoDev Bridge, which primarily includes:
 
-- LLM 生成的迁移方案。（基于“探索-感知-响应”方案）
-- 基于 C4 的当前架构现状分析。（基于 AI 工具调用）
-- 结合 AST 与调用链的业务逻辑分析。（AI 理解代码）
-- 生成迁移测试用例。
-- AI 辅助的代码翻译。
-- ……
+- LLM-generated migration plans (Following the "Explore-Sense-Respond" framework)
+- Current architecture analysis based on C4 model (Using AI tool invocations)
+- Business logic analysis combining AST and call chains (AI code comprehension)
+- Migration test case generation
+- AI-assisted code translation
+- ......
 
-借助与 IDE 的紧密集成，AutoDev Bridge 能获得非常准确的 IDE 上下文，以进一步降低 AI 幻觉的产生。
+Through tight integration with IDEs, AutoDev Bridge can obtain highly accurate development context to further reduce AI hallucinations.
 
-### 探索-感知-响应：LLM 生成的迁移方案
+### Explore-Sense-Respond: LLM-Generated Migration Plans
 
-在过去，我们将遗留系统迁移定义为 Cynefin 中的复杂问题，即你无法预测结果，只能通过实践来发现。于是乎，我们参考了 Cynefin
-的思想，设计了现有的
-AutoDev Bridge 的思维框架，即你要先探索、再感知、再响应。由于，我们预期的是模型在行动前是需要有一个蓝图（C4
-模型），所以我们将这个过程分为三个阶段：
+Historically, we categorized legacy system migration as a complex problem in the Cynefin framework - where outcomes cannot be predicted and must be discovered through practice. Drawing from Cynefin philosophy, we designed AutoDev Bridge's cognitive framework: Explore first, then Sense, then Respond. Since we expect models to have a blueprint (C4 model) before taking action, we divide the process into three phases:
 
-- 探索：通过初步调用工具，获取系统的基本信息，如目录结构、依赖关系等。
-- 感知：基于探索的结果，生成初步的架构蓝图、迁移方案。
-- 响应：进行迁移方案的验证、生成迁移测试用例、生成迁移代码。
+- **Explore**: Obtain basic system information through initial tool invocations (directory structures, dependencies, etc.)
+- **Sense**: Generate preliminary architectural blueprints and migration plans based on exploration results
+- **Respond**: Validate migration plans, generate migration test cases, and produce migration code
 
-落地到国内的模型能力下，就会由由 V3 来进行探索，R1 进行方案设计，由 V3 进行响应。
+Adapted for domestic model capabilities, this process would utilize V3 for exploration, R1 for plan design, and V3 for response.
 
-### 面向架构视图的工具设计
+### Architecture View-Oriented Tool Design
 
-为了更好让 AI 理解当前系统的架构，我们面向架构视图设计了一系列的工具。
+To help AI better understand system architectures, we designed a series of architecture view-oriented tools.
 
-| 工具名称 (name)   | 描述 (desc)                                                       |
-|---------------|-----------------------------------------------------------------|
-| componentView | 列出当前项目的所有UI组件列表，如React、Vue组件                                    |
-| containerView | 列出当前项目的所有模块                                                     |
-| webApiView    | 列出当前项目的所有Web API                                                |
-| stylingView   | 列出当前项目的所有CSS、SCSS类                                              |
-| dir           | 获取当前层级的目录结构                                                     |
-| history       | 获取当前文件的历史提交信息                                                   |
-| knowledge     | 从 API 调用链进行分析，默认 depth = 2（不可修改），即 Controller 到 Repository 的调用链 |
+| Tool Name (name)   | Description (desc)                                                                 |
+|--------------------|-----------------------------------------------------------------------------------|
+| componentView      | List all UI components in the current project (React, Vue components, etc.)       |
+| containerView      | List all modules in the current project                                           |
+| webApiView         | List all Web APIs in the current project                                          |
+| stylingView        | List all CSS/SCSS classes in the current project                                  |
+| dir                | Get directory structure of current hierarchy                                      |
+| history            | Retrieve historical commit information of current file                            |
+| knowledge          | Analyze API call chains with default depth=2 (unmodifiable), i.e., Controller-to-Repository call chains |
 
-注：显然 DeepSeek 不能很好理解 C4 模型，还需要进一步的优化。
+Note: Current implementations show DeepSeek still struggles to fully comprehend C4 models, requiring further optimization.
 
-### 业务知识提取与理解
+### Business Knowledge Extraction and Comprehension
 
-在业务逻辑分析中，我们主要是基于 API 的 AST 与调用链的业务逻辑分析。即先通过 `webApiView` 获取所有的 API，再通过
-`knowledge` 获取 API 的调用链。 如：
+For business logic analysis, we primarily rely on API AST and call chain analysis. First obtain all APIs through `webApiView`, then retrieve API call chains via `knowledge`. Example:
 
 ```devin
 /knowledge:GET#/api/blog/*
 ```
 
-在有了从 Controller 到 Repository 的调用链后，AI 就可以非常好地理解当前 API 的业务逻辑。
+With Controller-to-Repository call chains, AI can effectively understand the business logic behind APIs.
 
-当然，这只是一个简单的示例，实际上，AI 还需要结合搜索等工具，进一步获得更多的上下文。
+Of course, this is a simplified example. In practice, AI needs to combine search tools to acquire additional context.
 
-## 总结
+## Conclusion
 
-随着，我们研究的进一步深入，我们会逐步完善这个方案，以实现更好的自动化迁移。
+As our research progresses, we will continue refining this solution to achieve better automated migration capabilities.
 
-欢迎在 GitHub 上持续关注我们：https://github.com/unit-mesh/auto-dev
+Follow our progress on GitHub: https://github.com/unit-mesh/auto-dev

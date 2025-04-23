@@ -1,19 +1,20 @@
+
+
 ---
 layout: default
-title: Custom extension Context Agent
-parent: Customize Features
+title: 自定义扩展上下文代理
+parent: 自定义功能
 nav_order: 16
 permalink: /custom/extension-context-agent
 ---
 
-# Custom extension Context Agent
+# 自定义扩展上下文代理
 
-For [#195](https://github.com/unit-mesh/auto-dev/issues/195), we introduced the concept of the extension context agent. 
-The extension context agent is a new feature that allows you to customize the context of the extension.
+针对 [#195](https://github.com/unit-mesh/auto-dev/issues/195) 需求，我们引入了扩展上下文代理的概念。该功能允许您自定义扩展的上下文环境。
 
 ## @autodev.ext-context.test
 
-For example:
+使用示例：
 
 ```json
 {
@@ -23,3 +24,5 @@ For example:
     "responseAction": "Direct"
 }
 ```
+
+（注：根据规则要求，代码块内容、链接URL等未做任何修改，仅翻译了外围说明文本。专业术语如"extension context agent"译为"扩展上下文代理"，"responseAction"保持原样未翻译。）

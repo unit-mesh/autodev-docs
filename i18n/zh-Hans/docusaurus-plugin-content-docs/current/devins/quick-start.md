@@ -1,59 +1,60 @@
+
+
 ---
 layout: default
-title: DevIns Quick Start
+title: DevIns 快速入门
 nav_order: 1
-parent: AI Agent Language
+parent: AI 代理语言
 ---
 
-## Quick Start
+## 快速入门
 
-1. first create new file, like `sample.devin`, with content:
+1. 首先创建新文件，例如 `sample.devin`，内容如下：
 
 ```devin
 Explain code /file:src/main/java/com/example/Controller.java
 ```
 
-2. Run file with `AutoDev` plugin, and you will see AI response result.
+2. 使用 `AutoDev` 插件运行文件，即可查看 AI 的响应结果。
 
-ScreenShot
+截图
 
 ![AutoDev DevIns](https://unitmesh.cc/auto-dev/autodev-devins.png)
 
-## Basic Commands (BuiltinCommand.kt)
+## 基础命令 (BuiltinCommand.kt)
 
-- `/file`: read file content, format: `/file:<file-path>`, example: `/file:src/main/java/com/example/Controller.java`.
-- `/write`: write file content, format: `file#L1-L12`, example: `src/main/java/com/example/Controller.java#L1-L12`
-- `/rev`: read git change by git revision.
-- `/run`: run code, especially for test file, which is the best way to run code.
-- `/patch`: apply patches to file.
-- `/commit`: commit changes to git
-- `/symbol`: get child by symbol, like get Class by package name, format: `java.lang.String#length`,
-  example: `<package>.<class>#<method>`
-- `/shell`: run shell command or shell script, like `ls`, `pwd`, etc.
-- `/browse`: browse web page, like `https://ide.unitmesh.cc`
-- `/refactor`: refactor code, like `rename`, `delete`, `move` etc. (since @1.8.6) (Java only)
-- `/file-func`: read the name of a file, support for: regex, example: `/file-func:regex(".*\.txt")`
-- `/structure`: get the structure of a file with AST/PSI, example: `/structure:cc.unitmesh.devti.language.psi`
-- `/dir`: list files and directories in a tree-like structure, example: `/dir:src`
-- `/database`: read the content of a database, example: `/database:query\n```sql\nSELECT * FROM table\n````
-- `/localSearch`: search text in the scope (current only support project) will return 5 line before and after, example: `/localSearch:project\n```\nselect * from blog\n````
-- `/related`: get related code by AST (abstract syntax tree) for the current file, example: `/related:cc.unitmesh.devti.language.psi`
-- `/open`: open a file in the editor, example: `/open:.github/dependabot.yml`
-- `/ripgrepSearch`: search text in the project with ripgrep, example: `/ripgrepSearch:.*AutoDev.*`
+- `/file`: 读取文件内容，格式：`/file:<文件路径>`，示例：`/file:src/main/java/com/example/Controller.java`
+- `/write`: 写入文件内容，格式：`文件#L1-L12`，示例：`src/main/java/com/example/Controller.java#L1-L12`
+- `/rev`: 通过 Git 版本号读取变更
+- `/run`: 运行代码（特别适用于测试文件，这是运行代码的最佳方式）
+- `/patch`: 应用补丁到文件
+- `/commit`: 提交变更到 Git
+- `/symbol`: 通过符号获取子元素（例如通过包名获取类），格式：`java.lang.String#length`，示例：`<包名>.<类名>#<方法名>`
+- `/shell`: 执行 shell 命令或脚本，例如 `ls`, `pwd` 等
+- `/browse`: 浏览网页，例如 `https://ide.unitmesh.cc`
+- `/refactor`: 代码重构（如重命名、删除、移动等）（自 @1.8.6 起支持）（目前仅支持 Java）
+- `/file-func`: 读取文件名，支持正则表达式，示例：`/file-func:regex(".*\.txt")`
+- `/structure`: 通过 AST/PSI 获取文件结构，示例：`/structure:cc.unitmesh.devti.language.psi`
+- `/dir`: 以树状结构列出文件和目录，示例：`/dir:src`
+- `/database`: 读取数据库内容，示例：`/database:query\n```sql\nSELECT * FROM table\n````
+- `/localSearch`: 在指定范围（当前仅支持项目）内搜索文本，返回匹配行前后各5行，示例：`/localSearch:project\n```\nselect * from blog\n````
+- `/related`: 通过 AST（抽象语法树）获取当前文件相关代码，示例：`/related:cc.unitmesh.devti.language.psi`
+- `/open`: 在编辑器中打开文件，示例：`/open:.github/dependabot.yml`
+- `/ripgrepSearch`: 使用 ripgrep 在项目中搜索文本，示例：`/ripgrepSearch:.*AutoDev.*`
 
-### File Command
+### 文件命令
 
-based on [#143](https://github.com/unit-mesh/auto-dev/issues/143), we keep "/" as `File.separator` for macOS, Windows and Unix.
+基于 [#143](https://github.com/unit-mesh/auto-dev/issues/143)，我们保持"/"作为跨平台（macOS/Windows/Unix）的`File.separator`路径分隔符。
 
-Read file content:
+读取文件内容：
 
     Explain code /file:src/main/java/com/example/Controller.java
 
-will call LLM to handle it.
+将调用 LLM 进行处理。
 
-### Write Command
+### 写入命令
 
-write content to file:
+写入内容到文件：
 
     /write:src/main/java/com/example/Controller.java#L1-L12
     ```java
@@ -64,29 +65,29 @@ write content to file:
     }
     ```
 
-### Rev Command
+### 版本命令
 
-Read git change by git revision:
+通过 Git 版本号读取变更：
 
     Explain code /rev:HEAD~1
 
-will call LLM to handle it.
+将调用 LLM 进行处理。
 
-### Run Command
+### 运行命令
 
-Run file:
+运行文件：
 
     /run:src/main/java/com/example/Controller.java
 
-PS: current only support for TestFile, since UnitTest is the best way to run code.
+PS：当前仅支持测试文件，因为单元测试是运行代码的最佳方式。
 
-### Symbol Command
+### 符号命令
 
-Get child elements by symbol, like get Class by package name.
+通过符号获取子元素（例如通过包名获取类）：
 
     /symbol:cc.unitmesh.untitled.demo
 
-The output will be:
+输出结果：
 
     ```java
     cc.unitmesh.untitled.demo.MathHelper
@@ -95,11 +96,11 @@ The output will be:
     cc.unitmesh.untitled.demo.DemoApplicationTests
     ```
 
-Get method will return code:
+获取方法将返回代码：
 
     /symbol:cc.unitmesh.untitled.demo.MathHelper.calculateInsurance
 
-The output will be:
+输出结果：
 
     ```java
     public static double calculateInsurance(double income) {
@@ -111,25 +112,25 @@ The output will be:
     }
     ```
 
-### Browse Command
+### 浏览命令
 
-Browse web page:
+浏览网页：
 
     /browse:https://ide.unitmesh.cc
 
-It will be text inside the body from web page.
+将返回网页正文内容。
 
-### Refactor Command
+### 重构命令
 
-Refactor code:
+代码重构：
 
     /refactor:rename /symbol:cc.unitmesh.untitled.demo.MathHelper.calculateInsurance to calculateInsuranceTax
 
-It will handle in local.
+将在本地执行操作。
 
-### Structure Command
+### 结构命令
 
-Provide the structure of a file with AST/PSI:
+通过 AST/PSI 提供文件结构：
 
     /structure:root.go
 

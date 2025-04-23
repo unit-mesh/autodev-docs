@@ -1,21 +1,21 @@
+
+
 ---
 layout: default
-title: Prompt Override
-parent: Customize Features
+title: 提示覆盖
+parent: 功能定制
 nav_order: 15
 ---
 
-Prompt Override ([#54](https://github.com/unit-mesh/auto-dev/issues/54)) will override the AutoDev prompt with your own
-prompt.
+提示覆盖 ([#54](https://github.com/unit-mesh/auto-dev/issues/54)) 允许使用自定义提示词替换 AutoDev 的默认提示词。
 
-## How to use
+## 使用方法
 
-create a folder named `prompt/` in your project root directory, then create the prompt file which defined in
-Supported Action.
+在项目根目录下创建名为 `prompt/` 的文件夹，然后根据支持的操作类型创建对应的提示词文件。
 
-For example, create a file named `prompts/sql/sql-gen-clarify.vm`, will override the clarify prompt of AutoSQL/GenSQL
+例如：创建文件 `prompts/sql/sql-gen-clarify.vm` 将会覆盖 AutoSQL/GenSQL 的澄清提示词
 
-## Supported Action
+## 支持的操作类型
 
 ```bash
 ├── cicd
@@ -52,6 +52,6 @@ For example, create a file named `prompts/sql/sql-gen-clarify.vm`, will override
     └── generate-dockerfile.vm
 ```
 
-系统自带的 Prompt 文件在 `src/main/resources/genius/` 目录下，可以参考这些文件进行自定义（保持变量名一致）。
+系统内置的提示词文件位于 `src/main/resources/genius/` 目录，自定义时请保持变量名称与原始文件一致（可参考这些文件进行修改）。
 
-详细见：https://github.com/unit-mesh/auto-dev/tree/master/core/src/main/resources/genius
+完整目录结构参考：https://github.com/unit-mesh/auto-dev/tree/master/core/src/main/resources/genius

@@ -1,21 +1,23 @@
+
+
 ---
 layout: default
-title: HarmonyOS [Deprecated]
+title: HarmonyOS [已弃用]
 nav_order: 5
-parent: Scenes
+parent: 应用场景
 ---
 
-Deprecated: This page is deprecated and will be removed in the future.
+已弃用：本页面已过时，将在未来版本中移除。
 
-- Scene: HarmonyOS
+- 场景：HarmonyOS
 
-Ability to generate code for HarmonyOS applications.
+具备为HarmonyOS应用程序生成代码的能力。
 
 - AI 生成持续集成脚本
-- AI 生成 HarmonyOS 测试代码
-- AI 迁移 Android 布局到鸿蒙应用
-- AI 生成鸿蒙应用 ArkUI 布局
+- AI 生成HarmonyOS测试代码
+- AI 迁移Android布局到鸿蒙应用
+- AI 生成鸿蒙应用ArkUI布局
 - AI 辅助日常鸿蒙代码编写
 
-For more, see
-in: [https://harmonyos-dev.github.io/aigc-harmonyos-sample/](https://harmonyos-dev.github.io/aigc-harmonyos-sample/)
+更多示例请参考：
+[https://harmonyos-dev.github.io/aigc-harmonyos-sample/](https://harmonyos-dev.github.io/aigc-harmonyos-sample/)

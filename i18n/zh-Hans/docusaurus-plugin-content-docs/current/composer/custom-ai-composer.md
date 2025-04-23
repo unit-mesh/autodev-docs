@@ -1,29 +1,26 @@
+
+
 ---
 layout: default
-title: Sketch Quick start
+title: Sketch 快速入门
 parent: AutoDev Sketch/Composer
 nav_order: 1
 ---
 
-# Tips
+# 技巧
 
-## Custom AI Composer
+## 自定义AI Composer
 
-follow [Prompt Override](/customize/prompt-override), the AI Composer can be customized. in the `prompt/code` folder,
-you can create a file named [`sketch.vm`](https://github.com/unit-mesh/auto-dev/blob/master/core/src/main/resources/genius/zh/code/sketch.vm) 
-to override the composer prompt.
+遵循[提示词覆盖](/customize/prompt-override)指南，您可以自定义AI Composer。在`prompt/code`目录中，
+您可以创建名为[`sketch.vm`](https://github.com/unit-mesh/auto-dev/blob/master/core/src/main/resources/genius/zh/code/sketch.vm) 
+的文件来覆盖默认的composer提示词。
 
-## Use RipgrepSearch
+## 使用Ripgrep搜索
 
-Since we don't have a full-text search feature, you can use `RipgrepSearch` to search for files in the project. You can
-install it via Homebrew:
+由于我们尚未实现全文搜索功能，您可以使用`RipgrepSearch`在项目中搜索文件。可以通过Homebrew安装：
 
 ```bash
 brew install ripgrep
 ```
 
-Then you can use it in the AutoDev Composer.
-
-
-
-
+安装完成后即可在AutoDev Composer中使用该功能。

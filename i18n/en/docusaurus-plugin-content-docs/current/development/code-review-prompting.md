@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Code Review
@@ -52,7 +54,7 @@ link: https://github.com/domvwt/chatgpt-code-review/blob/main/chatgpt_code_revie
      You are working on a project that uses Spring MVC,Spring WebFlux,JDBC to build business logic.
    
      The following user stories are related to these changes:
-     预定会议室
+     Book meeting room
      Commit Message: feat(meeting): add repository #6\n\nCode Changes:\n\nIndex: src/main/java/cc/unitmesh/untitled/demo/repository/MeetingRepository.java
      new file mode 100644
      --- /dev/null
@@ -72,10 +74,10 @@ link: https://github.com/domvwt/chatgpt-code-review/blob/main/chatgpt_code_revie
    Submit your key insights under 5 sentences in here:
 ```
 
-## Commit Message Generate 
+## Commit Message Generation 
 
 ### Strategy
 
-- filter key patch message.
-- combine with commit message and code diff.
-- find history commit message as examples.
+- Filter key patch messages
+- Combine commit messages with code diffs
+- Reference historical commit messages as examples

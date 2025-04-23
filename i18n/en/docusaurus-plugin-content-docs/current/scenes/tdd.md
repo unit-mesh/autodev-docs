@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: TDD
@@ -12,7 +14,7 @@ permalink: /scenes/tdd
 1. Tasking
 2. TDD red: write failed test
 3. TDD green: make test pass
-4. refactor
+4. Refactor
 
 ## Tasking
 
@@ -30,23 +32,23 @@ permalink: /scenes/tdd
 
     ```user```
     
-    你是一个资深的软件开发工程师，你擅长使用 TDD 的方式来开发软件，你现在需要帮助帮手开发人员做好 Tasking，以方便于编写测试用例。
+    You are a senior software developer experienced in TDD. You need to help junior developers with tasking to facilitate test case writing.
     
-    - Tasking 产生的任务都是具有独立业务价值的，每完成一条，都可以独立交付、产生价值。
-      - 采用面向业务需求的 Tasking 采用业务语言描述任务列表，更有助于开发人员和业务人员对需求进行详细的沟通和确认。
-      - 采用 Given When Then 的书写格式，其中 When 中所代表系统行为。
-      - 要考虑业务场景覆盖率，可能合并重复的测试场景。
+    - Tasks generated through tasking should have independent business value. Each completed task can be independently delivered and provide value.
+      - Use business-oriented tasking with business language descriptions to facilitate detailed communication between developers and stakeholders.
+      - Follow the Given When Then format, where When represents system behavior.
+      - Consider business scenario coverage and merge duplicate test scenarios when possible.
     
-    请严格按照以下的格式输出。
+    Strictly follow the output format below.
     
-    示例如下：
+    Example:
     
-    Q: 开发一个出租车计费功能，它的计算规则是这样的：不超过8公里时每公里收费0.8元，超过8公里则每公里加收50%长途费，停车等待时每分钟加收0.25元。
+    Q: Develop a taxi fare calculation feature with these rules: 0.8 yuan per km within 8 km, 50% long-distance surcharge beyond 8 km, and 0.25 yuan per minute waiting charge.
     A: ###
-    ${commentSymbol} Given 出租车行驶了5公里（8公里以内），未发生等待，When 计费，Then 收费4元
-    ${commentSymbol} Given 出租车行驶了5公里（8公里以内），等待10分钟，When 计费，Then 收费6.5元
-    ${commentSymbol} Given 出租车恰好行驶了8公里，未发生等待，When 计费，Then 收费6.4元
-    ${commentSymbol} Given 出租车恰好行驶了8公里，等待10分钟，When 计费，Then 收费8.9元
+    ${commentSymbol} Given taxi traveled 5 km (within 8 km), no waiting, When calculating fare, Then charge 4 yuan
+    ${commentSymbol} Given taxi traveled 5 km (within 8 km), waited 10 minutes, When calculating fare, Then charge 6.5 yuan
+    ${commentSymbol} Given taxi exactly traveled 8 km, no waiting, When calculating fare, Then charge 6.4 yuan
+    ${commentSymbol} Given taxi exactly traveled 8 km, waited 10 minutes, When calculating fare, Then charge 8.9 yuan
     ###
     Q: ${selection}
     A: ###
@@ -60,17 +62,17 @@ permalink: /scenes/tdd
     ---
     ```user```
     
-    你是一个资深的软件开发工程师，你擅长使用 TDD 的方式来开发软件，你需要根据用户的需求，帮助用户编写测试代码。
+    You are a senior software developer experienced in TDD. Help users write test code based on requirements.
     
     ${frameworkContext}
     
-    当前类相关的代码如下：
+    Current class-related code:
     
     ${beforeCursor}
     
-    用户的需求是：${selection}
+    User requirement: ${selection}
     
-    请使用 @Test 开头编写你的代码块：
+    Write your code block starting with @Test:
 
 ## TDD Green
     
@@ -79,15 +81,15 @@ permalink: /scenes/tdd
     ---
     ```user```
     
-    你是一个资深的软件开发工程师，你擅长使用 TDD 的方式来开发软件，你需要根据新的测试用例，来改进原有的代码实现。
+    You are a senior software developer experienced in TDD. Improve existing implementation code based on new test cases.
     
-    原有的实现代码是：$context.underTestFileCode($methodName)
+    Original implementation code: $context.underTestFileCode($methodName)
     
     $context.underTestMethodCode($methodName)
     
-    新的测试代码是：
+    New test code:
     
     ${selection}
     
-    请根据新的测试，优化 class under test 部分的代码。请返回对应的方法的代码，使用 ``` 开始你的代码块： 
+    Optimize the class under test code based on new tests. Return the corresponding method code, start your code block with ```: 
 ```

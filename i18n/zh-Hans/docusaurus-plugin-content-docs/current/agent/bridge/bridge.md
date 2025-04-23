@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: AutoDev Bridge
@@ -7,27 +9,27 @@ parent: Agent
 permalink: /bridge
 ---
 
-Video demo (Bilibili) - 中文：[Watch the video](https://www.bilibili.com/video/BV1RwRNYEE1A/)
+视频演示（哔哩哔哩）- 中文：[观看视频](https://www.bilibili.com/video/BV1RwRNYEE1A/)
 
-# AutoDev Bridge - Legacy Code Migration
+# AutoDev Bridge - 遗留代码迁移
 
-Required tool:
+所需工具:
 
 - [SCC](https://github.com/boyter/scc)
 
-Required plugin:
+所需插件:
 
 - [OpenRewrite](https://plugins.jetbrains.com/plugin/23814-openrewrite) (Intellij IDEA Ultimate)
 - [Endpoints](https://plugins.jetbrains.com/plugin/16890-endpoints) (Intellij IDEA Ultimate)
 
-### Custom Bridge
+### 自定义桥接
 
-follow [Prompt Override](/customize/prompt-override), the AI Composer can be customized. in the `prompt/code` folder,
-you can create a file named `bridge.vm` to override the composer prompt.
+遵循[提示词覆盖](/customize/prompt-override)，可以自定义AI Composer。在`prompt/code`目录中，
+您可以创建名为`bridge.vm`的文件来覆盖composer提示词。
 
-### Custom Reasoner model
+### 自定义推理模型
 
-Refs to [New Config (2.0.0-beta.4+)](/quick-start#new-config-200-beta4)
+参考[新配置（2.0.0-beta.4+）](/quick-start#new-config-200-beta4)
 
 ### Docker 
 
@@ -41,7 +43,7 @@ export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
 sudo ln -sf $COLIMA_HOME/default/docker.sock /var/run/docker.sock
 ```
 
-##### FAQ
+##### 常见问题
 
 ```
 Deploying '<unknown> Dockerfile: ../../../../shire.Dockerfile'…
@@ -51,13 +53,9 @@ https://docs.docker.com/go/buildx/
 Failed to deploy '<unknown> Dockerfile: ../../../../shire.Dockerfile': Image build failed with exit code 1.
 ```
 
-Refs: https://github.com/abiosoft/colima/discussions/273
+参考：https://github.com/abiosoft/colima/discussions/273
 
 ```bash
 brew install docker-buildx
 docker buildx install
 ```
-
-
-
-

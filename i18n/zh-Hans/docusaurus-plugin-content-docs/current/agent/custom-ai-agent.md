@@ -1,27 +1,29 @@
+
+
 ---
 layout: default
-title: Custom AI Agent Quickstart
-parent: Agent
+title: 自定义AI代理快速入门
+parent: 代理
 nav_order: 3
 ---
 
 AutoDev@1.7.0
 
-Since AutoDev@1.7.0 version, we support custom AI agent, you can integrate your own AI agent into AutoDev.
+自 AutoDev@1.7.0 版本起，我们支持自定义AI代理，您可以将自己的AI代理集成到AutoDev中。
 
-<img src="https://unitmesh.cc/auto-dev/custom-agent-popup.png" alt="Custom AI Agent Dropdown" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/custom-agent-popup.png" alt="自定义AI代理下拉菜单" width="600px"/>
 
-## Custom AI Agent
+## 自定义AI代理配置
 
-1. open AutoDev Config in `Settings` -> `Tools` -> `AutoDev`, select `Custom Agent`.
-2. click `Enable Custom Agent`
-3. fill JSON format config in `Custom Agent Config` textarea.
-4. Apply and OK.
-5. Click `x` and Close AutoDev panel and click `NewChat` in the AutoDev tool window.
+1. 在 `Settings` -> `Tools` -> `AutoDev` 中打开AutoDev配置，选择 `Custom Agent`
+2. 勾选 `Enable Custom Agent`
+3. 在 `Custom Agent Config` 文本框中填写JSON格式配置
+4. 点击应用并确定
+5. 关闭AutoDev面板后，在工具窗口点击 `NewChat`
 
-### Custom Agent Examples
+### 配置示例
 
-Demo:
+演示配置：
 
 ```json
 [
@@ -57,12 +59,12 @@ Demo:
 ]
 ```
 
-#### Dif Example
+#### Dify 示例
 
 ```json
 {
     "name": "DifyAI",
-    "description": "Dify Example",
+    "description": "Dify 示例",
     "url": "https://api.dify.ai/v1/completion-messages",
     "auth": {
       "type": "Bearer",
@@ -76,14 +78,13 @@ Demo:
 }
 ```
 
-#### Coze Example
-
+#### Coze 示例
 
 ```json
 [
   {
     "name": "CozeAI",
-    "description": "Coze Example",
+    "description": "Coze 示例",
     "url": "https://api.coze.cn/v3/chat",
     "auth": {
       "type": "Bearer",
@@ -98,39 +99,39 @@ Demo:
 ]
 ```
 
-### responseAction
+### 响应动作类型
 
 ```kotlin
 enum class CustomAgentResponseAction {
     /**
-     * Direct display result
+     * 直接显示结果
      */
     Direct,
 
     /**
-     * Stream response
+     * 流式响应
      */
     Stream,
 
     /**
-     * Text splitting result
+     * 文本分块结果
      */
     TextChunk,
 
     /**
-     * Display result in WebView
+     * 在WebView中显示结果
      */
     WebView,
 
     /**
-     * Handle by DevIns language compile and run in code block.
+     * 通过DevIns语言在代码块中编译执行
      * @since: AutoDev@1.8.2
      */
     DevIns
 }
 ```
 
-### interactive
+### 交互类型
 
 ```kotlin
 enum class InteractionType {

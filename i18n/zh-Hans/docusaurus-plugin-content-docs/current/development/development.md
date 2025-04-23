@@ -1,24 +1,26 @@
+
+
 ---
 layout: default
-title: Development
+title: 开发指南
 nav_order: 10
 has_children: true
 permalink: /development
 ---
 
-# Development
+# 开发指南
 
 1. `git clone https://github.com/unit-mesh/auto-dev/`
-2. open in IntelliJ IDEA
+2. 使用 IntelliJ IDEA 打开项目
 3. `./gradlew runIde`
 
-Key Concepts:
+关键概念：
 
-- Workflow flow design: [DevFlowProvider](src/main/kotlin/cc/unitmesh/devti/provider/DevFlowProvider.kt)
-- Prompt Strategy design: [PromptStrategyAdvisor](src/main/kotlin/cc/unitmesh/devti/provider/PromptStrategy.kt)
+- 工作流程设计：[DevFlowProvider](src/main/kotlin/cc/unitmesh/devti/provider/DevFlowProvider.kt)
+- 提示策略设计：[PromptStrategyAdvisor](src/main/kotlin/cc/unitmesh/devti/provider/PromptStrategy.kt)
 
-### Release
+### 发布流程
 
-1. change `pluginVersion` in [gradle.properties](gradle.properties)
-2. git tag `version`
-3. `./gradlew publishPlugin`
+1. 修改[gradle.properties](gradle.properties)中的pluginVersion
+2. 创建git标签 `version`
+3. 执行`./gradlew publishPlugin`

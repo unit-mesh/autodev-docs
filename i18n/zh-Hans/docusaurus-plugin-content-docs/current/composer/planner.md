@@ -1,77 +1,59 @@
+
+
 ---
 layout: default
-title: Sketch Planner
-parent: AutoDev Sketch/Composer
+title: 草图规划器
+parent: AutoDev 草图/组件系统
 nav_order: 2
 ---
 
-AutoDev Planner is a task planning system that enhances AI-assisted coding by making progress visible and interactive.
-Inspired by AI coding tools like GitHub Copilot Workspace, Cursor, and JetBrains Junie, it aims to improve transparency
-and adaptability in AI-driven development workflows.
+AutoDev 规划器是一个任务规划系统，通过可视化进度和交互性来增强AI辅助编程能力。受GitHub Copilot Workspace、Cursor和JetBrains Junie等AI编程工具的启发，该系统致力于提升AI驱动开发流程的透明度和适应性。
 
-**Key Features**:
+**核心功能**：
 
-1. **Visible Task Planning** – Users can track task progress through the Planner ToolWindow and pin important tasks.
-2. **Dynamic Task Adjustment** – AI dynamically refines plans based on context, though responsiveness depends on the
-   model used.
-3. **Manual Execution** – Users can manually execute incomplete tasks to fine-tune the development process.
-4. **Task Review** – Manual review of task plans using AI, allowing users to optimize their workflow while controlling
-   token usage.
+1. **可见的任务规划** - 用户可通过规划器工具窗口追踪任务进度，并置顶重要任务
+2. **动态任务调整** - AI根据上下文动态优化计划，实际响应速度取决于所用模型
+3. **手动执行控制** - 用户可手动执行未完成任务以微调开发流程
+4. **任务审查机制** - 通过AI进行人工任务计划审查，在控制token消耗的同时优化工作流
 
-**Core Technical Aspects**:
+**核心技术特性**：
 
-- **Inference Model-Based Planning** – Tasks are structured using reasoning models like DeepSeek R1, which requires
-  custom prompts for better execution.
-- **Interactive Task Management** – Users can mark tasks as complete, open related files, edit plans, and review
-  AI-generated strategies.
+- **基于推理模型的任务规划** - 使用DeepSeek R1等推理模型构建任务结构，需要定制提示词以获得更好执行效果
+- **交互式任务管理** - 支持标记任务完成状态、打开相关文件、编辑计划以及审查AI生成策略
 
-By making AI-driven coding tasks more transparent and controllable, AutoDev Planner enhances the development experience,
-allowing users to engage with and refine AI-generated code plans.
+通过提升AI驱动编程任务的透明度和可控性，AutoDev规划器优化了开发体验，使开发者能够有效参与并完善AI生成的代码计划。
 
-### Design inside Planner
+### 规划器中的设计哲学
 
-In *[Is Design Dead?](https://www.martinfowler.com/articles/designDead.html)*, Fowler concludes that design is far from
-dead, but its role has changed. Instead of being a rigid, upfront process, design in an agile world is **continuous,
-incremental, and driven by refactoring and testing**. Agile methodologies, particularly Extreme Programming (XP),
-emphasize **evolutionary design**, allowing architecture to adapt naturally as the system grows.
+在Martin Fowler的《[设计已死？](https://www.martinfowler.com/articles/designDead.html)》一文中，作者指出设计远未消亡，但其角色已发生转变。在敏捷世界中，设计不再是僵化的前期流程，而是**持续演进、增量迭代，并通过重构和测试驱动**的过程。敏捷方法，尤其是极限编程（XP），强调**演进式设计**，使得架构能够随着系统发展自然适应。
 
-As we know, AI models function as **black boxes**, capable of generating vast amounts of code. While this ability is
-powerful, it can also become **harmful at scale** if the generated code lacks proper design principles. Poorly
-structured AI-generated code can lead to **technical debt, maintainability issues, and architectural inconsistencies**,
-making it difficult for teams to evolve their software effectively.
+当前AI模型作为**黑箱系统**，能够生成大量代码。虽然这种能力强大，但如果生成的代码缺乏合理设计原则，**在规模扩大时将产生危害**。结构不良的AI生成代码会导致**技术债务、可维护性问题和架构不一致性**，严重影响软件的持续演进。
 
-#### The Need for a Well-Designed AI Agent
+#### 设计良好AI代理的必要性
 
-To mitigate these risks, we need to design an **AI agent** that enforces and supports structured software development.
-Such an agent should focus on:
+为降低这些风险，我们需要设计一个**强化结构化软件开发**的AI代理，其应关注：
 
-- **Planned and Evolutionary Design** – Combining strategic planning with the flexibility to evolve the design over
-  time. Instead of enforcing rigid upfront designs, the AI agent should guide the developer in **iterative refinement**.
-- **Growing an Architecture** – Ensuring that as the system scales, its architecture remains **cohesive and adaptable**,
-  avoiding monolithic, tangled structures.
-- **Simple Design** – Encouraging minimalism and clarity in the codebase, following principles like **YAGNI (You Ain’t
-  Gonna Need It)** and **KISS (Keep It Simple, Stupid)**.
+- **计划与演进并行的设计** - 将战略规划与设计演进灵活性结合，引导开发者进行**迭代优化**而非强制前期设计
+- **架构生长机制** - 确保系统扩展时保持**内聚性和适应性**，避免形成臃肿复杂的单体结构
+- **简约设计原则** - 遵循**YAGNI（你不会需要它）**和**KISS（保持简单）**原则，倡导代码简洁性
 
-For example, when asking an AI to design a **complex frontend page**, one good practice is **ViewModel splitting**.
-Instead of generating a monolithic UI structure, the AI should **separate concerns properly**, ensuring maintainability
-and reusability. By guiding AI-generated code with solid **architectural principles**, we can create scalable and
-sustainable software solutions.
+例如在要求AI设计**复杂前端页面**时，最佳实践应包括**ViewModel拆分**。AI不应生成单体UI结构，而应**合理分离关注点**以确保可维护性和复用性。通过将**架构原则**植入AI生成代码，我们可以创建可扩展、可持续的软件解决方案。
 
-### Plan Example
+### 规划示例
 
-Example of a Generated Plan:
+典型生成计划示例：
 
-1. Identify Core Workflow Classes
-    - [✓] Search for class definitions containing "Workflow" and "Sketch"
-    - [✓] Analyze the `execute` method in `SketchRunner`
+1. 识别核心工作流类
+    - [✓] 搜索包含"Workflow"和"Sketch"的类定义
+    - [✓] 分析`SketchRunner`中的`execute`方法
 
-2. Analyze AI Flow Execution Stages
-    - [✓] Identify the context collection phase
-    - [✓] Analyze the tool invocation decision module
-    - [✓] Trace the code generation pipeline
+2. 分析AI流程执行阶段
+    - [✓] 识别上下文收集阶段
+    - [✓] 分析工具调用决策模块
+    - [✓] 追踪代码生成管道
 
-3. Validate Workflow Integrity
-    - [✓] Check the exception handling mechanism
-    - [✓] Confirm version control integration points
+3. 验证工作流完整性
+    - [✓] 检查异常处理机制
+    - [✓] 确认版本控制集成点
 
 ![](https://unitmesh.cc/auto-dev/autodev-plan-sketch.png)

@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Agentic Testcase
@@ -9,21 +11,21 @@ parent: Development
 
 ### Alpha 1
 
-- git 如何 merge branch。
-- 添加删除博客
+- How to merge branches in git
+- Add delete blog functionality
 ```devin
 /file:src/main/java/cc/unitmesh/untitled/demo/controller/BlogController.java
 /file:src/main/java/cc/unitmesh/untitled/demo/service/BlogService.java
 /file:src/main/java/cc/unitmesh/untitled/demo/repository/BlogRepository.java
 ```
-- 添加根据作者删除博客
-- 给 Blogpost 添加 category 的功能，并支持按 category 获取所有的 blog
+- Add delete blog by author functionality
+- Add category feature to Blogpost and support fetching blogs by category
 ```devin
 /file:src/main/java/cc/unitmesh/untitled/demo/controller/BlogController.java
 /file:src/main/java/cc/unitmesh/untitled/demo/service/BlogService.java
 /file:src/main/java/cc/unitmesh/untitled/demo/repository/BlogRepository.java
 ```
-- 采用 DDD，生成对应的 ApplicationService 和 DomainService
+- Implement DDD pattern to generate corresponding ApplicationService and DomainService
 ```devin
 /file:src/main/java/cc/unitmesh/untitled/demo/service/BlogService.java
 /file:src/main/java/cc/unitmesh/untitled/demo/repository/BlogRepository.java
@@ -31,34 +33,34 @@ parent: Development
 
 ### Alpha 2
 
-- 采用 DDD + 充血模型，重构 Blog 功能
-- Gradle 启动Spring boot 应用的 bash 代码
-- 获取最近两周的代码提交，生成发布日志
-- 针对代码变更，生成测试
+- Refactor blog functionality using DDD + rich domain model
+- Bash code for starting Spring Boot application with Gradle
+- Generate release notes from recent two weeks' code commits
+- Generate tests based on code changes
 
 ### Multiple-Language
 
-- 使用 patch 的方式添加 vue router
-- 使用 patch 的方式添加 Element UI
-- 生成 OpenAPI Yaml 示例，使用 markdown yaml 返回
-- 编写 go hello world，使用 markdown go 语言返回（不使用 write 等 DevIns 指令）
-- 我在为当前项目创建 OpenAPI 3.0 spec，编写一个基本的 swagger yaml 骨架，方便我学习。只返回 swagger yaml，不使用 devins
-- 根据如下 Vue 数据结构，设计重构策略：
+- Add vue router using patch method
+- Add Element UI using patch method
+- Generate OpenAPI Yaml example and return in markdown yaml format
+- Write Go hello world program, return in markdown go format (without using write or other DevIns commands)
+- Create basic Swagger Yaml skeleton for OpenAPI 3.0 spec (return only Swagger Yaml without DevIns)
+- Design refactoring strategy based on Vue data structure:
 ```devin
 /structure:src/components/Custom/DataSelect.vue
 ```
-- 结合行号，使用 file 指令选择合适的“代码段”来查看代码。由于代码太长，你只能选择一小段。
-- 我只想要一个生成 Vite + Jest 的 package.json 示例，再添加 axios、jszip的依赖。
+- Use line numbers and file commands to select appropriate code snippets for viewing (limited to small segments)
+- Generate package.json example for Vite + Jest configuration with axios and jszip dependencies
 
 ## AutoDev Bridge
 
-### 切换数据库到 MongoDB
+### Migrate database to MongoDB
 
-### Vue2 迁移到 Vue 3
+### Migrate from Vue2 to Vue 3
 
-### Spring Boot to micronaut migration
+### Spring Boot to Micronaut Migration
 
-Spring Boot to micronaut migration
+Spring Boot to Micronaut migration
 ```devin
 /dependencies
 /scc
@@ -68,9 +70,9 @@ Spring Boot to micronaut migration
 /database:schema
 ```
 
-### 使用 Node.js 重写当前项目
+### Rewrite current project using Node.js
 
-如下是当前项目的 APIs
+Current project APIs:
 ```devin
 /webApiView
 ```

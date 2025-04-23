@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Custom AI Agent Quickstart
@@ -7,17 +9,17 @@ nav_order: 3
 
 AutoDev@1.7.0
 
-Since AutoDev@1.7.0 version, we support custom AI agent, you can integrate your own AI agent into AutoDev.
+Since AutoDev@1.7.0 version, we support custom AI agents, allowing you to integrate your own AI agent into AutoDev.
 
 <img src="https://unitmesh.cc/auto-dev/custom-agent-popup.png" alt="Custom AI Agent Dropdown" width="600px"/>
 
 ## Custom AI Agent
 
-1. open AutoDev Config in `Settings` -> `Tools` -> `AutoDev`, select `Custom Agent`.
-2. click `Enable Custom Agent`
-3. fill JSON format config in `Custom Agent Config` textarea.
+1. Open AutoDev Config in `Settings` -> `Tools` -> `AutoDev`, select `Custom Agent`.
+2. Click `Enable Custom Agent`
+3. Fill JSON format configuration in the `Custom Agent Config` textarea.
 4. Apply and OK.
-5. Click `x` and Close AutoDev panel and click `NewChat` in the AutoDev tool window.
+5. Click `x` to close AutoDev panel and click `NewChat` in the AutoDev tool window.
 
 ### Custom Agent Examples
 
@@ -27,19 +29,19 @@ Demo:
 [
   {
     "name": "Internal API Integration",
-    "description": "Communication interfaces between different systems or components in an organization or project.",
+    "description": "Communication interfaces between different systems or components within an organization or project.",
     "url": "http://127.0.0.1:8765/api/agent/api-market",
     "responseAction": "Direct"
   },
   {
     "name": "Component Library Query",
-    "description": "Retrieve specific UI components from the component library for use in the application being developed.",
+    "description": "Retrieve specific UI components from the component library for use in application development.",
     "url": "http://127.0.0.1:8765/api/agent/component-list",
     "responseAction": "TextChunk"
   },
   {
     "name": "Page Generation",
-    "description": "Generate pages based on components and state using the React framework.",
+    "description": "Generate pages using React framework based on components and state management.",
     "url": "http://127.0.0.1:8765/api/agent/ux",
     "auth": {
       "type": "Bearer",
@@ -49,7 +51,7 @@ Demo:
   },
   {
     "name": "DevInInsert",
-    "description": "Update, and specify a 20 second timeout",
+    "description": "Update with 20-second timeout specification",
     "url": "http://127.0.0.1:8765/api/agent/devins-sample",
     "responseAction": "DevIns",
     "defaultTimeout": 20
@@ -57,7 +59,7 @@ Demo:
 ]
 ```
 
-#### Dif Example
+#### Dify Example
 
 ```json
 {
@@ -77,7 +79,6 @@ Demo:
 ```
 
 #### Coze Example
-
 
 ```json
 [

@@ -1,23 +1,25 @@
+
+
 ---
 layout: default
-title: By Example
+title: 示例模式
 nav_order: 1
-parent: Design Patterns
+parent: 设计模式
 permalink: /patterns/by-example
 ---
 
-> Finding example content as context to generate as input for the generative AI, based on current user habits.
+> 根据当前用户习惯，查找示例内容作为上下文生成生成式AI的输入
 
-## Git Commit message Example
+## Git提交信息示例
 
-Implementation steps:
+实现步骤：
 
-1. Retrieve version control system (VCS) log providers for the current project.
-2. Get the current branch and user.
-3. Filter logs based on user or branch.
-4. Collect example submission information.
+1. 检索当前项目的版本控制系统（VCS）日志提供程序
+2. 获取当前分支和用户
+3. 根据用户或分支筛选日志
+4. 收集示例提交信息
 
-### Code Implementation
+### 代码实现
 
 ```kotlin
 private fun findExampleCommitMessages(project: Project): String? {
@@ -38,43 +40,42 @@ private fun findExampleCommitMessages(project: Project): String? {
 }
 ```
 
-### Template Example
-       
-    Write a cohesive yet descriptive commit message for a given diff.
-    - Make sure to include both information What was changed and Why.
-    - Start with a short sentence in imperative form, no more than 50 characters long.
-    - Then leave an empty line and continue with a more detailed explanation, if necessary.
-    - Explanation should have less than 200 characters.
+### 模板示例
+
+    为给定的diff编写一个连贯且描述性的提交信息
+    - 确保同时包含"改变了什么"和"为什么改变"的信息
+    - 以不超过50个字符的祈使句开头
+    - 然后空一行继续更详细的说明（如果需要）
+    - 详细说明应少于200个字符
     
-    Follow the Conventional Commits specification, examples:
-    - fix(authentication): fix password regex pattern case
-    - feat(storage): add support for S3 storage
-    - test(java): fix test case for user controller
-    - docs(docs): add architecture diagram to home page
+    遵循Conventional Commits规范，示例：
+    - fix(authentication): 修复密码正则表达式大小写问题
+    - feat(storage): 增加S3存储支持
+    - test(java): 修复用户控制器测试用例
+    - docs(docs): 在首页添加架构图
     
     #if( $context.historyExamples.length() > 0 )
-    Here is History Examples:
+    历史示例：
     $context.historyExamples
     #end
     
-    Diff:
+    Diff：
     
     ```diff
     ${context.diffContent}
 
-## Code Example: Testing Code Samples
+## 代码示例：测试代码样本
 
-Reference language implementations: `JavaTestContextProvider`, `KotlinTestContextProvider`.
+参考语言实现：`JavaTestContextProvider`、`KotlinTestContextProvider`
 
-Steps:
+步骤：
 
-1. Retrieve the tested code for the current project.
-2. Find templates based on the tested code: `Controller`, `Service`, default tests, etc.
-   - Kotlin: `ControllerTest.kt`, `ServiceTest.kt`, `Test.kt`
-   - Java: `ControllerTest.java`, `ServiceTest.java`, `Test.java`
-3. Generate testing code based on templates.
+1. 检索当前项目的被测试代码
+2. 根据被测试代码查找模板：`Controller`、`Service`、默认测试等
+   - Kotlin：`ControllerTest.kt`、`ServiceTest.kt`、`Test.kt`
+   - Java：`ControllerTest.java`、`ServiceTest.java`、`Test.java`
+3. 基于模板生成测试代码
 
-## Document Example
+## 文档示例
 
 DOC TODO
-```

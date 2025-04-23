@@ -1,35 +1,36 @@
+
+
 ---
 layout: default
-title: Legacy Migration
+title: 遗留系统迁移
 nav_order: 1
-parent: Scenes
+parent: 场景化功能
 ---
 
-## AI-Assisted Legacy System Migration
+## AI辅助遗留系统迁移
 
-Building upon the experience accumulated in our "[System Refactoring and Migration Guide](https://migration.ink/)," we have developed a series of AI capabilities within AutoDev to aid developers in accelerating the transformation of legacy systems.
+基于我们在[《系统重构与迁移指南》](https://migration.ink/)中积累的经验，我们在AutoDev中开发了一系列AI能力，帮助开发者加速遗留系统改造：
 
-- Assisting in API data generation for migration testing.
-- Facilitating knowledge management through document generation.
-- Creating living documentation business systems based on annotated documentation.
-- Legacy code refactoring with an object-oriented approach.
-- Generating PL/SQL code and migrating Java code.
+- 辅助生成迁移测试所需的API数据
+- 通过文档生成实现知识管理
+- 基于注解文档创建活文档业务系统
+- 面向对象式的遗留代码重构
+- PL/SQL代码生成与Java代码迁移
 
-## Generating API Test Data from Existing Code
+## 从现有代码生成API测试数据
 
-### 1. Generate API Test Data
+### 1. 生成API测试数据
 
-Support language: Java.
+支持语言：Java
 
-Screenshot EXAMPLE：
+示例截图：
+![AutoDev活文档](https://unitmesh.cc/auto-dev/gen-test-data.png)
 
-![AutoDev Living Documentation](https://unitmesh.cc/auto-dev/gen-test-data.png)
+只需右键点击Java Controller代码，选择"Generate Test Data (APIs)"即可生成API测试数据。
 
-Simply right-click on the Java Controller code, select "Generate Test Data (APIs)," and API test data will be generated.
+### 2. 自定义提示集成
 
-### 2. Custom Prompt Integration
-
-goto: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add your own prompt. For example:
+路径：`设置` -> `工具` -> `AutoDev` -> `自定义引擎提示`，添加自定义提示。示例：
 
 ```json
 {
@@ -37,28 +38,27 @@ goto: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add y
   },
   "prompts": [
     {
-      "title": "Generate API test cases",
+      "title": "生成API测试用例",
       "autoInvoke": false,
       "matchRegex": ".*",
       "priority": 0,
-      "template": "Generate API testcases based on following information: \n${METHOD_INPUT_OUTPUT}\nHere is the code:\n${SELECTION}"
+      "template": "根据以下信息生成API测试用例：\n${METHOD_INPUT_OUTPUT}\n代码内容：\n${SELECTION}"
     }
   ],
   "documentations": []
 }
 ```
 
-## Comments and Documentation Generation
+## 注释与文档生成
 
-Select the corresponding code, right-click, and choose `Generate Documentation` to generate documentation.
+选中对应代码后右键，选择`生成文档`即可生成说明文档。
 
-## Use [Custom Living Documentation](/custom/living-documentation) for generating dynamic documentation.
+## 使用[自定义活文档](/custom/living-documentation)生成动态文档
 
-Screenshot EXAMPLE：
+示例截图：
+![AutoDev活文档](https://unitmesh.cc/auto-dev/autodev-living-doc.png)
 
-![AutoDev Living Documentation](https://unitmesh.cc/auto-dev/autodev-living-doc.png)
-
-Configuration: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, add custom formats for living documentation. Example:
+配置路径：`设置` -> `工具` -> `AutoDev` -> `自定义引擎提示`，添加活文档自定义格式。示例：
 
 ```json
 {
@@ -68,30 +68,29 @@ Configuration: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, 
   ],
   "documentations": [
     {
-      "title": "Living Documentation",
-      "prompt": "Write Living Documentation. Return in the following format: ",
+      "title": "活文档",
+      "prompt": "编写活文档。请按以下格式返回：",
       "start": "",
       "end": "",
       "type": "annotated",
       "example": {
         "question": "public BookMeetingRoomResponse bookMeetingRoom(@RequestBody BookMeetingRoomRequest request) {\n        MeetingRoom meetingRoom = meetingRoomService.bookMeetingRoom(request.getMeetingRoomId());\n        BookMeetingRoomResponse response = new BookMeetingRoomResponse();\n        BeanUtils.copyProperties(meetingRoom, response);\n        return response;\n    }",
-        "answer": "    @ScenarioDescription(\n        given = \"there is a meeting room available with ID 123\",\n        when = \"a user books the meeting room with ID 123\",\n        then = \"the booking response should contain the details of the booked meeting room\"\n    )"
+        "answer": "    @ScenarioDescription(\n        given = \"存在ID为123的可用会议室\",\n        when = \"用户预定ID为123的会议室\",\n        then = \"预定响应应包含已预定会议室的详细信息\"\n    )"
       }
     }
   ]
 }
 ```
 
-## PL/SQL Migration
+## PL/SQL迁移支持
 
-AutoDev has been supporting basic PL/SQL migration since version 1.5.5.
+自1.5.5版本起，AutoDev已支持基础PL/SQL迁移功能：
 
-1. Select PL/SQL code.
-2. Right-click and choose:
-   - Generate Entity
-   - Generate Test Cases
-   - Generate Java Code
+1. 选中PL/SQL代码
+2. 右键选择：
+   - 生成实体
+   - 生成测试用例
+   - 生成Java代码
 
-Screenshot EXAMPLE：
-
-![SQL Migration](https://unitmesh.cc/auto-dev/autodev-sql-migration.png)
+示例截图：
+![SQL迁移](https://unitmesh.cc/auto-dev/autodev-sql-migration.png)

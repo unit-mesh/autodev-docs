@@ -1,36 +1,38 @@
+
+
 ---
 layout: default
-title: Custom AI Agent Response Action
-parent: Agent
+title: 自定义AI代理响应动作
+parent: 代理
 nav_order: 2
 ---
 
-## Response Action
+## 响应动作
 
 ```kotlin
 enum class CustomAgentResponseAction {
     /**
-     * Direct display result
+     * 直接显示结果
      */
     Direct,
 
     /**
-     * Stream response
+     * 流式响应
      */
     Stream,
 
     /**
-     * Text splitting result
+     * 文本分块结果
      */
     TextChunk,
 
     /**
-     * Display result in WebView
+     * 在WebView中显示结果
      */
     WebView,
 
     /**
-     * Handle by DevIns language compile and run in code block.
+     * 通过DevIns语言处理并在代码块中运行
      * @since: AutoDev@1.8.2
      */
     DevIns
@@ -39,29 +41,29 @@ enum class CustomAgentResponseAction {
 
 ### Direct
 
-> Render the result directly in the chat window.
+> 直接在聊天窗口呈现结果
 
-<img src="https://unitmesh.cc/auto-dev/custom-agent-example.png" alt="Custom AI Agent Dropdown" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/custom-agent-example.png" alt="自定义AI代理下拉菜单" width="600px"/>
 
 ### TextChunk
 
-> Display the result in the AutoDev input box for continuous processing.
+> 在AutoDev输入框中显示结果以便持续处理
 
-<img src="https://unitmesh.cc/auto-dev/custom-agent-text-chunk.png" alt="Custom AI Agent Dropdown" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/custom-agent-text-chunk.png" alt="自定义AI代理文本分块" width="600px"/>
 
 ### WebView
 
-> Show the result in a WebView for front-end rendering.
+> 在WebView中显示结果进行前端渲染
 
-<img src="https://unitmesh.cc/auto-dev/custom-agent-webview.png" alt="Custom AI Agent Dropdown" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/custom-agent-webview.png" alt="自定义AI代理WebView" width="600px"/>
 
 ### DevIns
 
 AutoDev@1.8.2
 
-> The DevIns response action will handle the response in the DevIns language.
+> DevIns响应动作将处理DevIns语言的响应
 
-just like the following example. 
+参考以下示例：
 
     /write:HelloWorld.java#L1-L12
     
@@ -73,5 +75,4 @@ just like the following example.
     }
     ```
 
-The DevIns response content is different from the Custom Agent Response content. In Custom Agent Response, the code
-content should inside \`\`\`DevIns code block.
+DevIns响应内容与自定义代理响应内容不同。在自定义代理响应中，代码内容需包含在\`\`\`DevIns代码块内。

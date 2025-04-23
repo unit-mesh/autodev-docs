@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Development FAQ
@@ -5,7 +7,7 @@ nav_order: 999
 parent: Development
 ---
 
-## EDT and ReadAction issue 
+## EDT and ReadAction Issue
 
 > Synchronous execution under ReadAction: /usr/local/bin/git -c credential.helper= -c core
 
@@ -13,13 +15,13 @@ A solution will be like:
 
 ```kotlin
 /**
- * Refs to [com.intellij.execution.process.OSProcessHandler.checkEdtAndReadAction], we should handle in this
+ * References to [com.intellij.execution.process.OSProcessHandler.checkEdtAndReadAction], we should handle in this
  * way, another example can see in [git4idea.GitPushUtil.findOrPushRemoteBranch]
  */
 val future = CompletableFuture<List<GitCommit>>()
 val task = object : Task.Backgroundable(project, "xx", false) {
     override fun run(indicator: ProgressIndicator) {
-        // some long time operation
+        // some long-running operation
         future.complete(/* commits */)
     }
 }
@@ -33,8 +35,7 @@ runBlockingCancellable {
 }
 ```
 
-## API 兼容方案
-
+## API Compatibility Solution
 
 https://github.com/JetBrains/aws-toolkit-jetbrains/tree/ccee3307fe58ad48f93cd780d4378c336ee20548/jetbrains-core
 
@@ -53,10 +54,10 @@ typealias DockerFileWorkdirCommand = com.intellij.docker.dockerFile.parser.psi.D
 ## java.lang.Throwable: Must be executed under progress indicator: com.intellij.openapi.progress.EmptyProgressIndicator@6c3fd0d8 but the process is running under null indicator instead. Please see e.g. ProgressManager.runProcess()
 
 ```kotlin
- val future = CompletableFuture<String>()
+val future = CompletableFuture<String>()
 val task = object : Task.Backgroundable(project, "Loading", false) {
     override fun run(indicator: ProgressIndicator) {
-        // collectApis point to your long time operation
+        // collectApis points to your long-running operation
         future.complete(this.collectApis(project, endpointsProviderList))
     }
 }

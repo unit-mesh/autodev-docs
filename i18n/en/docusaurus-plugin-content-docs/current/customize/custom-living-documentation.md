@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Custom Documentation
@@ -8,9 +10,9 @@ permalink: /custom/living-documentation
 
 # Custom Documentation
 
-## Living Documentation example
+## Living Documentation Example
 
-goto: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add your own prompt.
+Navigate to: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add your own prompt.
 
 ```json
 {
@@ -21,7 +23,7 @@ goto: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add y
   "documentations": [
     {
       "title": "Living Documentation",
-      "prompt": "编写 Living Documentation。按如下的格式返回：",
+      "prompt": "Write Living Documentation. Return in the following format:",
       "start": "",
       "end": "",
       "type": "annotated",
@@ -52,25 +54,23 @@ public BookMeetingRoomResponse bookMeetingRoom(@RequestBody BookMeetingRoomReque
 
 ## Normal Example
 
-
 ```json
 {
   "documentations": [
     {
-      "title": "Generate Java Method Level Comments",
-      "prompt": "Generate JavaDoc method level comments, only return the comments for the method.\nRequirements: 1. Need to describe the method usage. 2. Only return the method comments, starting with the comment symbol /**\n\n",
+      "title": "Generate Java Method-Level Comments",
+      "prompt": "Generate JavaDoc method-level comments, return only the method comments.\nRequirements: 1. Clearly describe the method usage. 2. Return only the method comments using /** as the opening symbol\n\n",
       "start": "",
       "end": "",
       "type": "normal",
       "example": {
         "question": "    public void addEdge(int a, int b) {\n        graph.get(a).add(b);\n        graph.get(b).add(a); // Assuming an undirected graph\n    }",
-        "answer": "    /**\n     * Add an edge to the graph.\n     *\n     * <pre>\n     *    {@code\n     *        Calculate graph = new Calculate(5); // Create a graph with 5 nodes\n     *        graph.addEdge(0, 1); // Add an edge between node 0 and node 1\n     *        // Assuming an undirected graph, so both edges (0,1) and (1,0) will be added\n     *    }\n     * </pre>\n     *\n     * @param a Index of node A\n     * @param b Index of node B\n     *          Both nodes should be added to the graph before adding an edge\n     */\n"
+        "answer": "    /**\n     * 向图中添加一条边。\n     *\n     * <pre>\n     *    {@code\n     *        Calculate graph = new Calculate(5); // 创建一个具有5个节点的图\n     *        graph.addEdge(0, 1); // 在节点0和节点1之间添加边\n     *        // 假定这是一个无向图，因此边(0,1)和边(1,0)都会被添加\n     *    }\n     * </pre>\n     *\n     * @param a 节点A的索引\n     * @param b 节点B的索引\n     *          两个节点都应在添加边之前先添加到图中\n     */\n"
       }
     }
   ]
 }
 ```
-
 
 **Output**
 
@@ -90,5 +90,4 @@ public BookMeetingRoomResponse bookMeetingRoom(@RequestBody BookMeetingRoomReque
      * @param b 节点B的索引
      *          两个节点都应在添加边之前先添加到图中
      */
-
 ```

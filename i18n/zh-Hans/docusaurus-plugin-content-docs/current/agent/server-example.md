@@ -1,37 +1,37 @@
+
+
 ---
 layout: default
-title: AI Agent Server
-parent: Agent
+title: AI 智能体服务端
+parent: 智能体
 nav_order: 6
 ---
 
-AI Agent Server will be used to communicate with the AI Agent. It will be used to send the request and receive the response
-from the AI Agent.
+AI 智能体服务端用于与 AI 智能体进行通信，负责向智能体发送请求并接收其响应。
 
-## Server
+## 服务端
 
-### Server API example
+### 服务端 API 示例
 
-see in [example/custom_agent](https://github.com/unit-mesh/auto-dev/tree/master/example/custom_agent)
+参见 [example/custom_agent](https://github.com/unit-mesh/auto-dev/tree/master/example/custom_agent)
 
-### `ResponseAction`
+### `ResponseAction` 响应动作
 
-- ResponseAction.Direct should return "SSE\<String>"
-- ResponseAction.TextChunk should return "JSON"
-- ResponseAction.WebView should return "HTML" code
+- ResponseAction.Direct 应返回 "SSE\<String>" 格式
+- ResponseAction.TextChunk 应返回 "JSON" 格式
+- ResponseAction.WebView 应返回 "HTML" 代码
 
-## Request Body
+## 请求体
 
-same to Chat API
+与聊天 API 格式一致
 
 ```json
 {
   "messages": [
     {
       "role": "user",
-      "content": "Hi, I want to book a flight from Hangzhou to Shanghai."
+      "content": "你好，我想预订从杭州到上海的航班。"
     }
   ]
 }
 ```
-

@@ -1,26 +1,27 @@
+
+
 ---
 layout: default
-title: Development FAQ
+title: 开发常见问题解答
 nav_order: 999
-parent: Development
----
+parent: 开发
 
-## EDT and ReadAction issue 
+## EDT 与 ReadAction 问题
 
-> Synchronous execution under ReadAction: /usr/local/bin/git -c credential.helper= -c core
+> 在ReadAction下的同步执行：/usr/local/bin/git -c credential.helper= -c core
 
-A solution will be like:
+解决方案示例如下：
 
 ```kotlin
 /**
- * Refs to [com.intellij.execution.process.OSProcessHandler.checkEdtAndReadAction], we should handle in this
- * way, another example can see in [git4idea.GitPushUtil.findOrPushRemoteBranch]
+ * 参考[com.intellij.execution.process.OSProcessHandler.checkEdtAndReadAction]，我们应该采用这种方式处理，
+ * 另一个示例可查看[git4idea.GitPushUtil.findOrPushRemoteBranch]
  */
 val future = CompletableFuture<List<GitCommit>>()
 val task = object : Task.Backgroundable(project, "xx", false) {
     override fun run(indicator: ProgressIndicator) {
-        // some long time operation
-        future.complete(/* commits */)
+        // 长时间操作
+        future.complete(/* 提交列表 */)
     }
 }
 
@@ -29,17 +30,16 @@ ProgressManager.getInstance()
 
 runBlockingCancellable {
     val commits = future.await()
-    // do something
+    // 后续处理
 }
 ```
 
-## API 兼容方案
-
+## API 兼容性方案
 
 https://github.com/JetBrains/aws-toolkit-jetbrains/tree/ccee3307fe58ad48f93cd780d4378c336ee20548/jetbrains-core
 
 ```kotlin
-// Copyright 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// 版权 2021 Amazon.com, Inc. 或其关联公司。保留所有权利。
 // SPDX-License-Identifier: Apache-2.0
 package software.aws.toolkits.jetbrains.core.docker.compatability
 
@@ -50,13 +50,13 @@ typealias DockerFileFromCommand = com.intellij.docker.dockerFile.parser.psi.Dock
 typealias DockerFileWorkdirCommand = com.intellij.docker.dockerFile.parser.psi.DockerFileWorkdirCommand
 ```
 
-## java.lang.Throwable: Must be executed under progress indicator: com.intellij.openapi.progress.EmptyProgressIndicator@6c3fd0d8 but the process is running under null indicator instead. Please see e.g. ProgressManager.runProcess()
+## java.lang.Throwable: 必须在进度指示器下执行：com.intellij.openapi.progress.EmptyProgressIndicator@6c3fd0d8，但当前进程运行在空指示器下。请参考示例：ProgressManager.runProcess()
 
 ```kotlin
  val future = CompletableFuture<String>()
-val task = object : Task.Backgroundable(project, "Loading", false) {
+val task = object : Task.Backgroundable(project, "加载中", false) {
     override fun run(indicator: ProgressIndicator) {
-        // collectApis point to your long time operation
+        // collectApis 指向你的长时间操作
         future.complete(this.collectApis(project, endpointsProviderList))
     }
 }

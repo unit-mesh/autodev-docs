@@ -1,3 +1,5 @@
+
+
 ---
 title: Quick Start
 description: Get started with AutoDev in minutes
@@ -6,15 +8,15 @@ description: Get started with AutoDev in minutes
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Installation and Setup
+# Installation & Setup
 
 <Tabs>
   <TabItem value="marketplace" label="JetBrains Marketplace" default>
     Install directly from JetBrains Marketplace: [AutoDev Sketch](https://plugins.jetbrains.com/plugin/26988-autodev-sketch)
 
-    **Note:** The plugin is named `AutoDev Sketch` in the JetBrains Marketplace with ID `com.unitmesh.autodev`. This differs from the custom repository and GitHub release versions.
+    **Note:** The plugin is named `AutoDev Sketch` in JetBrains Marketplace with ID `com.unitmesh.autodev`. This differs from custom repository and GitHub release versions.
 
-    This version is compatible with IDEs 2024.1 and newer (241+).
+    This version works with IDE 2024.1 and newer (241+).
   </TabItem>
   <TabItem value="repository" label="Custom Repository">
     1. Go to `Settings` → `Plugins` → `Marketplace` → `Manage Plugin Repositories`
@@ -24,11 +26,11 @@ import TabItem from '@theme/TabItem';
     ```
   </TabItem>
   <TabItem value="github" label="GitHub Releases">
-    1. Download the appropriate version from [GitHub Releases](https://github.com/unit-mesh/auto-dev/releases)
-        - AutoDev-*-222.zip — For versions 2022.2 to 2023.2
-        - AutoDev-*-233.zip — For version 2023.3
-        - AutoDev-*-241.zip — For version 2024.1 and newer
-    2. Install the plugin from disk in your JetBrains IDE
+    1. Download appropriate version from [GitHub Releases](https://github.com/unit-mesh/auto-dev/releases)
+        - AutoDev-*-222.zip — For 2022.2 to 2023.2 versions
+        - AutoDev-*-233.zip — For 2023.3 version
+        - AutoDev-*-241.zip — For 2024.1 and newer versions
+    2. Install plugin from disk in JetBrains IDE
   </TabItem>
 </Tabs>
 
@@ -38,18 +40,18 @@ After installation, configure the plugin in `Settings` → `Tools` → `AutoDev`
 
 ### Default LLM
 
-Supported providers: Deepseek ([#96](https://github.com/unit-mesh/auto-dev/issues/96)), Moonshot AI, ChatGLM ([#90](https://github.com/unit-mesh/auto-dev/issues/960))
+Supported providers: Deepseek ([#96](https://github.com/unit-mesh/auto-dev/issues/96)), Moonshot AI, ChatGLM([#90](https://github.com/unit-mesh/auto-dev/issues/960))
 
 <Tabs>
   <TabItem value="basic" label="Basic Configuration" default>
     1. Open AutoDev configuration in `Settings` → `Tools` → `AutoDev`
-    2. Configure `LLM Server URL`, for example:
+    2. Configure `LLM Server URL`, e.g.:
         - Deepseek: `https://api.deepseek.com/chat/completions`
         - OpenAI: `https://api.openai.com/v1/chat/completions`
-    3. Enter your `LLM Key` (API key)
-    4. Set `Custom Response Format` using [JsonPath](https://github.com/json-path/JsonPath), for example:
+    3. Enter your `LLM Key` (API Key)
+    4. Set `Custom Response Format` using [JsonPath](https://github.com/json-path/JsonPath), e.g.:
         - `$.choices[0].delta.content`
-    5. Configure `Custom Request Format`, for example:
+    5. Configure `Custom Request Format`, e.g.:
         - `{ "customFields": {"model": "deepseek-chat", "stream": true }}`
   </TabItem>
   <TabItem value="advanced" label="Advanced Configuration">
@@ -60,12 +62,12 @@ Supported providers: Deepseek ([#96](https://github.com/unit-mesh/auto-dev/issue
 ### Additional Models
 
 Available model types:
-- `Plan`: For reasoning and planning (recommended: DeepSeek R1)
+- `Plan`: For reasoning and planning (Recommended: DeepSeek R1)
 - `Completion`: For code completion
 - `FastApply`: For fix patch generation (e.g., `Kortix/FastApply-1.5B-v1.0`)
 - `Others`: General placeholder
-- ~~Act~~: (Not ready yet) For performing actions (e.g., `DeepSeek V3`, `Qwen 72B`)
-- ~~Embedding~~: (Not ready yet) For embedding functions (e.g., `sentence-transformers/all-MiniLM-L6-v2`)
+- ~~Act~~: (Not ready) For action execution (e.g., `DeepSeek V3`, `Qwen 72B`)
+- ~~Embedding~~: (Not ready) For embedding functions (e.g., `sentence-transformers/all-MiniLM-L6-v2`)
 
 <Tabs>
   <TabItem value="deepseek" label="DeepSeek R1" default>
@@ -117,9 +119,8 @@ Available model types:
 </Tabs>
 
 Configuration fields:
-- **URL**: LLM server address with endpoint path
-- **Auth**: Authentication information (currently only Bearer token is supported)
-- **RequestFormat**: JSON structure for the API request
-- **ResponseFormat**: JsonPath to extract content from the response
-- **ModelType**: Type of model (see list above)
-
+- **URL**: LLM server address containing endpoint path
+- **Auth**: Authentication information (currently only supports Bearer token)
+- **RequestFormat**: JSON structure for API requests
+- **ResponseFormat**: JsonPath for extracting content from response
+- **ModelType**: Model type (see list above)

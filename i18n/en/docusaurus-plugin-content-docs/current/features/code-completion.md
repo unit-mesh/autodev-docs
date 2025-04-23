@@ -1,30 +1,32 @@
+
+
 ---
 layout: default
-title: 代码补全
+title: Code Completion
 nav_order: 2
 permalink: /features/code-completion
 ---
 
-## 聊天式代码补全
+## Chat-style Code Completion
 
-附带功能：加载自定义规范
+Additional feature: Loading custom specifications
 
-1. 右键点击打开上下文菜单。
-2. 在聊天页面中复制或者粘贴代码。
+1. Right-click to open the context menu.
+2. Copy or paste code in the chat page.
 
-<img src="https://unitmesh.cc/auto-dev/chat-code-completion.png" alt="聊天式代码补全" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/chat-code-completion.png" alt="Chat-style Code Completion" width="600px"/>
 
-## 内联代码补全
+## Inline Code Completion
 
-1. 在编辑器的任何位置按下 `⌥` + `.`
-2. 等待你的模型响应，再按下 `tab` 键来接受建议。
+1. Press `⌥` + `.` anywhere in the editor
+2. Wait for your model response, then press `tab` to accept suggestions
 
-## 自定义补全 LLM
+## Custom Completion LLM
 
-1. 在 `设置` -> `工具` -> `AutoDev` 中打开 AutoDev 配置。
-2. 设置`自定义模型`
+1. Open AutoDev configuration in `Settings` -> `Tools` -> `AutoDev`
+2. Set up `Custom Model`
 
-以 DeepSeek 补全模型作为示例
+Example configuration for DeepSeek completion model:
 
 ```json
 [

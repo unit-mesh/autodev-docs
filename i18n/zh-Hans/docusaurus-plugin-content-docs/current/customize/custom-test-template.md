@@ -1,35 +1,37 @@
+
+
 ---
 layout: default
-title: Custom Test Prompt Template
-parent: Customize Features
+title: 自定义测试提示模板
+parent: 功能定制
 nav_order: 15
 ---
 
-Create template files under `prompts/templates` directory, like:
+在`prompts/templates`目录下创建模板文件，例如：
 
-- Java language: `ControllerTest.java`, `ServiceTest.java`, `Test.java`
-- Kotlin language: `ControllerTest.kt`, `ServiceTest.kt`, `Test.kt`
+- Java语言：`ControllerTest.java`、`ServiceTest.java`、`Test.java`
+- Kotlin语言：`ControllerTest.kt`、`ServiceTest.kt`、`Test.kt`
 
-when generate test file, will use these templates.
+生成测试文件时将使用这些模板。
 
-For example:
+示例：
 
 ```kotlin
-// You should use follow @SpringBootTest with RANDOM_PORT for the web environment, or you test will be failed.
-// You should use @ExtendWith(SpringExtension::class) for the test class.
-// For example:
+// 对于Web环境测试应该使用带RANDOM_PORT的@SpringBootTest，否则测试会失败
+// 测试类应使用@ExtendWith(SpringExtension::class)
+// 例如：
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
-class /* Here some be {ControllerName} */ControllerTest {
+class /* 此处应为{ControllerName} */ControllerTest {
     private lateinit var mockMvc: MockMvc
 
-    // other some mock beans
+    // 其他需要mock的bean
 
     @BeforeEach
     fun setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(/* {ControllerName} */Controller(/* some mock beans */)).build()
+        mockMvc = MockMvcBuilders.standaloneSetup(/* {ControllerName} */Controller(/* 注入mock的bean */)).build()
     }
 
-    // the test methods
+    // 测试方法
 }
 ```

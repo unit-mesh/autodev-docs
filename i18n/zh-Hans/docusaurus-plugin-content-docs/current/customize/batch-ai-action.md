@@ -1,22 +1,21 @@
-# Batch AI Action
 
-We use Team Prompts to provide a way to batch process files in the project. The default 
-Team Prompts path is `prompts/`, which is the `prompts/` directory located in the project's root directory.
 
-Through the `batchFileRegex` configuration, you can specify the file to be processed in batch.
+# 批量 AI 操作
 
-**Scenes**: When you need to batch process files in the project, such as refactoring, formatting, etc.
+我们使用团队提示（Team Prompts）来提供项目中批量处理文件的方法。默认的团队提示路径是 `prompts/`，即位于项目根目录下的 `prompts/` 目录。
 
-- Vue2 to Vue3 migration
-- Refactor the user's code
-- Comments for all code
+通过 `batchFileRegex` 配置，您可以指定需要批量处理的文件。
 
-**Entry point**: `Right-click` on the project -> `AutoDev AI AutoAction` -> `Batch AI Action`
+**适用场景**：当您需要批量处理项目中的文件时，例如重构、格式化等操作
+- Vue2 到 Vue3 的迁移
+- 重构用户的代码
+- 为所有代码添加注释
 
-## 批量 AI 操作（Chinese example）
+**入口**：在项目上 `右键点击` -> `AutoDev AI 自动操作` -> `批量 AI 操作`
 
-核心点：`batchFileRegex` 用于匹配批量文件，`codeOnly: true` 只将纯代码部分放入文件，`interaction: ReplaceCurrentFile`
-用于替换当前文件。
+## 批量 AI 操作（中文示例）
+
+核心配置：`batchFileRegex` 用于匹配批量文件，`codeOnly: true` 表示仅保留纯代码部分，`interaction: ReplaceCurrentFile` 用于替换当前文件
 
 ```markdown
 ---
@@ -33,10 +32,9 @@ codeOnly: true
 ${all}
 ```
 
-## Batch AI Action (English Example)
+## 批量 AI 操作（英文示例）
 
-Key points: `batchFileRegex` is used to match batch files, `codeOnly: true` only puts the pure code part into the file,
-`interaction: ReplaceCurrentFile` is used to replace the current file.
+关键配置：`batchFileRegex` 用于匹配批量文件，`codeOnly: true` 表示仅保留纯代码部分，`interaction: ReplaceCurrentFile` 用于替换当前文件
 
 ```markdown
 ---
@@ -52,4 +50,3 @@ Refactor the user's code. Requirements:
 
 ${all}
 ```
-

@@ -1,16 +1,18 @@
+
+
 ---
 layout: default
-title: AutoDev as MCP Client
+title: AutoDev 作为 MCP 客户端
 nav_order: 2
 parent: MCP
 ---
 
-> Since we need to support AutoDev DevIns use MCP tools, we current only support Stdio-based transport.
+> 由于需要支持 AutoDev DevIns 使用 MCP 工具，目前我们仅支持基于标准输入输出的传输方式。
 
-## How to use
+## 使用方法
 
-1. Configure the MCP client in `Settings`, `AutoDev`, `Custom Agent` MCP Servers
-2. Add your MCP Server, for example:
+1. 在 `Settings` → `AutoDev` → `Custom Agent` 的 MCP Servers 中配置客户端
+2. 添加您的 MCP 服务器，例如：
 
 ```json
 {
@@ -27,7 +29,7 @@ parent: MCP
 }
 ```
 
-Java examples:
+Java 示例：
 
 ```json
 {
@@ -43,7 +45,7 @@ Java examples:
 }
 ```
 
-Python + UV examples:
+Python + UV 示例：
 
 ```json
 {
@@ -65,18 +67,14 @@ Python + UV examples:
 }
 ```
 
-### MCP as DevIns
+### MCP 作为 DevIns
 
-In AutoDev, the MCP tool will be converted to DevIns instruction. For example, the `read_multiple_files` tool will be
-converted to:
+在 AutoDev 中，MCP 工具会被转换为 DevIns 指令。例如 `read_multiple_files` 工具会被转换为：
 
 ```xml
-<tool>name: read_multiple_files, desc: Read the contents of multiple files simultaneously. This is more efficient than
-    reading files one by one when you need to analyze or compare multiple files. Each file's content is returned with
-    its path as a reference. Failed reads for individual files won't stop the entire operation. Only works within
-    allowed directories., example:
+<tool>name: read_multiple_files, desc: 同时读取多个文件内容。当需要分析或比较多个文件时，这比逐个读取更高效。每个文件内容将与其路径一起返回。单个文件读取失败不会中断整个操作。仅在允许的目录内有效。, example:
     <devin>
-        Here is command and JSON schema
+        以下是命令和 JSON 结构
         /read_multiple_files
         ```json
         {"properties":{"paths":{"type":"array","items":{"type":"string"}}},"required":["paths"]}
@@ -85,11 +83,11 @@ converted to:
 </tool>
 ```
 
-then Sketch, Bridge agent can use in the DevIns instruction.
+随后 Sketch 和 Bridge 代理就可以在 DevIns 指令中使用该工具。
 
-### Test MCP Server
+### 测试 MCP 服务器
 
-Create a new `sample.devin` file with the following content:
+新建 `sample.devin` 文件并添加以下内容：
 
      /list_directory
      ```json
@@ -98,7 +96,7 @@ Create a new `sample.devin` file with the following content:
      }
      ```
 
-Then run the following command, will return the list of files in the directory:
+运行以下命令后，将返回目录中的文件列表：
 
 ```bash
 Execute list_directory tool's result

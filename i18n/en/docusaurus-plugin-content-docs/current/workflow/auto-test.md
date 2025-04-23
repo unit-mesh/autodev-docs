@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: AutoTest
@@ -9,18 +11,18 @@ parent: Development
 
 ## Design Principle 
 
-Create rule:
+Creation rules:
 
-- if test code exists and LLM returns with import syntax, AutoDev will replace all code.
-- if test code exists and LLM returns with no import syntax, AutoDev will insert test code after the last import statement.
-- if test code does not exist, AutoDev will insert test code.
+- If test code exists and LLM returns code with import statements, AutoDev will replace all existing code.
+- If test code exists and LLM returns code without import statements, AutoDev will insert test code after the last import statement.
+- If test code does not exist, AutoDev will directly insert the test code.
 
-Run rule:
+Execution rules:
 
-- if run configuration exists, AutoDev will create a new run configuration.
-- if run configuration does not exist, AutoDev will create a new run configuration.
+- If a run configuration already exists, AutoDev will create a new run configuration.
+- If no run configuration exists, AutoDev will create a new run configuration.
 
-For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/devti/provider/AutoTestService.kt) 
+For implementation details, refer to [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/devti/provider/AutoTestService.kt) 
 
 ## Test Prompts
 
@@ -28,13 +30,13 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     Write unit test for the following Kotlin code.
     
     You are working on a project that uses Spring MVC, Spring WebFlux to build RESTful APIs.
-    - You MUST use should_xx_xx style for test method name, You MUST use given-when-then style.
-    - Test file should be complete and compilable, without need for further actions.
-    - Ensure that each test focuses on a single use case to maintain clarity and readability.
-    - Instead of using `@BeforeEach` methods for setup, include all necessary code initialization within each individual test method, do not write parameterized tests.
-    - This project uses JUnit 5, you should import `org.junit.jupiter.api.Test` and use `@Test` annotation.
-    - Use appropriate Spring test annotations such as `@MockBean`, `@Autowired`, `@WebMvcTest`, `@DataJpaTest`, `@AutoConfigureTestDatabase`, `@AutoConfigureMockMvc`, `@SpringBootTest` etc.
-      Here is a template as example
+    - You MUST use should_xx_xx style for test method names, and follow given-when-then structure.
+    - Test files must be complete and compilable without requiring additional modifications.
+    - Ensure each test focuses on a single use case to maintain clarity and readability.
+    - Instead of using `@BeforeEach` for setup, include all necessary initialization within individual test methods. Do not write parameterized tests.
+    - This project uses JUnit 5 - import `org.junit.jupiter.api.Test` and use `@Test` annotation.
+    - Use appropriate Spring test annotations: `@MockBean`, `@Autowired`, `@WebMvcTest`, `@DataJpaTest`, `@AutoConfigureTestDatabase`, `@AutoConfigureMockMvc`, `@SpringBootTest`, etc.
+      Example template:
     \```Kotlin
     // You Must use @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -45,7 +47,7 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     
         @BeforeEach
         fun setup() {
-            // You can use MockMvcBuilders.standaloneSetup() to build mockMvc
+            // Use MockMvcBuilders.standaloneSetup() to build mockMvc
             mockMvc = MockMvcBuilders.standaloneSetup(PluginController()).build()
         }
     
@@ -61,7 +63,7 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     
     - Kotlin API version: 1.9
     
-    // here are related classes:
+    // Related classes:
     // 'package: com.thoughtworks.archguard.evolution.domain.BadSmellSuite
     // class BadSmellSuite {
     //   id
@@ -87,7 +89,7 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     //   + fun getBadSmellSuiteWithSelectedInfoBySystemId(systemId: Long): List<BadSmellSuiteWithSelected>
     // }
     
-    // here is current class information:
+    // Current class information:
     // 'package: com.thoughtworks.archguard.evolution.controller.EvolutionBadSmellController
     // '@RestController, @RequestMapping("/api/evolution")
     // class EvolutionBadSmellController {
@@ -121,18 +123,18 @@ For more, see in [AutoTestService](https://github.com/unit-mesh/auto-dev/blob/ma
     }
     \```
     
-    Start  with `import` syntax here:
+    Start with `import` syntax here:
 ```
 
 ## Resources
 
 ### TestSpark
 
-TestSpark 目前支持两种测试生成策略：
-- 基于 LLM 的测试生成（使用 OpenAI 和 JetBrains 内部 AI Assistant 平台）
-- 基于本地搜索的测试生成（使用 EvoSuite）
+TestSpark currently supports two test generation strategies:
+- LLM-based test generation (using OpenAI and JetBrains internal AI Assistant platform)
+- Local search-based test generation (using EvoSuite)
 
-#### Method 1: LLM gen prompt example
+#### Method 1: LLM generation prompt example
 
 GitHub: [TestSpark](https://github.com/JetBrains-Research/TestSpark/blob/development/src/main/resources/defaults/TestSpark.properties)
 
@@ -151,7 +153,6 @@ $POLYMORPHISM
 $TEST_SAMPLE
 ```
 
-#### Method 2: EvoSuite gen 
+#### Method 2: EvoSuite generation 
 
-[EvoSuite](https://www.evosuite.org/) 是一个工具，可以自动生成带有 Java 代码编写的类断言的测试用例。
-
+[EvoSuite](https://www.evosuite.org/) is a tool that automatically generates test cases with class assertions written in Java code.

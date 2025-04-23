@@ -1,32 +1,24 @@
+
+
 ---
 layout: default
-title: Executable Unit Validation
+title: 可执行单元验证
 nav_order: 4
-parent: Design Patterns
+parent: 设计模式
 permalink: /patterns/executable-unit-validation
 ---
 
-Executable unit validation refers to the process of testing and verifying the generated code to ensure that it can be
-compiled and executed by the compiler. The aim of executable unit validation is to enhance the accuracy and
-executability of the generated code, ensuring that the generated code units meet expectations and can be effectively
-utilized.
+# 可执行单元验证
 
-In AutoDev, corresponding to functionalities such as SQL combined with the database, unit testing, and functional code
-generation, we have preliminarily designed the following validation mechanisms:
+可执行单元验证是指通过测试和验证生成的代码，确保其能够被编译器正确编译和执行的过程。该验证的目标是提高生成代码的准确性和可执行性，确保生成的代码单元符合预期并能被有效使用。
 
-- Unit Test Syntax (TODO): Check whether the generated unit test code complies with language syntax specifications to
-  ensure it can be compiled correctly by the compiler.
-- Unit Test Execution: Execute the generated unit test cases to test the generated code, ensuring it can be compiled and
-  executed correctly by the compiler.
-- SQL Syntax Validation: Generate SQL statements based on different model capabilities and handle any resulting errors.
-- SQL Schema Validation (TODO): Combine with the connected database to check the generated SQL statements, ensuring they
-  comply with the database schema specifications.
-- Functional Code Generation Validation (TODO): Adopt a test-driven validation mechanism to check the generated code,
-  ensuring it meets development requirements and can be compiled correctly by the compiler.
-- Frontend Code Generation Validation (TODO): Check the generated frontend code to ensure correctness in imports,
-  syntax, etc.
+在 AutoDev 中，针对 SQL 与数据库结合、单元测试、功能代码生成等场景，我们初步设计了以下验证机制：
 
-Considering that unit tests are directly executable, in AutoDev, we directly execute unit tests (`RunService`), and with
-a fast enough IDE, the validation process is generally rapid. Through the aforementioned validation mechanisms, we can
-effectively enhance the accuracy and executability of the generated code, ensuring that the generated code units meet
-expectations and can be effectively utilized.
+- **单元测试语法验证（待实现）**：检查生成的单元测试代码是否符合语言语法规范，确保能够被编译器正确编译
+- **单元测试执行验证**：执行生成的单元测试用例来测试生成代码，确保能够被编译器正确编译和执行
+- **SQL 语法验证**：根据不同模型能力生成 SQL 语句并处理可能产生的错误
+- **SQL 模式验证（待实现）**：结合连接的数据库检查生成的 SQL 语句，确保符合数据库模式规范
+- **功能代码生成验证（待实现）**：采用测试驱动的验证机制检查生成代码，确保满足开发需求并能被编译器正确编译
+- **前端代码生成验证（待实现）**：检查生成的前端代码，确保导入、语法等方面的正确性
+
+考虑到单元测试本身具有直接可执行性，在 AutoDev 中我们直接执行单元测试（`RunService`），在 IDE 足够快速的情况下，验证过程通常较为迅速。通过上述验证机制，我们能够有效提升生成代码的准确性和可执行性，确保生成的代码单元符合预期并能被有效使用。

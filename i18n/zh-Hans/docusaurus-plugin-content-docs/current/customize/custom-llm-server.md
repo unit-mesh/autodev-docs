@@ -1,76 +1,76 @@
+
+
 ---
 layout: default
-title: Custom LLM Server
-parent: Customize Features
+title: 自定义大模型服务器
+parent: 功能定制
 nav_order: 14
 permalink: /custom/llm-server
 ---
 
-# Custom LLM Server
+# 自定义大模型服务器
 
-## Custom LLM Server Example
+## 自定义大模型服务器示例
 
-### DeepSeek AI examples
+### DeepSeek AI 示例
 
-- Custom Response Type：SSE
-- Custom Engine Server：https://api.deepseek.com/v1/chat/completions
-- Request body format:
+- 自定义响应类型：SSE
+- 自定义引擎服务器：https://api.deepseek.com/v1/chat/completions
+- 请求体格式：
 ```json
 { "customFields": {"model": "deepseek-chat", "stream": true} }
 ```
-- Response format: 
+- 响应格式：
 ```
 $.choices[0].delta.content 
 ```
 
-### 零一万物 examples
+### 零一万物 示例
 
-- Custom Response Type：SSE
-- Custom Engine Server：https://api.lingyiwangwu.com/v1/chat/completions
-- Request body format:
+- 自定义响应类型：SSE
+- 自定义引擎服务器：https://api.lingyiwangwu.com/v1/chat/completions
+- 请求体格式：
 ```json
 { "customFields": {"model": "yi-34b-chat", "stream": true} }
 ```
-- Response format: 
+- 响应格式：
 ```
 $.choices[0].delta.content 
 ```
 
+### ChatGLM 示例
 
-### ChatGLM examples
+更多细节请参考：[#90](https://github.com/unit-mesh/auto-dev/issues/90)
 
-more detail see in: [#90](https://github.com/unit-mesh/auto-dev/issues/90)
-
-- Custom Response Type：SSE
-- Custom Engine Server：https://open.bigmodel.cn/api/paas/v4/chat/completions
-- Request body format:
+- 自定义响应类型：SSE
+- 自定义引擎服务器：https://open.bigmodel.cn/api/paas/v4/chat/completions
+- 请求体格式：
 ```json
 { "customFields": {"model": "glm-4", "stream": true} }
 ```
-- Response format: 
-
+- 响应格式：
 ```
 $.choices[0].delta.content 
 ```
 
-### Moonshot AI examples
+### Moonshot AI 示例
 
-- Custom Response Type：SSE
-- Custom Engine Server：https://api.moonshot.cn/v1/chat/completions
-- Request body format
+- 自定义响应类型：SSE
+- 自定义引擎服务器：https://api.moonshot.cn/v1/chat/completions
+- 请求体格式：
 ```json
 { "customFields": {"model": "moonshot-v1-8k", "stream": true } }
 ```
-- Response format:
+- 响应格式：
 ```
 $.choices[0].delta.content
 ```
 
-## Custom response format
+## 自定义响应格式
 
-We used [JsonPath](https://github.com/json-path/JsonPath) to parse response,
-currently we only extract the first choice and only the response message.
-If your response is this format:
+我们使用 [JsonPath](https://github.com/json-path/JsonPath) 来解析响应，
+目前仅提取第一个选项的响应消息。
+如果您的响应格式如下：
 
 ```json
 {
@@ -87,34 +87,34 @@ If your response is this format:
   }]
 }
 ```
-You need to set the `response format` to:
+您需要将`响应格式`设置为：
 
 ```text
 $.choices[0].message.delta.content
 ```
 
-## Custom request format
+## 自定义请求格式
 
-Only support number of request parameters like OpenAI does.
-Only support http request that doesn't need encryption keys(like websocket)
+仅支持类似OpenAI的请求参数格式
+仅支持无需加密密钥的HTTP请求（如WebSocket）
 
-### Custom Request (header/body/message-keys)
+### 自定义请求（请求头/请求体/消息键）
 
-**BE CAREFUL: In this project, messageKey is not compatible with openAI: messageKeys: `{ { "content": "content" } }`is REQUIRED** *maybe we will fix this in the future.*
+**重要提示：在本项目中，messageKey与OpenAI不兼容：messageKeys: `{ { "content": "content" } }`是必需的** *我们可能会在未来修复这个问题*
 
-If your llm server has a custom request format, you can:
+如果您的LLM服务器需要自定义请求格式，可以：
 
-- Add top level field to the request body via `customFields`
-- Add custom headers to the request via `customHeaders`
-- Customize the messages key via `messageKeys` (optional)
+- 通过`customFields`添加请求体顶层字段
+- 通过`customHeaders`添加自定义请求头
+- 通过`messageKeys`自定义消息键（可选）
 
-For example:
+例如：
 
 ```json
 { "customFields": {"user": "12345", "model":"model-name", "stream": true},  "messageKeys": { "content": "content" }}
 ```
 
-Or with custom headers:
+或包含自定义请求头：
 
 ```json
 {
@@ -124,16 +124,16 @@ Or with custom headers:
 }
 ```
 
-Request header will be( origin key is omitted here):
+生成的请求头将会是（原始头信息已省略）：
 
 ```http-request
 POST https://your.server.com/path
 
 CustomHeader: my-value
-...(other headers)
+...(其他请求头)
 ```
 
-And the request body will be:
+请求体将会是：
 
 ```json
 {
@@ -147,5 +147,3 @@ And the request body will be:
   ]
 }
 ```
-
-

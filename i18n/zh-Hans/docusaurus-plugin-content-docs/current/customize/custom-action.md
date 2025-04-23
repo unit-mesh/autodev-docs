@@ -1,105 +1,105 @@
+
+
 ---
 layout: default
-title: Custom Action
-parent: Customize Features
+title: 自定义动作
+parent: 功能定制
 nav_order: 10
 permalink: /custom/action
 ---
 
-# Custom Action
+# 自定义动作
 
-You can customize your prompt in `Settings` -> `Tools` -> `AutoDev`
+您可以通过`设置`->`工具`->`AutoDev`来自定义您的提示模板
 
 ```json
 {
   "spec": {
-    "controller": "- Use BeanUtils.copyProperties in the Controller for DTO to Entity conversion.\n- Avoid using Autowired.\n- Use Swagger Annotations to indicate API meanings.\n- Controller methods should capture and handle business exceptions, rather than throwing system exceptions.",
-    "service": "- Service layer should use constructor injection or setter injection; avoid using the @Autowired annotation.",
-    "entity": "- Entity classes should use JPA annotations for database mapping.\n- The entity class name should match the corresponding database table name. Entity classes should use annotations to mark primary keys and table names, for example: @Id, @GeneratedValue, @Table, etc.",
-    "repository": "- Repository interfaces should extend the JpaRepository interface to inherit basic CRUD operations.",
-    "ddl": "- Fields should be constrained with NOT NULL constraints to ensure data integrity."
+    "controller": "- 在Controller中使用BeanUtils.copyProperties进行DTO到Entity的转换\n- 避免使用Autowired\n- 使用Swagger注解说明API含义\n- Controller方法应捕获并处理业务异常，而不是抛出系统异常",
+    "service": "- Service层应使用构造器注入或setter注入；避免使用@Autowired注解",
+    "entity": "- 实体类应使用JPA注解进行数据库映射\n- 实体类名应与对应数据库表名匹配。实体类应使用注解标记主键和表名，例如：@Id、@GeneratedValue、@Table等",
+    "repository": "- Repository接口应继承JpaRepository接口以继承基础CRUD操作",
+    "ddl": "- 字段应添加NOT NULL约束以确保数据完整性"
   },
   "prompts": [
     {
-      "title": " Code complete",
+      "title": "代码补全",
       "autoInvoke": true,
       "matchRegex": ".*",
       "priority": 1,
-      "template": "Code complete:\n${METHOD_INPUT_OUTPUT}\n${SPEC_controller}\n\n${SELECTION}"
+      "template": "代码补全：\n${METHOD_INPUT_OUTPUT}\n${SPEC_controller}\n\n${SELECTION}"
     },
     {
-      "title": " Translate to Kotlin",
+      "title": "转换为Kotlin",
       "autoInvoke": false,
       "matchRegex": ".*",
       "priority": 0,
-      "template": "Translate the following code to Kotlin.\n${SIMILAR_CHUNK}\nCompare these snippets:\n${METHOD_INPUT_OUTPUT}\nHere is the code:\n${SELECTION}"
+      "template": "将以下代码转换为Kotlin\n${SIMILAR_CHUNK}\n对比代码片段：\n${METHOD_INPUT_OUTPUT}\n以下是代码：\n${SELECTION}"
     }
   ]
 }
 ```
 
-- title: the action name
-- autoInvoke: auto invoke this action when you perform action
+- title: 动作名称
+- autoInvoke: 执行动作时是否自动调用
 - matchRegex: TODO()
-- priority: the priority of the action, the higher will be first. (0~1000 was recommended)
-- template: the template of the action, you can use `${SPEC_controller}` to insert spec, `${SELECTION}` to insert
-  selected code.
-- selectedRegex (since @1.8.3 from [#174](https://github.com/unit-mesh/auto-dev/pull/174)): the regex to match the selected code 
+- priority: 动作优先级，数值越高优先级越高（建议范围0~1000）
+- template: 动作模板，可使用`${SPEC_controller}`插入规范说明，`${SELECTION}`插入选中代码
+- selectedRegex (自@1.8.3版本起，来自[#174](https://github.com/unit-mesh/auto-dev/pull/174)): 匹配选中代码的正则表达式
 
-## Variables
+## 变量说明
 
-Context Variable:
+上下文变量：
 
-- `${SELECTION}`: the selected code
-- `${SIMILAR_CHUNK}`: the similar code chunk
-- `${METHOD_INPUT_OUTPUT}`: the method input and output
+- `${SELECTION}`: 选中的代码片段
+- `${SIMILAR_CHUNK}`: 相似代码块
+- `${METHOD_INPUT_OUTPUT}`: 方法输入输出说明
 
-Spec variables:
+规范变量：
 
-- `${SPEC_*}`: load spec from `spec` section in config, like `${SPEC_controller}` will load `spec.controller` from
-  config.
+- `${SPEC_*}`: 从配置的`spec`部分加载规范，例如`${SPEC_controller}`会加载配置中的`spec.controller`
 
-### Template Examples
+### 模板示例
 
-Config:
+配置：
 
 ```json
 {
-  "title": "\uD83C\uDF10\uD83C\uDF10 Translate to Kotlin",
+  "title": "\uD83C\uDF10\uD83C\uDF10 转换为Kotlin",
   "autoInvoke": false,
   "matchRegex": ".*",
   "priority": 0,
-  "template": "Translate follow code to Kotlin. Similar chunk: ${SIMILAR_CHUNK} Compare this snippets: ${METHOD_INPUT_OUTPUT}\n \n${SELECTION}"
+  "template": "将以下代码转换为Kotlin。相似代码块：${SIMILAR_CHUNK} 对比代码片段：${METHOD_INPUT_OUTPUT}\n \n${SELECTION}"
 }
 ```
 
-Output example:
+输出示例：
 
 ```
-Translate follow code to Kotlin. Similar chunk: // Compare this snippet from java/cc/unitmesh/untitled/demo/controller/CommentController.java:
+将以下代码转换为Kotlin。相似代码块： // 对比来自java/cc/unitmesh/untitled/demo/controller/CommentController.java的代码片段：
 // public class CommentController {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/DemoApplication.java:
+// 对比来自java/cc/unitmesh/untitled/demo/DemoApplication.java的代码片段：
 // public class DemoApplication {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/controller/AdvertiseController.java:
+// 对比来自java/cc/unitmesh/untitled/demo/controller/AdvertiseController.java的代码片段：
 // public class AdvertiseController {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/dto/BookMeetingRoomRequest.java:
+// 对比来自java/cc/unitmesh/untitled/demo/dto/BookMeetingRoomRequest.java的代码片段：
 // public class BookMeetingRoomRequest {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/entity/MeetingRoom.java:
+// 对比来自java/cc/unitmesh/untitled/demo/entity/MeetingRoom.java的代码片段：
 // public class MeetingRoom {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/controller/BlogController.java:
+// 对比来自java/cc/unitmesh/untitled/demo/controller/BlogController.java的代码片段：
 //     @ApiOperation(value = "Create a new blog")
-// Compare this snippet from java/cc/unitmesh/untitled/demo/controller/BlogControllerTest.java:
+// 对比来自java/cc/unitmesh/untitled/demo/controller/BlogControllerTest.java的代码片段：
 // class BlogControllerTest {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/DemoApplicationTests.java:
+// 对比来自java/cc/unitmesh/untitled/demo/DemoApplicationTests.java的代码片段：
 // class DemoApplicationTests {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/service/BlogService.java:
+// 对比来自java/cc/unitmesh/untitled/demo/service/BlogService.java的代码片段：
 // public class BlogService {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/dto/CreateBlogRequest.java:
+// 对比来自java/cc/unitmesh/untitled/demo/dto/CreateBlogRequest.java的代码片段：
 // public class CreateBlogRequest {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/controller/BlogCategoryController.java:
+// 对比来自java/cc/unitmesh/untitled/demo/controller/BlogCategoryController.java的代码片段：
 // public class BlogCategoryController {
-// Compare this snippet from java/cc/unitmesh/untitled/demo/dto/MeetingRoomDetailsResponse.java:
-// public class MeetingRoomDetailsResponse { Compare this snippets: //  class CreateBlogRequest {
+// 对比来自java/cc/unitmesh/untitled/demo/dto/MeetingRoomDetailsResponse.java的代码片段：
+// public class MeetingRoomDetailsResponse { 对比代码片段： //  class CreateBlogRequest {
 //    title
 //    content
 //    
@@ -119,8 +119,8 @@ Translate follow code to Kotlin. Similar chunk: // Compare this snippet from jav
 //    + public void setAuthor(String author)
 //  }
 
-\`\`\`Java
-// create blog
+```Java
+// 创建博客
     @ApiOperation(value = "Create a new blog")
     @PostMapping("/")
     public BlogPost createBlog(@RequestBody CreateBlogRequest request) {
@@ -131,5 +131,5 @@ Translate follow code to Kotlin. Similar chunk: // Compare this snippet from jav
         BeanUtils.copyProperties(createdBlog, response);
         return createdBlog;
     }
-\`\`\`
+```
 ```

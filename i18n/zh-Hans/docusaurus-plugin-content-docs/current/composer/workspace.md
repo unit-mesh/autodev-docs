@@ -1,49 +1,47 @@
+
+
 ---
 layout: default
-title: Sketch Workspace
+title: Sketch 工作区
 parent: AutoDev Sketch/Composer
 nav_order: 3
 permalink: /workspace
 ---
 
-# Sketch Workspace
+# Sketch 工作区
 
-## Workspace Dictionary 
+## 工作区词典
 
-The workspace dictionary is a collection of domain-specific terms and phrases that are used to enhance the AI model's
-understanding of the specific context in which it is being used. 
+工作区词典是领域特定术语和短语的集合，用于增强AI模型对特定使用场景上下文的理解能力。
 
 ![](https://unitmesh.cc/auto-dev/workspace-enhance.png)
 
-We use `prompts/domain.csv` to define the workspace dictionary.
+我们使用 `prompts/domain.csv` 文件来定义工作区词典。
 
-### Generate Workspace Dictionary
+### 生成工作区词典
 
-We create AnAction call `DomainDictGenerateAction` to generate the workspace dictionary. Which set in the `ProjectViewToolbar`
-toolbar.
+我们创建了名为 `DomainDictGenerateAction` 的AnAction来生成工作区词典，该操作设置在 `ProjectViewToolbar` 工具栏中。
 
-After you click the button, it will generate a `prompts/domain.csv` file in the project root directory. 
+点击该按钮后，将在项目根目录下生成 `prompts/domain.csv` 文件。
 
-### Use in AutoDev Input
+### 在AutoDev输入中使用
 
-When you use the AutoDev input, you can click `Enhance` button to use the workspace dictionary. Which will auto add the
-domain word to the input.
+当使用AutoDev输入时，可以点击 `Enhance` 按钮来应用工作区词典，该功能会自动将领域词汇添加到输入内容中。
 
-## Workspace Files
+## 工作区文件
 
-The workspace files are the files that are used to send to the AI model in AutoDev input section. When you use the AutoDev input,
-you can click `Files` button to select the files to send to the AI model.
+工作区文件是指在AutoDev输入环节发送给AI模型的相关文件。使用AutoDev输入时，可以点击 `Files` 按钮选择需要发送给AI模型的文件。
 
 ![](https://unitmesh.cc/auto-dev/workspace-files.png)
 
-## Workspace Rule
+## 工作区规则
 
-aka [Project Rule](/composer/project-rule)
+参见[项目规则](/composer/project-rule)
 
 ![](https://unitmesh.cc/auto-dev/workspace-rule.png)
 
-## Workspace for Planner
+## 规划器工作区
 
-The workspace for manage the AI changed files, add files, remove files, and so on.
+该工作区用于管理AI修改的文件、新增文件、删除文件等变更操作。
 
 ![](https://unitmesh.cc/auto-dev/workspace-changes.png)

@@ -1,57 +1,57 @@
+
+
 ---
 layout: default
-title: AutoDev Composer Prompting
-parent: AutoDev Sketch/Composer
+title: AutoDev 组合器提示机制
+parent: AutoDev 草图/组合器
 nav_order: 3
 ---
 
-# AutoDev Composer Prompting
+# AutoDev 组合器提示机制
 
-What we use for AutoDev Composer's prompts:
+我们为 AutoDev Composer 设计的提示机制包含以下要素：
 
-- Project context, including libraries, frameworks, and languages.
-- DSL: We use [DevIns DSL](/devins) to build our version's function tools.
-- CoT: Function tools are better, but we believe DSLs are more powerful for both AI and humans to understand.
+- 项目上下文：包括使用的库、框架和编程语言
+- DSL（领域特定语言）：使用 [DevIns DSL](/devins) 构建版本功能工具
+- CoT（思维链）：虽然功能工具有效，但我们认为 DSL 对 AI 和人类都更易理解
 
-Based on user requirements, we analyze and execute them as a DSL, like:
+根据用户需求，我们会将其分析并执行为 DSL 指令，例如：
 
 ```devin
 /database:schema
 /symbol:com.example.blog.Blog
 ```
 
-Then AutoDev will call: `DatabaseInsCommand`, `SymbolInsCommand` to collect the data and return to user.
+AutoDev 将调用对应的 `DatabaseInsCommand`、`SymbolInsCommand` 命令收集数据并返回给用户。
 
-**Project Context**
+**项目上下文**
 
-Here is an example of the project context:
+以下是项目上下文的典型示例：
 
 ```markdown
-- The USER's OS version is Mac OS X 15.2 x86_64
-- The absolute path of the USER's workspaces is: /Users/phodal/IdeaProjects/untitled
-- This workspace use Gradle Java JDK_11
-- The user's shell is /bin/bash
-- User's workspace context is: This project use MariaDB 11.5.2-MariaDB,You are working on a project that uses Spring
-  Boot 2.7.10,Spring MVC,JDBC to build RESTful APIs.
-- Current time is: 2025-01-21 16:20:42
+- 用户操作系统版本：Mac OS X 15.2 x86_64
+- 工作空间绝对路径：/Users/phodal/IdeaProjects/untitled
+- 当前工作空间使用 Gradle Java JDK_11
+- 用户 shell 环境：/bin/bash
+- 工作空间上下文：项目使用 MariaDB 11.5.2-MariaDB，正在使用 Spring Boot 2.7.10、Spring MVC、JDBC 构建 RESTful API
+- 当前时间：2025-01-21 16:20:42
 ```
 
-When user connect Database, we will use the context to help user to connect the database. We also analysis the project
-context to help user to generate the code.
+当用户连接数据库时，我们会利用这些上下文信息辅助连接。同时通过分析项目上下文来帮助生成代码。
 
-**DSL**
+**DSL 领域特定语言**
 
-Here is DevIns DSL example which we send to LLM to learn:
+以下是我们发送给大语言模型学习的 DevIns DSL 示例：
 
     <devin>
     /commit
     ```markdown
-    follow Conventional Commits, like feat: add 'graphiteWidth' option
+    遵循约定式提交规范，示例：feat: 新增 'graphiteWidth' 选项
     ```
     
     </devin>
 
-When use enable `AutoSketchMode`, the read-only commands will be auto-executed.
+当启用 `AutoSketchMode` 时，以下只读命令将自动执行：
 
 ```kotlin
 val READ_COMMANDS = setOf(
@@ -65,57 +65,53 @@ val READ_COMMANDS = setOf(
 )
 ```
 
-**CoT**
+**思维链（CoT）**
 
-We make a example for CoT:
+以下是 CoT 的典型工作流程示例：
     
 ```markdown
-    <user.question>
-    You are helping the USER create a python-based photo storage app. You
-    have created a routes.py and main.js file, and updated the main.html file.
-    </user.question>
-    <you.anwser.step1>
-    // In this step 1, you should analysis the context information is enough or not, if not, you should call DevIn tool
-    // to get the context information.
-    // For example:
-    To help you create a Python-based photo storage application, I need to know more about your codebase. I will generate
-    tool call code for you to get the necessary context information, please execute it to get the context information.
+    <用户问题>
+    您正在帮助用户创建基于 Python 的照片存储应用。已创建 routes.py 和 main.js 文件，并更新了 main.html 文件。
+    </用户问题>
+    <回答步骤1>
+    // 在此步骤中，您需要分析上下文信息是否充足。如不足，应调用 DevIn 工具获取上下文
+    // 例如：
+    为了帮助创建基于 Python 的照片存储应用，我需要更多了解代码库信息。将生成工具调用代码来获取必要上下文，请执行以下命令：
     <devin>
     /dir:src
     /localSearch:photo
     </devin>
-    // If the context information is still not enough, you should ask the user to provide more information
-    </you.anwser.step1>
-    <user.anwser.step1>
-    // waiting for user send the tool execute result
-    </user.anwser.step1>
-    <you.anwser.step2>
-    // In this step 2, You should first explain to the user how to solve the problem, and then use the DevIn language
-    // to call the tool to help the user solve the problem
-    # Step 1. Create `routes.py`
-    I have created `routes.py` to define the `/upload` and `/query` endpoints. Additionally, I have added `/` as the endpoint for `main.html`.
+    // 如果上下文仍不充足，应要求用户提供更多信息
+    </回答步骤1>
+    <用户步骤1响应>
+    // 等待用户发送工具执行结果
+    </用户步骤1响应>
+    <回答步骤2>
+    // 在此步骤中，首先解释解决方案，然后使用 DevIn 语言调用工具实现
     
-    # Step 2. Create `main.js`
-    I have created a dedicated `main.js` file to store all the interactive frontend code. It defines the UI elements for the display window and buttons, and creates event listeners for these buttons.
+    # 步骤1. 创建 `routes.py`
+    已创建 `routes.py` 来定义 `/upload` 和 `/query` 端点，并添加 `/` 作为 `main.html` 的端点
     
-    # Step 3. Update `index.html`
-    I have moved all the JavaScript code to `main.js` and imported `main.js` in `index.html`. Separating JavaScript from HTML can improve code organization, readability, maintainability, and reusability.
+    # 步骤2. 创建 `main.js`
+    已创建专用 `main.js` 存储前端交互代码，定义显示窗口和按钮的 UI 元素，并为按钮创建事件监听器
     
-    # Step 4. Run the application, test, and verify
-    Now, I will start the Flask server and run our application. I will generate IntelliJ IDEA's `.http` code to help you with API testing; you can try uploading and searching for photos on the website to see if everything works fine.
+    # 步骤3. 更新 `index.html`
+    将所有 JavaScript 代码移至 `main.js` 并在 `index.html` 中导入。代码分离可提高组织性、可读性、可维护性和复用性
     
-    # Summary of changes
-    By creating `routes.py` and `main.js`, I have made our photo application interactive. Users can now upload and search for photos using natural language queries. Additionally, I have made some modifications to the codebase to improve code organization and readability. Run the application and try uploading and searching for photos. If you encounter any errors or want to add new features, please let me know!
+    # 步骤4. 运行测试验证
+    现在将启动 Flask 服务器并运行应用。生成 IntelliJ IDEA 的 `.http` 测试代码，您可以通过网站尝试上传和搜索照片来验证功能
     
-    // then you can start coding with DevIn language. When you need to or patch, write execute the code, you should use the DevIn language
-    // If you need to create a new file, you should use `/write` command, then write the code in the code block
+    # 变更总结
+    通过创建 `routes.py` 和 `main.js`，实现了照片应用交互功能。用户现可使用自然语言查询上传和搜索照片，同时优化了代码组织结构。运行应用进行测试，如遇问题或需新增功能请告知！
+    
+    // 使用 DevIn 语言进行编码。需要创建或修改文件时使用对应命令
     <devin>
-    /write:src/main/route.py // 当不存在文件是，才需要创建文件
+    /write:src/main/route.py // 仅当文件不存在时创建
     ```python
-    // the route code
+    // 路由代码
     // from flask import Flask
     /`/`/`
     </devin>
 ```
 
-So, we can use DevIn to help user to generate the code.
+通过这种方式，我们可以使用 DevIn 语言帮助用户生成所需代码。

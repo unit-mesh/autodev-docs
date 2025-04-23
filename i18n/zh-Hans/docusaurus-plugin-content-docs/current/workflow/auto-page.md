@@ -1,34 +1,36 @@
+
+
 ---
 layout: default
-title: AutoPage
+title: 自动页面生成
 nav_order: 3
-parent: Workflow
+parent: 工作流程
 ---
 
-Required plugin: JavaScript
+所需插件：JavaScript
 
-Demo Video: [https://www.bilibili.com/video/BV1Ye411h7Qu/](https://www.bilibili.com/video/BV1Ye411h7Qu/)
+演示视频：[https://www.bilibili.com/video/BV1Ye411h7Qu/](https://www.bilibili.com/video/BV1Ye411h7Qu/)
 
-implementation: [cc.unitmesh.database.flow.AutoPageFlow]
+实现类：[cc.unitmesh.database.flow.AutoPageFlow]
 
-## Design Flow
+## 设计流程
 
-Common flow for frontend development:
+前端开发通用流程：
 
-- getRoutes
-- getComponents
-- getDesignSystemComponents
-- sampleRemoteCall
-- sampleStateManagement
+- 获取路由
+- 获取组件
+- 获取设计系统组件
+- 远程调用示例
+- 状态管理示例
 
-## Prompt Override
+## 提示覆盖
 
-Steps:
+步骤：
 
-- step 1: `prompts/genius/page/page-gen-clarify.vm`
-- step 2: `prompts/genius/page/page-gen-design.vm`
+- 步骤1：`prompts/genius/page/page-gen-clarify.vm`
+- 步骤2：`prompts/genius/page/page-gen-design.vm`
 
-Context:
+上下文：
 
 ```kotlin
 data class AutoPageContext(
@@ -43,72 +45,70 @@ data class AutoPageContext(
 )
 ```
 
-### Current Prompt
+### 当前提示
 
-Clarify:
+需求澄清：
 
 ```
-    You are a professional Frontend developer.
-    According to the user's requirements, you should choose the best components for the user in List.
+    您是一名专业的前端开发工程师。
+    根据用户需求，您需要从列表中为用户选择最佳组件。
 
-    - Framework: ${context.frameworks}
-    - Language: ${context.language}
-    - User component: ${context.componentNames}, ${context.pageNames}
+    - 框架：${context.frameworks}
+    - 语言：${context.language}
+    - 用户组件：${context.componentNames}, ${context.pageNames}
     
-    For example:
+    示例：
     
-    - Question(requirements): Build a form for user to fill in their information.
-    - You should anwser: [Input, Select, Radio, Checkbox, Button, Form]
+    - 问题（需求）：构建用户信息填写表单
+    - 应返回：[输入框, 下拉选择, 单选按钮, 复选框, 按钮, 表单]
     
     ----
     
-    Here are the User requirements:
+    用户需求：
     
     ```markdown
     ${context.requirement}
     ```
     
-    Please choose the best Components for the user, just return the components names in a list, no explain.
+    请选择最适合的组件名称，仅返回列表形式，无需解释。
 ```
 
-Design:
+设计实现：
 
 ```markdown
-    You are a professional Frontend developer.
-    According to the user's requirements, and Components info, write Component for the user.
+    您是一名专业的前端开发工程师。
+    根据用户需求和组件信息，编写对应的组件代码。
     
-    - Framework: ${context.frameworks}
-    - Language: ${context.language}
-    - User Components Infos: ${context.components}
+    - 框架：${context.frameworks}
+    - 语言：${context.language}
+    - 用户组件信息：${context.components}
     
-    For example:
+    示例：
     
-    - Question(requirements): Build a form for user to fill in their information.
-      // componentName: Form, props: { fields: [{name: 'name', type: 'text'}, {name: 'age', type: 'number'}] }
-      // componentName: Input, props: { name: 'name', type: 'text' }
-      // componentName: Input, props: { name: 'age', type: 'number' }
-    - Answer:
+    - 问题（需求）：构建用户信息填写表单
+      // 组件名称：表单, 属性：{ fields: [{name: '姓名', type: 'text'}, {name: '年龄', type: 'number'}] }
+      // 组件名称：输入框, 属性：{ name: '姓名', type: 'text' }
+      // 组件名称：输入框, 属性：{ name: '年龄', type: 'number' }
+    - 答案：
     <Form>
-        <Input name="name" type="text" />
-        <Input name="age" type="number" />
+        <Input name="姓名" type="text" />
+        <Input name="年龄" type="number" />
     </Form>
     
     ----
     
-    Here are the requirements:
+    当前需求：
     
     ${context.requirement}
     
-    Please write your code with Markdown syntax, no explanation is needed:
+    请使用Markdown语法编写代码，无需解释：
 ```
 
-## Theory of AutoPage 
+## 自动页面生成原理 
 
-Common frontend flow:
+前端通用流程：
 
-1. Functional bootstrap
-2. Request Transform / Data validation, IO Handing.
-3. Process IPC/RPC Calling
-4. Output Transform / Render
-
-
+1. 功能引导
+2. 请求转换/数据验证、IO处理
+3. 进程间通信/远程调用
+4. 输出转换/渲染

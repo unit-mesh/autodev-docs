@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: AutoDev Composer Prompting
@@ -110,7 +112,7 @@ We make a example for CoT:
     // then you can start coding with DevIn language. When you need to or patch, write execute the code, you should use the DevIn language
     // If you need to create a new file, you should use `/write` command, then write the code in the code block
     <devin>
-    /write:src/main/route.py // 当不存在文件是，才需要创建文件
+    /write:src/main/route.py // When the file doesn't exist, create it
     ```python
     // the route code
     // from flask import Flask

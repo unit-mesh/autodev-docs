@@ -1,20 +1,22 @@
+
+
 ---
 layout: default
 title: DevOps
-parent: Basic Features
+parent: 基础功能
 nav_order: 10
 permalink: /features/devops
 ---
 
-1. click New the menu (or right-click in left project nam) -> SRE Genius(DevOps)
+1. 点击菜单栏新建（或在左侧项目名称处右键）-> SRE Genius（DevOps）
 
 <img src="https://unitmesh.cc/auto-dev/ci-cd.png" alt="AutoDevChat" width="600px"/>
 
-## Generate GitHub Actions
+## 生成GitHub Actions
 
-Which will generate build system info and template file, then render to prompt
+该功能将生成构建系统信息和模板文件，并通过模板引擎渲染生成提示
 
-impl code: [GenerateGitHubActionsAction](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/genius/actions/GenerateGitHubActionsAction.kt)
+实现代码：[GenerateGitHubActionsAction](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/genius/actions/GenerateGitHubActionsAction.kt)
 
 ```kotlin
 val githubActions = BuildSystemProvider.guess(project);
@@ -23,11 +25,11 @@ templateRender.context = DevOpsContext.from(githubActions)
 val template = templateRender.getTemplate("generate-github-action.vm")
 ```
 
-## Generate Dockerfile
+## 生成Dockerfile
 
-Which will generate build system info and template file, then render to prompt
+该功能将生成构建系统信息和模板文件，并通过模板引擎渲染生成提示
 
-impl code: [GenerateDockerfileAction](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/genius/actions/GenerateDockerfileAction.kt)
+实现代码：[GenerateDockerfileAction](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/genius/actions/GenerateDockerfileAction.kt)
 
 ```kotlin
 val dockerContexts = BuildSystemProvider.guess(project)

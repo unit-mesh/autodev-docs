@@ -1,70 +1,57 @@
+
+
 ---
 layout: default
 title: AutoDev MCP
 ---
 
-在 Agentic Coding 这一话题下，工具使用（Tool Use/Function calling）是一个非常有意思的话题。完成一个软件开发任务，需要使用到大量的工具，
-除去在 IDE 及其插件生态本身提供的功能外，还会使用到大量的外部工具，如 Git、Docker、Kubernetes、Jenkins 等等。如何让 AI
-知道更多工具的存在以及如何使用这些工具，是一个非常有意思的话题。
+In the realm of Agentic Coding, tool usage (Tool Use/Function calling) presents a fascinating topic. Completing a software development task requires utilizing numerous tools, extending beyond the native capabilities of IDEs and their plugin ecosystems to include various external tools like Git, Docker, Kubernetes, Jenkins, etc. How to enable AI to be aware of more tools and their usage presents an intriguing challenge.
 
-所以，我花了一天的时间在 AutoDev 中实现了相关的功能，即 AutoDev 作为一个 MCP 服务，可以被任何 Agent Tool 调用；AutoDev 作为一个
-MCP 客户端，可以调用任何 MCP 服务。
+Therefore, I spent a day implementing relevant functionalities in AutoDev: establishing AutoDev as an MCP service that can be invoked by any Agent Tool, while also enabling AutoDev to function as an MCP client capable of calling any MCP service.
 
-## 引子 1：从渐进性 AI Agent 方案，到 AutoDev 即 MCP 服务
+## Prelude 1: From Progressive AI Agent Solutions to AutoDev as MCP Service
 
-在更庞大的 AI Agent 话题之下，比如自动化的 Computer Use 场景下，IDE 也只是一个可调用的 Agent 工具。从当前的 AI Agent
-进度来看，现在的 Agent Tool 使用是一种渐进式的 AI Agent 方案 —— 毕竟写过 E2E 测试的同学都知道：操作 UI 的效率是非常之低的；以至于我们在编写
-AutoDev 时，并没有写多少 UI 自动化测试。
+Within the broader context of AI Agents, such as automated Computer Use scenarios, IDEs themselves become just another invokable Agent tool. Current AI Agent implementations demonstrate a progressive approach to Agent Tool usage - as developers familiar with E2E testing know, UI automation proves highly inefficient. This explains why we wrote minimal UI automation tests when developing AutoDev.
 
-我们现在考虑的 AI Coding 是以 IDE 为中心的，但是还存在一个场景是以 Agent Tool 为中心的。即：
+While our current AI Coding implementation centers around IDEs, another scenario exists where Agent Tools take precedence:
+- Agents obtain requirements through browser manipulation
+- Agents launch IDEs to write code
+- Agents operate DevOps tools for deployment
+- ...
 
-- Agent 通过操纵 Browser 去获取需求信息；
-- Agent 打开 IDE 去编写代码；
-- Agent 打开 DevOps 工具去发布代码；
-- ……
+Given that Agent Tool invocation appears to be an emerging trend towards 2025, why not position AutoDev as an MCP service? This would allow any Agent Tool (including Cursor, Cline, GitHub Copilot, etc.) to leverage AutoDev's services and access high-quality IDE context.
 
-既然借助 Agent Tool 来调用工具是 2025 年的一个趋势，那么我们为什么不将 AutoDev 作为一个 MCP 服务呢？即 AutoDev 作为一个
-MCP 服务，让任何 Agent Tool 都可以调用 AutoDev 的服务。哪怕是 Cursor、Cline、GitHub Copilot 等等，都可以调用 AutoDev 的服务，以获取
-IDE 中的高质量上下文。
+## Prelude 2: From MCP as Agent Tool Ecosystem to MCP Services as AutoDev Commands
 
-## 引子 2：从 MCP 即 Agent Tool 生态，到 MCP 服务即 AutoDev 指令
+Previously, AutoDev prioritized leveraging IDE ecosystems and its own plugin architecture to enhance AI-supported end-to-end development workflows. However, even with enriched plugin capabilities, we still require numerous Agent Tools.
 
-在过去，我们在 AutoDev 中优先考虑的是借助 IDE 的生态，以及自身的插件体系，以实现 AI 更好的支持端到端的开发流程。但是，随着我们在
-AutoDev 集成了更丰富的插件能力之后，我们依然需要大量的 Agent Tool。
+### Agent Tools Define Baseline Capabilities for AI IDEs
 
-### Agent Tool 决定 AI IDE 的基线能力
+Our analysis of various AI Coding tools reveals that VSCode-based AI Editors demonstrate remarkably similar tooling capabilities, which can be comprehensively charted. In contrast, IDE-based AI Coding plugins (like AutoDev and JetBrains Junie) offer more sophisticated capabilities including AST manipulation, debugging, and FQN lookups - typically providing around 20 core IDE capabilities compared to VSCode's dozen.
 
-不可否认，在我们研究了大量的 AI Coding 工具之后，我们会发现，大量的 AI Editor 基于 VSCode 时在 tool 上提供的能力非常之相似，以至于我们
-可以用一张图来描述它们的能力。但是，在 IDE 上的 AI Coding 插件则提供了更加丰富的能力，如 AST、Debug、FQN 查找等等。
+As AI Coding expands into requirements management, deployment, and operations, the corresponding tool ecosystem will inevitably grow more diverse.
 
-典型的基于 VSCode 的 AI Coding 工具，提供了十个左右的工具，而基于 JetBrains 的 AI Coding 插件（如 AutoDev、JetBrains
-Junie）则提供了 20 个左右的工具，而这些只是基础的 IDE 上的能力。
+### MCP Open Source Ecosystem Emerges
 
-而随着 AI Coding 进一步向需求、部署、运维等方向发展，相关的工具生态势必会更加丰富。
+The Model Context Protocol (MCP), introduced by Anthropic (creators of Claude), provides standardized interfaces for LLM applications to access external information, tools, and resources. While AutoDev offers powerful customization capabilities like Custom Agents:
 
-### MCP 开源生态已经形成
+- Some tools remain unpredictable (e.g., internal corporate tools)
+- MCP's tool ecosystem is rapidly maturing into a standard (despite regional variations)
 
-MCP（Model Context Protocol）是由 Anthropic 公司（Claude 模型） 推出的一个协议，它通过提供一种标准化的接口，LLM
-应用可以访问外部信息、工具和资源。尽管我们在 AutoDev 提供了强大的自定义能力，诸如于 Custom Agent 等能力，但是：
+Since Cursor and Cline adopted MCP, numerous open-source MCP implementations have formed a thriving overseas ecosystem.
 
-- 有些工具是我们无法预知的，如某些公司内部的工具；
-- MCP 等工具的生态是非常丰富的，并且正在成为一个标准。（尽管国内可能有一些不同）
+## AutoDev x MCP: Bidirectional Empowerment
 
-但是，自打 Cursor、Cline 等编程工具引入了 MCP 之后，大量的 MCP 服务已经在国外形成了一个生态，特别是已经有了非常多的开源实现。
+Building upon MCP-related plugins and the io.modelcontextprotocol ecosystem, we developed a bidirectional empowerment framework:
 
-## AutoDev x MCP：双向赋能
+- AutoDev functions as an MCP server accessible to any Agent Tool
+- AutoDev operates as an MCP client invoking any MCP service
 
-基于上述的思考，我们基于 MCP 相关的插件（MCP Plugin）和生态（io.modelcontextprotocol），构建了 AutoDev x MCP 的双向赋能方案。即：
+This dual approach consolidates our MCP capabilities.
 
-- AutoDev 作为一个 MCP 服务，可以被任何 Agent Tool 调用；
-- AutoDev 作为一个 MCP 客户端，可以调用任何 MCP 服务。
+### AutoDev as MCP Server
 
-通过这两种方式来沉淀我们在 MCP 方面的能力。
-
-### AutoDev 作为 MCP 服务端
-
-我们基于 JetBrains 的 MCP 方案，提供构建了 AutoDev 作为一个 MCP 服务的能力（注：需要在配置中开启 MCP 能力）。你只需要通过 JSON 来配置即可
-，如下是 Cline 插件中的配置示例：
+Based on JetBrains' MCP implementation, we enable AutoDev's MCP server capability (Note: Requires MCP activation in configuration). Simple JSON configuration suffices, as shown in this Cline plugin example:
 
 ```json
 {
@@ -82,11 +69,11 @@ MCP（Model Context Protocol）是由 Anthropic 公司（Claude 模型） 推出
 }
 ```
 
-在当前的版本里，我们只基于官方提供的能力，加了一些数据库相关的能力，其它能力需要等有合适的国产 MCP 服务后再进行扩展。
+The current version leverages official capabilities with some database enhancements, pending domestic MCP service availability for further expansion.
 
-### AutoDev 作为 MCP 客户端
+### AutoDev as MCP Client
 
-相似的，你需要在 AutoDev 的 Custom Agent 页面配置相关的 MCP 服务，如下是 MCP 官方提供的示例
+Similarly, configure MCP services in AutoDev's Custom Agent page. Official MCP example:
 
 ```json
 {
@@ -103,7 +90,7 @@ MCP（Model Context Protocol）是由 Anthropic 公司（Claude 模型） 推出
 }
 ```
 
-随后，这个 MCP 服务提供的工具，就可以在 AutoDev 中被调用了。如下是转换为 DevIns 后的示例：
+The MCP service's tools then become available in AutoDev. DevIns conversion example:
 
      /list_directory
      ```json
@@ -112,11 +99,11 @@ MCP（Model Context Protocol）是由 Anthropic 公司（Claude 模型） 推出
      }
      ```
 
-现在，借助于强大的 AutoDev DevIns Command，你可以在 AutoDev 中调用任何 MCP 服务，当然 Agent 也是可以的。
+Through AutoDev's powerful DevIns Commands, users can now invoke any MCP service - including AI Agents.
 
-## 其它
+## Additional Notes
 
-人生苦短，我有 AI。
+Life is short, I have AI.
 
-- 详细文档见：https://ide.unitmesh.cc/mcp
-- 欢迎下载和使用最新版本 AutoDev（v2.0.0-rc.2）进行体验。下载地址：https://github.com/unit-mesh/auto-dev/releases/tag/v2.0.0-rc.2
+- Detailed documentation: https://ide.unitmesh.cc/mcp
+- Download latest AutoDev (v2.0.0-rc.2): https://github.com/unit-mesh/auto-dev/releases/tag/v2.0.0-rc.2

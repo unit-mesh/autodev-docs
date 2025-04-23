@@ -1,40 +1,42 @@
+
+
 ---
 layout: default
-title: Chat with code
-parent: Basic Features
+title: 代码交互式对话
+parent: 基础功能
 nav_order: 4
 permalink: /features/chat-width-code
 ---
 
-1. Select a code fragment and right-click it to open the context menu. (AutoDev Chat)
-2. Select AI Actions 
+1. 选中代码片段并右键打开上下文菜单（AutoDev 聊天）
+2. 选择 AI 操作
 
-<img src="https://unitmesh.cc/auto-dev/chat-with-code.png" alt="Chat code completion" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/chat-with-code.png" alt="代码聊天补全" width="600px"/>
 
-## Normal Chat
+## 普通聊天
 
-1. Click AutoDev on the right toolbar to open AutoDev.
-2. In the input field, type your question and press `Shift` + `Enter` to submit your question.
+1. 点击右侧工具栏的 AutoDev 打开面板
+2. 在输入框中输入问题，按 `Shift` + `Enter` 提交
 
-<img src="https://unitmesh.cc/auto-dev/normal-chat.png" alt="Normal Chat" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/normal-chat.png" alt="普通聊天界面" width="600px"/>
 
-## Explain this
+## 解释此代码
 
-## Refactor this
+## 重构此代码
 
-In [#129](https://github.com/unit-mesh/auto-dev/issues/129), we provide more information for you to refactor code.
+在 [#129](https://github.com/unit-mesh/auto-dev/issues/129) 中，我们提供了更完善的重构信息支持。
 
-## Chat with this
+## 基于此代码对话
 
-## Write test for this
+## 生成单元测试
 
-## Generate test data (APIs)
+## 生成测试数据（API）
 
-support language: Java
+支持语言：Java
 
-1. right-click the function/method and selection `Generate test data (APIs)`
+1. 右键点击函数/方法并选择 `Generate test data (APIs)`
 
-AutoDev with analysis input and output data structure
+AutoDev 将分析输入输出数据结构：
 
 ```java
 @ApiOperation(value = "Create a new blog")
@@ -49,10 +51,10 @@ public BlogPost createBlog(@RequestBody CreateBlogRequest request) {
 }
 ```
 
-convert it to uml
+转换为 UML 结构：
 
 ```plantuml
-//input Classes: 
+//输入类: 
 class CreateBlogRequest {
   title: String
   content: String
@@ -64,7 +66,7 @@ class User {
   name: String
 }
 
-//output Class: 
+//输出类: 
 class BlogPost {
   id: Long
   title: String
@@ -73,7 +75,7 @@ class BlogPost {
 }
 ```
 
-AI will gen to
+AI 将生成：
 
 ```json
 {

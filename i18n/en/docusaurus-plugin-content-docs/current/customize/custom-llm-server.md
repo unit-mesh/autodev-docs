@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Custom LLM Server
@@ -10,10 +12,10 @@ permalink: /custom/llm-server
 
 ## Custom LLM Server Example
 
-### DeepSeek AI examples
+### DeepSeek AI Examples
 
-- Custom Response Type：SSE
-- Custom Engine Server：https://api.deepseek.com/v1/chat/completions
+- Custom Response Type: SSE
+- Custom Engine Server: https://api.deepseek.com/v1/chat/completions
 - Request body format:
 ```json
 { "customFields": {"model": "deepseek-chat", "stream": true} }
@@ -23,10 +25,10 @@ permalink: /custom/llm-server
 $.choices[0].delta.content 
 ```
 
-### 零一万物 examples
+### Lingyiwanwu Examples
 
-- Custom Response Type：SSE
-- Custom Engine Server：https://api.lingyiwangwu.com/v1/chat/completions
+- Custom Response Type: SSE
+- Custom Engine Server: https://api.lingyiwangwu.com/v1/chat/completions
 - Request body format:
 ```json
 { "customFields": {"model": "yi-34b-chat", "stream": true} }
@@ -36,28 +38,26 @@ $.choices[0].delta.content
 $.choices[0].delta.content 
 ```
 
+### ChatGLM Examples
 
-### ChatGLM examples
+More details see: [#90](https://github.com/unit-mesh/auto-dev/issues/90)
 
-more detail see in: [#90](https://github.com/unit-mesh/auto-dev/issues/90)
-
-- Custom Response Type：SSE
-- Custom Engine Server：https://open.bigmodel.cn/api/paas/v4/chat/completions
+- Custom Response Type: SSE
+- Custom Engine Server: https://open.bigmodel.cn/api/paas/v4/chat/completions
 - Request body format:
 ```json
 { "customFields": {"model": "glm-4", "stream": true} }
 ```
 - Response format: 
-
 ```
 $.choices[0].delta.content 
 ```
 
-### Moonshot AI examples
+### Moonshot AI Examples
 
-- Custom Response Type：SSE
-- Custom Engine Server：https://api.moonshot.cn/v1/chat/completions
-- Request body format
+- Custom Response Type: SSE
+- Custom Engine Server: https://api.moonshot.cn/v1/chat/completions
+- Request body format:
 ```json
 { "customFields": {"model": "moonshot-v1-8k", "stream": true } }
 ```
@@ -66,11 +66,11 @@ $.choices[0].delta.content
 $.choices[0].delta.content
 ```
 
-## Custom response format
+## Custom Response Format
 
-We used [JsonPath](https://github.com/json-path/JsonPath) to parse response,
-currently we only extract the first choice and only the response message.
-If your response is this format:
+We use [JsonPath](https://github.com/json-path/JsonPath) to parse responses.
+Currently we only extract the first choice and the response message content.
+If your response follows this format:
 
 ```json
 {
@@ -87,34 +87,34 @@ If your response is this format:
   }]
 }
 ```
-You need to set the `response format` to:
+You should set the `response format` to:
 
 ```text
 $.choices[0].message.delta.content
 ```
 
-## Custom request format
+## Custom Request Format
 
-Only support number of request parameters like OpenAI does.
-Only support http request that doesn't need encryption keys(like websocket)
+Only supports request parameters similar to OpenAI's specification.
+Only supports HTTP requests that don't require encryption keys (e.g., websocket is not supported).
 
 ### Custom Request (header/body/message-keys)
 
-**BE CAREFUL: In this project, messageKey is not compatible with openAI: messageKeys: `{ { "content": "content" } }`is REQUIRED** *maybe we will fix this in the future.*
+**IMPORTANT: In this project, messageKey is not fully compatible with OpenAI: The `messageKeys: { { "content": "content" } }` configuration is REQUIRED** *This might be improved in future versions.*
 
-If your llm server has a custom request format, you can:
+If your LLM server requires custom request formatting, you can:
 
-- Add top level field to the request body via `customFields`
-- Add custom headers to the request via `customHeaders`
-- Customize the messages key via `messageKeys` (optional)
+- Add top-level fields to the request body via `customFields`
+- Add custom headers via `customHeaders` 
+- Customize message keys via `messageKeys` (optional)
 
-For example:
+Example:
 
 ```json
 { "customFields": {"user": "12345", "model":"model-name", "stream": true},  "messageKeys": { "content": "content" }}
 ```
 
-Or with custom headers:
+Example with custom headers:
 
 ```json
 {
@@ -124,7 +124,7 @@ Or with custom headers:
 }
 ```
 
-Request header will be( origin key is omitted here):
+The request header will be (original headers omitted):
 
 ```http-request
 POST https://your.server.com/path
@@ -133,7 +133,7 @@ CustomHeader: my-value
 ...(other headers)
 ```
 
-And the request body will be:
+The request body will be formatted as:
 
 ```json
 {
@@ -147,5 +147,3 @@ And the request body will be:
   ]
 }
 ```
-
-

@@ -1,33 +1,33 @@
+
+
 ---
 layout: default
-title: Shell Suggest
-parent: Basic Features
+title: Shell建议
+parent: 基础功能
 nav_order: 12
 permalink: /features/shell-suggest
 ---
 
-## Shell Suggest
+## Shell建议
 
-In Terminal, we provide a feature to generate shell script by LLM.
+在终端中，我们提供了通过大型语言模型（LLM）生成Shell脚本的功能。
 
-![Shell Suggest](https://unitmesh.cc/auto-dev/autodev-shell-suggest.png)
+![Shell建议](https://unitmesh.cc/auto-dev/autodev-shell-suggest.png)
 
+## 自定义配置
 
-## Customize
-
-### Default context
+### 默认上下文
 
 ```kotlin
 data class ShellSuggestContext(
     val question: String,
     val shellPath: String,
     val cwd: String,
-    // today's date like 20240322
+    // 今天的日期，例如20240322
     val today: String = SimpleDateFormat("yyyyMMdd").format(Date()),
-    // operating system name
+    // 操作系统名称
     val os: String = System.getProperty("os.name")
 )
 ```
 
-### Prompt output example
-
+### 提示词输出示例

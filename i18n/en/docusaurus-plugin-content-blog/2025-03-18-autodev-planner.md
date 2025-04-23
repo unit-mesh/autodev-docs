@@ -1,98 +1,88 @@
+
+
 ---
 layout: default
 title: AutoDev Planner
 ---
 
-最近，我们在 AutoDev 上构建了新的功能：AutoDev Planner，它是一个基于 DeepSeek R1 推理模型构建的编码任务规划功能。当然了，除了 DeepSeek
-R1 之外，你也可以使用其它模型。
+Recently, we've implemented a new feature in AutoDev: AutoDev Planner, a coding task planning functionality built on the DeepSeek R1 reasoning model. Of course, besides DeepSeek R1, you can also use other models.
 
-在 AutoDev Planner 中，AI 将会根据你的输入和收集的上下文，生成一个用于后续编码的任务计划。随后，这个编码计划可以用其它指令遵循更好的模型，比如
-DeepSeek V3，来生成代码、编辑代码等。
+In AutoDev Planner, AI will generate a task plan for subsequent coding based on your input and collected context. This coding plan can then be used with other instruction-following models like DeepSeek V3 to generate code, edit code, etc.
 
-## 引子 1：AI 编码任务的进度显性化
+## Insight 1: Visibility of AI Coding Task Progress
 
-在进行 AI 编码 Agent 的设计时，一个非常有意思的点是，用户对于编码任务的感知是怎样的，即用户应该能显性看到进度，还是隐性感知进度。
+When designing AI coding agents, an interesting consideration is how users perceive coding task progress - whether they should explicitly see the progress or implicitly sense it.
 
-### Copilot Workspace：早期的 AI 显性任务
+### Copilot Workspace: Early Explicit AI Tasks
 
-去年，我尝试使用 GitHub Copilot Workspace 来帮助我进行前端的开发工作。我尝试了几十个小的需求点，哪怕只是简单的 i18n 翻译，它的表现并没有
-我想象中的那么好，大抵是受限于 GPT 4 的能力限制。而 Copilot Workspace 的思路确实非常不错：
+Last year, I experimented with GitHub Copilot Workspace for frontend development. After trying dozens of small requirements (even simple i18n translations), its performance didn't meet expectations, likely limited by GPT-4's capabilities. However, Copilot Workspace's approach remains valuable:
 
-- Brainstorm。对用户的 Task 进行头脑风暴（Brainstorm）
-- Task。将 Task 转换为一个可编辑的 Plan
-- Execute。执行 Plan，生成代码 Pull Request
-- PR。将变更以 Pull Request 的形式提交
+- Brainstorm. Conduct brainstorming for user tasks
+- Task. Convert tasks into editable plans
+- Execute. Execute plans to generate code Pull Requests
+- PR. Submit changes as Pull Requests
 
-你可以显性看到 AI 思考、编辑、执行的过程，当然它没有动态的去调整他的计划，而是一次性生成（基于 2024 年的认知）。
+Users can explicitly observe AI's thinking, editing, and execution processes, though it doesn't dynamically adjust plans (based on 2024 understanding).
 
-### Cursor：AI 隐性任务下的自动化重试
+### Cursor: Implicit Task Automation with Retries
 
-回到，最近一年多特别火热的 AI 编码工具 Cursor，它构建了非常好的 AI Editor 体验，用户抛出一个问题。它会：
+The popular AI coding tool Cursor provides excellent AI Editor experience:
+- Automatically collects IDE context
+- Edits code
+- Automatically fixes lint issues and retries on errors
+- ...
 
-- 自动收集 IDE 中的上下文
-- 对代码进行编辑
-- 在代码出现 Lint 问题时，自动修复；在代码出现错误时，自动重试
-- ……
+While users can vaguely understand AI operations through text, frequent retries quickly obscure the process.
 
-你可以通过文字大概理解 AI 到底干了点什么，但是很快大量地重试，让你感知不到过程的存在。
+### JetBrains Junie: Dynamic AI Task Planning
 
-### JetBrains Junie：动态的 AI 任务规划
+The latest AI coding tool JetBrains Junie offers dynamic task planning:
+- Analyzes problems and generates task plans
+- Executes tasks step-by-step with contextual awareness
+- Dynamically adjusts plans during execution
 
-JetBrains Junie 算是最新 AI 编码工具，它构建了一个动态的 AI 任务规划体验。用户抛出一个问题。它会：
+Users can observe continuous plan adjustments until task completion or termination.
 
-- 结合分析问题，理解用户意图，生成一个任务计划
-- 按步骤执行每个任务，并根据需求再获取上下文
-- 在任务执行过程中，动态调整计划，以适应用户需求
+## Insight 2: The Potential of Reasoning Models in Task Planning
 
-在过程中，你可以看到它的计划在不断调整和迭代，直到最终完成用户的 issue 或者不能完成。
+As we know, 2024's reasoning models ("deep-thinking models") have expanded possibilities. Through experiments in AutoDev Sketch (similar to Cursor Composer's auto-coding agent), we found DeepSeek R1 outperforms other domestic models in tool invocation (based on DevIns instructions) with same context. Compared to DeepSeek V3, R1 utilizes more tools.
 
-## 引子 2：推理模型规划任务的想象空间
+Ideally, we should use R1 for initial tool dialogue and secondary task planning, but its slower speed (equivalent to extra API calls) remains a constraint. However, R1's advantages remain evident, and we believe others share similar experiences.
 
-众所周知，2024 年底的推理模型或者说“可深度思考模型”，带来了更多的想象空间与可能性。我们在 AutoDev Sketch（类 Cursor Composer 自动编码 Agent）
-中做了一系列的实验， 发现与其它的国内模型相比，DeepSeek R1 在相同上下文的情况下，比普通模型更容易生成更好的工具调用（ 基于DevIns 指令）。
-与 DeepSeek V3 相比，DeepSeek R1 调用了更多的工具。
+Of course, large-scale experiments haven't been conducted due to the significant effort required to build comprehensive test datasets.
 
-理想情况下，我们应该用 R1 进行首轮工具对话和第二轮的任务规划，但是 R1 的速度确实太慢了，从时间上来算相当于多调用了一轮 API。但是，依旧可以
-看到 R1 的优势，相信大家也有相似的感受和体验。
+## AutoDev Planner: Task Planning for Agent Programming
 
-当然我们没有做大规模的实验，毕竟构建非常好的测试数据集是特别花费时间的。
+Based on these insights, we developed the new anthropomorphic feature: AutoDev Planner to enhance Sketch's task planning capabilities. Core features include:
 
-## AutoDev Planner：Agent 编程的任务规划
+- **Visible Task Planning**: Track progress through Pin and Planner ToolWindow
+- **Dynamic Planning**: AI adjusts plans contextually (model-dependent)
+- **Manual Task Execution**: Users can manually execute pending tasks
+- **Plan Review**: Manual model invocation for plan review (automatic review avoided due to token costs)
 
-基于上述的思考，我们构建了新的拟人功能：AutoDev Planner 以强化 Sketch 的任务规划能力。AutoDev Planner 的核心功能是：
+The core concept remains simple: invoke models to generate plans and display interactions.
 
-- 可见的任务规划。通过 Pin 及 Planner ToolWindow 的可以看到当前的任务进度
-- 动态的任务规划。AI 会根据上下文动态调整任务规划（取决于模型，有时候并不会实时更新）
-- 手动执行未完成的任务。用户可以手动执行未完成的任务，以便更好地调整任务规划
-- 规划 Review。用户可以手动调用模型来 Review 任务规划（为什么不是自动的，因为 token 对普通用户来说是非常昂贵的）
+### Key Point 1: Reasoning Model-Based Planning
 
-总体思路还是非常简单的，就只是调用模型生成计划，然后展示这个交互。
+Since reasoning models differ from regular models in prompt understanding and instruction following, we redesigned prompts for R1 compatibility.
 
-### 关键点 1：基于推理模型的任务规划
+After initial context collection and reasoning model configuration, R1 generates task plans containing: tasks, steps, and progress status. These plans are then displayed to users.
 
-由于推理模型与普通的模型在理解 prompt 和遵循指令的能力是有差异的，我们原先用于 V3 的 prompt 并不适用于 R1。因此，我们需要重新设计 prompt
-以适应 R1 的能力。
+### Key Point 2: Interactive Task Planning
 
-简单来说，就是当完成了初步的上下文收集之后， 而且用户配置了推理模型之后，我们会调用 R1 来生成一个任务计划。这个任务计划会包含：任务、步骤及
-其相关的进度情况，随后我们会将这个计划展示给用户。
+Unlike other AI coding tools, we emphasize task planning as critical interaction:
+- **Status Display**:
+    - Completed tasks marked
+    - Manual execution for pending tasks
+- **Pin**: Pin tasks to IDE locations
+- **File Interaction**: Click filenames in tasks to open files
+- **Editing**: Pause and adjust unsuitable plans
+- **Review**: Manual plan review invocation
 
-### 关键点 2：任务规划的可交互性
+Visualizing tasks enhances AI coding experience - the original intention of AutoDev Planner.
 
-与其它的 AI 编码工具不同，我们认为任务规划是一个非常重要的交互，因此我们提供了一些交互功能：
+## Conclusion
 
-- 任务的状态显示：
-    - 完成的任务将会被标记为完成
-    - 未完成的任务可以手动执行
-- Pin。用户可以将任务 Pin 到 IDE 的某个位置，以便更好地关注
-- 文件交互。考虑到模型的能力，当文件出现在任务中，可以点击文件名打开文件
-- 编辑。当用户觉得任务规划不合适时，可以暂停并及时调整任务。
-- review。用户可以手动调用模型来 Review 任务规划
+AutoDev Planner is a reasoning model-based task planning feature that helps users better understand AI coding progress and adjust plans. While still imperfect, we welcome issues and PRs on GitHub.
 
-通过可视化任务来构建更好的 AI 编码体验，这是 AutoDev Planner 的初衷。
-
-## 总结
-
-AutoDev Planner 是一个基于推理模型的任务规划功能，它可以帮助用户更好地理解 AI 编码任务的进度，以及更好地调整任务规划。当然，它还有很多不足之处，
-欢迎在 GitHub 上提出 issue 和 PR。
-
-欢迎下载最新版本体验：https://github.com/unit-mesh/auto-dev/releases
+Download the latest version: https://github.com/unit-mesh/auto-dev/releases

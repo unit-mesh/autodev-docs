@@ -1,20 +1,22 @@
+
+
 ---
 layout: default
-title: Refactoring
-parent: Basic Features
+title: 代码重构
+parent: 基础功能
 nav_order: 11
 permalink: /features/refactoring
 ---
 
-In [#129](https://github.com/unit-mesh/auto-dev/issues/129), we provide more information for you to refactor code.
+在[#129](https://github.com/unit-mesh/auto-dev/issues/129)中，我们提供了更多辅助代码重构的信息。
 
-## Auto smell combination
+## 自动异味检测组合
 
-It Will provide more information for you to refactor code. like:
+该功能将为代码重构提供更多分析信息，例如：
 
-- Highlighter issue in IntelliJ IDEA
+- IntelliJ IDEA 中的高亮问题
 
-For example:
+示例：
 
 ```java
 public BlogPost updateBlog(Long id, BlogPost blogDto) {
@@ -26,35 +28,34 @@ public BlogPost updateBlog(Long id, BlogPost blogDto) {
         }).orElse(null);
     }
 
-// relative static analysis result:
-// - Variable 'content' is never used
+// 相关静态分析结果：
+// - 变量 'content' 从未被使用
 ```
 
-## Suggestions for Next Steps
+## 后续步骤建议
 
-We provide most common suggestions for refactoring code, after you execute refactor action, you will see the following suggestions:
+我们提供最常见的代码重构建议，执行重构操作后您将看到以下建议：
 
 ```
-intentions.refactor.readability=Please use concise and meaningful variable, function, and class names to improve code readability.
-intentions.refactor.usability=Please ensure proper indentation and formatting to enhance code structure and readability.
-intentions.refactor.performance=Please optimize algorithms and data structures to improve code performance.
-intentions.refactor.maintainability=Please refactor long and complex functions into smaller, more manageable ones to improve code maintainability.
-intentions.refactor.flexibility=Please design the system to be flexible and easily adaptable to changing requirements.
-intentions.refactor.reusability=Please design and implement reusable components or modules to reduce duplication and improve development efficiency.
-intentions.refactor.accessibility=Please consider accessibility requirements and design the system to be usable by all users, regardless of their abilities.
+intentions.refactor.readability=请使用简洁且有意义的变量、函数和类名，以提高代码可读性。
+intentions.refactor.usability=请确保正确的缩进和格式，以增强代码结构和可读性。
+intentions.refactor.performance=请优化算法和数据结构以提高代码性能。
+intentions.refactor.maintainability=请将冗长复杂的函数重构为更小、更易管理的单元，以提高代码可维护性。
+intentions.refactor.flexibility=请将系统设计得灵活且易于适应需求变化。
+intentions.refactor.reusability=请设计和实现可复用的组件或模块，以减少重复并提高开发效率。
+intentions.refactor.accessibility=请考虑无障碍需求，设计可供所有用户使用的系统。
 ```
 
-## Naming Suggestions
+## 命名建议
 
-In [#132](https://github.com/unit-mesh/auto-dev/issues/132), we provide basic functionality for renaming things.
+在[#132](https://github.com/unit-mesh/auto-dev/issues/132)中，我们提供了基础的重命名功能：
 
-1. enable suggestion: `Settings` -> `AutoDev` -> `AutoDev Coder` -> `Enable Rename suggestion`
-2. select the variable you want to rename use `Shift` + `F6`
+1. 启用建议：`设置` -> `AutoDev` -> `AutoDev Coder` -> `启用重命名建议`
+2. 使用 `Shift` + `F6` 选择要重命名的变量
 
-<img src="https://unitmesh.cc/auto-dev/autodev-rename.png" alt="Rename Functions" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/autodev-rename.png" alt="重命名功能" width="600px"/>
 
-## Resource
+## 相关资源
 
-In [How to Refactor this Code? An Exploratory Study on Developer-ChatGPT Refactoring Conversations](https://arxiv.org/abs/2402.06013) ,
-talking about how to refactoring to better understand how developers identify areas for improvement in code
-and how ChatGPT addresses developers' needs. 
+在论文[《如何重构这段代码？开发者与ChatGPT重构对话的探索性研究》](https://arxiv.org/abs/2402.06013)（How to Refactor this Code? An Exploratory Study on Developer-ChatGPT Refactoring Conversations）中，
+探讨了如何通过重构来更好地理解开发者如何识别代码改进点，以及ChatGPT如何满足开发者的需求。

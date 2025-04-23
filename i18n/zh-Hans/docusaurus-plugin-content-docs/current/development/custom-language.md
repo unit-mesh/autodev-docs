@@ -1,30 +1,30 @@
+
+
 ---
 layout: default
-title: Custom Language
-parent: Development
+title: 自定义语言
+parent: 开发指南
 nav_order: 11
 permalink: /custom/language
 ---
 
-# Custom Language
+# 自定义语言
 
-## improve language support
+## 增强语言支持
 
-We referenced the multi-language support implementation of JetBrains AI Assistant and combined it with the design
-principles of AutoDev to design a series of extension points.
+我们参考了JetBrains AI Assistant的多语言支持实现，并结合AutoDev的设计原则设计了一系列扩展点。
 
-We referenced the multi-target support implementation of Intellij Rust plugin and combined it with the design.
+我们参考了IntelliJ Rust插件的多目标支持实现，并结合设计进行了整合。
 
-For a new language, you need to implement:
+要为新语言添加支持，您需要：
 
-1. create a new module in `settings.gradle.kts`, like: `webstorm`, `pycharm` ...,
-2. config in  `build.gradle.kts` for new module.
-3. sync Gradle in Intellij IDEA
-4. create xml file in `resources/META-INF` like `cc.unitmesh.pycharm.xml`, and import
-   to `plugin/src/main/resources/META-INF/plugin.xml`
-5. create extension points
+1. 在`settings.gradle.kts`中创建新模块，例如：`webstorm`、`pycharm`等
+2. 在新模块的`build.gradle.kts`中进行配置
+3. 在IntelliJ IDEA中同步Gradle
+4. 在`resources/META-INF`目录下创建XML文件（如`cc.unitmesh.pycharm.xml`），并将其导入到`plugin/src/main/resources/META-INF/plugin.xml`
+5. 创建扩展点
 
-Gradle example:
+Gradle配置示例：
 
 ```kotlin
 project(":pycharm") {
@@ -38,16 +38,15 @@ project(":pycharm") {
 }
 ```
 
-### Extension Points
+### 扩展点
 
-JetBrains AI Assistant Extension Points:
+JetBrains AI Assistant扩展点：
 
 ```xml
-
 <extensionPoints>
     <extensionPoint qualifiedName="cc.unitmesh.fileContextBuilder"
                     beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
-        <with attribute="implementationClass"
+        <with attribute="implementationClass" 
               implements="cc.unitmesh.devti.context.builder.FileContextBuilder"/>
     </extensionPoint>
 
@@ -71,10 +70,9 @@ JetBrains AI Assistant Extension Points:
 </extensionPoints>
 ```
 
-AutoDev Extension Points:
+AutoDev扩展点：
 
 ```xml
-
 <extensionPoints>
     <extensionPoint qualifiedName="cc.unitmesh.contextPrompter"
                     interface="cc.unitmesh.devti.provider.ContextPrompter"
@@ -82,11 +80,11 @@ AutoDev Extension Points:
 </extensionPoints>
 ```
 
-#### Java/IDEA Example
+#### Java/IDEA 示例
 
 ```xml
 <extensions defaultExtensionNs="cc.unitmesh">
-    <!-- Language support   -->
+    <!-- 语言支持 -->
     <classContextBuilder language="JAVA"
                          implementationClass="cc.unitmesh.ide.idea.context.JavaClassContextBuilder"/>
 
@@ -99,7 +97,7 @@ AutoDev Extension Points:
     <variableContextBuilder language="JAVA"
                             implementationClass="cc.unitmesh.ide.idea.context.JavaVariableContextBuilder"/>
 
-    <!-- TechStack Binding -->
+    <!-- 技术栈绑定 -->
     <extensionPoint qualifiedName="cc.unitmesh.contextPrompter"
                     interface="cc.unitmesh.devti.provider.ContextPrompter"
                     dynamic="true"/>

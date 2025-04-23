@@ -1,3 +1,5 @@
+
+
 # Batch AI Action
 
 We use Team Prompts to provide a way to batch process files in the project. The default 
@@ -5,7 +7,7 @@ Team Prompts path is `prompts/`, which is the `prompts/` directory located in th
 
 Through the `batchFileRegex` configuration, you can specify the file to be processed in batch.
 
-**Scenes**: When you need to batch process files in the project, such as refactoring, formatting, etc.
+**Scenarios**: When you need to batch process files in the project, such as refactoring, formatting, etc.
 
 - Vue2 to Vue3 migration
 - Refactor the user's code
@@ -13,10 +15,9 @@ Through the `batchFileRegex` configuration, you can specify the file to be proce
 
 **Entry point**: `Right-click` on the project -> `AutoDev AI AutoAction` -> `Batch AI Action`
 
-## Batch AI Action (Chinese Example Translated)
+## Batch AI Action (Chinese Example)
 
-Key points：`batchFileRegex` is used to match batch files, `codeOnly: true` only puts the pure code part into the file，`interaction: ReplaceCurrentFile`
- is used to replace the current filee.
+Key points: `batchFileRegex` is used to match batch files, `codeOnly: true` only retains pure code in the file, `interaction: ReplaceCurrentFile` is used to replace the current file.
 
 ```markdown
 ---
@@ -27,8 +28,8 @@ codeOnly: true
 
 Refactor the user's code. Requirements:
 
-- Please return all the refactored code in one code block, so that it can be copied and pasted directly.
-- Please do not add extra code, only modify the user's code.
+- Please return all refactored code in a single code block for direct copy-paste.
+- Do not add extra code, only modify the user's existing code.
 
 ${all}
 ```
@@ -52,4 +53,3 @@ Refactor the user's code. Requirements:
 
 ${all}
 ```
-

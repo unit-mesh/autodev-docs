@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: Variables
@@ -8,36 +10,35 @@ permalink: /customize/variables
 
 # Variables
 
-## English version
+## English Version
 
 - selection: Used to get the currently selected text.
-- commentSymbol: Used to get the comment symbol of the current language, for example: `//`, `#`, `--`, `/* */`, etc.
+- commentSymbol: Used to get the comment symbol of the current language, e.g.: `//`, `#`, `--`, `/* */`, etc.
 - beforeCursor: Used to get the text before the current cursor.
 - afterCursor: Used to get the text after the current cursor.
-- language: Used to get the language of the current file, for example: `kotlin`, `java`, `python`, `javascript`, etc.
+- language: Used to get the language of the current file, e.g.: `kotlin`, `java`, `python`, `javascript`, etc.
 - fileName: Used to get the file name of the current file.
 - filePath: Used to get the file path of the current file.
 - methodName: Used to get the method name of the current method.
-- frameworkContext: Used to get the framework context of the current file, for example: `spring`, `junit`, `mockito`,
-  etc.
-- all: Used to get all the variables. (since @1.8.6)
+- frameworkContext: Used to get the framework context of the current file, e.g.: `spring`, `junit`, `mockito`, etc.
+- all: Used to get all variables. (since @1.8.6)
 
-## Second English Version (Translated from Chinese)
+## Chinese Version
 
 - selection: Used to get the currently selected text.
-- commentSymbol: Used to get the comment symbol of the current language, for example: `//`, `#`, `--`, `/* */`, etc.
+- commentSymbol: Used to get the comment symbol of the current language, e.g.: `//`, `#`, `--`, `/* */`, etc.
 - beforeCursor: Used to get the text before the current cursor.
 - afterCursor: Used to get the text after the current cursor.
-- language: Used to get the language of the current file, for example: `kotlin`, `java`, `python`, `javascript`, etc.
+- language: Used to get the language of the current file, e.g.: `kotlin`, `java`, `python`, `javascript`, etc.
 - fileName: Used to get the file name of the current file.
 - filePath: Used to get the file path of the current file.
 - methodName: Used to get the method name of the current method.
-- frameworkContext: Used to get the framework context of the current file, for example: `spring`, `junit`, `mockito`, etc.
-- all: Used to get all the variables. (since @1.8.6)
+- frameworkContext: Used to get the framework context of the current file, e.g.: `spring`, `junit`, `mockito`, etc.
+- all: Used to get all variables. (since @1.8.6)
 
 # Methods
 
-use `@context.methodName()` to call the method.
+Use `@context.methodName()` to call the method.
 
 ```kotlin
 interface TeamContextProvider {

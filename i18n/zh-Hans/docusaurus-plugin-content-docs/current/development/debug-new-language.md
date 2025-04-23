@@ -1,22 +1,23 @@
+
+
 ---
 layout: default
-title: Debug New Language
+title: 调试新语言支持
 nav_order: 2
-parent: Development
----
+parent: 开发指南
 
-In JetBrains' IDE, some language support is not good enough, and some language support is not available at all.
+在JetBrains的IDE中，某些语言的支持不够完善，有些语言甚至完全没有官方支持。
 
-- Good enough language will have IDE support, like golang with GoLand.
-- Not good enough language will have no IDE support, like Rust with CLion (before RustRover)
+- 支持完善的语言会有专属IDE，例如Go语言有GoLand
+- 支持不足的语言缺乏IDE支持，例如CLion中的Rust支持（RustRover出现之前）
 
-So, we need to configure plugin for the language
+因此我们需要为这些语言配置插件支持
 
-## Debug Config
+## 调试配置
 
-for Debug, We already run configs under `.idea/runConfigurations`, so we can just copy and modify them.
+调试时，我们直接使用`.idea/runConfigurations`目录下的运行配置，可以通过复制现有配置进行修改。
 
-Here are some examples [RustRust.xml] :
+这是一个[RustRust.xml]的配置示例：
 
 ```xml
 <component name="ProjectRunConfigurationManager">
@@ -42,15 +43,15 @@ Here are some examples [RustRust.xml] :
 </component>
 ```
 
-We configure the `scriptParameters` to pass the `baseIDE` and `lang` to the gradle script.
+我们通过`scriptParameters`参数向gradle脚本传递`baseIDE`和`lang`参数：
 
 ```bash
 ./gradlew :plugin:runIde -PbaseIDE=idea -Plang=rust
 ```
 
-## Configure in Gradle
+## Gradle配置
 
-We can configure the plugin in Gradle script, like build.gradle.kts :
+在Gradle脚本（build.gradle.kts）中可以进行插件配置：
 
 ```kotlin
 project(":plugin") {
@@ -85,7 +86,7 @@ project(":plugin") {
 }
 ```
 
-In `rustPlugins`, we can see the plugin list for Rust:
+在`rustPlugins`中可以看到Rust语言所需的插件列表：
 
 ```kotlin
 val rustPlugins = listOf(
@@ -94,33 +95,32 @@ val rustPlugins = listOf(
 )
 ```
 
-The `prop("rustPlugin")` is defined in `gradle.properties`, which will also load different version of plugin for different IDE version.
+`prop("rustPlugin")`定义在`gradle.properties`文件中，该配置会根据不同IDE版本加载对应插件版本：
 
 - gradle-222.properties
 - gradle-233.properties
 
-In `gradle-222.properties`, we can see the plugin version for Rust:
+在`gradle-222.properties`中定义Rust插件版本：
 
 ```properties
 rustPlugin=org.rust.lang:0.4.185.5086-222
 ```
 
-In `gradle-233.properties`, we can see the plugin version for Rust:
+在`gradle-233.properties`中定义Rust插件版本：
 
 ```properties
 rustPlugin=com.jetbrains.rust:233.21799.284
 ```
 
+## Rust调试配置
 
-## Debug Config for Rust
+Rust开发的注意事项：
 
-Tricks for Rust development.
+由于JetBrains的策略调整，Rust IDE插件有两个不同版本：
 
-Due to JetBrains' crafty move, there are two different versions of the Rust IDE plugin.
-
-- **Under 233: Deprecated Rust**
-  - check latest available version here https://plugins.jetbrains.com/plugin/8182--deprecated-rust
-  - rustPlugin=org.rust.lang:0.4.185.5086-222
-- **Above 233: Official Rust**
-  - check latest available version here https://plugins.jetbrains.com/plugin/22407-rust/versions
-  - rustPlugin=com.jetbrains.rust:233.21799.284
+- **低于233版本：已弃用的Rust插件**
+  - 最新版本查看：https://plugins.jetbrains.com/plugin/8182--deprecated-rust
+  - 配置参数：rustPlugin=org.rust.lang:0.4.185.5086-222
+- **233及以上版本：官方Rust插件**
+  - 最新版本查看：https://plugins.jetbrains.com/plugin/22407-rust/versions
+  - 配置参数：rustPlugin=com.jetbrains.rust:233.21799.284

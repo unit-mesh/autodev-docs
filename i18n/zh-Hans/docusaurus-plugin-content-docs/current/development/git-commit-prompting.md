@@ -1,24 +1,27 @@
+
+
 ---
 layout: default
-title: Git Commit
+title: Git 提交规范
 nav_order: 10
-parent: Development
+parent: 开发指南
+
 ---
 
-Git commit Prompt example
+Git 提交提示示例
 
-    Write a cohesive yet descriptive commit message for a given diff.
-    Make sure to include both information What was changed and Why.
-    Start with a short sentence in imperative form, no more than 50 characters long.
-    Then leave an empty line and continue with a more detailed explanation, if necessary.
-    Explanation should have less than 200 characters.
+    为给定的代码差异编写连贯且描述性的提交信息。
+    确保同时包含"修改内容"和"修改原因"的信息。
+    以不超过50个字符的简短祈使句开头。
+    空一行后（如有必要）继续添加更详细的说明。
+    详细说明应少于200个字符。
     
-    examples:
-    - fix(authentication): add password regex pattern
-    - feat(storage): add new test cases
-    - test(java): fix test case for user controller
+    示例：
+    - fix(认证): 添加密码正则表达式模式
+    - feat(存储): 新增测试用例
+    - test(Java): 修复用户控制器的测试用例
     
-    Diff:
+    代码差异：
     
     ```diff
     modify file src/main/kotlin/cc/unitmesh/devti/prompting/VcsPrompting.kt
@@ -79,5 +82,3 @@ Git commit Prompt example
          }
      }
     ```
-    
-    

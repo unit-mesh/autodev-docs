@@ -1,27 +1,28 @@
+
+
 ---
 layout: default
-title: DevIns Language Spec
+title: DevIns 语言规范
 nav_order: 2
-parent: AI Agent Language
+parent: AI Agent 语言
 ---
 
-# DevIn Language 
+# DevIn 语言
 
-In issue [#101](https://github.com/unit-mesh/auto-dev/issues/101), to better interactive with LLM, and also 
-handle `@`, `/`, `#`, `$` and `!` completion better, we introduce a new language: DevIn.
+在 issue [#101](https://github.com/unit-mesh/auto-dev/issues/101) 中，为了更好地与 LLM 交互，并改进对 `@`、`/`、`#`、`$` 和 `!` 的补全处理，我们引入了一种新语言：DevIn。
 
-Code: [DevIns Language](https://github.com/unit-mesh/auto-dev/tree/master/exts/devin-lang)
+代码仓库: [DevIns 语言](https://github.com/unit-mesh/auto-dev/tree/master/exts/devin-lang)
 
-Based on: [JetBrains' Markdown Util](https://github.com/JetBrains/intellij-community/tree/master/platform/markdown-utils)
+基于: [JetBrains的Markdown工具库](https://github.com/JetBrains/intellij-community/tree/master/platform/markdown-utils)
 
-## Design
+## 设计理念
 
-- `/` Builtin Command, natural language command with IDE/editor, like read file, write file, etc.
-- `@` Agent, natural language custom function / system function name, the handler or command, 
-- `$` Variable, natural language variable name, like file name, file content, etc.
-- ~~`#` Third-party system API for traditional, like `#kanban:afd`, `#issue:233`, `#github:111`, etc.~~ (Removed in 2.0.0) 
+- `/` 内置命令，与IDE/编辑器交互的自然语言指令，如读取文件、写入文件等
+- `@` 智能体，自然语言自定义函数/系统函数名称，对应处理程序或命令
+- `$` 变量，自然语言变量名称，如文件名、文件内容等
+- ~~`#` 传统第三方系统API，如 `#kanban:afd`、`#issue:233`、`#github:111` 等~~（2.0.0版本已移除）
 
-## Language spec
+## 语言规范
 
 ```bnf
 DevInFile ::= (used | code | TEXT_SEGMENT | NEWLINE)*

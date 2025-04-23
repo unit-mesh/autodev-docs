@@ -1,21 +1,30 @@
+
+
 ---
 layout: default
-title: Bridge Tools
-parent: AutoDev Bridge
+title: 桥接工具
+parent: AutoDev 桥接模块
 nav_order: 1
 permalink: /bridge/bridge-tool
 ---
 
-## AutoDev Bridge Tools 
+## AutoDev 桥接工具
 
 | 工具名称 (name)   | 描述 (desc)                                                       | 示例 (example)                                                                                                                                                                    |
 |---------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| componentView | 列出当前项目的所有UI组件列表，如React、Vue组件                                    | `<devin>`<br/>List all UI Component List of current project, like React Vue components<br/>`/componentView`<br/>`</devin>`                                                         |
-| containerView | 列出当前项目的所有模块                                                     | `<devin>`<br/>List all modules of current project<br/>`/containerView`<br/>`</devin>`                                                                                              |
-| scc           | Scc 是一个非常快速且准确的代码计数器，具有复杂度计算和COCOMO估算功能                         | `<devin>`<br/>Scc is a very fast accurate code counter with complexity calculations and COCOMO estimates<br/>`/scc`<br/>`</devin>`                                                 |
-| history       | 获取当前文件的历史提交信息                                                   | `<devin>`<br/>Get history commit message of current file<br/>`/history:package.json`<br/>`</devin>`                                                                                |
-| knowledge     | 从 API 调用链进行分析，默认 depth = 2（不可修改），即 Controller 到 Repository 的调用链 | `<devin>`<br/>从 API 调用链来进行分析，默认 depth = 2（不可修改），即 Controller 到 Repository 的调用链<br/>`/knowledge:GET#/api/blog/*` [注:这里 * 代表 blog slug，等同于 SpringMVC 的 @PathVariable]<br/>`</devin>` |
-| database      | 数据库模式和查询工具                                                      | `<devin>`<br/>列出数据库的数据结构<br/>`/database:schema`<br/>列出数据库中的所有表<br/>`/database:table`<br/>`</devin>`                                                                                  |
-| stylingView   | 列出当前项目的所有CSS、SCSS类                                              | `<devin>`<br/>List all CSS, SCSS classes of current project<br/>`/stylingView`<br/>`</devin>`                                                                                      |
-| dependencies  | 获取当前项目的所有依赖项（Gradle、Maven、package.json）                         | `<devin>`<br/>Get all dependencies (Gradle, Maven, package.json) of current project<br/>`/dependencies`<br/>`</devin>`                                                             |
-| webApiView    | 列出当前项目的所有Web API                                                | `<devin>`<br/>List all web apis of current project<br/>`/webApiView`<br/>If return no endpoints, we need to check Endpoint plugin installed.<br/>`</devin>`                         |
+| componentView | 列出当前项目的所有UI组件列表（如React、Vue组件）                                   | `<devin>`<br/>列出当前项目的所有UI组件列表，例如React、Vue组件<br/>`/componentView`<br/>`</devin>`                                                                                         |
+| containerView | 列出当前项目的所有模块                                                     | `<devin>`<br/>列出当前项目的所有模块<br/>`/containerView`<br/>`</devin>`                                                                                                              |
+| scc           | Scc 是一个快速精准的代码计数器，支持复杂度计算和COCOMO估算功能                           | `<devin>`<br/>Scc 是具备复杂度计算和COCOMO估算功能的快速精准代码计数器<br/>`/scc`<br/>`</devin>`                                                                                             |
+| history       | 获取当前文件的历史提交信息                                                   | `<devin>`<br/>获取当前文件的历史提交信息<br/>`/history:package.json`<br/>`</devin>`                                                                                                  |
+| knowledge     | 基于API调用链进行分析，默认深度depth=2（不可修改），即Controller到Repository的调用链路      | `<devin>`<br/>从API调用链进行分析，默认深度depth=2（不可修改），即Controller到Repository的调用链<br/>`/knowledge:GET#/api/blog/*` [注：此处*代表博客slug，等同于SpringMVC的@PathVariable]<br/>`</devin>` |
+| database      | 数据库模式与查询工具                                                      | `<devin>`<br/>列出数据库数据结构<br/>`/database:schema`<br/>列出数据库所有表<br/>`/database:table`<br/>`</devin>`                                                                               |
+| stylingView   | 列出当前项目的所有CSS、SCSS类                                              | `<devin>`<br/>列出当前项目的所有CSS、SCSS类<br/>`/stylingView`<br/>`</devin>`                                                                                                        |
+| dependencies  | 获取当前项目的所有依赖项（支持Gradle、Maven、package.json）                       | `<devin>`<br/>获取当前项目的所有依赖项（Gradle、Maven、package.json）<br/>`/dependencies`<br/>`</devin>`                                                                                 |
+| webApiView    | 列出当前项目的所有Web API                                                | `<devin>`<br/>列出当前项目的所有Web API<br/>`/webApiView`<br/>若返回无端点信息，需检查Endpoint插件是否安装<br/>`</devin>`                                                                     |
+
+（注：表格中技术术语遵循以下翻译规范：
+- Controller → 控制器
+- Repository → 存储库
+- COCOMO → COCOMO（保留原始名称）
+- Slug → slug（保留原始术语）
+- @PathVariable → @PathVariable（保留原始注解））

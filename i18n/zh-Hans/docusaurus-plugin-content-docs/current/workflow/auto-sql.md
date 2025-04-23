@@ -1,3 +1,5 @@
+
+
 ---
 layout: default
 title: AutoSQL
@@ -5,26 +7,26 @@ nav_order: 2
 parent: Workflow
 ---
 
-Required Intellij Plugin: Database Tools and SQL
+所需 IntelliJ 插件：Database Tools and SQL
 
-Demo Video: [https://www.bilibili.com/video/BV1Ye411h7Qu/](https://www.bilibili.com/video/BV1Ye411h7Qu/)
+演示视频：[https://www.bilibili.com/video/BV1Ye411h7Qu/](https://www.bilibili.com/video/BV1Ye411h7Qu/)
 
-implementation: cc.unitmesh.database.flow.AutoSqlFlow
+实现类：cc.unitmesh.database.flow.AutoSqlFlow
 
-1. user should connect to DataSource/Database
-2. based on user input, AI select the target tables.
-3. generate the SQL scripts for the target tables.
-    - generate columns of selected tables.
-    - generate SQL scripts for selected tables.
+1. 用户需要先连接数据源/数据库
+2. 根据用户输入，AI 选择目标数据表
+3. 为目标表生成 SQL 脚本
+    - 生成所选表的列信息
+    - 为选定表生成 SQL 脚本
 
-## Prompt Override
+## 提示词覆盖
 
-Steps:
+步骤：
 
-- step 1: `prompts/genius/sql/sql-gen-clarify.vm`
-- step 2: `prompts/genius/sql/sql-gen-design.vm`
+- 步骤一：`prompts/genius/sql/sql-gen-clarify.vm`
+- 步骤二：`prompts/genius/sql/sql-gen-design.vm`
 
-Context:
+上下文：
 
 ```kotlin
 data class AutoSqlContext(
@@ -33,62 +35,62 @@ data class AutoSqlContext(
    val schemaName: String,
    val tableNames: List<String>,
    /**
-    * Step 2.
-    * A list of table names to retrieve the columns from.
+    * 步骤二
+    * 需要获取列信息的表名列表
     */
    var tableInfos: List<String> = emptyList(),
 )
 ```
 
-### Current Prompt
+### 当前提示词
 
-Clarify:
+需求澄清：
 
 ```markdown
-    You are a professional Database Administrator.
-    According to the user's requirements, you should choose the best Tables for the user in List.
+    您是一位专业的数据库管理员。
+    根据用户需求，您需要从列表中为用户选择最合适的数据表。
     
-    — User use database: ${context.databaseVersion}
-    - User schema name: ${context.schemaName}
-    - User tables: ${context.tableNames}
+    — 用户使用数据库：${context.databaseVersion}
+    - 用户模式名称：${context.schemaName}
+    - 用户数据表：${context.tableNames}
     
-    For example:
+    例如：
     
-    - Question(requirements): calculate the average trip length by subscriber type.// User tables: trips, users, subscriber_type
-    - You should anwser: [trips, subscriber_type]
+    - 问题（需求）：计算不同订阅者类型的平均行程长度 // 用户数据表：trips, users, subscriber_type
+    - 您应回答：[trips, subscriber_type]
     
     ----
     
-    Here are the User requirements:
+    以下是用户需求：
     
     ${context.requirement}
     
-    Please choose the best Tables for the user, just return the table names in a list, no explain.
+    请为用户选择最佳数据表，只需返回表名列表，无需解释。
 ```
 
-Design:
+SQL 设计：
 
 ```markdown    
-    You are a professional Database Administrator.
-    According to the user's requirements, and Tables info, write SQL for the user.
+    您是一位专业的数据库管理员。
+    根据用户需求和表结构信息，为用户编写 SQL 语句。
     
-    — User use database: ${context.databaseVersion}
-    - User schema name: ${context.schemaName}
-    - User tableInfos: ${context.tableInfos}
+    — 用户使用数据库：${context.databaseVersion}
+    - 用户模式名称：${context.schemaName}
+    - 用户表信息：${context.tableInfos}
     
-    For example:
+    例如：
     
-    - Question(requirements): calculate the average trip length by subscriber type.
-    // table `subscriber_type`: average_trip_length: int, subscriber_type: string
-    - Answer:
+    - 问题（需求）：计算不同订阅者类型的平均行程长度
+    // 表 `subscriber_type`：average_trip_length: int, subscriber_type: string
+    - 答案：
 
     select average_trip_length from subscriber_type where subscriber_type = 'subscriber'
     
     ----
     
-    Here are the requirements:
+    以下是需求内容：
 
     ${context.requirement}
     
-    Please write your SQL with Markdown syntax, no explanation is needed. :
+    请使用 Markdown 语法编写 SQL 语句，无需解释：
 ```

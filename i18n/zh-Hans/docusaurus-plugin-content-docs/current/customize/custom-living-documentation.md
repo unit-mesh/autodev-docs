@@ -1,16 +1,19 @@
+
+
 ---
 layout: default
-title: Custom Documentation
-parent: Customize Features
+title: 自定义文档
+parent: 功能定制
 nav_order: 12
 permalink: /custom/living-documentation
+
 ---
 
-# Custom Documentation
+# 自定义文档
 
-## Living Documentation example
+## 动态文档示例
 
-goto: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add your own prompt.
+转到：`设置` -> `工具` -> `AutoDev` -> `自定义引擎提示`，添加您自己的提示词。
 
 ```json
 {
@@ -20,8 +23,8 @@ goto: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add y
   ],
   "documentations": [
     {
-      "title": "Living Documentation",
-      "prompt": "编写 Living Documentation。按如下的格式返回：",
+      "title": "动态文档",
+      "prompt": "编写动态文档。按如下的格式返回：",
       "start": "",
       "end": "",
       "type": "annotated",
@@ -34,13 +37,13 @@ goto: `Settings` -> `Tools` -> `AutoDev` -> `Customize Engine prompt`, and add y
 }
 ```
 
-**Output**
+**输出结果**
 
 ```java
 @ScenarioDescription(
-        given = "there is a meeting room available with ID 123",
-        when = "a user books the meeting room with ID 123",
-        then = "the booking response should contain the details of the booked meeting room"
+        given = "存在ID为123的可用会议室",
+        when = "用户预订ID为123的会议室",
+        then = "预订响应应包含已预订会议室的详细信息"
 )
 public BookMeetingRoomResponse bookMeetingRoom(@RequestBody BookMeetingRoomRequest request) {
     MeetingRoom meetingRoom = meetingRoomService.bookMeetingRoom(request.getMeetingRoomId());
@@ -50,15 +53,14 @@ public BookMeetingRoomResponse bookMeetingRoom(@RequestBody BookMeetingRoomReque
 }
 ```
 
-## Normal Example
-
+## 常规示例
 
 ```json
 {
   "documentations": [
     {
-      "title": "生成 Java 方法级别注释",
-      "prompt": "生成 JavaDoc 方法级别的注释，只返回方法的注释。\n要求：1. 需要使用写明方法的使用法。2. 只返回方法的注释，使用注释符号 /** 开头\n\n",
+      "title": "生成Java方法级注释",
+      "prompt": "生成JavaDoc方法级注释，只返回方法注释。\n要求：1. 需明确说明方法用法 2. 只返回方法注释，使用/**开头\n\n",
       "start": "",
       "end": "",
       "type": "normal",
@@ -71,8 +73,7 @@ public BookMeetingRoomResponse bookMeetingRoom(@RequestBody BookMeetingRoomReque
 }
 ```
 
-
-**Output**
+**输出结果**
 
 ```java
     /**
@@ -90,5 +91,4 @@ public BookMeetingRoomResponse bookMeetingRoom(@RequestBody BookMeetingRoomReque
      * @param b 节点B的索引
      *          两个节点都应在添加边之前先添加到图中
      */
-
 ```

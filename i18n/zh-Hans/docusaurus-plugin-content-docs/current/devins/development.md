@@ -1,25 +1,25 @@
+
+
 ---
 layout: default
-title: Development DevIns
+title: 开发DevIns
 nav_order: 99
-parent: AI Agent Language
+parent: AI代理语言
 ---
 
-## Implementation `/run` command in different languages
+## 在不同语言中实现 `/run` 命令
 
-Since we need to verify AI generated unit which is code, test is the best way to verify it. So most of the time, we
-use `AutoTestService` to run the test.
+由于需要验证AI生成的代码单元，测试是最佳验证方式。因此大多数情况下，我们使用`AutoTestService`来运行测试。
 
-In different language, the test runner is different, like:
+不同语言的测试运行器有所不同，例如：
 
-- C/C++ => CppAutoTestService (CMake + Catch2)
+- C/C++ => CppAutoTestService（CMake + Catch2）
 - Go => GoAutoTestService
-- Java => JavaAutoTestService (Gradle)
+- Java => JavaAutoTestService（Gradle）
 - Python => PythonAutoTestService
 
-### Resources
+### 参考资料
 
-[JetBrains Academy plugin](https://github.com/JetBrains/educational-plugin) shows a very good sample on how to organize 
-different types of tasks in a single plugin.
+[JetBrains Academy插件](https://github.com/JetBrains/educational-plugin)展示了如何在单个插件中组织不同类型任务的优秀范例。
 
-- check: `EduTaskCheckerBase.kt` for task running
+- 检查任务运行：`EduTaskCheckerBase.kt`中的实现

@@ -1,18 +1,18 @@
+
+
 ---
 layout: default
-title: Generate Doc
-parent: Basic Features
+title: 生成文档
+parent: 基础功能
 nav_order: 6
 permalink: /features/gen-doc
 ---
 
-1. Select a code fragment and right-click to open the context menu.
-2. Press `⌥` + `↩` Enter. Select AI actions and then `Generate documentation`.
+1. 选择代码片段并右键点击打开上下文菜单
+2. 按下 `⌥` + `↩` 回车键。选择AI操作然后点击`生成文档`
 
-<img src="https://unitmesh.cc/auto-dev/gen-doc.png" alt="Generate doc" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/gen-doc.png" alt="生成文档" width="600px"/>
 
-## Generate Custom Living documentation
+## 生成自定义活文档
 
-Goto: [Custom Documentation](/custom/living-documentation)
-
-
+前往：[自定义文档](/custom/living-documentation)
