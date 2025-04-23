@@ -1,26 +1,26 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "最新版",
     "description": "The label for version current"
   },
   "sidebar.tutorialSidebar.category.Basic Features": {
-    "message": "Basic Features",
+    "message": "基本功能",
     "description": "The label for category Basic Features in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Customize Features": {
-    "message": "Customize Features",
+    "message": "自定义功能",
     "description": "The label for category Customize Features in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Agentic Coding": {
-    "message": "Agentic Coding",
+    "message": "智能编码",
     "description": "The label for category Agentic Coding in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Custom Remote Agent": {
-    "message": "Custom Remote Agent",
+    "message": "自定义远程代理",
     "description": "The label for category Custom Remote Agent in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.AI Agent Language": {
-    "message": "AI Agent Language",
+    "message": "AI代理语言",
     "description": "The label for category AI Agent Language in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.MCP": {
@@ -28,19 +28,19 @@
     "description": "The label for category MCP in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Scenes": {
-    "message": "Scenes",
+    "message": "场景",
     "description": "The label for category Scenes in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Workflow": {
-    "message": "Workflow",
+    "message": "工作流",
     "description": "The label for category Workflow in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Development": {
-    "message": "Development",
+    "message": "开发",
     "description": "The label for category Development in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Usecases": {
-    "message": "Usecases",
+    "message": "使用案例",
     "description": "The label for category Usecases in sidebar tutorialSidebar"
   }
 }

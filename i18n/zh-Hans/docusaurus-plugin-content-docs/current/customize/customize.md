@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Customize Features
+title: 功能定制
 nav_order: 4
 has_children: true
 permalink: /customize

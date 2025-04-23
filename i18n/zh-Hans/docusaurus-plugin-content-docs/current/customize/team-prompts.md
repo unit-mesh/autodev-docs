@@ -1,60 +1,58 @@
 ---
 layout: default
-title: Team Prompts
-parent: Customize Features
+title: 团队提示
+parent: 功能定制
 nav_order: 14
 permalink: /custom/team-prompts
 ---
 
-> Discover new ways to collaborate and share your brilliance with your team.
+> 探索新的合作方式并与您的团队分享您的才华。
 
-The default Team Prompts path is `prompts/`, which is the `prompts/` directory located in the project's root directory.
+默认的 Team Prompts 路径是`prompts/`，它是`prompts/`位于项目根目录中的目录。
 
-AutoDev currently utilizes the Apache Velocity template engine, allowing you to customize your Team Prompts by modifying
-template files.
+AutoDev 目前使用 Apache Velocity 模板引擎，允许您通过修改模板文件来定制您的团队提示。
 
-If you make changes to the template files, make sure to save them, as otherwise, the IDE won't recognize your
-modifications.
+如果您对模板文件进行了更改，请确保保存它们，否则，IDE 将无法识别您的修改。
 
-## Format
 
-The Team Prompts file format is .vtl, which is the Velocity Template Language file format. Will be include three parts:
+## 格式
 
-- frontmatter config, which is the prompt config with YAML format
-- chat role, like `system`, `user`, will start with \`\`\` and end with \`\`\`, like:
+团队提示文件格式是 .vtl，即 Velocity 模板语言文件格式。它包含三个部分：
+
+- 前置配置，即 YAML 格式的提示配置
+- 聊天角色，如  `system`, `user`, 将以 \`\`\` 开始并以 \`\`\`结束，例如：
   ```vtl
   ```system```
   ```
-- chat content, aka prompt content
+- 聊天内容，即提示内容
 
-## FrontMatter Config
+## 前置配置
 
 ```
 ---
-interaction: AppendCursorStream # the interaction type, support AppendCursorStream, ChatPanel, AppendCursor, OutputFile
+interaction: AppendCursorStream # 交互类型，支持 AppendCursorStream, ChatPanel, AppendCursor, OutputFile
 priority: 99
-batchFileRegex: ".*" # the regex to match the batch file
-codeOnly: false # only show the code part
+batchFileRegex: ".*" # 匹配批处理文件的正则表达式
+codeOnly: false # 只显示代码部分
 ---    
 ```
 
-Priority is the prompt priority, the higher the priority, the higher the prompt will be displayed in top.
+Priority 是提示优先级，优先级越高，提示在顶部显示的位置越靠前。
 
-- the default action priority is 900~999, like `Chat with xx`, `Code complete` etc.
+- 默认操作优先级为 900~999，如 `Chat with xx`, `Code complete` 等。
 
-interaction type:
+交互类型：
 
-- AppendCursor, the prompt will be inserted at the cursor position
-- AppendCursorStream, the prompt will be inserted at the cursor position
-- ChatPanel, the prompt will be inserted in the chat panel
-- OutputFile, the prompt will be inserted in the output file, `output-{timestamp}.{extension}`, the extension will be
-  parsed from the result's language.
-- ReplaceSelection, the prompt will replace the current selection (since version@1.6.3)
-- ReplaceCurrentFile, the prompt will replace the current file (since version@1.8.6)
+- AppendCursor，提示将插入到光标位置
+- AppendCursorStream，提示将插入到光标位置
+- ChatPanel，提示将插入到聊天面板
+- OutputFile，提示将插入到输出文件，`output-{timestamp}.{extension}`，扩展名将从结果的语言中解析。
+- ReplaceSelection，提示将替换当前选择（自版本@1.6.3起）
+- ReplaceCurrentFile，提示将替换当前文件（自版本@1.8.6起）
 
-## English Examples
+## 英文示例
 
-variables list: [https://ide.unitmesh.cc/variables](https://ide.unitmesh.cc/variables)
+变量列表: [https://ide.unitmesh.cc/variables](https://ide.unitmesh.cc/variables)
 
 ```markdown
     ---
