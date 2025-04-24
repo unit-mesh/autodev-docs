@@ -12,6 +12,18 @@ AutoDev 的本地智能体是基于 DevIns 语言与 [Shire](https://shire.phoda
 
 示例见：[Untitled .devin](https://github.com/unit-mesh/untitled/tree/master/.devin)
 
+## 快速开始
+
+1. 创建 `sample.devin`
+
+```devin
+Explain code /file:src/main/java/com/example/Controller.java
+```
+
+2. 点击运行
+
+![AutoDev DevIns](https://unitmesh.cc/auto-dev/autodev-devins.png)
+
 ## 示例
 
 ### 获取远程规范，调用 AI 编写代码
