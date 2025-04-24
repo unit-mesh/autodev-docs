@@ -1,11 +1,11 @@
 ---
 layout: default
-title: AutoDev 组合器提示机制
-parent: AutoDev 草图/组合器
+title: AutoDev Composer提示机制
+parent: AutoDev Sketch/Composer
 nav_order: 3
 ---
 
-# AutoDev 组合器提示机制
+# AutoDev Composer提示机制
 
 我们为 AutoDev Composer 设计的提示机制包含以下要素：
 

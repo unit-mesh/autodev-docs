@@ -38,7 +38,7 @@ permalink: /workspace
 
 ![](https://unitmesh.cc/auto-dev/workspace-rule.png)
 
-## 规划器工作区
+## Planner工作区
 
 该工作区用于管理AI修改的文件、新增文件、删除文件等变更操作。
 

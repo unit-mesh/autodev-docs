@@ -1,6 +1,6 @@
 ---
 layout: default
-title: AutoDev 草图/组合器
+title: AutoDev Sketch/Composer
 nav_order: 5
 has_children: true
 ---

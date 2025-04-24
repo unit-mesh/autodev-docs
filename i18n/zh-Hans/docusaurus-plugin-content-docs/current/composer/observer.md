@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 草图观察器
-parent: AutoDev 草图/组合器
+title: Sketch观察器
+parent: AutoDev Sketch/Composer
 nav_order: 3
 ---
 
