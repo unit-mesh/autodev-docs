@@ -144,8 +144,8 @@ const sidebars = {
 			type: 'category',
 			label: 'MCP',
 			items: [
+				'mcp/index',
 				'mcp/development',
-				'mcp/mcp',
 				'mcp/mcp-client',
 				'mcp/mcp-debugger',
 				'mcp/mcp-server',
