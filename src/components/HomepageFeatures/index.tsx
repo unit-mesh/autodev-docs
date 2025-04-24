@@ -21,15 +21,6 @@ const FeatureList: FeatureItem[] = [
     icon: <div className={styles.featureIconBrain} />
   },
   {
-    title: '全面的上下文感知',
-    description: (
-      <>
-        AutoDev 能为 AI 提供完整的项目上下文——文件、编译器输出、构建/测试日志、静态分析结果等——以便 AI 进行更好的决策。
-      </>
-    ),
-    icon: <div className={styles.featureIconCode} />
-  },
-  {
     title: '自定义提升生产力',
     description: (
       <>
@@ -37,6 +28,15 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     icon: <div className={styles.featureIconSettings} />
+  },
+  {
+    title: '全面的上下文感知',
+    description: (
+      <>
+        AutoDev 能为 AI 提供完整的项目上下文——文件、编译器输出、构建/测试日志、静态分析结果等——以便 AI 进行更好的决策。
+      </>
+    ),
+    icon: <div className={styles.featureIconCode} />
   },
 ];
 

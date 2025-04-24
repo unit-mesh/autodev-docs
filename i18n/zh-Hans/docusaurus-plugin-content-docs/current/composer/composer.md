@@ -5,7 +5,7 @@ nav_order: 5
 has_children: true
 ---
 
-# AutoDev Composer - IntelliJ IDEA Cursor 替代方案
+# AutoDev Composer
 
 视频演示（YouTube）— 英文版
 
