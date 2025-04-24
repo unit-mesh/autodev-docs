@@ -20,7 +20,7 @@ permalink: /bridge
 - [OpenRewrite](https://plugins.jetbrains.com/plugin/23814-openrewrite) (Intellij IDEA Ultimate)
 - [Endpoints](https://plugins.jetbrains.com/plugin/16890-endpoints) (Intellij IDEA Ultimate)
 
-### 自定义桥接
+### 自定义Bridge
 
 遵循[提示词覆盖](/customize/prompt-override)，可以自定义AI Composer。在`prompt/code`目录中，
 您可以创建名为`bridge.vm`的文件来覆盖composer提示词。
