@@ -32,7 +32,7 @@ actionLocation: ContextMenu
 - `afterStreaming`：流结束后执行任务的决策，路由到不同的任务。
 - `shortcut`：操作的 IDE 快捷键，使用 IntelliJ IDEA 的快捷键格式。
 - `enabled`：是否启用操作。
-- `model`: 使用的大语言模型，使用 `.shireEnv.json` 定义。
+- `model`: 使用的大语言模型，使用 `.autodevEnv.json` 定义。
 - `userData`：其余数据。
 
 ### 示例代码
@@ -63,6 +63,7 @@ enum class InteractionType(val description: String) {
     ReplaceCurrentFile("Replace the content of the current file"),
     InsertBeforeSelection("Insert content before the currently selected content"),
     RunPanel("Show Result in Run panel which is the bottom of the IDE"),
+    ChatPanel("Show Result in Chat panel which is the right of the IDE"),
     OnPaste("Copy the content to the clipboard"),
     RightPanel("Show Result in Right panel which is the right of the IDE"),
     StreamDiff("Use streaming diff to show the result")
@@ -85,10 +86,9 @@ enum class ShireActionLocation(val location: String, val description: String) {
     DATABASE_MENU("DatabaseMenu", "Show in Database panel menu bar"),
     CONSOLE_MENU("ConsoleMenu", "Show in Console panel menu bar"),
     VCS_LOG_MENU("VcsLogMenu", "Show in VCS Log panel menu bar"),
-    CHAT_BOX("ChatBox", "Show in Chat Box"), // 将默认使用 RigthPanel 作为展示位置
+    CHAT_BOX("ChatBox", "Show in Chat Box, default in Right Panel"),
     INLINE_CHAT("InlineChat", "Show in Inline Chat"),
 
-    /// external plugins
     EXT_SONARQUBE_MENU("ExtSonarQubeMenu", "Show in SonarQube panel menu bar"),
     ;
 }
