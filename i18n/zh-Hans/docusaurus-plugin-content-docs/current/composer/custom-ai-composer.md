@@ -1,13 +1,10 @@
 ---
 layout: default
-title: Sketch 快速入门
-parent: AutoDev Sketch/Composer
+title: 自定义 Sketch
 nav_order: 1
 ---
 
-# 技巧
-
-## 自定义AI Composer
+## 自定义 Sketch
 
 遵循[提示词覆盖](/customize/prompt-override)指南，您可以自定义AI Composer。在`prompt/code`目录中，
 您可以创建名为[`sketch.vm`](https://github.com/unit-mesh/auto-dev/blob/master/core/src/main/resources/genius/zh/code/sketch.vm) 

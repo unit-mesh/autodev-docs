@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Sketch Planner
-parent: AutoDev Sketch/Composer
 nav_order: 2
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Project Rule
-parent: AutoDev Sketch/Composer
 nav_order: 3
 ---
 

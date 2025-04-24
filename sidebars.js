@@ -33,8 +33,14 @@ const sidebars = {
 				'composer/workspace',
 				'composer/composer-prompting',
 				'composer/custom-ai-composer',
-				'agent/bridge/bridge',
-				'agent/bridge/bridge-tool',
+				{
+					type: 'category',
+					label: 'Bridge',
+					items: [
+						'agent/bridge/bridge',
+						'agent/bridge/bridge-tool',
+					]
+				}
 			],
 		},
 		'troubleshooting',

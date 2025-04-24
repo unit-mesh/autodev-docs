@@ -1,7 +1,6 @@
 ---
 layout: default
 title: AutoDev Composer Prompting
-parent: AutoDev Sketch/Composer
 nav_order: 3
 ---
 

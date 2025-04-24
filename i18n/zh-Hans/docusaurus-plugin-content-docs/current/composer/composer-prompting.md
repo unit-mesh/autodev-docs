@@ -1,7 +1,6 @@
 ---
 layout: default
 title: AutoDev Composer提示机制
-parent: AutoDev Sketch/Composer
 nav_order: 3
 ---
 

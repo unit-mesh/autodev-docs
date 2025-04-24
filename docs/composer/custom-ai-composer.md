@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Sketch Quick start
-parent: AutoDev Sketch/Composer
 nav_order: 1
 ---
 

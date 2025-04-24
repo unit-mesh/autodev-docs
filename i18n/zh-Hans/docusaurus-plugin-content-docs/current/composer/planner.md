@@ -1,11 +1,10 @@
 ---
 layout: default
-title: SketchPlanner
-parent: AutoDev Sketch/组件系统
+title: Planner 模式
 nav_order: 2
 ---
 
-AutoDev Planner是一个任务规划系统，通过可视化进度和交互性来增强AI辅助编程能力。受GitHub Copilot Workspace、Cursor和JetBrains Junie等AI编程工具的启发，该系统致力于提升AI驱动开发流程的透明度和适应性。
+AutoDev Planner 是一个任务规划系统，通过可视化进度和交互性来增强AI辅助编程能力。受GitHub Copilot Workspace、Cursor和JetBrains Junie等AI编程工具的启发，该系统致力于提升AI驱动开发流程的透明度和适应性。
 
 **核心功能**：
 
@@ -21,13 +20,13 @@ AutoDev Planner是一个任务规划系统，通过可视化进度和交互性�
 
 通过提升AI驱动编程任务的透明度和可控性，AutoDevPlanner优化了开发体验，使开发者能够有效参与并完善AI生成的代码计划。
 
-### Planner中的设计哲学
+### Planner 中的设计哲学
 
 在Martin Fowler的《[设计已死？](https://www.martinfowler.com/articles/designDead.html)》一文中，作者指出设计远未消亡，但其角色已发生转变。在敏捷世界中，设计不再是僵化的前期流程，而是**持续演进、增量迭代，并通过重构和测试驱动**的过程。敏捷方法，尤其是极限编程（XP），强调**演进式设计**，使得架构能够随着系统发展自然适应。
 
 当前AI模型作为**黑箱系统**，能够生成大量代码。虽然这种能力强大，但如果生成的代码缺乏合理设计原则，**在规模扩大时将产生危害**。结构不良的AI生成代码会导致**技术债务、可维护性问题和架构不一致性**，严重影响软件的持续演进。
 
-#### 设计良好AI智能体的必要性
+#### 设计良好 AI 智能体的必要性
 
 为降低这些风险，我们需要设计一个**强化结构化软件开发**的AI智能体，其应关注：
 
@@ -41,6 +40,7 @@ AutoDev Planner是一个任务规划系统，通过可视化进度和交互性�
 
 典型生成计划示例：
 
+```markdown
 1. 识别核心工作流类
     - [✓] 搜索包含"Workflow"和"Sketch"的类定义
     - [✓] 分析`SketchRunner`中的`execute`方法
@@ -53,5 +53,6 @@ AutoDev Planner是一个任务规划系统，通过可视化进度和交互性�
 3. 验证工作流完整性
     - [✓] 检查异常处理机制
     - [✓] 确认版本控制集成点
+```
 
 ![](https://unitmesh.cc/auto-dev/autodev-plan-sketch.png)

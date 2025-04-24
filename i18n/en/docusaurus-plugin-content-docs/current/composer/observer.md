@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Sketch Observer
-parent: AutoDev Sketch/Composer
 nav_order: 3
 ---
 

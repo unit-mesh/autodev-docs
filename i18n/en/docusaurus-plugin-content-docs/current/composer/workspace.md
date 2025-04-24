@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Sketch Workspace
-parent: AutoDev Sketch/Composer
 nav_order: 3
 permalink: /workspace
 ---
