@@ -887,7 +887,7 @@ Assistant plugin in our codebase. But fret not, we are working our magic to clea
 <p>AutoDev 是一款基于 JetBrains IDE 的 LLM/AI 辅助编程插件。AutoDev 能够与您的需求管理系统（例如 Jira、Trello、Github Issue 等）直接对接。在 IDE 中，您只需简单点击，AutoDev 会根据您的需求自动为您生成代码。您所需做的，仅仅是对生成的代码进行质量检查。</p>
 </blockquote>
 <p>随着，我们对于 LLM 能力边界的探索，发现了一些更有意思的模式，这些探索的模式也融入了 AutoDev 中。</p>
-<p>PS：在 JetBrains 插件中搜索 <code>AutoDev</code> 并安装，配置上你的 LLM，如 OpenAI 及其代理、开源 LLM 等即可使用。</p>
+<p>PS：在 JetBrains 插件中搜索 <code>AutoDev</code> 并安装，配置上你的 LLM，如 OpenAI 及其智能体、开源 LLM 等即可使用。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-autodev对于-genai--软件研发结合的理解">WHY AutoDev？对于 GenAI + 软件研发结合的理解<a href="https://ide.unitmesh.cc/blog/autodev-0-7-0#why-autodev%E5%AF%B9%E4%BA%8E-genai--%E8%BD%AF%E4%BB%B6%E7%A0%94%E5%8F%91%E7%BB%93%E5%90%88%E7%9A%84%E7%90%86%E8%A7%A3" class="hash-link" aria-label="WHY AutoDev？对于 GenAI + 软件研发结合的理解的直接链接" title="WHY AutoDev？对于 GenAI + 软件研发结合的理解的直接链接">​</a></h2>
 <p>于生成式 AI 来说，我们依旧保持先前分享时相似的观点：</p>
 <ol>
@@ -933,7 +933,7 @@ Assistant plugin in our codebase. But fret not, we are working our magic to clea
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="特征-4更广泛的-llm-支持">特征 4：更广泛的 LLM 支持<a href="https://ide.unitmesh.cc/blog/autodev-0-7-0#%E7%89%B9%E5%BE%81-4%E6%9B%B4%E5%B9%BF%E6%B3%9B%E7%9A%84-llm-%E6%94%AF%E6%8C%81" class="hash-link" aria-label="特征 4：更广泛的 LLM 支持的直接链接" title="特征 4：更广泛的 LLM 支持的直接链接">​</a></h3>
 <p>AutoDev 在设计初衷面向我们的第二个假设是：每个大公司都会推出自己的 LLM。每个 LLM 都有自身的特点，所以我们需要有更多的 LLM 支持。</p>
 <ul>
-<li>OpenAI 及其代理。目前是测试最多的，也是最完整的。</li>
+<li>OpenAI 及其智能体。目前是测试最多的，也是最完整的。</li>
 <li>Azure OpenAI。作为一个在国内合法使用 OpenAI 的渠道，我们也在先前的版本中进行了初步的支持，并逐步地完善了这个功能。</li>
 <li>其它 LLM。虽然，还没有找到合适的国内 LLM API 进行适配，但是已经在接口上构建了这样的能力。</li>
 </ul>
