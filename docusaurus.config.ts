@@ -94,6 +94,12 @@ const config = {
               label: 'Customize',
             },
             {
+              type: 'docSidebar',
+              sidebarId: 'developmentSidebar',
+              position: 'left',
+              label: 'Development',
+            },
+            {
               type: 'localeDropdown',
               position: 'right',
             },

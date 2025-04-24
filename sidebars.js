@@ -37,61 +37,6 @@ const sidebars = {
 				'agent/bridge/bridge-tool',
 			],
 		},
-		{
-			type: 'category',
-			label: 'MCP',
-			items: [
-				'mcp/development',
-				'mcp/mcp',
-				'mcp/mcp-client',
-				'mcp/mcp-debugger',
-				'mcp/mcp-server',
-			],
-		},
-		{
-			type: 'category',
-			label: 'Scenes',
-			items: [
-				'scenes/domain-driven-design',
-				'scenes/harmony-os',
-				'scenes/legacy-migration',
-				'scenes/scenes',
-				'scenes/tdd',
-				'scenes/tech-writing',
-			],
-		},
-		{
-			type: 'category',
-			label: 'Workflow',
-			items: [
-				'workflow/auto-page',
-				'workflow/auto-sql',
-				'workflow/auto-test',
-				'workflow/workflow',
-			],
-		},
-		{
-			type: 'category',
-			label: 'Development',
-			items: [
-				'development/agentic-testcase',
-				'development/code-review-prompting',
-				'development/compatible-strategy',
-				'development/custom-language',
-				'development/debug-new-language',
-				'development/dev-new-language',
-				'development/development',
-				'development/development-faq',
-				'development/git-commit-prompting',
-				'development/prompt-strategy',
-				'development/refactoring-prompt',
-				'development/patterns/patterns',
-				'development/patterns/executable-unit-validation',
-				'development/patterns/by-example',
-				'development/patterns/task-driven',
-				'development/patterns/unit-driven',
-			],
-		},
 		'troubleshooting',
 		{
 			type: 'category',
@@ -127,25 +72,37 @@ const sidebars = {
 				'customize/team-prompts',
 				'customize/variables',
 			],
-		},
+		}
+	],
+	developmentSidebar: [
 		{
 			type: 'category',
-			label: 'Custom Remote Agent',
+			label: 'Development',
 			items: [
-				'agent/agent',
-				'agent/agent-action',
-				'agent/custom-ai-agent',
-				'agent/custom-request-response',
-				'agent/server-example',
+				'development/agentic-testcase',
+				'development/code-review-prompting',
+				'development/compatible-strategy',
+				'development/custom-language',
+				'development/debug-new-language',
+				'development/dev-new-language',
+				'development/development',
+				'development/development-faq',
+				'development/git-commit-prompting',
+				'development/prompt-strategy',
+				'development/refactoring-prompt',
+				{
+					type: 'category',
+					label: 'Patterns',
+					items: [
+						'development/patterns/patterns',
+						'development/patterns/executable-unit-validation',
+						'development/patterns/by-example',
+						'development/patterns/task-driven',
+						'development/patterns/unit-driven',
+					],
+				},
 			],
-		},
-		{
-			type: 'category',
-			label: 'Custom Local Agent',
-			items: [
-				'local-agent/index'
-			],
-		},
+		}
 	],
 }
 
