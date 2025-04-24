@@ -45,17 +45,6 @@ const sidebars = {
 		},
 		{
 			type: 'category',
-			label: 'MCP',
-			items: [
-				'mcp/development',
-				'mcp/mcp',
-				'mcp/mcp-client',
-				'mcp/mcp-debugger',
-				'mcp/mcp-server',
-			],
-		},
-		{
-			type: 'category',
 			label: 'Scenes',
 			items: [
 				'scenes/domain-driven-design',
@@ -74,18 +63,6 @@ const sidebars = {
 				'workflow/auto-sql',
 				'workflow/auto-test',
 				'workflow/workflow',
-			],
-		},
-		{
-			type: 'category',
-			label: 'Scenes',
-			items: [
-				'scenes/domain-driven-design',
-				'scenes/harmony-os',
-				'scenes/legacy-migration',
-				'scenes/scenes',
-				'scenes/tdd',
-				'scenes/tech-writing',
 			],
 		},
 		'troubleshooting',
@@ -161,6 +138,17 @@ const sidebars = {
 				'local-agent/toolchain-function',
 				'local-agent/toolchain-variable',
 				'local-agent/when',
+			],
+		},
+		{
+			type: 'category',
+			label: 'MCP',
+			items: [
+				'mcp/development',
+				'mcp/mcp',
+				'mcp/mcp-client',
+				'mcp/mcp-debugger',
+				'mcp/mcp-server',
 			],
 		},
 		{
