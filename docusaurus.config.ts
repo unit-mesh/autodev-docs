@@ -82,6 +82,12 @@ const config = {
               position: 'left',
             },
             {
+              type: 'docSidebar',
+              sidebarId: 'architectureSidebar',
+              position: 'left',
+              label: 'Architecture',
+            },
+            {
               type: 'localeDropdown',
               position: 'right',
             },
