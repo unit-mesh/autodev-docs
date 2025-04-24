@@ -2,7 +2,7 @@
 layout: default
 title: 开发DevIns
 nav_order: 99
-parent: AI代理语言
+parent: AI智能体语言
 ---
 
 ## 在不同语言中实现 `/run` 命令

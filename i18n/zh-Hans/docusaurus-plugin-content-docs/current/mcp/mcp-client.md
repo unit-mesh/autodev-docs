@@ -81,7 +81,7 @@ Python + UV 示例：
 </tool>
 ```
 
-随后 Sketch 和 Bridge 代理就可以在 DevIns 指令中使用该工具。
+随后 Sketch 和 Bridge 智能体就可以在 DevIns 指令中使用该工具。
 
 ### 测试 MCP 服务器
 

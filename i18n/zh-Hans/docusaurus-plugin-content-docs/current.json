@@ -16,11 +16,11 @@
     "description": "The label for category Agentic Coding in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Custom Remote Agent": {
-    "message": "自定义远程代理",
+    "message": "自定义远程智能体",
     "description": "The label for category Custom Remote Agent in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.AI Agent Language": {
-    "message": "AI代理语言",
+    "message": "AI智能体语言",
     "description": "The label for category AI Agent Language in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.MCP": {

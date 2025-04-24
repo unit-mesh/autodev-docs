@@ -1,17 +1,17 @@
 ---
 layout: default
-title: 自定义AI代理快速入门
-parent: 代理
+title: 自定义AI智能体快速入门
+parent: 智能体
 nav_order: 3
 ---
 
 AutoDev@1.7.0
 
-自 AutoDev@1.7.0 版本起，我们支持自定义AI代理，您可以将自己的AI代理集成到AutoDev中。
+自 AutoDev@1.7.0 版本起，我们支持自定义AI智能体，您可以将自己的AI智能体集成到AutoDev中。
 
-<img src="https://unitmesh.cc/auto-dev/custom-agent-popup.png" alt="自定义AI代理下拉菜单" width="600px"/>
+<img src="https://unitmesh.cc/auto-dev/custom-agent-popup.png" alt="自定义AI智能体下拉菜单" width="600px"/>
 
-## 自定义AI代理配置
+## 自定义AI智能体配置
 
 1. 在 `Settings` -> `Tools` -> `AutoDev` 中打开AutoDev配置，选择 `Custom Agent`
 2. 勾选 `Enable Custom Agent`

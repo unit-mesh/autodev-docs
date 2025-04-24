@@ -2,7 +2,7 @@
 layout: default
 title: DevIns 快速入门
 nav_order: 1
-parent: AI 代理语言
+parent: AI 智能体语言
 ---
 
 ## 快速入门
