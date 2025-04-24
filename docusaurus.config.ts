@@ -89,6 +89,12 @@ const config = {
               label: 'Development',
             },
             {
+              type: 'docSidebar',
+              sidebarId: 'agenticSidebar',
+              position: 'left',
+              label: 'Agentic Coding',
+            },
+            {
               to: '/blog',
               label: 'Blog',
               position: 'left',

@@ -77,6 +77,7 @@ const sidebars = {
 		'development/git-commit-prompting',
 		'development/prompt-strategy',
 		'development/refactoring-prompt',
+		'devins/development',
 		{
 			type: 'category',
 			label: 'Patterns',
@@ -89,6 +90,29 @@ const sidebars = {
 			],
 		},
 	],
+	agenticSidebar: [
+		{
+			type: 'category',
+			label: 'Custom Remote Agent',
+			items: [
+				'agent/agent',
+				'agent/agent-action',
+				'agent/custom-ai-agent',
+				'agent/custom-request-response',
+				'agent/server-example',
+			],
+		},
+		{
+			type: 'category',
+			label: 'AI Agent Language',
+			items: [
+				'devins/devins',
+				'devins/quick-start',
+				'devins/orchestration',
+				'devins/devins-language',
+			],
+		},
+	]
 }
 
 export default sidebars
