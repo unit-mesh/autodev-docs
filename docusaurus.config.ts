@@ -77,17 +77,6 @@ const config = {
               label: 'Docs',
             },
             {
-              to: '/blog',
-              label: 'Blog',
-              position: 'left',
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'architectureSidebar',
-              position: 'left',
-              label: 'Architecture',
-            },
-            {
               type: 'docSidebar',
               sidebarId: 'customizeSidebar',
               position: 'left',
@@ -98,6 +87,11 @@ const config = {
               sidebarId: 'developmentSidebar',
               position: 'left',
               label: 'Development',
+            },
+            {
+              to: '/blog',
+              label: 'Blog',
+              position: 'left',
             },
             {
               type: 'localeDropdown',

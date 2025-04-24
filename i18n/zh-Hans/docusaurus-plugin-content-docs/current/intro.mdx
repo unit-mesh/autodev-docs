@@ -7,71 +7,17 @@ import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <ThemedImage
-  alt="AutoDev 徽标"
-  style={{ margin: '0 auto', display: 'block' }}
-  sources={{
-    light: useBaseUrl('/img/logo.svg'),
-    dark: useBaseUrl('/img/logo-dark.svg'),
-  }}
-  width="160px"
-  height="160px"
+	alt="AutoDev 徽标"
+	style={{ margin: '0 auto', display: 'block' }}
+	sources={{
+		light: useBaseUrl('/img/logo.svg'),
+		dark: useBaseUrl('/img/logo-dark.svg'),
+	}}
+	width="160px"
+	height="160px"
 />
 
-<h1 align="center">Intellij 平台版 AutoDev</h1>
-
-<div align="center">
-  <a href="https://codecov.io/gh/unit-mesh/auto-dev">
-    <img src="https://codecov.io/gh/unit-mesh/auto-dev/graph/badge.svg?token=5RzcndjFPx"/>
-  </a>
-  <a href="https://github.com/unit-mesh/auto-dev/actions/workflows/build.yml">
-    <img src="https://github.com/unit-mesh/auto-dev/actions/workflows/build.yml/badge.svg" alt="Build" />
-  </a>
-  <a href="https://github.com/unit-mesh/chocolate-factory">
-    <img src="https://img.shields.io/badge/powered_by-chocolate_factory-blue?logo=kotlin&logoColor=fff" alt="Powered By" />
-  </a>
-</div>
-
-> 🧙‍AutoDev：这款 AI 驱动的编程神器支持多语言开发 🌐，具备自动代码生成能力 🏗️，并配备贴心的除虫助手 🐞！提供可定制提示词 🎨 和神奇的自动开发/测试/文档/智能体功能 🧪！🚀
-
-## 支持的 IDE
-
-- IntelliJ IDEA 系列：Android Studio、PyCharm、WebStorm、GoLand、RubyMine、AppCode 等
-- VSCode 版本：[https://github.com/unit-mesh/auto-dev-vscode](https://github.com/unit-mesh/auto-dev-vscode)
-
-## AutoDev 2.0 Sketch功能
-
-<iframe
-  width="100%"
-  height="315"
-  src="https://www.youtube.com/embed/b1pO641-A54"
-  title="AutoDev Sketch功能演示"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
-/>
-
-**AutoDev Sketch**是由 [Shire](https://github.com/phodal/shire) 提供的 IDE 画布功能，旨在简化交互并提升 IDE 内的开发体验。
-
-| Sketch名称                 | 描述                                                                                                  | 截图                                                      |
-|-------------------------|------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
-| **代码Sketch**             | 实时代码编辑器，支持语法高亮                                                                         | ![](https://shire.run/images/shire-sketch-diff.png)       |
-| **差异对比Sketch**         | 支持补丁处理的差异内容对比工具                                                                       | ![](https://shire.run/images/shire-sketch-diff-view.png)  |
-| **终端Sketch**             | 可编辑的弹出式终端界面，支持与其他Sketch集成（如前端开发的 WebView 本地服务器）                        | ![](https://shire.run/images/shire-sketch-terminal.png)   |
-| **WebView Sketch**          | 支持 HTML/React/Ionic 原型生成的 WebView 展示                                                        | ![](https://shire.run/images/shire-sketch-webview.png)    |
-| **OpenAPI Sketch`*`**       | 支持代码与 OpenAPI 双向同步的 OpenAPI 编辑器                                                         | ![](https://unitmesh.cc/auto-dev/sketch-openapi.png)      |
-| **依赖分析Sketch`*`**       | 内置安全漏洞检测的依赖检查工具                                                                       | ![](https://unitmesh.cc/auto-dev/sketch-security-dependency.png) |
-| **Go 实验场Sketch`*`**     | 支持代码双向预览/编辑的 Go Playground                                                                | ![](https://unitmesh.cc/auto-dev/sketch-go-playground.png)|
-| **Mermaid 流程图Sketch`*`** | 支持双向绑定的实时流程图预览/编辑                                                                    | ![](https://shire.run/images/shire-sketch-mermaid.png)    |
-| **PlantUML Sketch`*`**     | 支持代码与 UML 图双向同步的 UML 编辑器                                                               | ![](https://shire.run/images/shire-sketch-plantuml.png)   |
-| **计划Sketch**             | 展示 AutoDev 规划器解决代码问题的方案                                                                | ![](https://unitmesh.cc/auto-dev/autodev-plan-sketch.png) |
-
-`*` 表示需要额外安装插件
-
-## 架构设计
-
-AutoDev 系统架构图：
-
-![AutoDev 架构图](/img/autodev-arch.svg)
+<h1 align="center">AutoDev for Intellij</h1>
 
 ## 功能概览
 
@@ -80,35 +26,71 @@ AutoDev 系统架构图：
 ## 核心功能
 
 - **Sketch编码智能体**
-    - 通过Sketch查看器驱动的智能化编码工作流
+  - 通过Sketch查看器驱动的智能化编码工作流
 - **自动开发模式**
-    - AutoSQL（需数据库插件）：上下文感知的 SQL 生成
-    - AutoPage（React）：上下文感知的网页生成
-    - 自动测试：创建单元测试意图，自动运行并修复测试
-    - 自动文档：自动生成技术文档
+  - AutoSQL（需数据库插件）：上下文感知的 SQL 生成
+  - AutoPage（React）：上下文感知的网页生成
+  - 自动测试：创建单元测试意图，自动运行并修复测试
+  - 自动文档：自动生成技术文档
 - **智能协作模式**
-    - 提供错误排查、代码解释、异常追踪、提交信息生成等功能
-    - 模式匹配：根据代码上下文（如 Controller、Service 的 `import` 语句）推荐最佳代码
-    - 关联代码：基于近期文件变更，通过相似代码块计算生成最优代码
+  - 提供错误排查、代码解释、异常追踪、提交信息生成等功能
+  - 模式匹配：根据代码上下文（如 Controller、Service 的 `import` 语句）推荐最佳代码
+  - 关联代码：基于近期文件变更，通过相似代码块计算生成最优代码
 - **上下文感知对话**：支持选中代码的上下文感知对话
 - **高度可定制**
-    - 自定义提示模板：支持 Controller、Service、Repository、Model 等模板定制
-    - 自定义意图动作：可添加个性化意图操作
-    - 自定义 LLM 服务器：通过 `设置` -> `工具` -> `AutoDev` 配置自有 LLM 服务
-    - 动态文档定制：支持注解等动态文档的自定义
-    - 团队智能：在代码库中定制团队级提示模板并进行分发
-    - 提示词覆盖：支持覆盖 AutoDev 默认提示词
+  - 自定义提示模板：支持 Controller、Service、Repository、Model 等模板定制
+  - 自定义意图动作：可添加个性化意图操作
+  - 自定义 LLM 服务器：通过 `设置` -> `工具` -> `AutoDev` 配置自有 LLM 服务
+  - 动态文档定制：支持注解等动态文档的自定义
+  - 团队智能：在代码库中定制团队级提示模板并进行分发
+  - 提示词覆盖：支持覆盖 AutoDev 默认提示词
 - **开发生命周期支持**
-    - 版本控制：生成/优化提交信息、发布说明等
-    - 代码审查：自动生成代码审查内容
-    - 智能重构：基于 AI 的重命名、代码异味检测、重构建议等功能
-    - Dockerfile 生成：根据项目特征生成 Dockerfile
-    - CI/CD 配置：根据构建工具生成 CI/CD 配置文件（如 `.github/workflows/build.yml`）
-    - 终端集成：在终端工具窗口中使用自定义输入生成 shell/命令
+  - 版本控制：生成/优化提交信息、发布说明等
+  - 代码审查：自动生成代码审查内容
+  - 智能重构：基于 AI 的重命名、代码异味检测、重构建议等功能
+  - Dockerfile 生成：根据项目特征生成 Dockerfile
+  - CI/CD 配置：根据构建工具生成 CI/CD 配置文件（如 `.github/workflows/build.yml`）
+  - 终端集成：在终端工具窗口中使用自定义输入生成 shell/命令
 - **自定义 AI 智能体**
-    - 可执行智能体语言：DevIns
-    - 自定义 AI 智能体：支持集成自有 AI 智能体到 AutoDev
+  - 可执行智能体语言：DevIns
+  - 自定义 AI 智能体：支持集成自有 AI 智能体到 AutoDev
 - **模型支持**
-    - 内置 LLM 微调功能
-    - [UnitEval](https://github.com/unit-mesh/unit-eval) 大模型结果评估
-    - [UnitGen](https://github.com/unit-mesh/unit-gen) 代码大模型微调数据生成
+  - 内置 LLM 微调功能
+  - [UnitEval](https://github.com/unit-mesh/unit-eval) 大模型结果评估
+  - [UnitGen](https://github.com/unit-mesh/unit-gen) 代码大模型微调数据生成
+
+
+## AutoDev 2.0 Sketch
+
+<iframe
+	width="100%"
+	height="315"
+	src="https://www.youtube.com/embed/b1pO641-A54"
+	title="AutoDev Sketch功能演示"
+	frameborder="0"
+	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+	allowfullscreen
+/>
+
+**AutoDev Sketch**是由 [Shire](https://github.com/phodal/shire) 提供的 IDE 画布功能，旨在简化交互并提升 IDE 内的开发体验。
+
+| Sketch名称                 | 描述                                              | 截图                                                               |
+|--------------------------|-------------------------------------------------|------------------------------------------------------------------|
+| **代码Sketch**             | 实时代码编辑器，支持语法高亮                                  | ![](https://shire.run/images/shire-sketch-diff.png)              |
+| **差异对比Sketch**           | 支持补丁处理的差异内容对比工具                                 | ![](https://shire.run/images/shire-sketch-diff-view.png)         |
+| **终端Sketch**             | 可编辑的弹出式终端界面，支持与其他Sketch集成（如前端开发的 WebView 本地服务器） | ![](https://shire.run/images/shire-sketch-terminal.png)          |
+| **WebView Sketch**       | 支持 HTML/React/Ionic 原型生成的 WebView 展示            | ![](https://shire.run/images/shire-sketch-webview.png)           |
+| **OpenAPI Sketch`*`**    | 支持代码与 OpenAPI 双向同步的 OpenAPI 编辑器                 | ![](https://unitmesh.cc/auto-dev/sketch-openapi.png)             |
+| **依赖分析Sketch`*`**        | 内置安全漏洞检测的依赖检查工具                                 | ![](https://unitmesh.cc/auto-dev/sketch-security-dependency.png) |
+| **Go 实验场Sketch`*`**      | 支持代码双向预览/编辑的 Go Playground                      | ![](https://unitmesh.cc/auto-dev/sketch-go-playground.png)       |
+| **Mermaid 流程图Sketch`*`** | 支持双向绑定的实时流程图预览/编辑                               | ![](https://shire.run/images/shire-sketch-mermaid.png)           |
+| **PlantUML Sketch`*`**   | 支持代码与 UML 图双向同步的 UML 编辑器                        | ![](https://shire.run/images/shire-sketch-plantuml.png)          |
+| **计划Sketch**             | 展示 AutoDev 规划器解决代码问题的方案                         | ![](https://unitmesh.cc/auto-dev/autodev-plan-sketch.png)        |
+
+`*` 表示需要额外安装插件
+
+## 架构设计
+
+AutoDev 系统架构图：
+
+![AutoDev 架构图](/img/autodev-arch.svg)
