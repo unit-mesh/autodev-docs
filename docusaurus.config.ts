@@ -88,6 +88,12 @@ const config = {
               label: 'Architecture',
             },
             {
+              type: 'docSidebar',
+              sidebarId: 'customizeSidebar',
+              position: 'left',
+              label: 'Customize',
+            },
+            {
               type: 'localeDropdown',
               position: 'right',
             },

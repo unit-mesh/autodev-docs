@@ -23,23 +23,6 @@ const sidebars = {
 		},
 		{
 			type: 'category',
-			label: 'Customize Features',
-			items: [
-				'customize/customize',
-				'customize/batch-ai-action',
-				'customize/custom-action',
-				'customize/custom-ext-contenxt-agent',
-				'customize/custom-living-documentation',
-				'customize/custom-llm-server',
-				'customize/custom-quick-action',
-				'customize/custom-test-template',
-				'customize/prompt-override',
-				'customize/team-prompts',
-				'customize/variables',
-			],
-		},
-		{
-			type: 'category',
 			label: 'Agentic Coding',
 			items: [
 				'composer/composer',
@@ -52,28 +35,6 @@ const sidebars = {
 				'composer/custom-ai-composer',
 				'agent/bridge/bridge',
 				'agent/bridge/bridge-tool',
-			],
-		},
-		{
-			type: 'category',
-			label: 'Custom Remote Agent',
-			items: [
-				'agent/agent',
-				'agent/agent-action',
-				'agent/custom-ai-agent',
-				'agent/custom-request-response',
-				'agent/server-example',
-			],
-		},
-		{
-			type: 'category',
-			label: 'AI Agent Language',
-			items: [
-				'devins/quick-start',
-				'devins/devins',
-				'devins/devins-language',
-				'devins/orchestration',
-				'devins/development',
 			],
 		},
 		{
@@ -148,6 +109,43 @@ const sidebars = {
 				'architecture/overview',
 			],
 		}
+	],
+	customizeSidebar: [
+		{
+			type: 'category',
+			label: 'Customize Features',
+			items: [
+				'customize/customize',
+				'customize/batch-ai-action',
+				'customize/custom-action',
+				'customize/custom-ext-contenxt-agent',
+				'customize/custom-living-documentation',
+				'customize/custom-llm-server',
+				'customize/custom-quick-action',
+				'customize/custom-test-template',
+				'customize/prompt-override',
+				'customize/team-prompts',
+				'customize/variables',
+			],
+		},
+		{
+			type: 'category',
+			label: 'Custom Remote Agent',
+			items: [
+				'agent/agent',
+				'agent/agent-action',
+				'agent/custom-ai-agent',
+				'agent/custom-request-response',
+				'agent/server-example',
+			],
+		},
+		{
+			type: 'category',
+			label: 'Custom Local Agent',
+			items: [
+				'local-agent/index'
+			],
+		},
 	],
 }
 
