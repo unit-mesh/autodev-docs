@@ -881,5 +881,83 @@ flowcharts, sequence diagrams, and more.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="others">Others<a href="https://ide.unitmesh.cc/en/blog/autodev-0-7-0#others" class="hash-link" aria-label="Direct link to Others" title="Direct link to Others">​</a></h2>
 <p>Feel free to discuss code on GitHub: <a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a>.</p>]]></content:encoded>
         </item>
+        <item>
+            <title><![CDATA[AutoDev：AI 突破研发效能，探索平台工程新机遇]]></title>
+            <link>https://ide.unitmesh.cc/en/blog/2023/04/18/autodev</link>
+            <guid>https://ide.unitmesh.cc/en/blog/2023/04/18/autodev</guid>
+            <pubDate>Tue, 18 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[围绕于探索 AI 对软件研发的影响，并在有了 LLM 微调工程化能力之后，我们上周末又开源了一个适用于 AI 研发提效的工具：AutoDev。如此一来，我们便构建了接近完整的 AI 在研发效能提升。]]></description>
+            <content:encoded><![CDATA[<p>围绕于探索 AI 对软件研发的影响，并在有了 LLM 微调工程化能力之后，我们上周末又开源了一个适用于 AI 研发提效的工具：AutoDev。如此一来，我们便构建了接近完整的 AI 在研发效能提升。</p>
+<p>在这篇文章中，我们将基于 Unit Mesh、DevTi、AutoDev 等一系列的探索，分享 AI 对于研发效能的影响，以及对于平台工程带来的新机遇。</p>
+<p>PS：整个体系站在一个基本假设是：中大型企业将<strong>至少拥有一个</strong>私有化的大语言模型。</p>
+<p>GitHub： <a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="引子-1devti--软件开发工程化--llm-微调">引子 1：DevTi = 软件开发工程化 + LLM 微调<a href="https://ide.unitmesh.cc/en/blog/2023/04/18/autodev#%E5%BC%95%E5%AD%90-1devti--%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%8C%96--llm-%E5%BE%AE%E8%B0%83" class="hash-link" aria-label="Direct link to 引子 1：DevTi = 软件开发工程化 + LLM 微调" title="Direct link to 引子 1：DevTi = 软件开发工程化 + LLM 微调">​</a></h2>
+<blockquote>
+<p>DevTi（Development + Titanium）一款基于大语言模型的研发效能提升的开源项目。旨在基于 LLM 的微调来提供全面智能化解决方案，助力开发人员高效完成开发任务，以实现自动化用户任务拆解、用户故事生成、自动化代码生成、自动化测试生成等等。</p>
+</blockquote>
+<p>简单来说，DevTi 是 AI + 研发效能领域的小模型的工具链 —— 借助于 DevTi，你可以快速训练出适用于软件研发的微调模型。一个简化的流程，如下图所示：</p>
+<p><img decoding="async" loading="lazy" src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f097631a-4cb6-4de5-a064-372d84a396a6/Untitled.png" alt="Untitled" class="img_ev3q"></p>
+<p>为了进行相关的模型微调或者训练，在其中的每一个阶段里，我们都需要准备数据、处理数据、生成 prompt 等，如准备一系列的用户故事、代码生成的数据。所以，作为工程师，需要准备一系列的编程基础设施或者模块。</p>
+<p>DevTi 所包含的模块如下所示：</p>
+<p><img decoding="async" loading="lazy" src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fe81717b-52a8-4138-8ad4-52073ddb20fe/Untitled.png" alt="Untitled" class="img_ev3q"></p>
+<p>它包含了 4.5 个模块：</p>
+<ul>
+<li>Collector（Python, JavaScript），数据收集。这个模块负责从不同的数据源（如 GitHub、Stack Overflow、CodePen 等）收集代码片段、问题、答案等数据，以便用于微调。</li>
+<li>Processor（Kotlin），数据处理。这个模块负责对收集到的数据进行清洗、格式化、标注等预处理操作，以提高数据质量和一致性。</li>
+<li>Prompter（Python），Prompt 设计、调整、优化等。这个模块负责根据用户的需求和场景，设计合适的 Prompt 来引导大语言模型生成期望的输出，例如用户故事、代码片段、测试用例等。</li>
+<li>Train（Python），训练相关的 Notebook。这个模块包含了一些 Jupyter Notebook 文件，用于展示如何使用不同的大语言模型微调（如 ChatGLM、LLaMA等）来完成不同的研发任务，例如代码生成、代码补全、代码注释等。</li>
+<li>Chain。待定</li>
+</ul>
+<p>随后，便可以围绕于 DevTi 构建工具链，如 IDE 工具、看板工具等等。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="引子-2autodev--ide-插件--ai-api-调用">引子 2：AutoDev = IDE 插件 + AI API 调用<a href="https://ide.unitmesh.cc/en/blog/2023/04/18/autodev#%E5%BC%95%E5%AD%90-2autodev--ide-%E6%8F%92%E4%BB%B6--ai-api-%E8%B0%83%E7%94%A8" class="hash-link" aria-label="Direct link to 引子 2：AutoDev = IDE 插件 + AI API 调用" title="Direct link to 引子 2：AutoDev = IDE 插件 + AI API 调用">​</a></h2>
+<blockquote>
+<p>AutoDev 是一款高度自动化的 AI 辅助编程工具。AutoDev 能够与您的需求管理系统（例如
+Jira、Trello、Github Issue 等）直接对接。在 IDE 中，您只需简单点击，AutoDev
+会根据您的需求自动为您生成代码。您所需做的，仅仅是对生成的代码进行质量检查。</p>
+</blockquote>
+<p>简单来说，AutoDev 定位是适用于私有化大语言模型 + 高度集成的 AI 编程助手。AutoDev 提供了一种 AutoCRUD 模式，其设计理解的过程是：</p>
+<ol>
+<li>从需求管理系统获取需求，并进行需求分析。</li>
+<li>结合源码与需求系统，选择最适合变更的入口（如 Java 中的 Controller）</li>
+<li>将需求与 Controller 交给 AI 分析，以实现代码的代码。</li>
+<li>根据 Controller 逐步自动完成其它部分代码（实现中…）</li>
+</ol>
+<p>另外一种模式则是普通的 Copilot 模式，可以接入现有的大模型工具，实现一系列的 AI 代码辅助相关功能。</p>
+<p><img decoding="async" loading="lazy" src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b953b9-9e49-48b2-a368-dddb6f4150b0/Untitled.png" alt="Untitled" class="img_ev3q"></p>
+<p>GitHub： <a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a></p>
+<p>接入 LLM，我们不仅可以生成代码，还可以生成单元测试代码，从而提高测试效率和覆盖率。</p>
+<p>让我们再展开看一看，基于现有的 AI 能力，会有哪些新可能性。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="平台工程的变化与新机遇">平台工程的变化与新机遇<a href="https://ide.unitmesh.cc/en/blog/2023/04/18/autodev#%E5%B9%B3%E5%8F%B0%E5%B7%A5%E7%A8%8B%E7%9A%84%E5%8F%98%E5%8C%96%E4%B8%8E%E6%96%B0%E6%9C%BA%E9%81%87" class="hash-link" aria-label="Direct link to 平台工程的变化与新机遇" title="Direct link to 平台工程的变化与新机遇">​</a></h2>
+<p>而除了我们上述的 demo 之外，我们相信它带会其它带来一系列的变化。对于中大型组织的基础设施或者平台团队来说，要接入 AI 能力需要有更多的变化与机遇。</p>
+<blockquote>
+<p>平台工程是一种用来构建和运维支持软件交付和生命周期管理的自助式内部开发者平台的机制和架构。平台工程可以提高开发者的体验和生产力，提供自动化的基础设施操作。平台工程是软件工程组织的新趋势，它可以优化开发者的工作流程，加速产品团队交付客户价值。</p>
+</blockquote>
+<p>平台工程的核心思想是将平台视为一种产品，由专业的平台团队来创建和维护，为内部的客户（如开发者、数据科学家等）提供可复用的服务、组件和工具。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="需求自动化收敛分析与完善">需求：自动化收敛、分析与完善<a href="https://ide.unitmesh.cc/en/blog/2023/04/18/autodev#%E9%9C%80%E6%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%94%B6%E6%95%9B%E5%88%86%E6%9E%90%E4%B8%8E%E5%AE%8C%E5%96%84" class="hash-link" aria-label="Direct link to 需求：自动化收敛、分析与完善" title="Direct link to 需求：自动化收敛、分析与完善">​</a></h3>
+<p>在现有的场景之下，已经有一系列的关于结合  AI 进行需求管理的尝试：</p>
+<ul>
+<li>自动化完善。对用户的反馈和数据的分析，自动识别和补充缺失的需求信息，例如自动识别用户提出的问题并转化为需求描述，自动补全需求的关键词和标签等。</li>
+<li>自动化分析。通过训练自带的领域知识，可以更好地评估和优化需求，发现潜在的问题和机会，提高需求的效率和效果。</li>
+<li>自动化收敛。结合其它 AI 技术，比如智能推荐、对话系统、多方协作等，可以帮助您更好地沟通和协调需求，收集和整合用户的反馈和痛点，提高需求的满意度和一致性。</li>
+<li>自动化迭代。结合人类反馈的 AI 数据，可以更好地更新和改进需求生成，适应不断变化的环境和用户需求，提高需求的持续性和创新性</li>
+</ul>
+<p>尽管现有的几个方案：LangChain、llama-index 等暂时只支持 OpenAI，但是随着更多开源大语言模型的加入，未来会更易于落地。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="工具链智能的-ide">工具链：智能的 IDE<a href="https://ide.unitmesh.cc/en/blog/2023/04/18/autodev#%E5%B7%A5%E5%85%B7%E9%93%BE%E6%99%BA%E8%83%BD%E7%9A%84-ide" class="hash-link" aria-label="Direct link to 工具链：智能的 IDE" title="Direct link to 工具链：智能的 IDE">​</a></h3>
+<p>对于现有的场景来说，已经相当的丰富，诸如于：</p>
+<ul>
+<li>自动化代码审查</li>
+<li>自动化测试</li>
+<li>自动化日志分析</li>
+<li>AI 辅助编程</li>
+<li>……</li>
+</ul>
+<p>诚然，诸如于 GitHub Copilot 等收费 AI 工具来说，对于大部分公司来说，贵可能是其次，重点是代码的安全性。而虽然国内各类新的模型层出不穷，但是大部分缺少编程相关的集成，又或者是编程能力比较弱。然而，市面上也有只用于编程相关的模型，如 Salesforce 在 Hugging Face 上提供的 16B CodeGen 模型。虽然，还需要经过一些小的微调，但是如 Replit 公司所言，效果还是非常不错的。</p>
+<p>随后，便是类似于 AutoDev 针对于大语言模型进行的封装，简化普通开发人员的开发过程。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="文档超越搜索">文档：超越搜索<a href="https://ide.unitmesh.cc/en/blog/2023/04/18/autodev#%E6%96%87%E6%A1%A3%E8%B6%85%E8%B6%8A%E6%90%9C%E7%B4%A2" class="hash-link" aria-label="Direct link to 文档：超越搜索" title="Direct link to 文档：超越搜索">​</a></h3>
+<p>在有了 LLM 和各种智能问答的基础上，我们还可以加入内部各种工具的文档和代码，以提供更全面、更智能的文档服务。例如，LangChain 构建的问答式文档，可以对企业内部的各种文档进行语义理解和智能问答，进而简化开发人员的学习成本。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="其它">其它<a href="https://ide.unitmesh.cc/en/blog/2023/04/18/autodev#%E5%85%B6%E5%AE%83" class="hash-link" aria-label="Direct link to 其它" title="Direct link to 其它">​</a></h2>
+<p>AI 正在带来一系列的变化，特别是对于中大型企业的平台工程团队来说，接入 AI 能力需要有更多的变化与机遇。例如，可以自动化收敛、分析与完善需求，构建智能的IDE，提供更全面、更智能的文档服务等。</p>
+<p>我们依旧在探索中，欢迎来加入我们。</p>]]></content:encoded>
+        </item>
     </channel>
 </rss>
