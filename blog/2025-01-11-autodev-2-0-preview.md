@@ -1,6 +1,6 @@
 ---
 layout: default
-title: AutoDev Composer：the Intellij IDEA Cursor Alternative
+title: AutoDev Composer the Intellij IDEA Cursor Alternative
 nav_order: 9
 ---
 

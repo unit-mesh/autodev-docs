@@ -1,0 +1,112 @@
+---
+title: AutoDev 0.7.0 - Generating Standardized Code, Deep Integration into Developer Daily Work
+slug: autodev-0-7-0
+hide_table_of_contents: false
+---
+
+# Open-source AI Programming Assistant AutoDev 0.7 Released - Generating Standardized Code, Deep Integration into Developer Daily Work
+
+Months ago, we embarked on exploring: **How to combine AIGC for R&D efficiency improvement?** We open-sourced AutoDev, as introduced on GitHub:
+
+> AutoDev is a LLM/AI-assisted programming plugin for JetBrains IDEs. AutoDev can directly integrate with your requirement management systems (e.g., Jira, Trello, Github Issues, etc.). Within the IDE, with simple clicks, AutoDev automatically generates code based on your requirements. All you need to do is perform quality checks on the generated code.
+
+Through our exploration of LLM capability boundaries, we discovered some more interesting patterns that have been incorporated into AutoDev.
+
+PS: Search for `AutoDev` in JetBrains plugins and install it. Configure your LLM (e.g., OpenAI and its proxies, open-source LLMs, etc.) to start using.
+
+## WHY AutoDev? Understanding the Integration of GenAI + Software Development
+
+Regarding generative AI, we maintain views similar to our previous sharing:
+
+1. GenAI can improve efficiency in almost every phase of the R&D process.
+2. More effective for standardized processes, with limited benefits for less standardized small teams.
+3. Efficiency gains need tool implementation due to the time cost of prompt writing.
+
+Therefore, when designing AutoDev, our goals were:
+
+1. End-to-end integration to reduce interaction costs - from prompt writing to LLM interaction, then copying back into tools.
+2. Automatic collection of prompt context for content/code generation
+3. Final human verification and correction of AI-generated code.
+
+Thus, manual specification organization and automatic context collection to improve generation quality became our focus in tool development.
+
+## AutoDev 0.7 New Features
+
+From the big demo in April to the new version today, we continuously studied implementations of GitHub Copilot, JetBrains AI Assistant, Cursor, Bloop, etc. Each tool has unique selling points. Combined with my daily development habits, we added a series of exploratory new features.
+
+Details on GitHub: https://github.com/unit-mesh/auto-dev
+
+### Feature 1: Built-in Architectural Specifications & **Code Standards**
+
+LLM's "parrot mode" (generation mechanism) produces code matching current context programming habits. When using AI code generation features like GitHub Copilot, it generates new API code based on how we handle existing APIs. If our code uses Swagger annotations, it will generate similar code in the same Controller.
+
+This implies a problem: If predecessors wrote non-standard code, generated code will also be non-standard. Therefore, we added CRUD template code specification configuration:
+
+```json
+{
+  "spec": {
+    "controller": "- Use BeanUtils.copyProperties for DTO to Entity conversion in Controllers",
+    "service": "- Service layer should use constructor injection or setter injection, avoid @Autowired annotation",
+    "entity": "- Entity classes should use JPA annotations for database mapping",
+    "repository": "- Repository interfaces should extend JpaRepository for basic CRUD operations",
+    "ddl": "- Fields should use NOT NULL constraints to ensure data integrity"
+  }
+}
+```
+
+In special scenarios, specifications alone are insufficient - sample code configuration is needed. With this configuration, when generating Controller/Service code, we can directly apply these specifications.
+
+### Feature 2: Deep Integration into Developer Daily Activities
+
+In the April release, AutoDev integrated basic programming activities: AI code completion, comment generation, code refactoring, code explanation, etc.
+
+While developing AutoDev itself, we discovered more interesting needs and integrated them into the IDE:
+
+- One-click commit message generation. When using IDEA's commit UI, generate suggested commit messages.
+- One-click changelog generation. Select multiple commits in history to generate CHANGELOG based on messages.
+- Error message analysis. During debugging, select error messages to automatically analyze with LLM combining error context.
+- Test code generation.
+
+Combined with AutoDev's core strength of automatic CRUD from requirements, the feature set becomes more comprehensive.
+
+### Feature 3: **Multi-language AI Support**
+
+In April, we found LLMs excel at CRUD, so chose Java for initial implementation. However, languages I frequently use like Kotlin/Rust/TypeScript lacked support.
+
+Referencing Intellij Rust's modular architecture, we reorganized layers/modules using Intellij Plugin extension points (XML + Java) to rebuild the foundation.
+
+New extension points in the architecture:
+
+- Language data structure extensions. Originally designed for UML representation when tokens are limited. Later referenced (copied) JetBrains AI Assistant's language extensions - language-specific data structures implemented in their own modules.
+- Language prompt extensions. Language-specific prompt differences moved to respective modules.
+- Custom CRUD workflows. Existing CRUD implementation was Java-specific. Now each language implements its own approach.
+
+Currently, Java/Kotlin still have the best support.
+
+### Feature 4: Broader LLM Support
+
+AutoDev's original design considered our second hypothesis: Every major company will launch its own LLM. Each LLM has unique characteristics, requiring broader LLM support.
+
+- OpenAI & proxies. Most tested and complete implementation.
+- Azure OpenAI. As a legal OpenAI channel in China, we implemented preliminary support and gradually improved it.
+- Other LLMs. While suitable domestic LLM APIs haven't been found yet, the interface supports such integration.
+
+Welcome to experiment with your own LLMs.
+
+### Feature 5: Smarter Prompt Strategies
+
+In our May article **[Context Engineering: Real-time Capability Analysis Based on GitHub Copilot](https://www.phodal.com/blog/llm-context-engineering/)**, we analyzed GitHub Copilot's prompt strategies. Core promptElements include: `BeforeCursor`, `AfterCursor`, `SimilarFile`, `ImportedFile`, `LanguageMarker`, `PathMarker`, `RetrievalSnippet`, etc.
+
+Discovering JetBrains AI Assistant uses similar approaches, we refined AutoDev's prompt strategies:
+
+- Code context strategies:
+    - Java + CRUD mode: Build context using related code (BeforeCursor), all called methods, called lines, UML-like class diagrams.
+    - Other Java modes: Use DtModel to build UML-like comments as reference.
+    - Python: Use import-based similar code snippets as LLM reference.
+- Token allocation strategy: Distribute context based on token limits.
+
+As a "smart context" strategy, current implementation still needs optimization.
+
+## Others
+
+Feel free to discuss code on GitHub: https://github.com/unit-mesh/auto-dev.

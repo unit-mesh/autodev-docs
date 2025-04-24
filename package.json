@@ -24,7 +24,8 @@
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sharp": "^0.34.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.7.0",
