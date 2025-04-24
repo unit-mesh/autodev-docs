@@ -93,13 +93,29 @@ const sidebars = {
 	agenticSidebar: [
 		{
 			type: 'category',
-			label: 'Custom Remote Agent',
+			label: 'Remote Agents',
 			items: [
 				'agent/agent',
 				'agent/agent-action',
 				'agent/custom-ai-agent',
 				'agent/custom-request-response',
 				'agent/server-example',
+			],
+		},
+		{
+			type: 'category',
+			label: 'Local Agents',
+			items: [
+				'local-agent/index',
+				'local-agent/shire-builtin-variable',
+				'local-agent/shire-custom-variable',
+				'local-agent/shire-env',
+				'local-agent/shire-foreign-function',
+				'local-agent/shire-hobbit-hole',
+				'local-agent/shire-template',
+				'local-agent/shire-toolchain-function',
+				'local-agent/shire-toolchain-variable',
+				'local-agent/when',
 			],
 		},
 		{
