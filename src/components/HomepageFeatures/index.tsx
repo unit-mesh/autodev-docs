@@ -12,28 +12,28 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: '智能体规划复杂任务',
+    title: '智能任务规划与执行',
     description: (
       <>
-        AutoDev Planner 可以借助强大的推理模型能力，自主规划并执行包括文件编辑、代码检索、构建、执行、测试和版本控制在内的复杂软件工程任务链。
+        利用 AutoDev Planner，结合先进的推理模型，自动规划并执行复杂的开发任务链，包括文件编辑、代码检索、构建、测试和版本控制等。
       </>
     ),
     icon: <div className={styles.featureIconBrain} />
   },
   {
-    title: '自定义提升生产力',
+    title: '高度可定制的开发体验',
     description: (
       <>
-        您可以在 AutoDev 自定义模型、自定义提示词和自定义代码生成器等，并通过构建自己的 AutoDev 分支，来提升生产力。
+        支持自定义智能体、私有化模型和提示词动作等，用户可以根据个人、团队、公司需要构建个性化的 AutoDev 分支，显著提升开发效率。
       </>
     ),
     icon: <div className={styles.featureIconSettings} />
   },
   {
-    title: '全面的上下文感知',
+    title: '全面的上下文感知能力',
     description: (
       <>
-        AutoDev 能为 AI 提供完整的项目上下文——文件、编译器输出、构建/测试日志、静态分析结果等——以便 AI 进行更好的决策。
+        AutoDev 能够整合静态代码分析、项目文件、编译器输出和构建/测试日志结果，为 AI 提供完整的项目上下文，辅助其做出更准确的决策。
       </>
     ),
     icon: <div className={styles.featureIconCode} />
@@ -60,7 +60,7 @@ function QuickLinks() {
     { title: '安装指南', description: '快速在您的环境中设置 AutoDev', link: '/quick-start' },
     { title: 'AI 程序员', description: '探索 AutoDev Sketch 自动编码', link: '/composer' },
     { title: '定制化', description: '学习如何根据您的特定需求自定义 AutoDev', link: '/customize' },
-    { title: '智能体语言', description: '了解 AI 程序员背后的智能体工具', link: '/devins/quick-start' },
+    { title: '智能体', description: '构建个人、团队 Agent，集成公司 Agent', link: '/agent' },
   ];
 
   return (

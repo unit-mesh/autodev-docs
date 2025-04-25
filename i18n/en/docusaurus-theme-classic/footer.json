@@ -22,9 +22,5 @@
   "link.item.label.GitHub": {
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/unit-mesh/auto-dev"
-  },
-  "copyright": {
-    "message": "Copyright © 2025 Unit Mesh. Built with Docusaurus.",
-    "description": "The footer copyright"
   }
 }
