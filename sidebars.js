@@ -125,11 +125,12 @@ const sidebars = {
 		'devins/development',
 	],
 	agenticSidebar: [
+		'agent/index',
 		{
 			type: 'category',
 			label: 'Remote Agents',
 			items: [
-				'agent/index',
+				'agent/remote',
 				'agent/agent-action',
 				'agent/custom-ai-agent',
 				'agent/custom-request-response',

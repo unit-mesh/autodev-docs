@@ -1,3 +1,7 @@
+---
+title: 本地智能体
+---
+
 # 自定义本地智能体：一行代码，一个智能体
 
 AutoDev 的本地智能体是基于 DevIns 语言与 [Shire](https://shire.phodal.com/) 所构建的，其核心包含三部：

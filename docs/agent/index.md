@@ -1,8 +1,5 @@
 ---
-layout: default
-title: Agent
-nav_order: 5
-has_children: true
+title: 远程智能体
 ---
 
 # 自定义远程 Agent
