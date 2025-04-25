@@ -12,28 +12,28 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: '智能任务规划与执行',
+    title: '智能任务自动化',
     description: (
       <>
-        利用 AutoDev Planner，结合先进的推理模型，自动规划并执行复杂的开发任务链，包括文件编辑、代码检索、构建、测试和版本控制等。
+        利用 AutoDev Planner 结合 AI 模型，自动规划与执行复杂的开发任务（编码、测试、构建等），支持手动调整，简化工作流程。
       </>
     ),
     icon: <div className={styles.featureIconBrain} />
   },
   {
-    title: '高度可定制的开发体验',
+    title: '高度定制化体验',
     description: (
       <>
-        支持自定义智能体、私有化模型和提示词动作等，用户可以根据个人、团队、公司需要构建个性化的 AutoDev 分支，显著提升开发效率。
+        支持自定义智能体、私有模型及提示词指令，轻松打造满足个人、团队或企业特定需求的 AutoDev 工作流，提升开发效率。
       </>
     ),
     icon: <div className={styles.featureIconSettings} />
   },
   {
-    title: '全面的上下文感知能力',
+    title: '精准上下文感知',
     description: (
       <>
-        AutoDev 能够整合静态代码分析、项目文件、编译器输出和构建/测试日志结果，为 AI 提供完整的项目上下文，辅助其做出更准确的决策。
+        深度整合 IDE 插件并支持 MCP 协议，为 AI 提供丰富准确的项目上下文，显著减少 AI 幻觉，确保结果更可靠。
       </>
     ),
     icon: <div className={styles.featureIconCode} />
