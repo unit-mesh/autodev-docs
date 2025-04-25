@@ -88,18 +88,28 @@ const sidebars = {
 		'customize/variables',
 	],
 	developmentSidebar: [
-		'development/agentic-testcase',
-		'development/code-review-prompting',
-		'development/compatible-strategy',
-		'development/custom-language',
-		'development/debug-new-language',
-		'development/dev-new-language',
 		'development/development',
 		'development/development-faq',
-		'development/git-commit-prompting',
-		'development/prompt-strategy',
-		'development/refactoring-prompt',
-		'devins/development',
+		'development/compatible-strategy',
+		{
+			type: 'category',
+			label: 'New Language',
+			items: [
+				'development/custom-language',
+				'development/debug-new-language',
+				'development/dev-new-language',
+			],
+		},
+		{
+			type: 'category',
+			label: 'Prompting',
+			items: [
+				'development/prompt-strategy',
+				'development/code-review-prompting',
+				'development/git-commit-prompting',
+				'development/refactoring-prompt',
+			],
+		},
 		{
 			type: 'category',
 			label: 'Patterns',
@@ -111,6 +121,8 @@ const sidebars = {
 				'development/patterns/unit-driven',
 			],
 		},
+		'development/agentic-testcase',
+		'devins/development',
 	],
 	agenticSidebar: [
 		{
