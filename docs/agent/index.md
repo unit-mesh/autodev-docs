@@ -1,13 +1,34 @@
 ---
-title: 远程智能体
+title: Agentic Coding
 ---
 
-# 自定义远程 Agent
+AutoDev 智能体方案
 
-自定义远程 Agent 可以让你通过 JSON 配置的方式，来实现对 AutoDev 的远程调用。你可以使用这个功能来实现一些自定义的功能，比如：
+![](/img/autodev-agents.png)
 
-- 调用 Dify/Coze 上的远程 Agent 获取上下文
-- 调用内部的 API 来进行知识检索
+- 本地插件自带：IDE 提供基于代码事实信息。
+- 云端智能体：结合 DevOps、知识库等提供统一能力。
+- AutoDev 本地智能体 1：通过 MCP 方案，提供本地智能体的能力。
+- AutoDev 本地智能体 2：通过 DevIns，让你的一句话就变成智能体。
 
-Demo Video: [AutoDev 1.7 Custom Agent](https://www.bilibili.com/video/BV1Hx42127En/) (Bilibili)
+目标：与研发生态上下游平台能力打通，便捷操作
 
+- 如上游的需求、任务管理、中间件与云等设施申请/配置、API开放平台等；
+- 如下游的CI/CD、Testing平台、Ops/Monitoring等；
+- 多渠道打造 chat 入口，让互动更灵活
+
+示例：
+
+“请从开放API平台查询关于获取用户kyc信息对应的接口”
+“请基于上述第二个接口生成调用代码”
+
+## 云端智能体
+
+1. 提供平台工具让团队更低门槛地参与自定义，自定义能力可以进一步集合在企业Market中
+2. IDE 端从 Market 中获取自定义能力，个性化形成自己的Chat助手
+3. 企业 Market 可以提供分享、社区评论、贡献与使用度排名等运营举措以提升活跃度
+
+## 本地智能体
+
+1. 通过 MCP 方案，提供本地智能体的能力
+2. 通过 DevIns，让你的一句话就变成智能体
