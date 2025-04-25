@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ide.unitmesh.cc/blog</id>
-    <title>AutoDev - Open Source AI Coding Wizard Blog</title>
+    <title>AutoDev - Tailor Your AI Coding Experience Blog</title>
     <updated>2025-03-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ide.unitmesh.cc/blog"/>
-    <subtitle>AutoDev - Open Source AI Coding Wizard Blog</subtitle>
+    <subtitle>AutoDev - Tailor Your AI Coding Experience Blog</subtitle>
     <icon>https://ide.unitmesh.cc/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[AutoDev 2.0 正式发布！智能体 x 开源生态 = 无限可能]]></title>

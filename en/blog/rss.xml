@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>AutoDev - Open Source AI Coding Wizard Blog</title>
+        <title>AutoDev - Tailor Your AI Coding Experience Blog</title>
         <link>https://ide.unitmesh.cc/en/blog</link>
-        <description>AutoDev - Open Source AI Coding Wizard Blog</description>
+        <description>AutoDev - Tailor Your AI Coding Experience Blog</description>
         <lastBuildDate>Wed, 26 Mar 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
