@@ -1,12 +1,8 @@
 ---
-layout: default
-title: Variables
-parent: Customize Features
-nav_order: 20
-permalink: /customize/variables
+title: Template Variables
 ---
 
-# Variables
+# Template Variables
 
 ## English version
 

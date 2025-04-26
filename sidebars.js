@@ -66,13 +66,7 @@ const sidebars = {
 			],
 		},
 		'troubleshooting',
-		{
-			type: 'category',
-			label: 'Usecases',
-			items: [
-				'usecases/usecases'
-			],
-		},
+		'usecases'
 	],
 	customizeSidebar: [
 		'customize/customize',
