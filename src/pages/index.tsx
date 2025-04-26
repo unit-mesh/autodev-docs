@@ -9,7 +9,9 @@ import Heading from "@theme/Heading"
 import styles from "./index.module.css"
 
 function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext()
+  const { siteConfig, i18n: { currentLocale } } = useDocusaurusContext()
+  const isEnglish = currentLocale === 'en'
+  
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
@@ -19,10 +21,10 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link className="button button--secondary button--lg" to="/intro">
-            快速开始
+            {isEnglish ? "Quick Start" : "快速开始"}
           </Link>
           <Link className="button button--outline button--lg button--secondary font-white" to="/features">
-            探索能力
+            {isEnglish ? "Explore Features" : "探索能力"}
           </Link>
         </div>
       </div>
