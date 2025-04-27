@@ -17,7 +17,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+.items-center {
+  align-items: center;
+}
+
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
@@ -51,6 +54,10 @@ g.cursor-pointer:hover rect {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   padding: 1.5rem;
   overflow: hidden;
+}
+
+.theme-doc-markdown p {
+  margin: 0;
 }
 
 .flow-box {
@@ -147,8 +154,13 @@ g.cursor-pointer:hover rect {
   color: white;
 }
 
+.bg-red-500 {
+  background-color: #ef4444;
+  color: white;
+}
+
 .bg-purple-400 {
-  background-color: #a78bfa;
+  background-color: #c084fc;
   color: white;
 }
 
@@ -181,8 +193,12 @@ g.cursor-pointer:hover rect {
   color: #ef4444;
 }
 
-.text-green-500 {
-  color: #22c55e;
+.text-purple-700 {
+  color: #7e22ce;
+}
+
+.text-green-600 {
+  color: #16a34a;
 }
 
 .text-slate-600 {
@@ -219,6 +235,10 @@ g.cursor-pointer:hover rect {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mr-3 {
+    margin-right: 0.75rem;
 }
 
 .mt-8 {
@@ -258,7 +278,8 @@ g.cursor-pointer:hover rect {
 }
 
 .text-sm {
-  font-size: 0.875rem;
+  font-size: .875rem;
+  line-height: 1.25rem;
 }
 
 .text-lg {

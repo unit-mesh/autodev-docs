@@ -3,11 +3,11 @@ import React from 'react';
 export const ArchitectureFlow = ({ onClickSection }) => {
 	// 定义颜色常量，与您原始代码中的颜色对应
 	const colors = {
-		purple700: "#6b5b95", // bg-purple-700
+		purple700: "#7e22ce", // bg-purple-700
 		slate100: "#f1f5f9",  // bg-slate-100
 		orange500: "#f97316", // bg-orange-500
 		green600: "#16a34a",  // bg-green-600
-		purple400: "#c8b8db", // bg-purple-400
+		purple400: "#c084fc", // bg-purple-400
 		pink500: "#ec4899",   // bg-pink-500
 	};
 
@@ -145,7 +145,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							rx="4"
 							fill={colors.purple400}
 						/>
-						<text x="680" y="450" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
+						<text x="680" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
 							自文档化代码
 						</text>
 					</g>
@@ -194,7 +194,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							rx="4"
 							fill={colors.purple400}
 						/>
-						<text x="940" y="605" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
+						<text x="940" y="605" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
 							代码库
 						</text>
 					</g>

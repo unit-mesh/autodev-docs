@@ -20,23 +20,23 @@ export const AIFriendlyArchitecture = () => {
 	const specPracticeRef = useRef(null);
 
 	const scrollToSection = (section) => {
-	setActiveSection(section);
-	    setTimeout(() => {
-	      const refs = {
-	        'domain-language': domainLanguageRef,
-	        'planner': plannerRef,
-	        'semantic-code': semanticCodeRef,
-	        'refactor-tool': refactorToolRef,
-	        'retrieval-tool': retrievalToolRef,
-	        'refined-question': refinedQuestionRef,
-	        'spec-practice': specPracticeRef
-	      };
+		setActiveSection(section);
+		setTimeout(() => {
+			const refs = {
+				'domain-language': domainLanguageRef,
+				'planner': plannerRef,
+				'semantic-code': semanticCodeRef,
+				'refactor-tool': refactorToolRef,
+				'retrieval-tool': retrievalToolRef,
+				'refined-question': refinedQuestionRef,
+				'spec-practice': specPracticeRef
+			};
 
-	      const ref = refs[section];
-	      if (ref && ref.current) {
-	        ref.current.scrollIntoView({ behavior: 'smooth' });
-	      }
-	    }, 100);
+			const ref = refs[section];
+			if (ref && ref.current) {
+				ref.current.scrollIntoView({ behavior: 'smooth' });
+			}
+		}, 100);
 	};
 
 	return (
@@ -50,10 +50,10 @@ export const AIFriendlyArchitecture = () => {
 				<ArchitectureFlow onClickSection={scrollToSection}/>
 			</div>
 
-			{/* 统一领域语言 */}
+			{/* 领域语言/知识 */}
 			<div ref={domainLanguageRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-purple-700">统一领域语言</h2>
+					<h2 className="section-title bg-purple-700">领域语言/知识</h2>
 					<p className="text-slate-600">构建统一的语言，使团队和 AI 都能理解的标准术语</p>
 				</div>
 
@@ -84,11 +84,11 @@ export const AIFriendlyArchitecture = () => {
 									<span>AgileBenefitController - 挑选重点</span>
 								</li>
 								<li className="flex items-start">
-									<span className="text-green-500 mr-2">✓</span>
+									<span className="text-green-600 mr-2">✓</span>
 									<span>WenXiangLingDongHuiLi - 拼音全称</span>
 								</li>
 								<li className="flex items-start">
-									<span className="text-green-500 mr-2">✓</span>
+									<span className="text-green-600 mr-2">✓</span>
 									<span>WXLDHL - 拼音首字母</span>
 								</li>
 							</ul>
@@ -103,26 +103,26 @@ export const AIFriendlyArchitecture = () => {
 								<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
 							</svg>
 						</div>
-						<h3 className="text-xl font-semibold mb-2">领域驱动设计 (DDD)</h3>
-						<p className="text-slate-600 mb-4">围绕业务领域概念构建代码，创建开发人员和利益相关者之间的共享语言</p>
+						<h3 className="text-xl font-semibold mb-2">领域特定语言</h3>
+						<p className="text-slate-600 mb-4">围绕业务领域概念构建代码，创建开发人员和利益相关者之间的共享语言（详细见：<a href="https://ide.unitmesh.cc/composer/workspace">AutoDev 工作区领域词典</a>）</p>
 
 						<div className="bg-slate-100 p-4 rounded-lg">
 							<h4 className="font-medium mb-2">领域语言的好处</h4>
 							<ul className="space-y-2">
 								<li className="flex items-start">
-									<span className="text-green-500 mr-2">•</span>
+									<span className="text-green-600 mr-2">•</span>
 									<span>减少翻译成本：业务人员和开发人员使用相同的术语</span>
 								</li>
 								<li className="flex items-start">
-									<span className="text-green-500 mr-2">•</span>
+									<span className="text-green-600 mr-2">•</span>
 									<span>提高代码可读性：代码直接反映业务概念</span>
 								</li>
 								<li className="flex items-start">
-									<span className="text-green-500 mr-2">•</span>
+									<span className="text-green-600 mr-2">•</span>
 									<span>增强 AI 理解：AI 能更好地理解领域特定的术语和概念</span>
 								</li>
 								<li className="flex items-start">
-									<span className="text-green-500 mr-2">•</span>
+									<span className="text-green-600 mr-2">•</span>
 									<span>降低维护成本：新团队成员更容易理解代码</span>
 								</li>
 							</ul>
@@ -135,7 +135,7 @@ export const AIFriendlyArchitecture = () => {
 			<div ref={plannerRef} className="mt-12">
 				<div className="section-header">
 					<h2 className="section-title bg-orange-500">智能任务规划</h2>
-					<p className="text-slate-600">将需求转化为可执行任务的智能系统</p>
+					<p className="text-slate-600">将需求转化为可执行任务的智能系统，（详细见：<a href="https://ide.unitmesh.cc/composer/planner">AutoDev Planner</a>）</p>
 				</div>
 
 				<div className="card">
@@ -238,7 +238,7 @@ export const AIFriendlyArchitecture = () => {
 				<div className="grid-2">
 					<div className="card">
 						<div className="flex items-center mb-4">
-							<div className="bg-red-500 text-white p-2 rounded-full mr-3">
+							<div className="bg-red-500 icon-circle mr-3">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
 								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 									<polyline points="16 18 22 12 16 6"></polyline>
@@ -250,7 +250,7 @@ export const AIFriendlyArchitecture = () => {
 
 						<div className="code-block">
 							<CodeBlock language="java" title="传统代码风格示例">
-							{`@RestController
+								{`@RestController
 @RequestMapping("/api")
 public class Ctrl {
     @Autowired
@@ -278,8 +278,8 @@ public class Ctrl {
 					</div>
 
 					<div className="card">
-						<div className="flex items-center mb-4">
-							<div className="bg-green-600 text-white p-2 rounded-full mr-3">
+						<div className="flex items-center mb-2">
+							<div className="bg-green-600 icon-circle  mr-3">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
 								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 									<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -293,7 +293,7 @@ public class Ctrl {
 						</div>
 						<div className="code-block">
 							<CodeBlock language="java" title="AI 友好代码风格示例">
-							{`@RestController
+								{`@RestController
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
@@ -311,21 +311,11 @@ public class UserController {
     public UserResponse getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
-
-    /**
-     * 创建新用户
-     * @param request 用户创建请求
-     * @return 创建的用户信息
-     */
-    @PostMapping
-    public UserResponse createUser(@RequestBody CreateUserRequest request) {
-        return userService.createUser(request);
-    }
 }`}
 							</CodeBlock>
 						</div>
 
-						<div className="mt-4 text-green-500">
+						<div className="mt-4 text-green-600">
 							<p className="text-sm">✓ 完整的类名和方法名</p>
 							<p className="text-sm">✓ 清晰的注释说明功能</p>
 							<p className="text-sm">✓ 语义化的 API 路径</p>
@@ -371,7 +361,7 @@ public class UserController {
 								<h5 className="font-medium mb-2">已有代码</h5>
 								<div className="code-block">
 									<CodeBlock language="java" title="已有代码示例">
-									{`@RestController
+										{`@RestController
 @RequestMapping("/blog")
 public class BlogController {
     BlogService blogService;
@@ -394,14 +384,14 @@ public class BlogController {
 								<h5 className="font-medium mb-2">AI 生成的代码</h5>
 								<div className="code-block">
 									<CodeBlock language="java" title="AI 生成的代码示例">
-									{`@ApiOperation(value = "Delete Blog by id")
+										{`@ApiOperation(value = "Delete Blog by id")
 @DeleteMapping("/{id}")
 public void deleteBlog(@PathVariable Long id) {
     blogService.deleteBlogById(id);
 }`}
 									</CodeBlock>
 
-									<div className="mt-4 text-green-500">
+									<div className="mt-4 text-green-600">
 										<p className="text-sm">✓ 遵循已有的命名规范</p>
 										<p className="text-sm">✓ 添加了适当的注解</p>
 										<p className="text-sm">✓ 保持了一致的代码风格</p>
@@ -502,7 +492,7 @@ public void deleteBlog(@PathVariable Long id) {
 								<h5 className="font-medium mb-2 text-red-500">重构前</h5>
 								<div className="code-block">
 									<CodeBlock language="java" title="重构前代码示例">
-									{`public void prc(List<T> l, int f) {
+										{`public void prc(List<T> l, int f) {
   for (int i = 0; i < l.size(); i++) {
     if (l.get(i).getF() > f) {
       l.get(i).setS(true);
@@ -522,7 +512,7 @@ public void deleteBlog(@PathVariable Long id) {
 								<h5 className="font-medium mb-2 text-green-600">重构后</h5>
 								<div className="code-block">
 									<CodeBlock language="java" title="重构后代码示例">
-									{`/**
+										{`/**
  * 处理项目列表，根据阈值设置状态
  * @param items 要处理的项目列表
  * @param threshold 状态判断阈值
@@ -653,10 +643,10 @@ private void markItemAsNotSelected(Item item) {
 							<div className="mt-2 p-3 bg-pink-100 rounded">
 								<p className="text-sm font-medium mb-1">检索结果:</p>
 								<ul className="text-sm space-y-1">
-									<li>• AuthenticationService.java - 用户认证服务</li>
-									<li>• SecurityConfig.java - 安全配置</li>
-									<li>• UserController.java - 登录接口</li>
-									<li>• AuthUtils.java - 认证工具类</li>
+									<li>AuthenticationService.java - 用户认证服务</li>
+									<li>SecurityConfig.java - 安全配置</li>
+									<li>UserController.java - 登录接口</li>
+									<li>AuthUtils.java - 认证工具类</li>
 								</ul>
 							</div>
 						</div>
@@ -724,15 +714,15 @@ private void markItemAsNotSelected(Item item) {
 								<h4 className="font-medium mb-2">精炼示例</h4>
 								<ul className="space-y-2">
 									<li className="flex items-start">
-										<span className="text-green-500 mr-2">✓</span>
+										<span className="text-green-600 mr-2">✓</span>
 										<span>"实现用户注册功能，包含邮箱验证、密码强度检查，并与现有的用户认证系统集成"</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-green-500 mr-2">✓</span>
+										<span className="text-green-600 mr-2">✓</span>
 										<span>"添加 JWT 基于的登录功能，使用现有的 UserService，并遵循 RESTful API 设计原则"</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-green-500 mr-2">✓</span>
+										<span className="text-green-600 mr-2">✓</span>
 										<span>"优化数据库查询性能，当前查询耗时超过 2 秒，目标是降低到 500ms 以内"</span>
 									</li>
 								</ul>
@@ -741,21 +731,20 @@ private void markItemAsNotSelected(Item item) {
 					</div>
 
 					<div className="mt-12 p-6 bg-blue-50 rounded-lg">
-						<h4 className="font-semibold mb-4 text-center">结合 DDD 的问题精炼</h4>
+						<h4 className="font-semibold mb-4 text-center">结合 DDD 的问题上下文丰富</h4>
 						<p className="text-slate-700 mb-4">
-							领域驱动设计（DDD）提供了一种强大的方法来精炼问题，通过使用统一的领域语言和明确的业务概念，
-							使问题描述更加准确和有意义。
+							通过使用统一的领域语言和明确的业务概念，使问题描述更加准确和有意义，详细见：<a href="https://ide.unitmesh.cc/composer/workspace">AutoDev 工作区领域词典</a>
 						</p>
 
 						<div className="bg-white p-4 rounded-lg">
-							<h5 className="font-medium mb-2">DDD 问题精炼示例</h5>
+							<h5 className="font-medium mb-2">上下文丰富示例</h5>
 							<div className="grid-2">
 								<div>
 									<p className="text-sm font-medium text-slate-700">原始问题:</p>
 									<p className="p-2 bg-slate-100 rounded">"添加购物车功能"</p>
 								</div>
 								<div>
-									<p className="text-sm font-medium text-slate-700">精炼后:</p>
+									<p className="text-sm font-medium text-slate-700">丰富后:</p>
 									<p className="p-2 bg-blue-100 rounded">
 										"实现购物车聚合根，包含添加商品项、更新数量、计算总价等功能。
 										购物车需要与用户和商品目录领域对象交互，并实现购物车持久化。"
@@ -767,7 +756,6 @@ private void markItemAsNotSelected(Item item) {
 				</div>
 			</div>
 
-			{/* 团队编码规范 */}
 			<div ref={specPracticeRef} className="mt-12">
 				<div className="section-header">
 					<h2 className="section-title bg-purple-700">团队编码规范</h2>
@@ -840,46 +828,46 @@ private void markItemAsNotSelected(Item item) {
 										<span className="text-purple-700 mr-2">•</span>
 										<span>明确边界：定义清晰的模块边界和接口</span>
 									</li>
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>概念一致：保持代码的一致性和可读性</span>
+									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 
 					<div className="mt-12 p-6 bg-purple-50 rounded-lg">
-						<h4 className="font-semibold mb-4 text-center">Project Rule 实践</h4>
+						<h2 className="font-semibold mb-4 text-center">Project Rule 实践</h2>
 						<p className="text-slate-700 mb-4">
-							在 AI IDE 中添加自定义的 Project Rule，是一种非常有效的控制代码生成的方法。
+							在 AI IDE 中添加自定义的 <a href="https://ide.unitmesh.cc/composer/project-rule">Project Rule</a>，是一种非常有效的控制代码生成的方法。
 							通过明确定义项目的规范和约束，可以指导 AI 生成符合团队实践的代码。
 						</p>
 
 						<div className="bg-white p-4 rounded-lg">
-							<h5 className="font-medium mb-2">Project Rule 示例</h5>
 							<div className="code-block">
-							<CodeBlock language="json" title="Project Rule 示例">
-							{`// Project Rules for AI Code Generation
-{
-  "naming": {
-    "classes": "PascalCase",
-    "methods": "camelCase",
-    "variables": "camelCase",
-    "constants": "UPPER_SNAKE_CASE"
-  },
-  "architecture": {
-    "layers": ["controller", "service", "repository"],
-    "patterns": ["dependency-injection", "repository-pattern"]
-  },
-  "patterns": ["dependency-injection", "repository-pattern"]
-  "documentation": {
-    "methods": "required",
-    "classes": "required",
-    "publicApi": "detailed"
-  },
-  "testing": {
-    "coverage": "minimum-80-percent",
-    "unitTests": "required"
-  }
-}`}
-							</CodeBlock>
+								<CodeBlock language="markdown" title="AutoDev Project Dir 示例">
+									{`## Project Rule Dir
+prompts/rules/
+├── controller.md
+├── service.md
+├── repository.md
+├── rpc.md
+└── README.md  # 该文件会被默认始终加载！！
+`}
+								</CodeBlock>
+								<CodeBlock language="markdown" title="AutoDev Project Rule 示例">
+									{`# Spring Boot Controller 开发规范
+## 基本原则
+1. 保持Controller简洁，只处理HTTP请求和响应
+2. 业务逻辑应放在Service层
+3. 每个Controller方法应只做一件事
+
+## 命名规范
+- 类名: \`XxxController\` (如 \`UserController\`)
+- 路径: 使用复数形式 (\`/api/users\`)
+`}
+								</CodeBlock>
 							</div>
 						</div>
 					</div>
@@ -887,8 +875,8 @@ private void markItemAsNotSelected(Item item) {
 			</div>
 		</div>
 	);
-	};
+};
 
 <BrowserOnly>
-	{() => <AIFriendlyArchitecture />}
+	{() => <AIFriendlyArchitecture/>}
 </BrowserOnly>
