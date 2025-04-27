@@ -8,6 +8,7 @@ full_width: true
 import { useState, useRef } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import ArchitectureFlow from '../../src/components/ArchitectureFlow';
+import CodeBlock from '@theme/CodeBlock';
 
 export const AIFriendlyArchitecture = () => {
 	const [activeSection, setActiveSection] = useState(null);
@@ -274,7 +275,8 @@ export const AIFriendlyArchitecture = () => {
 						</div>
 
 						<div className="code-block">
-							<pre className={'prism-code language-java'}><code>{`@RestController
+							<CodeBlock language="java" title="传统代码风格示例">
+							{`@RestController
 @RequestMapping("/api")
 public class Ctrl {
     @Autowired
@@ -289,7 +291,8 @@ public class Ctrl {
     public Resp addU(@RequestBody Req req) {
         return svc.add(req);
     }
-}`}</code></pre>
+}`}
+							</CodeBlock>
 						</div>
 
 						<div className="mt-4 text-red-500">
@@ -314,9 +317,9 @@ public class Ctrl {
 							</div>
 							<h3 className="text-xl font-semibold">AI 友好代码风格</h3>
 						</div>
-
 						<div className="code-block">
-							<pre>{`@RestController
+							<CodeBlock language="java" title="AI 友好代码风格示例">
+							{`@RestController
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
@@ -344,8 +347,8 @@ public class UserController {
     public UserResponse createUser(@RequestBody CreateUserRequest request) {
         return userService.createUser(request);
     }
-}
-							`}</pre>
+}`}
+							</CodeBlock>
 						</div>
 
 						<div className="mt-4 text-green-500">
@@ -393,7 +396,8 @@ public class UserController {
 							<div>
 								<h5 className="font-medium mb-2">已有代码</h5>
 								<div className="code-block">
-									<pre>{`@RestController
+									<CodeBlock language="java" title="已有代码示例">
+									{`@RestController
 @RequestMapping("/blog")
 public class BlogController {
     BlogService blogService;
@@ -407,24 +411,27 @@ public class BlogController {
     public BlogPost getBlog(@PathVariable Long id) {
         return blogService.getBlogById(id);
     }
-    // delete blog by id`}</pre>
+    // delete blog by id`}
+									</CodeBlock>
 								</div>
 							</div>
 
 							<div>
 								<h5 className="font-medium mb-2">AI 生成的代码</h5>
 								<div className="code-block">
-									<pre>{`@ApiOperation(value = "Delete Blog by id")
+									<CodeBlock language="java" title="AI 生成的代码示例">
+									{`@ApiOperation(value = "Delete Blog by id")
 @DeleteMapping("/{id}")
 public void deleteBlog(@PathVariable Long id) {
     blogService.deleteBlogById(id);
-}`}</pre>
-								</div>
+}`}
+									</CodeBlock>
 
-								<div className="mt-4 text-green-500">
-									<p className="text-sm">✓ 遵循已有的命名规范</p>
-									<p className="text-sm">✓ 添加了适当的注解</p>
-									<p className="text-sm">✓ 保持了一致的代码风格</p>
+									<div className="mt-4 text-green-500">
+										<p className="text-sm">✓ 遵循已有的命名规范</p>
+										<p className="text-sm">✓ 添加了适当的注解</p>
+										<p className="text-sm">✓ 保持了一致的代码风格</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -520,7 +527,8 @@ public void deleteBlog(@PathVariable Long id) {
 							<div>
 								<h5 className="font-medium mb-2 text-red-500">重构前</h5>
 								<div className="code-block">
-									<pre>{`public void prc(List<T> l, int f) {
+									<CodeBlock language="java" title="重构前代码示例">
+									{`public void prc(List<T> l, int f) {
   for (int i = 0; i < l.size(); i++) {
     if (l.get(i).getF() > f) {
       l.get(i).setS(true);
@@ -531,14 +539,16 @@ public void deleteBlog(@PathVariable Long id) {
       db.sv(l.get(i));
     }
   }
-}`}</pre>
+}`}
+									</CodeBlock>
 								</div>
 							</div>
 
 							<div>
 								<h5 className="font-medium mb-2 text-green-600">重构后</h5>
 								<div className="code-block">
-									<pre>{`/**
+									<CodeBlock language="java" title="重构后代码示例">
+									{`/**
  * 处理项目列表，根据阈值设置状态
  * @param items 要处理的项目列表
  * @param threshold 状态判断阈值
@@ -562,7 +572,8 @@ private void markItemAsNotSelected(Item item) {
   item.setSelected(false);
   item.setRank(0);
   database.saveItem(item);
-}`}</pre>
+}`}
+									</CodeBlock>
 								</div>
 							</div>
 						</div>
@@ -870,7 +881,8 @@ private void markItemAsNotSelected(Item item) {
 						<div className="bg-white p-4 rounded-lg">
 							<h5 className="font-medium mb-2">Project Rule 示例</h5>
 							<div className="code-block">
-		                <pre>{`// Project Rules for AI Code Generation
+							<CodeBlock language="json" title="Project Rule 示例">
+							{`// Project Rules for AI Code Generation
 {
   "naming": {
     "classes": "PascalCase",
@@ -892,7 +904,8 @@ private void markItemAsNotSelected(Item item) {
     "coverage": "minimum-80-percent",
     "unitTests": "required"
   }
-}`}</pre>
+}`}
+							</CodeBlock>
 							</div>
 						</div>
 					</div>

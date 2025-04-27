@@ -98,6 +98,14 @@ g.cursor-pointer:hover rect {
   border: 1px solid #f1f5f9;
 }
 
+.p-3 {
+  padding: .75rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .icon-circle {
   display: inline-flex;
   align-items: center;
