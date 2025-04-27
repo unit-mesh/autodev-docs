@@ -44,7 +44,7 @@ permalink: /customize
       "token": "sk-ii"
     },
     "requestFormat": "{ \"customFields\": {\"prompt\": \"$content\", \"model\": \"deepseek-chat\", \"max_tokens\": 128 }}",
-    "responseFormat": "$.choices[0].delta.content",
+    "responseFormat": "$.choices[0].text",
     "modelType": "Completion"
   }
 ]

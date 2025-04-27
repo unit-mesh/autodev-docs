@@ -14,39 +14,39 @@ The following example shows how to configure different model types in AutoDev fo
 
 ```json
 [
-  {
-    "name": "GLM4-Plus",
-    "url": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
-    "auth": {
-      "type": "Bearer",
-      "token": "sk-ii"
-    },
-    "requestFormat": "{ \"customFields\": {\"model\": \"glm-4-plus\", \"stream\": true}}",
-    "responseFormat": "$.choices[0].delta.content",
-    "modelType": "Others"
-  },
-  {
-    "name": "DeepSeek R1",
-    "url": "https://api.deepseek.com/chat/completions",
-    "auth": {
-      "type": "Bearer",
-      "token": "sk-ii"
-    },
-    "requestFormat": "{ \"customFields\": {\"model\": \"deepseek-reasoner\", \"stream\": true}}",
-    "responseFormat": "$.choices[0].delta.content",
-    "modelType": "Plan"
-  },
-  {
-    "name": "DS Completion",
-    "url": "https://api.deepseek.com/beta/completions",
-    "auth": {
-      "type": "Bearer",
-      "token": "sk-ii"
-    },
-    "requestFormat": "{ \"customFields\": {\"prompt\": \"$content\", \"model\": \"deepseek-chat\", \"max_tokens\": 128 }}",
-    "responseFormat": "$.choices[0].delta.content",
-    "modelType": "Completion"
-  }
+   {
+      "name": "GLM4-Plus",
+      "url": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "auth": {
+         "type": "Bearer",
+         "token": "sk-ii"
+      },
+      "requestFormat": "{ \"customFields\": {\"model\": \"glm-4-plus\", \"stream\": true}}",
+      "responseFormat": "$.choices[0].delta.content",
+      "modelType": "Others"
+   },
+   {
+      "name": "DeepSeek R1",
+      "url": "https://api.deepseek.com/chat/completions",
+      "auth": {
+         "type": "Bearer",
+         "token": "sk-ii"
+      },
+      "requestFormat": "{ \"customFields\": {\"model\": \"deepseek-reasoner\", \"stream\": true}}",
+      "responseFormat": "$.choices[0].delta.content",
+      "modelType": "Plan"
+   },
+   {
+      "name": "DS Completion",
+      "url": "https://api.deepseek.com/beta/completions",
+      "auth": {
+         "type": "Bearer",
+         "token": "sk-ii"
+      },
+      "requestFormat": "{ \"customFields\": {\"prompt\": \"$content\", \"model\": \"deepseek-chat\", \"max_tokens\": 128 }}",
+      "responseFormat": "$.choices[0].text",
+      "modelType": "Completion"
+   }
 ]
 ```
 

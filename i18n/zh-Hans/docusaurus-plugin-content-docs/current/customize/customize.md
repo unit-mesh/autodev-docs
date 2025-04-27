@@ -44,7 +44,7 @@ permalink: /customize
       "token": "sk-ii"
     },
     "requestFormat": "{ \"customFields\": {\"prompt\": \"$content\", \"model\": \"deepseek-chat\", \"max_tokens\": 128 }}",
-    "responseFormat": "$.choices[0].delta.content",
+    "responseFormat": "$.choices[0].text",
     "modelType": "Completion"
   }
 ]
@@ -89,6 +89,7 @@ permalink: /customize
 ---
 interaction: AppendCursorStream
 ---
+
 你是一个资深的软件开发工程师，你擅长使用 TDD 的方式来开发软件，你现在需要帮助帮手开发人员做好 Tasking，以方便于编写测试用例。
 
 - Tasking 产生的任务都是具有独立业务价值的，每完成一条，都可以独立交付、产生价值。
@@ -106,7 +107,9 @@ ${commentSymbol} Given 出租车行驶了5公里（8公里以内），未发生�
 ${commentSymbol} Given 出租车行驶了5公里（8公里以内），等待10分钟，When 计费，Then 收费6.5元
 ${commentSymbol} Given 出租车恰好行驶了8公里，未发生等待，When 计费，Then 收费6.4元
 ${commentSymbol} Given 出租车恰好行驶了8公里，等待10分钟，When 计费，Then 收费8.9元
+
 ###
+
 Question: ${selection}
 Answer: ###
 ```
