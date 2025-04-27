@@ -98,6 +98,10 @@ g.cursor-pointer:hover rect {
   border: 1px solid #f1f5f9;
 }
 
+.p-2 {
+  padding: .5rem;
+}
+
 .p-3 {
   padding: .75rem;
 }
