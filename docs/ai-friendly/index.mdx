@@ -1,0 +1,1288 @@
+---
+title: AI 友好型架构
+description: 构建检索友好与生成式 AI 友好的代码库，实现 10 倍开发效率
+sidebar_position: 1
+---
+
+import { useState, useRef } from 'react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+<style>
+	{`
+  .architecture-flow {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+
+  .flow-box {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .flow-box.clickable {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .flow-box.clickable:hover {
+    transform: scale(1.05);
+  }
+
+  .flow-box-arrow {
+    margin-left: 0.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #f1f5f9;
+  }
+
+  .icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .bg-purple-700 {
+    background-color: #7c3aed;
+    color: white;
+  }
+
+  .bg-purple-400 {
+    background-color: #a78bfa;
+    color: white;
+  }
+
+  .bg-orange-500 {
+    background-color: #f97316;
+    color: white;
+  }
+
+  .bg-green-600 {
+    background-color: #16a34a;
+    color: white;
+  }
+
+  .bg-pink-500 {
+    background-color: #ec4899;
+    color: white;
+  }
+
+  .bg-slate-100 {
+    background-color: #f1f5f9;
+    color: #1e293b;
+  }
+
+  .bg-slate-700 {
+    background-color: #334155;
+    color: white;
+  }
+
+  .text-red-500 {
+    color: #ef4444;
+  }
+
+  .text-green-500 {
+    color: #22c55e;
+  }
+
+  .text-slate-600 {
+    color: #475569;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+
+  .p-4 {
+    padding: 1rem;
+  }
+
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+
+  .mt-4 {
+    margin-top: 1rem;
+  }
+
+  .mt-8 {
+    margin-top: 2rem;
+  }
+
+  .mt-12 {
+    margin-top: 3rem;
+  }
+
+  .space-y-2 > * + * {
+    margin-top: 0.5rem;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .items-start {
+    align-items: flex-start;
+  }
+
+  .mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  .font-medium {
+    font-weight: 500;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+  }
+
+  .text-lg {
+    font-size: 1.125rem;
+  }
+
+  .text-xl {
+    font-size: 1.25rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .text-3xl {
+    font-size: 1.875rem;
+  }
+
+  .text-4xl {
+    font-size: 2.25rem;
+  }
+
+  .gradient-text {
+    background: linear-gradient(to right, #7c3aed, #f97316, #16a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+`}
+</style>
+
+export const ArchitectureFlow = ({ onClickSection }) => {
+	return (
+		<div className="architecture-flow">
+			<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+				<div style={{
+					display: 'grid',
+					gridTemplateColumns: 'repeat(3, 1fr)',
+					gap: '1.5rem',
+					width: '100%',
+					maxWidth: '1024px'
+				}}>
+					{/* 第一行 */}
+					<div style={{ gridColumn: '2', gridRow: '1' }}>
+						<div
+							className="flow-box bg-purple-700 clickable"
+							onClick={() => onClickSection('domain-language')}
+						>
+							<span>统一领域语言</span>
+							<svg xmlns="http://www.w3.org/2000/svg" className="flow-box-arrow" width="16" height="16" viewBox="0 0 24 24"
+							     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+							</svg>
+						</div>
+					</div>
+					<div style={{ gridColumn: '1', gridRow: '2' }}>
+						<div className="flow-box bg-slate-100">
+							<span>问题/任务</span>
+						</div>
+					</div>
+					<div style={{ gridColumn: '2', gridRow: '2' }}>
+						<div
+							className="flow-box bg-slate-100 clickable"
+							onClick={() => onClickSection('refined-question')}
+						>
+							<span>需求精炼</span>
+							<svg xmlns="http://www.w3.org/2000/svg" className="flow-box-arrow" width="16" height="16" viewBox="0 0 24 24"
+							     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+							</svg>
+						</div>
+					</div>
+					<div style={{ gridColumn: '3', gridRow: '2' }}>
+						<div
+							className="flow-box bg-orange-500 clickable"
+							onClick={() => onClickSection('planner')}
+						>
+							<span>智能任务规划</span>
+							<svg xmlns="http://www.w3.org/2000/svg" className="flow-box-arrow" width="16" height="16" viewBox="0 0 24 24"
+							     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+							</svg>
+						</div>
+					</div>
+					<div style={{ gridColumn: '1', gridRow: '3' }}>
+						<div className="flow-box bg-slate-100">
+							<span>完成</span>
+						</div>
+					</div>
+					<div style={{ gridColumn: '2', gridRow: '3' }}>
+						<div
+							className="flow-box bg-purple-700 clickable"
+							onClick={() => onClickSection('spec-practice')}
+						>
+							<span>团队编码规范</span>
+							<svg xmlns="http://www.w3.org/2000/svg" className="flow-box-arrow" width="16" height="16" viewBox="0 0 24 24"
+							     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+							</svg>
+						</div>
+					</div>
+					<div style={{ gridColumn: '3', gridRow: '3' }}>
+						<div
+							className="flow-box bg-purple-400 clickable"
+							onClick={() => onClickSection('semantic-code')}
+						>
+							<span>自文档化代码</span>
+							<svg xmlns="http://www.w3.org/2000/svg" className="flow-box-arrow" width="16" height="16" viewBox="0 0 24 24"
+							     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+							</svg>
+						</div>
+					</div>
+					<div style={{ gridColumn: '2', gridRow: '4' }}>
+						<div className="flow-box bg-purple-400">
+							<span>代码库</span>
+						</div>
+					</div>
+					<div style={{ gridColumn: '1', gridRow: '5' }}>
+						<div
+							className="flow-box bg-green-600 clickable"
+							onClick={() => onClickSection('refactor-tool')}
+						>
+							<span>面向生成的重构</span>
+							<svg xmlns="http://www.w3.org/2000/svg" className="flow-box-arrow" width="16" height="16" viewBox="0 0 24 24"
+							     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+							</svg>
+						</div>
+					</div>
+					<div style={{ gridColumn: '3', gridRow: '5' }}>
+						<div
+							className="flow-box bg-pink-500 clickable"
+							onClick={() => onClickSection('retrieval-tool')}
+						>
+							<span>智能代码检索</span>
+							<svg xmlns="http://www.w3.org/2000/svg" className="flow-box-arrow" width="16" height="16" viewBox="0 0 24 24"
+							     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+							</svg>
+						</div>
+					</div>
+					<div style={{ gridColumn: '3', gridRow: '6' }}>
+						<div className="flow-box bg-green-600">
+							<span>行动</span>
+						</div>
+					</div>
+				</div>
+				<div className="mt-12" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem' }} className="bg-purple-700 mr-2"></div>
+						<span className="text-sm text-slate-600">知识与规范</span>
+					</div>
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem' }} className="bg-orange-500 mr-2"></div>
+						<span className="text-sm text-slate-600">智能规划</span>
+					</div>
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem' }} className="bg-pink-500 mr-2"></div>
+						<span className="text-sm text-slate-600">辅助工具</span>
+					</div>
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem' }} className="bg-green-600 mr-2"></div>
+						<span className="text-sm text-slate-600">实施行动</span>
+					</div>
+				</div>
+				<div className="mt-8 p-4 bg-slate-100 rounded-lg">
+					<h3 className="font-semibold mb-2">语义化命名约定:</h3>
+					<ul style={{ paddingLeft: '1.25rem' }}>
+						<li>文件名</li>
+						<li>类名</li>
+						<li>函数名</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export const AIFriendlyArchitecture = () => {
+	const [activeSection, setActiveSection] = useState(null);
+
+	const domainLanguageRef = useRef(null);
+	const plannerRef = useRef(null);
+	const semanticCodeRef = useRef(null);
+	const refactorToolRef = useRef(null);
+	const retrievalToolRef = useRef(null);
+	const refinedQuestionRef = useRef(null);
+	const specPracticeRef = useRef(null);
+
+	const scrollToSection = (section) => {
+	setActiveSection(section);
+	    setTimeout(() => {
+	      const refs = {
+	        'domain-language': domainLanguageRef,
+	        'planner': plannerRef,
+	        'semantic-code': semanticCodeRef,
+	        'refactor-tool': refactorToolRef,
+	        'retrieval-tool': retrievalToolRef,
+	        'refined-question': refinedQuestionRef,
+	        'spec-practice': specPracticeRef
+	      };
+
+	      const ref = refs[section];
+	      if (ref && ref.current) {
+	        ref.current.scrollIntoView({ behavior: 'smooth' });
+	      }
+	    }, 100);
+	};
+
+	return (
+		<div>
+			<div className="text-center mb-12">
+				<h1 className="gradient-text font-bold mb-4">AI 友好型架构</h1>
+				<p className="text-lg text-slate-600 max-w-3xl mx-auto">
+					构建检索友好与生成式 AI 友好的代码库，实现 10 倍开发效率
+				</p>
+			</div>
+
+			<div className="mt-8 mb-8">
+				<p className="text-center text-lg text-slate-600 mb-8">点击架构图中的任意元素，了解详细信息</p>
+				<ArchitectureFlow onClickSection={scrollToSection}/>
+			</div>
+
+			{/* 统一领域语言 */}
+			<div ref={domainLanguageRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-purple-700">统一领域语言</h2>
+					<p className="text-slate-600">构建统一的语言，使团队和 AI 都能理解的标准术语</p>
+				</div>
+
+				<div className="grid-2">
+					<div className="card">
+						<div className="icon-circle bg-purple-700">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+								<polyline points="14 2 14 8 20 8"></polyline>
+								<line x1="16" y1="13" x2="8" y2="13"></line>
+								<line x1="16" y1="17" x2="8" y2="17"></line>
+								<polyline points="10 9 9 9 8 9"></polyline>
+							</svg>
+						</div>
+						<h3 className="text-xl font-semibold mb-2">代码命名规范的产生</h3>
+						<p className="text-slate-600 mb-4">构建统一的语言，确保团队成员和 AI 都能理解代码含义</p>
+
+						<div className="bg-slate-100 p-4 rounded-lg">
+							<h4 className="font-medium mb-2">命名示例：金融产品"稳享灵动慧利"</h4>
+							<ul className="space-y-2 text-sm">
+								<li className="flex items-start">
+									<span className="text-red-500 mr-2">✗</span>
+									<span>SteadilyEnjoyAgileWisdomAndBenefits - 直接翻译</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-red-500 mr-2">✗</span>
+									<span>AgileBenefitController - 挑选重点</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-500 mr-2">✓</span>
+									<span>WenXiangLingDongHuiLi - 拼音全称</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-500 mr-2">✓</span>
+									<span>WXLDHL - 拼音首字母</span>
+								</li>
+							</ul>
+							<p className="text-sm text-slate-600 mt-2">团队达成一致的命名规范是关键</p>
+						</div>
+					</div>
+
+					<div className="card">
+						<div className="icon-circle bg-purple-700">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+							</svg>
+						</div>
+						<h3 className="text-xl font-semibold mb-2">领域驱动设计 (DDD)</h3>
+						<p className="text-slate-600 mb-4">围绕业务领域概念构建代码，创建开发人员和利益相关者之间的共享语言</p>
+
+						<div className="bg-slate-100 p-4 rounded-lg">
+							<h4 className="font-medium mb-2">领域语言的好处</h4>
+							<ul className="space-y-2">
+								<li className="flex items-start">
+									<span className="text-green-500 mr-2">•</span>
+									<span>减少翻译成本：业务人员和开发人员使用相同的术语</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-500 mr-2">•</span>
+									<span>提高代码可读性：代码直接反映业务概念</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-500 mr-2">•</span>
+									<span>增强 AI 理解：AI 能更好地理解领域特定的术语和概念</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-500 mr-2">•</span>
+									<span>降低维护成本：新团队成员更容易理解代码</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div className="mt-12 bg-purple-50 rounded-lg p-8">
+					<h3 className="text-2xl font-bold mb-6 text-center">领域语言实施步骤</h3>
+
+					<div className="grid-3">
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-purple-700">1. 识别核心概念</h4>
+							<p className="text-slate-600">与业务专家合作，识别和定义领域中的核心概念和术语</p>
+						</div>
+
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-purple-700">2. 创建术语表</h4>
+							<p className="text-slate-600">记录所有领域术语及其定义，确保团队成员一致理解</p>
+						</div>
+
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-purple-700">3. 在代码中应用</h4>
+							<p className="text-slate-600">使用领域术语命名类、方法和变量，确保代码反映业务语言</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* 智能任务规划 */}
+			<div ref={plannerRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-orange-500">智能任务规划</h2>
+					<p className="text-slate-600">将需求转化为可执行任务的智能系统</p>
+				</div>
+
+				<div className="card">
+					<h3 className="text-2xl font-bold mb-6 text-center">规划器的工作原理</h3>
+
+					<div className="grid-2">
+						<div>
+							<div className="icon-circle bg-orange-500">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+									<line x1="3" y1="9" x2="21" y2="9"></line>
+									<line x1="9" y1="21" x2="9" y2="9"></line>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">任务分解</h3>
+							<p className="text-slate-600 mb-4">规划器将复杂需求分解为可管理的子任务，创建清晰的执行路径</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">任务分解示例</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-orange-500 mr-2">1.</span>
+										<span>主需求：实现用户管理功能</span>
+									</li>
+									<li className="flex items-start" style={{ paddingLeft: '1.5rem' }}>
+										<span className="text-orange-500 mr-2">→</span>
+										<span>子任务 1：设计用户数据模型</span>
+									</li>
+									<li className="flex items-start" style={{ paddingLeft: '1.5rem' }}>
+										<span className="text-orange-500 mr-2">→</span>
+										<span>子任务 2：实现用户注册功能</span>
+									</li>
+									<li className="flex items-start" style={{ paddingLeft: '1.5rem' }}>
+										<span className="text-orange-500 mr-2">→</span>
+										<span>子任务 3：实现用户认证功能</span>
+									</li>
+									<li className="flex items-start" style={{ paddingLeft: '1.5rem' }}>
+										<span className="text-orange-500 mr-2">→</span>
+										<span>子任务 4：实现用户信息管理</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div>
+							<div className="icon-circle bg-orange-500">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<circle cx="12" cy="12" r="10"></circle>
+									<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+									<line x1="12" y1="17" x2="12.01" y2="17"></line>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">智能决策</h3>
+							<p className="text-slate-600 mb-4">规划器基于领域知识和代码库上下文，为每个任务选择最佳实现策略</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">决策过程</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-orange-500 mr-2">•</span>
+										<span>分析现有代码模式和架构</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-orange-500 mr-2">•</span>
+										<span>识别适用的设计模式和最佳实践</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-orange-500 mr-2">•</span>
+										<span>考虑性能、可维护性和可扩展性</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-orange-500 mr-2">•</span>
+										<span>生成符合团队规范的实现计划</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div className="mt-12 p-6 bg-orange-50 rounded-lg">
+						<h4 className="font-semibold mb-4 text-center">规划器与 AI 的协同工作</h4>
+						<p className="text-slate-700">
+							规划器利用 AI 的能力来理解需求、分析代码库并生成实施计划。它结合了领域语言的知识，
+							确保生成的计划符合团队的规范和最佳实践。通过这种方式，规划器成为开发人员和 AI 之间的桥梁，
+							大大提高了开发效率和代码质量。
+						</p>
+					</div>
+				</div>
+			</div>
+
+			{/* 自文档化代码 */}
+			<div ref={semanticCodeRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-purple-400">自文档化代码</h2>
+					<p className="text-slate-600">自文档化的代码，具有明确的命名约定和结构</p>
+				</div>
+
+				<div className="grid-2">
+					<div className="card">
+						<div className="flex items-center mb-4">
+							<div className="bg-red-500 text-white p-2 rounded-full mr-3">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<polyline points="16 18 22 12 16 6"></polyline>
+									<polyline points="8 6 2 12 8 18"></polyline>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold">传统代码风格</h3>
+						</div>
+
+						<div className="code-block">
+		              <pre>{`@RestController
+		@RequestMapping("/api")
+		public class Ctrl {
+		@Autowired
+		private Svc svc;
+
+		                  @GetMapping("/u/{id}")
+		                  public Resp getU(@PathVariable Long id) {
+		                      return svc.getById(id);
+		                  }
+
+		                  @PostMapping("/u")
+		                  public Resp addU(@RequestBody Req req) {
+		                      return svc.add(req);
+		                  }
+		              }`}</pre>
+						</div>
+
+						<div className="mt-4 text-red-500">
+							<p className="text-sm">✗ 缩写命名难以理解</p>
+							<p className="text-sm">✗ 缺乏语义化注释</p>
+							<p className="text-sm">✗ 方法名称不明确</p>
+							<p className="text-sm">✗ 对 AI 不友好</p>
+						</div>
+					</div>
+
+					<div className="card">
+						<div className="flex items-center mb-4">
+							<div className="bg-green-600 text-white p-2 rounded-full mr-3">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+									<polyline points="14 2 14 8 20 8"></polyline>
+									<line x1="16" y1="13" x2="8" y2="13"></line>
+									<line x1="16" y1="17" x2="8" y2="17"></line>
+									<polyline points="10 9 9 9 8 9"></polyline>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold">AI 友好代码风格</h3>
+						</div>
+
+						<div className="code-block">
+		              <pre>{`@RestController
+		@RequestMapping("/api/users")
+		public class UserController {
+		private final UserService userService;
+
+		                  public UserController(UserService userService) {
+		                      this.userService = userService;
+		                  }
+
+		                  /**
+		                   * 获取用户信息
+		                   * @param id 用户ID
+		                   * @return 用户信息
+		                   */
+		                  @GetMapping("/{id}")
+		                  public UserResponse getUserById(@PathVariable Long id) {
+		                      return userService.getUserById(id);
+		                  }
+
+		                  /**
+		                   * 创建新用户
+		                   * @param request 用户创建请求
+		                   * @return 创建的用户信息
+		                   */
+		                  @PostMapping
+		                  public UserResponse createUser(@RequestBody CreateUserRequest request) {
+		                      return userService.createUser(request);
+		                  }
+		              }`}</pre>
+						</div>
+
+						<div className="mt-4 text-green-500">
+							<p className="text-sm">✓ 完整的类名和方法名</p>
+							<p className="text-sm">✓ 清晰的注释说明功能</p>
+							<p className="text-sm">✓ 语义化的 API 路径</p>
+							<p className="text-sm">✓ 构造函数注入依赖</p>
+						</div>
+					</div>
+				</div>
+
+				<div className="mt-12 bg-purple-50 rounded-lg p-8">
+					<h3 className="text-2xl font-bold mb-6 text-center">语义化代码的核心原则</h3>
+
+					<div className="grid-3">
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-purple-700">描述性命名</h4>
+							<p className="text-slate-600">使用清晰、具体的名称，避免缩写和模糊的术语，确保名称反映实体的目的和功能</p>
+						</div>
+
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-purple-700">自文档化</h4>
+							<p className="text-slate-600">
+								编写不需要额外注释就能清晰表达意图的代码，通过良好的结构和命名使代码自解释
+							</p>
+						</div>
+
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-purple-700">一致性模式</h4>
+							<p className="text-slate-600">
+								在整个代码库中保持一致的命名和结构模式，使开发人员和 AI 能够预测和理解代码
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div className="mt-12 card">
+					<h3 className="text-2xl font-bold mb-6 text-center">基于上下文的 AI 代码生成</h3>
+					<p className="text-slate-600 text-center mb-8">龙生龙，凤生凤 - 好的代码会让 AI 生成更好的代码</p>
+
+					<div className="bg-slate-100 p-6 rounded-lg">
+						<h4 className="font-semibold mb-4">示例：添加删除博客接口</h4>
+
+						<div className="grid-2">
+							<div>
+								<h5 className="font-medium mb-2">已有代码</h5>
+								<div className="code-block">
+		                  <pre>{`@RestController
+		@RequestMapping("/blog")
+		public class BlogController {
+		BlogService blogService;
+
+		                      public BlogController(BlogService blogService) {
+		                          this.blogService = blogService;
+		                      }
+
+		                      @ApiOperation(value = "Get Blog by id")
+		                      @GetMapping("/{id}")
+		                      public BlogPost getBlog(@PathVariable Long id) {
+		                          return blogService.getBlogById(id);
+		                      }
+		                      // delete blog by id`}</pre>
+								</div>
+							</div>
+
+							<div>
+								<h5 className="font-medium mb-2">AI 生成的代码</h5>
+								<div className="code-block">
+		                  <pre>{`@ApiOperation(value = "Delete Blog by id")
+		@DeleteMapping("/{id}")
+		public void deleteBlog(@PathVariable Long id) {
+		blogService.deleteBlogById(id);
+		}`}</pre>
+								</div>
+
+								<div className="mt-4 text-green-500">
+									<p className="text-sm">✓ 遵循已有的命名规范</p>
+									<p className="text-sm">✓ 添加了适当的注解</p>
+									<p className="text-sm">✓ 保持了一致的代码风格</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* 面向生成的重构 */}
+			<div ref={refactorToolRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-green-600">面向生成的重构</h2>
+					<p className="text-slate-600">面向更快生成的代码重构，提高代码质量和AI理解能力</p>
+				</div>
+
+				<div className="card">
+					<h3 className="text-2xl font-bold mb-6 text-center">重构工具的作用</h3>
+
+					<div className="grid-2">
+						<div>
+							<div className="icon-circle bg-green-600">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<path d="M23 4v6h-6"></path>
+									<path d="M1 20v-6h6"></path>
+									<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">代码优化</h3>
+							<p className="text-slate-600 mb-4">重构工具能够识别并改进代码中的问题，使其更加清晰、简洁和高效</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">重构类型</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>提取方法：将复杂逻辑分解为更小的方法</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>重命名：使用更具描述性的名称</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>移动代码：将代码移至更合适的位置</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>简化条件：使复杂条件更易理解</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div>
+							<div className="icon-circle bg-green-600">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<polyline points="16 18 22 12 16 6"></polyline>
+									<polyline points="8 6 2 12 8 18"></polyline>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">AI 友好转换</h3>
+							<p className="text-slate-600 mb-4">将现有代码转换为更适合 AI 理解和生成的形式，提高 AI 辅助编程的效率</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">AI 友好转换示例</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>拆分过长的方法，使其更易于理解</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>添加语义化注释，解释复杂逻辑</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>规范化命名，使其符合团队约定</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-600 mr-2">•</span>
+										<span>简化复杂的嵌套结构</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div className="mt-12 p-6 bg-green-50 rounded-lg">
+						<h4 className="font-semibold mb-4 text-center">重构前后对比</h4>
+
+						<div className="grid-2">
+							<div>
+								<h5 className="font-medium mb-2 text-red-500">重构前</h5>
+								<div className="code-block">
+		                  <pre>{`public void prc(List<T> l, int f) {
+		for (int i = 0; i < l.size(); i++) {
+		if (l.get(i).getF() > f) {
+		l.get(i).setS(true);
+		db.sv(l.get(i));
+		} else {
+		l.get(i).setS(false);
+		l.get(i).setR(0);
+		db.sv(l.get(i));
+		}
+		}
+		}`}</pre>
+								</div>
+							</div>
+
+							<div>
+								<h5 className="font-medium mb-2 text-green-600">重构后</h5>
+								<div className="code-block">
+		                  <pre>{`
+		/**
+		 * 处理项目列表，根据阈值设置状态
+		 * @param items 要处理的项目列表
+		 * @param threshold 状态判断阈值
+		*/
+		public void processItems(List<Item> items, int threshold) {
+			for (Item item : items) {
+				if (item.getFlag() > threshold) {
+					markItemAsSelected(item);
+				} else {
+					markItemAsNotSelected(item);
+				}
+			}
+		}
+
+		                  private void markItemAsSelected(Item item) {
+		                  item.setSelected(true);
+		                  database.saveItem(item);
+		                  }
+
+		                  private void markItemAsNotSelected(Item item) {
+		                  item.setSelected(false);
+		                  item.setRank(0);
+		                  database.saveItem(item);
+		                  }`}</pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* 智能代码检索 */}
+			<div ref={retrievalToolRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-pink-500">智能代码检索</h2>
+					<p className="text-slate-600">智能检索代码库中的相关信息，提高开发效率</p>
+				</div>
+
+				<div className="card">
+					<h3 className="text-2xl font-bold mb-6 text-center">检索工具的功能</h3>
+
+					<div className="grid-2">
+						<div>
+							<div className="icon-circle bg-pink-500">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<circle cx="11" cy="11" r="8"></circle>
+									<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">语义化搜索</h3>
+							<p className="text-slate-600 mb-4">基于意图和语义理解进行代码搜索，而不仅仅是关键字匹配</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">语义化搜索优势</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>理解查询意图，返回相关代码</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>识别功能相似但命名不同的代码</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>支持自然语言查询，如"查找用户认证相关代码"</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>考虑代码上下文和关系</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div>
+							<div className="icon-circle bg-pink-500">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+									<path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+									<path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">代码知识库</h3>
+							<p className="text-slate-600 mb-4">构建和维护代码库的知识图谱，支持智能推荐和上下文理解</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">知识库功能</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>索引代码结构、关系和依赖</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>记录代码使用模式和最佳实践</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>提供相关代码示例和参考</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-pink-500 mr-2">•</span>
+										<span>支持代码复用和模式识别</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div className="mt-12 p-6 bg-pink-50 rounded-lg">
+						<h4 className="font-semibold mb-4 text-center">检索工具与 AI 的协同</h4>
+						<p className="text-slate-700">
+							检索工具为 AI 提供必要的上下文信息，使 AI 能够生成更加准确、符合项目规范的代码。
+							通过智能检索相关代码示例和模式，AI 可以学习并应用团队的最佳实践，
+							大大提高代码生成的质量和一致性。同时，检索工具也帮助开发人员快速找到所需的代码资源，
+							减少重复工作，提高开发效率。
+						</p>
+
+						<div className="mt-6 p-4 bg-white rounded-lg border border-pink-100">
+							<h5 className="font-medium mb-2 text-center">检索示例</h5>
+							<div className="flex items-center p-2 bg-slate-100 rounded">
+								<span className="text-slate-500 mr-2">查询:</span>
+								<span className="font-medium">"如何在我们的项目中实现用户认证"</span>
+							</div>
+							<div className="mt-2 p-3 bg-pink-100 rounded">
+								<p className="text-sm font-medium mb-1">检索结果:</p>
+								<ul className="text-sm space-y-1">
+									<li>• AuthenticationService.java - 用户认证服务</li>
+									<li>• SecurityConfig.java - 安全配置</li>
+									<li>• UserController.java - 登录接口</li>
+									<li>• AuthUtils.java - 认证工具类</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* 需求精炼 */}
+			<div ref={refinedQuestionRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-slate-100 text-slate-800">需求精炼</h2>
+					<p className="text-slate-600">将模糊的需求转化为明确、结构化的问题，提高 AI 理解能力</p>
+				</div>
+
+				<div className="card">
+					<h3 className="text-2xl font-bold mb-6 text-center">问题精炼的重要性</h3>
+
+					<div className="grid-2">
+						<div>
+							<div className="icon-circle bg-slate-700">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<circle cx="12" cy="12" r="10"></circle>
+									<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+									<line x1="12" y1="17" x2="12.01" y2="17"></line>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">问题表达的挑战</h3>
+							<p className="text-slate-600 mb-4">模糊的需求描述和简单的指令往往导致 AI 生成不符合预期的代码</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">常见问题</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-red-500 mr-2">✗</span>
+										<span>"实现一个用户管理功能"（过于宽泛）</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-red-500 mr-2">✗</span>
+										<span>"添加登录功能"（缺乏上下文和细节）</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-red-500 mr-2">✗</span>
+										<span>"修复这个 bug"（没有提供足够信息）</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-red-500 mr-2">✗</span>
+										<span>"优化性能"（目标不明确）</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div>
+							<div className="icon-circle bg-slate-700">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">问题精炼技巧</h3>
+							<p className="text-slate-600 mb-4">通过结构化和丰富上下文，将模糊需求转化为明确的问题</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">精炼示例</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-green-500 mr-2">✓</span>
+										<span>"实现用户注册功能，包含邮箱验证、密码强度检查，并与现有的用户认证系统集成"</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-500 mr-2">✓</span>
+										<span>"添加 JWT 基于的登录功能，使用现有的 UserService，并遵循 RESTful API 设计原则"</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-green-500 mr-2">✓</span>
+										<span>"优化数据库查询性能，当前查询耗时超过 2 秒，目标是降低到 500ms 以内"</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div className="mt-12 p-6 bg-blue-50 rounded-lg">
+						<h4 className="font-semibold mb-4 text-center">结合 DDD 的问题精炼</h4>
+						<p className="text-slate-700 mb-4">
+							领域驱动设计（DDD）提供了一种强大的方法来精炼问题，通过使用统一的领域语言和明确的业务概念，
+							使问题描述更加准确和有意义。
+						</p>
+
+						<div className="bg-white p-4 rounded-lg">
+							<h5 className="font-medium mb-2">DDD 问题精炼示例</h5>
+							<div className="grid-2">
+								<div>
+									<p className="text-sm font-medium text-slate-700">原始问题:</p>
+									<p className="p-2 bg-slate-100 rounded">"添加购物车功能"</p>
+								</div>
+								<div>
+									<p className="text-sm font-medium text-slate-700">精炼后:</p>
+									<p className="p-2 bg-blue-100 rounded">
+										"实现购物车聚合根，包含添加商品项、更新数量、计算总价等功能。
+										购物车需要与用户和商品目录领域对象交互，并实现购物车持久化。"
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* 团队编码规范 */}
+			<div ref={specPracticeRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-purple-700">团队编码规范</h2>
+					<p className="text-slate-600">团队实践优于最佳实践，建立一致的编码规范和工作流程</p>
+				</div>
+
+				<div className="card">
+					<h3 className="text-2xl font-bold mb-6 text-center">团队规范的建立</h3>
+
+					<div className="grid-2">
+						<div>
+							<div className="icon-circle bg-purple-700">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<path d="M9 11l3 3L22 4"></path>
+									<path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">代码检视实践</h3>
+							<p className="text-slate-600 mb-4">通过代码检视维护团队最佳实践，确保代码质量和一致性</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">代码检视的目的</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>规范一致性：命名规范、代码风格、注释规范等</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>保持最佳实践：通用逻辑模式采用、代码重用等</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>业务逻辑正确：代码修改是否符合业务逻辑</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>潜在的 bug：逻辑错误、性能问题等</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div>
+							<div className="icon-circle bg-purple-700">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+								     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<line x1="6" y1="3" x2="6" y2="15"></line>
+									<circle cx="18" cy="6" r="3"></circle>
+									<circle cx="6" cy="18" r="3"></circle>
+									<path d="M18 9a9 9 0 0 1-9 9"></path>
+								</svg>
+							</div>
+							<h3 className="text-xl font-semibold mb-2">架构分层与内聚</h3>
+							<p className="text-slate-600 mb-4">遏制面条式代码，通过分层和内聚构建清晰的系统结构</p>
+
+							<div className="bg-slate-100 p-4 rounded-lg">
+								<h4 className="font-medium mb-2">架构原则</h4>
+								<ul className="space-y-2">
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>架构分层：划分系统的主要职责区域（表现层、业务逻辑层、数据访问层）</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>逻辑内聚：功能上紧密相关的代码单元应该聚合在一起</span>
+									</li>
+									<li className="flex items-start">
+										<span className="text-purple-700 mr-2">•</span>
+										<span>明确边界：定义清晰的模块边界和接口</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div className="mt-12 p-6 bg-purple-50 rounded-lg">
+						<h4 className="font-semibold mb-4 text-center">Project Rule 实践</h4>
+						<p className="text-slate-700 mb-4">
+							在 AI IDE 中添加自定义的 Project Rule，是一种非常有效的控制代码生成的方法。
+							通过明确定义项目的规范和约束，可以指导 AI 生成符合团队实践的代码。
+						</p>
+
+						<div className="bg-white p-4 rounded-lg">
+							<h5 className="font-medium mb-2">Project Rule 示例</h5>
+							<div className="code-block">
+		                <pre>{`// Project Rules for AI Code Generation
+		{
+		"naming": {
+		"classes": "PascalCase",
+		"methods": "camelCase",
+		"variables": "camelCase",
+		"constants": "UPPER_SNAKE_CASE"
+		},
+		"architecture": {
+		"layers": ["controller", "service", "repository"],
+		"patterns": ["dependency-injection", "repository-pattern"]
+		},
+		"documentation": {
+		"methods": "required",
+		"classes": "required",
+		"publicApi": "detailed"
+		},
+		"testing": {
+		"coverage": "minimum-80-percent",
+		"unitTests": "required"
+		}
+		}`}</pre>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+	};
+
+<BrowserOnly>
+	{() => <AIFriendlyArchitecture />}
+</BrowserOnly>
