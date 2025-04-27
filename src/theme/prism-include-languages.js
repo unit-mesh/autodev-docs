@@ -22,8 +22,12 @@ export default function prismIncludeLanguages (PrismObject) {
 		require(`prismjs/components/prism-${lang}`)
 	})
 
+	require('./prism-language-devins.js');
+
 	delete globalThis.Prism
 	if (typeof PrismBefore !== 'undefined') {
 		globalThis.Prism = PrismObject
 	}
+
+	console.log(PrismObject)
 }

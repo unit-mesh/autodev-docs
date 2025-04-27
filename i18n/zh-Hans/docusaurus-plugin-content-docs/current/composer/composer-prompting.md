@@ -25,7 +25,7 @@ AutoDev 将调用对应的 `DatabaseInsCommand`、`SymbolInsCommand` 命令收�
 
 以下是项目上下文的典型示例：
 
-```markdown
+```devin
 - 用户操作系统版本：Mac OS X 15.2 x86_64
 - 工作空间绝对路径：/Users/phodal/IdeaProjects/untitled
 - 当前工作空间使用 Gradle Java JDK_11
