@@ -43,14 +43,14 @@ function useFeatureList() {
       icon: <div className={styles.featureIconSettings} />
     },
     {
-      title: isEnglish ? 'Precise Context Awareness' : '精准上下文感知',
+      title: isEnglish ? 'R&D Context Awareness' : '研发知识上下文感知',
       description: isEnglish ? (
         <>
           Deep integration with IDE plugins and support for MCP protocol, providing rich and accurate project context for AI, significantly reducing AI hallucinations and ensuring more reliable results.
         </>
       ) : (
         <>
-          深度整合 IDE 插件并支持 MCP 协议，为 AI 提供丰富准确的项目上下文，显著减少 AI 幻觉，确保结果更可靠。
+          深度整合研发工具链生态与 IDE 插件能力，并支持 MCP 协议，为 AI 提供丰富准确的项目上下文，显著减少 AI 幻觉，确保结果更可靠。
         </>
       ),
       icon: <div className={styles.featureIconCode} />
@@ -241,7 +241,7 @@ function Community() {
 
 export default function HomepageFeatures(): ReactNode {
   const featureList = useFeatureList();
-  
+
   return (
     <>
       <section className={styles.features}>
