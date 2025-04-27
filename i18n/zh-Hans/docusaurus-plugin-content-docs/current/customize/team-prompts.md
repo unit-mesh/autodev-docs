@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 团队提示
-parent: 功能定制
+title: 团队提示词
+parent: 自定义
 nav_order: 14
 permalink: /custom/team-prompts
 ---
@@ -10,14 +10,14 @@ permalink: /custom/team-prompts
 
 默认的 Team Prompts 路径是`prompts/`，它是`prompts/`位于项目根目录中的目录。
 
-AutoDev 目前使用 Apache Velocity 模板引擎，允许您通过修改模板文件来定制您的团队提示。
+AutoDev 目前使用 Apache Velocity 模板引擎，允许您通过修改模板文件来定制您的团队提示词。
 
 如果您对模板文件进行了更改，请确保保存它们，否则，IDE 将无法识别您的修改。
 
 
 ## 格式
 
-团队提示文件格式是 .vtl，即 Velocity 模板语言文件格式。它包含三个部分：
+团队提示词文件格式是 .vtl，即 Velocity 模板语言文件格式。它包含三个部分：
 
 - 前置配置，即 YAML 格式的提示配置
 - 聊天角色，如  `system`, `user`, 将以 \`\`\` 开始并以 \`\`\`结束，例如：

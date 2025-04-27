@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 自定义快速操作
-parent: 功能定制
+parent: 自定义
 nav_order: 10
 permalink: /custom/quick-action
 ---

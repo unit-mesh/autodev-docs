@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 提示覆盖
-parent: 功能定制
+title: 提示词覆盖
+parent: 自定义
 nav_order: 15
 ---
 
-提示覆盖 ([#54](https://github.com/unit-mesh/auto-dev/issues/54)) 允许使用自定义提示词替换 AutoDev 的默认提示词。
+提示词覆盖 ([#54](https://github.com/unit-mesh/auto-dev/issues/54)) 允许使用自定义提示词替换 AutoDev 的默认提示词。
 
 ## 使用方法
 

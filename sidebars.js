@@ -71,15 +71,33 @@ const sidebars = {
 	customizeSidebar: [
 		'customize/customize',
 		'customize/custom-llm-server',
-		'customize/custom-living-documentation',
-		'customize/custom-action',
-		'customize/batch-ai-action',
-		'customize/custom-quick-action',
-		'customize/custom-test-template',
+		{
+			type: 'category',
+			label: 'Personalization',
+			items: [
+				'customize/custom-living-documentation',
+				'customize/custom-action',
+				'customize/variables',
+			],
+		},
 		'customize/prompt-override',
-		'customize/team-prompts',
-		'customize/custom-ext-contenxt-agent',
-		'customize/variables',
+		{
+			type: 'category',
+			label: 'Team Prompts',
+			items: [
+				'customize/team-prompts',
+				'customize/batch-ai-action',
+				'customize/custom-quick-action',
+			],
+		},
+		{
+			type: 'category',
+			label: 'Testing Prompting',
+			items: [
+				'customize/custom-test-template',
+				'customize/custom-ext-context-agent',
+			],
+		},
 	],
 	developmentSidebar: [
 		'development/development',

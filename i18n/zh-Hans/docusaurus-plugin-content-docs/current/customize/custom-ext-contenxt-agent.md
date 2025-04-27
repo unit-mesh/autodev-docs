@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 自定义扩展上下文智能体
-parent: 功能定制
+parent: 自定义
 nav_order: 16
 permalink: /custom/extension-context-agent
 ---

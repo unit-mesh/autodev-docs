@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 变量
-parent: 功能定制
+parent: 自定义
 nav_order: 20
 permalink: /customize/variables
 
