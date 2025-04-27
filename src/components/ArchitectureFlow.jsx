@@ -15,9 +15,9 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 		<div className="architecture-flow">
 			<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 				<svg
-					width="100%"
-					height="600"
-					viewBox="0 0 1200 720"
+					width="1200"
+					height="480"
+					viewBox="200 130 1200 480"
 					preserveAspectRatio="xMidYMid meet"
 					style={{ overflow: "visible", maxWidth: "960px" }}
 				>
@@ -28,29 +28,28 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						className="cursor-pointer"
 					>
 						<rect
-							x="380"
-							y="42"
-							width="160"
-							height="70"
+							x="586"
+							y="52"
+							width="200"
+							height="60"
 							rx="4"
 							fill={colors.purple700}
 						/>
-						<text x="460" y="77" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							统一领域语言
+						<text x="686" y="87" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							领域语言/知识
 						</text>
 					</g>
 
-					{/* 第二行 */}
-					<g className="cursor-pointer">
+					<g>
 						<rect
 							x="67"
 							y="172"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.slate100}
 						/>
-						<text x="137" y="207" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
+						<text x="157" y="207" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
 							问题/任务
 						</text>
 					</g>
@@ -60,15 +59,15 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						className="cursor-pointer"
 					>
 						<rect
-							x="390"
+							x="590"
 							y="172"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.slate100}
 						/>
-						<text x="460" y="207" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
-							需求精炼
+						<text x="680" y="207" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
+							问题/需求精炼
 						</text>
 					</g>
 
@@ -77,56 +76,42 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						className="cursor-pointer"
 					>
 						<rect
-							x="713"
+							x="1066"
 							y="172"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.orange500}
 						/>
-						<text x="783" y="207" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+						<text x="1156" y="207" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
 							智能任务规划
 						</text>
 					</g>
 
-					<g className="cursor-pointer">
+					<g>
 						<rect
-							x="953"
+							x="1340"
 							y="172"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.green600}
 						/>
-						<text x="1023" y="207" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							行动
+						<text x="1430" y="207" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							Action
 						</text>
 					</g>
 
-					{/* 第三行 - 语义化命名约定 */}
-					<g className="bullet-points">
-						<text x="460" y="322" fontSize="16" fontWeight="400">
-							• 文件名
-						</text>
-						<text x="460" y="350" fontSize="16" fontWeight="400">
-							• 类名
-						</text>
-						<text x="460" y="378" fontSize="16" fontWeight="400">
-							• 函数名
-						</text>
-					</g>
-
-					{/* 第四行 */}
-					<g className="cursor-pointer">
+					<g>
 						<rect
 							x="67"
 							y="415"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.slate100}
 						/>
-						<text x="137" y="450" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
+						<text x="157" y="450" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
 							代码补全
 						</text>
 					</g>
@@ -136,14 +121,14 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						className="cursor-pointer"
 					>
 						<rect
-							x="267"
+							x="330"
 							y="415"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.purple700}
 						/>
-						<text x="337" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+						<text x="420" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
 							团队编码规范
 						</text>
 					</g>
@@ -153,14 +138,14 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						className="cursor-pointer"
 					>
 						<rect
-							x="467"
+							x="590"
 							y="415"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.purple400}
 						/>
-						<text x="537" y="450" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
+						<text x="680" y="450" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
 							自文档化代码
 						</text>
 					</g>
@@ -170,14 +155,14 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						className="cursor-pointer"
 					>
 						<rect
-							x="667"
+							x="850"
 							y="415"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.green600}
 						/>
-						<text x="737" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+						<text x="940" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
 							面向生成的重构
 						</text>
 					</g>
@@ -187,29 +172,29 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						className="cursor-pointer"
 					>
 						<rect
-							x="867"
+							x="1110"
 							y="415"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.pink500}
 						/>
-						<text x="937" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+						<text x="1200" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
 							智能代码检索
 						</text>
 					</g>
 
 					{/* 底部行 */}
-					<g className="cursor-pointer">
+					<g>
 						<rect
-							x="667"
+							x="850"
 							y="570"
-							width="140"
+							width="180"
 							height="60"
 							rx="4"
 							fill={colors.purple400}
 						/>
-						<text x="737" y="605" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
+						<text x="940" y="605" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
 							代码库
 						</text>
 					</g>
@@ -218,29 +203,29 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					{/* 顶部行连接 */}
 					<g className="arrows">
 						{/* 统一领域语言 到 需求精炼 */}
-						<path d="M460 112 L460 172" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M680 112 L680 172" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 统一领域语言 到 智能任务规划 */}
-						<path d="M540 77 L713 172" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M786 77 L1066 172" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 问题/任务 到 需求精炼 */}
-						<path d="M207 202 L390 202" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M247 202 L590 202" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 需求精炼 到 智能任务规划 */}
-						<path d="M530 202 L713 202" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M770 202 L1066 202" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
-						{/* 智能任务规划 到 行动 */}
-						<path d="M853 202 L953 202" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						{/* 智能任务规划 到 Action */}
+						<path d="M1246 202 L1340 202" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 代码补全 到 团队编码规范 */}
-						<path d="M207 445 L267 445" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M247 445 L330 445" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 团队编码规范 到 自文档化代码 */}
-						<path d="M407 445 L467 445" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M510 445 L590 445" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 智能任务规划 到 面向生成的重构 */}
 						<path
-							d="M783 232 C783 300 700 350 737 415"
+							d="M1156 232 C1156 300 1000 350 940 415"
 							stroke="green"
 							strokeWidth="1.5"
 							fill="none"
@@ -249,7 +234,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 
 						{/* 智能任务规划 到 智能代码检索 */}
 						<path
-							d="M783 232 C783 300 900 350 937 415"
+							d="M1156 232 C1156 300 1200 350 1200 415"
 							stroke="red"
 							strokeWidth="1.5"
 							fill="none"
@@ -257,11 +242,11 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						/>
 
 						{/* 面向生成的重构 到 自文档化代码 */}
-						<path d="M667 445 L607 445" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M850 445 L770 445" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 智能代码检索 到 代码库 */}
 						<path
-							d="M937 475 C937 520 800 550 737 570"
+							d="M1200 475 C1200 520 1000 550 940 570"
 							stroke="red"
 							strokeWidth="1.5"
 							fill="none"
@@ -279,7 +264,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 
 						{/* 自文档化代码 与 代码库 的双向关系 */}
 						<path
-							d="M537 475 C537 520 700 550 737 570"
+							d="M680 475 C680 520 800 550 850 570"
 							stroke="black"
 							strokeWidth="1.5"
 							fill="none"
@@ -288,29 +273,26 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						/>
 
 						{/* 需求精炼 到 自文档化代码 */}
-						<path d="M460 232 L460 415" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path d="M680 232 L680 415" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 					</g>
 
 					{/* 图例 */}
 					<g className="legend" transform="translate(50, 580)">
 						<rect x="0" y="0" width="30" height="20" fill={colors.purple700} />
 						<text x="40" y="15" fontSize="14">
-							知识与规范
+							Memory
 						</text>
-
 						<rect x="0" y="30" width="30" height="20" fill={colors.orange500} />
 						<text x="40" y="45" fontSize="14">
-							智能规划
+							Planning
 						</text>
-
 						<rect x="0" y="60" width="30" height="20" fill={colors.pink500} />
 						<text x="40" y="75" fontSize="14">
-							辅助工具
+							Tool
 						</text>
-
 						<rect x="0" y="90" width="30" height="20" fill={colors.green600} />
 						<text x="40" y="105" fontSize="14">
-							实施行动
+							Action
 						</text>
 					</g>
 

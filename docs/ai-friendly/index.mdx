@@ -1,8 +1,6 @@
 ---
 title: AI 友好型架构
-description: 构建检索友好与生成式 AI 友好的代码库，实现 10 倍开发效率
-sidebar_position: 1
-full_width: true
+hide_table_of_contents: true
 ---
 
 import { useState, useRef } from 'react';
@@ -45,13 +43,10 @@ export const AIFriendlyArchitecture = () => {
 		<div className="theme-doc-markdown">
 			<div className="text-center mb-12">
 				<h1 className="gradient-text font-bold mb-4">AI 友好型架构</h1>
-				<p className="text-lg text-slate-600 max-w-3xl mx-auto">
-					构建检索友好与生成式 AI 友好的代码库，实现 10 倍开发效率
-				</p>
+				<p className="text-center text-lg text-slate-600 mt-2">点击架构图中的任意元素，了解详细信息</p>
 			</div>
 
-			<div className="mt-8 mb-8">
-				<p className="text-center text-lg text-slate-600 mb-8">点击架构图中的任意元素，了解详细信息</p>
+			<div className="mb-4">
 				<ArchitectureFlow onClickSection={scrollToSection}/>
 			</div>
 
@@ -669,15 +664,15 @@ private void markItemAsNotSelected(Item item) {
 				</div>
 			</div>
 
-			{/* 需求精炼 */}
+			{/* 问题/需求精炼 */}
 			<div ref={refinedQuestionRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-slate-100 text-slate-800">需求精炼</h2>
+					<h2 className="section-title bg-slate-100 text-slate-800">问题/需求精炼</h2>
 					<p className="text-slate-600">将模糊的需求转化为明确、结构化的问题，提高 AI 理解能力</p>
 				</div>
 
 				<div className="card">
-					<h3 className="text-2xl font-bold mb-6 text-center">问题精炼的重要性</h3>
+					<h3 className="text-2xl font-bold mb-6 text-center">问题/需求精炼的重要性</h3>
 
 					<div className="grid-2">
 						<div>
