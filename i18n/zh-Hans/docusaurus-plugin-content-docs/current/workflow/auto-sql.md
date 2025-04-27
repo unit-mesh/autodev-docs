@@ -1,8 +1,5 @@
 ---
-layout: default
 title: AutoSQL
-nav_order: 2
-parent: Workflow
 ---
 
 所需 IntelliJ 插件：Database Tools and SQL

@@ -1,8 +1,5 @@
 ---
-layout: default
 title: AutoTest
-nav_order: 5
-parent: Development
 ---
 
 # 自动化测试设计

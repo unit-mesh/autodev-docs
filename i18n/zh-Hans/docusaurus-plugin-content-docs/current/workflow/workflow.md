@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 工作流程
+title: 工作流
 nav_order: 9
 has_children: true
 permalink: /workflow

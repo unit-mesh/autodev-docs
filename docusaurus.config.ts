@@ -84,12 +84,6 @@ const config = {
             },
             {
               type: 'docSidebar',
-              sidebarId: 'developmentSidebar',
-              position: 'left',
-              label: 'Development',
-            },
-            {
-              type: 'docSidebar',
               sidebarId: 'agenticSidebar',
               position: 'left',
               label: 'Agent',
@@ -98,6 +92,12 @@ const config = {
               to: '/blog',
               label: 'Blog',
               position: 'left',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'developmentSidebar',
+              position: 'left',
+              label: 'Development',
             },
             {
               type: 'localeDropdown',

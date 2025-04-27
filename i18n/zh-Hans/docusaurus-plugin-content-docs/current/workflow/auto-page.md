@@ -1,8 +1,5 @@
 ---
-layout: default
-title: 自动页面生成
-nav_order: 3
-parent: 工作流程
+title: AutoPage
 ---
 
 所需插件：JavaScript
