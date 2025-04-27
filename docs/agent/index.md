@@ -4,7 +4,7 @@ title: Agentic Coding
 
 ## AI 辅助研发下的生态全景
 
-![](/img/ai4se-langscape.png)
+![Landscape](/img/ai4se-landscape.png)
 
 - 本地插件自带：IDE 提供基于代码事实信息。
 - 云端智能体：结合 DevOps、知识库等提供统一能力。
@@ -24,7 +24,7 @@ title: Agentic Coding
 
 ## 多端智能体
 
-![](/img/autodev-agents.png)
+![AutoDev Agents](/img/autodev-agents.png)
 
 ### 云端智能体
 
