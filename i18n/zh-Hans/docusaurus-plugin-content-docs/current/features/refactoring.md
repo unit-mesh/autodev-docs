@@ -30,20 +30,6 @@ public BlogPost updateBlog(Long id, BlogPost blogDto) {
 // - 变量 'content' 从未被使用
 ```
 
-## 后续步骤建议
-
-我们提供最常见的代码重构建议，执行重构操作后您将看到以下建议：
-
-```
-intentions.refactor.readability=请使用简洁且有意义的变量、函数和类名，以提高代码可读性。
-intentions.refactor.usability=请确保正确的缩进和格式，以增强代码结构和可读性。
-intentions.refactor.performance=请优化算法和数据结构以提高代码性能。
-intentions.refactor.maintainability=请将冗长复杂的函数重构为更小、更易管理的单元，以提高代码可维护性。
-intentions.refactor.flexibility=请将系统设计得灵活且易于适应需求变化。
-intentions.refactor.reusability=请设计和实现可复用的组件或模块，以减少重复并提高开发效率。
-intentions.refactor.accessibility=请考虑无障碍需求，设计可供所有用户使用的系统。
-```
-
 ## 命名建议
 
 在[#132](https://github.com/unit-mesh/auto-dev/issues/132)中，我们提供了基础的重命名功能：
