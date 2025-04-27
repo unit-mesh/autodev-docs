@@ -40,13 +40,12 @@ AutoDev 将调用对应的 `DatabaseInsCommand`、`SymbolInsCommand` 命令收�
 
 以下是我们发送给大语言模型学习的 DevIns DSL 示例：
 
-    <devin>
-    /commit
-    ```markdown
-    遵循约定式提交规范，示例：feat: 新增 'graphiteWidth' 选项
-    ```
-    
-    </devin>
+```devin
+/commit
+\```markdown
+遵循约定式提交规范，示例：feat: 新增 'graphiteWidth' 选项
+\```
+```
 
 当启用 `AutoSketchMode` 时，以下只读命令将自动执行：
 
