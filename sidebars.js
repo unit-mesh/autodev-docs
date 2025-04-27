@@ -70,10 +70,10 @@ const sidebars = {
 	],
 	customizeSidebar: [
 		'customize/customize',
+		'customize/custom-llm-server',
 		'customize/custom-living-documentation',
 		'customize/custom-action',
 		'customize/batch-ai-action',
-		'customize/custom-llm-server',
 		'customize/custom-quick-action',
 		'customize/custom-test-template',
 		'customize/prompt-override',

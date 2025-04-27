@@ -1,9 +1,5 @@
 ---
-layout: default
 title: 自定义大模型服务器
-parent: 功能定制
-nav_order: 14
-permalink: /custom/llm-server
 ---
 
 # 自定义大模型服务器

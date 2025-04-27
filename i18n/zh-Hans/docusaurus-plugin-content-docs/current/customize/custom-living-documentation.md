@@ -1,10 +1,5 @@
 ---
-layout: default
-title: 自定义文档
-parent: 功能定制
-nav_order: 12
-permalink: /custom/living-documentation
-
+title: 自定义文档生成
 ---
 
 # 自定义文档

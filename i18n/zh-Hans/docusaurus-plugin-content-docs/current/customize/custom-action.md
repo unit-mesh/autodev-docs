@@ -1,9 +1,5 @@
 ---
-layout: default
-title: 自定义动作
-parent: 功能定制
-nav_order: 10
-permalink: /custom/action
+title: 自定义个人 AI 指令
 ---
 
 # 自定义动作
