@@ -7,6 +7,8 @@ has_children: true
 
 # AutoDev Composer - the Intellij IDEA Cursor Alternative
 
+![](/img/features/autodev-agentic-ai.png)
+
 Video demo (YouTube) — English
 
 [![Watch the video](https://img.youtube.com/vi/1m3HJzw0YhA/sddefault.jpg)](https://youtu.be/1m3HJzw0YhA)

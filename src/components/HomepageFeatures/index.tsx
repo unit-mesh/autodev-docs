@@ -9,6 +9,7 @@ type FeatureItem = {
   title: string;
   description: ReactNode;
   icon?: ReactNode;
+  image: string;
 };
 
 function useFeatureList() {
@@ -27,7 +28,8 @@ function useFeatureList() {
           结合强大的推理模型，AutoDev Planner 能自动规划与执行复杂的开发任务（编码、测试、构建等），支持手动调整，简化工作流程。
         </>
       ),
-      icon: <div className={styles.featureIconBrain} />
+      icon: <div className={styles.featureIconBrain} />,
+      image: '/img/features/planner-snapshot.png'
     },
     {
       title: isEnglish ? 'Highly Customizable Experience' : '高度定制化体验',
@@ -40,7 +42,8 @@ function useFeatureList() {
           支持自定义智能体、私有模型及提示词指令，轻松打造满足个人、团队或企业特定需求的 AutoDev 工作流，提升开发效率。
         </>
       ),
-      icon: <div className={styles.featureIconSettings} />
+      icon: <div className={styles.featureIconSettings} />,
+      image: '/img/features/customization-snapshot.png'
     },
     {
       title: isEnglish ? 'R&D Context Awareness' : '研发知识上下文感知',
@@ -53,17 +56,19 @@ function useFeatureList() {
           深度整合研发工具链生态与 IDE 插件能力，并支持 MCP 协议，为 AI 提供丰富准确的项目上下文，显著减少 AI 幻觉，确保结果更可靠。
         </>
       ),
-      icon: <div className={styles.featureIconCode} />
+      icon: <div className={styles.featureIconCode} />,
+      image: '/img/features/deveco-agent.png'
     },
   ];
 }
 
-function Feature({title, description, icon}: FeatureItem) {
+function Feature({title, description, icon, image, index}: FeatureItem & { index: number }) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className={styles.featureCard}>
-        {icon && <div className={styles.featureIcon}>{icon}</div>}
-        <div className="text--center padding-horiz--md">
+    <div className={clsx('col col--12')}>
+      <div className={styles.featureCard} data-index={index}>
+        <img src={image} alt={title} className={styles.featureImage} />
+        <div className={styles.featureContent}>
+          {icon && <div className={styles.featureIcon}>{icon}</div>}
           <Heading as="h3">{title}</Heading>
           <p>{description}</p>
         </div>
@@ -248,7 +253,7 @@ export default function HomepageFeatures(): ReactNode {
         <div className="container">
           <div className="row">
             {featureList.map((props, idx) => (
-              <Feature key={idx} {...props} />
+              <Feature key={idx} {...props} index={idx} />
             ))}
           </div>
         </div>

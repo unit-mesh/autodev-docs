@@ -1,220 +1,263 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+    width: 100%;
+    background-color: var(--ifm-color-emphasis-0);
 }
 
 .featureCard {
-  height: 100%;
-  padding: 1.5rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    background-color: var(--ifm-color-white);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.featureCard:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
+.featureImage {
+    flex: 1;
+    min-width: 50%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.featureContent {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .featureIcon {
-  margin-bottom: 1rem;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ifm-color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.featureContent h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--ifm-color-emphasis-900);
+}
+
+.featureContent p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--ifm-color-emphasis-700);
+}
+
+/* First feature - image on left */
+.featureCard[data-index="0"] {
+    flex-direction: row;
+}
+
+/* Second feature - image on right */
+.featureCard[data-index="1"] {
+    flex-direction: row-reverse;
+}
+
+/* Third feature - image on left */
+.featureCard[data-index="2"] {
+    flex-direction: row;
+}
+
+@media screen and (max-width: 996px) {
+    .featureCard {
+        flex-direction: column !important;
+    }
+
+    .featureImage {
+        width: 100%;
+        height: 300px;
+    }
+
+    .featureContent {
+        padding: 2rem;
+    }
 }
 
 /* Feature icons - these would be replaced with actual SVG icons in a real implementation */
 .featureIconBrain {
-  width: 100%;
-  height: 100%;
-  background-color: #e0f2fe;
-  border-radius: 50%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #e0f2fe;
+    border-radius: 50%;
+    position: relative;
 }
 
 .featureIconBrain::after {
-  content: "🧠";
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    content: "🧠";
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .featureIconCode {
-  width: 100%;
-  height: 100%;
-  background-color: #f3e8ff;
-  border-radius: 50%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f3e8ff;
+    border-radius: 50%;
+    position: relative;
 }
 
 .featureIconCode::after {
-  content: "💻";
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    content: "💻";
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .featureIconSettings {
-  width: 100%;
-  height: 100%;
-  background-color: #fef3c7;
-  border-radius: 50%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #fef3c7;
+    border-radius: 50%;
+    position: relative;
 }
 
 .featureIconSettings::after {
-  content: "⚙️";
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    content: "⚙️";
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Quick Links Section */
 .quickLinks {
-  padding: 4rem 0;
-  background-color: var(--ifm-color-emphasis-100);
+    padding: 4rem 0;
+    background-color: var(--ifm-color-emphasis-100);
 }
 
 .quickLinkCard {
-  display: block;
-  height: 100%;
-  padding: 1.5rem;
-  border-radius: 8px;
-  background-color: var(--ifm-color-white);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: var(--ifm-font-color-base);
-  position: relative;
+    display: block;
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--ifm-color-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--ifm-font-color-base);
+    position: relative;
 }
 
 .quickLinkCard:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
-  text-decoration: none;
-  color: var(--ifm-color-primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    text-decoration: none;
+    color: var(--ifm-color-primary);
 }
 
 .quickLinkArrow {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  color: var(--ifm-color-primary);
-  transition: transform 0.3s ease;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--ifm-color-primary);
+    transition: transform 0.3s ease;
 }
 
 .quickLinkCard:hover .quickLinkArrow {
-  transform: translateX(5px);
+    transform: translateX(5px);
 }
 
 .comparisonSection {
-  padding: 4rem 0;
-  background-color: var(--ifm-color-emphasis-100);
-  width: 100%;
+    padding: 4rem 0;
+    background-color: var(--ifm-color-emphasis-100);
+    width: 100%;
 }
 
 .tableWrapper {
-  overflow-x: auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .comparisonTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0 auto;
-  display: inline-table;
-  table-layout: fixed; /* Add fixed layout for better width control */
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    display: inline-table;
+    table-layout: fixed; /* Add fixed layout for better width control */
 }
 
 .comparisonTable th,
 .comparisonTable td {
-  width: 35%;
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    width: 35%;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .comparisonTable th {
-  background-color: var(--ifm-color-emphasis-200);
-  font-weight: bold;
+    background-color: var(--ifm-color-emphasis-200);
+    font-weight: bold;
 }
 
 .featureCell {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .advantageCell {
-  color: var(--ifm-color-primary);
-  font-weight: 500;
-  width: 40%; /* Set width for AutoDev column */
+    color: var(--ifm-color-primary);
+    font-weight: 500;
+    width: 40%; /* Set width for AutoDev column */
 }
 
 .advantage,
 .disadvantage {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .checkIcon {
-  color: var(--ifm-color-success);
-  font-weight: bold;
+    color: var(--ifm-color-success);
+    font-weight: bold;
 }
 
 .xIcon {
-  color: var(--ifm-color-danger);
-  font-weight: bold;
+    color: var(--ifm-color-danger);
+    font-weight: bold;
 }
 
 /* Community Section */
 .communitySection {
-  padding: 4rem 0;
-  background-color: var(--ifm-color-emphasis-0);
+    padding: 4rem 0;
+    background-color: var(--ifm-color-emphasis-0);
 }
 
 .communityCard {
-  height: 100%;
-  padding: 2rem;
-  border-radius: 8px;
-  background-color: var(--ifm-color-emphasis-100);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+    height: 100%;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: var(--ifm-color-emphasis-100);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .communityCard h3 {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .communityCard p {
-  margin-bottom: 1.5rem;
-}
-
-@media screen and (max-width: 996px) {
-  .comparisonTable th,
-  .comparisonTable td {
-    padding: 0.75rem;
-  }
-
-  .communityCard {
-    margin-bottom: 2rem;
-  }
+    margin-bottom: 1.5rem;
 }

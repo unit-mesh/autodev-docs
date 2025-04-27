@@ -7,6 +7,8 @@ has_children: true
 
 # AutoDev Composer
 
+![](/img/features/autodev-agentic-ai.png)
+
 视频演示（YouTube）— 英文版
 
 [![观看视频](https://img.youtube.com/vi/1m3HJzw0YhA/sddefault.jpg)](https://youtu.be/1m3HJzw0YhA)
