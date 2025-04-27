@@ -186,6 +186,16 @@ const sidebars = {
 				'devins/devins-language',
 			],
 		},
+	],
+	friendlySidebar: [
+		'ai-friendly/index',
+		{
+			type: 'category',
+			label: 'AI-Friendly',
+			items: [
+				'ai-friendly/ai-friendly-question',
+			],
+		}
 	]
 }
 

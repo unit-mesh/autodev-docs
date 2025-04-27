@@ -89,6 +89,12 @@ const config = {
               label: 'Agent',
             },
             {
+              type: 'docSidebar',
+              sidebarId: 'friendlySidebar',
+              position: 'left',
+              label: 'AI Friendly',
+            },
+            {
               to: '/blog',
               label: 'Blog',
               position: 'left',
