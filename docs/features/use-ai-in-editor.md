@@ -12,8 +12,3 @@ permalink: /features/use-ai-in-editor
 
 <img src="https://unitmesh.cc/auto-dev/autodev-autotest.png" alt="AutoDev" width="600px"/>
 
-## Chat with this code
-
-## Test this
-
-AutoDev will auto create test file, and insert code to test file
