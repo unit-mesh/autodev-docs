@@ -191,9 +191,10 @@ const sidebars = {
 		'ai-friendly/index',
 		{
 			type: 'category',
-			label: 'AI-Friendly',
+			label: 'AI-Friendly Question',
 			items: [
-				'ai-friendly/ai-friendly-question',
+				'ai-friendly/ai-friendly-question-chatgpt',
+				'ai-friendly/ai-friendly-question-gemini',
 			],
 		}
 	]

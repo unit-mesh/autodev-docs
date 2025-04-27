@@ -1,3 +1,7 @@
+---
+title: AI 友好的问题 ChatGPT
+---
+
 AI 生成：https://chatgpt.com/c/680defd7-d154-8010-b666-e18122828983
 
 # 生成式 AI 时代：程序员向 AI 提问高质量问题指南
