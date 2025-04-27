@@ -35,6 +35,15 @@
   }
 }
 
+g.cursor-pointer {
+  cursor: pointer;
+}
+
+g.cursor-pointer:hover rect {
+  /* change background */
+  fill: var(--ifm-color-primary);
+}
+
 .architecture-flow {
   background: white;
   border-radius: 0.75rem;

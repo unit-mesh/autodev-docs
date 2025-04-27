@@ -2,6 +2,7 @@
 title: AI 友好型架构
 description: 构建检索友好与生成式 AI 友好的代码库，实现 10 倍开发效率
 sidebar_position: 1
+full_width: true
 ---
 
 import { useState, useRef } from 'react';
@@ -273,8 +274,7 @@ export const AIFriendlyArchitecture = () => {
 						</div>
 
 						<div className="code-block">
-		              <pre className={'prism-code language-json'}><code>{`
-@RestController
+							<pre className={'prism-code language-java'}><code>{`@RestController
 @RequestMapping("/api")
 public class Ctrl {
     @Autowired
@@ -316,35 +316,36 @@ public class Ctrl {
 						</div>
 
 						<div className="code-block">
-		              <pre>{`@RestController
-		@RequestMapping("/api/users")
-		public class UserController {
-		private final UserService userService;
+							<pre>{`@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    private final UserService userService;
 
-		                  public UserController(UserService userService) {
-		                      this.userService = userService;
-		                  }
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-		                  /**
-		                   * 获取用户信息
-		                   * @param id 用户ID
-		                   * @return 用户信息
-		                   */
-		                  @GetMapping("/{id}")
-		                  public UserResponse getUserById(@PathVariable Long id) {
-		                      return userService.getUserById(id);
-		                  }
+    /**
+     * 获取用户信息
+     * @param id 用户ID
+     * @return 用户信息
+     */
+    @GetMapping("/{id}")
+    public UserResponse getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
 
-		                  /**
-		                   * 创建新用户
-		                   * @param request 用户创建请求
-		                   * @return 创建的用户信息
-		                   */
-		                  @PostMapping
-		                  public UserResponse createUser(@RequestBody CreateUserRequest request) {
-		                      return userService.createUser(request);
-		                  }
-		              }`}</pre>
+    /**
+     * 创建新用户
+     * @param request 用户创建请求
+     * @return 创建的用户信息
+     */
+    @PostMapping
+    public UserResponse createUser(@RequestBody CreateUserRequest request) {
+        return userService.createUser(request);
+    }
+}
+							`}</pre>
 						</div>
 
 						<div className="mt-4 text-green-500">
@@ -392,32 +393,32 @@ public class Ctrl {
 							<div>
 								<h5 className="font-medium mb-2">已有代码</h5>
 								<div className="code-block">
-		                  <pre>{`@RestController
-		@RequestMapping("/blog")
-		public class BlogController {
-		BlogService blogService;
+									<pre>{`@RestController
+@RequestMapping("/blog")
+public class BlogController {
+    BlogService blogService;
 
-		                      public BlogController(BlogService blogService) {
-		                          this.blogService = blogService;
-		                      }
+    public BlogController(BlogService blogService) {
+        this.blogService = blogService;
+    }
 
-		                      @ApiOperation(value = "Get Blog by id")
-		                      @GetMapping("/{id}")
-		                      public BlogPost getBlog(@PathVariable Long id) {
-		                          return blogService.getBlogById(id);
-		                      }
-		                      // delete blog by id`}</pre>
+    @ApiOperation(value = "Get Blog by id")
+    @GetMapping("/{id}")
+    public BlogPost getBlog(@PathVariable Long id) {
+        return blogService.getBlogById(id);
+    }
+    // delete blog by id`}</pre>
 								</div>
 							</div>
 
 							<div>
 								<h5 className="font-medium mb-2">AI 生成的代码</h5>
 								<div className="code-block">
-		                  <pre>{`@ApiOperation(value = "Delete Blog by id")
-		@DeleteMapping("/{id}")
-		public void deleteBlog(@PathVariable Long id) {
-		blogService.deleteBlogById(id);
-		}`}</pre>
+									<pre>{`@ApiOperation(value = "Delete Blog by id")
+@DeleteMapping("/{id}")
+public void deleteBlog(@PathVariable Long id) {
+    blogService.deleteBlogById(id);
+}`}</pre>
 								</div>
 
 								<div className="mt-4 text-green-500">
@@ -519,50 +520,49 @@ public class Ctrl {
 							<div>
 								<h5 className="font-medium mb-2 text-red-500">重构前</h5>
 								<div className="code-block">
-		                  <pre>{`public void prc(List<T> l, int f) {
-		for (int i = 0; i < l.size(); i++) {
-		if (l.get(i).getF() > f) {
-		l.get(i).setS(true);
-		db.sv(l.get(i));
-		} else {
-		l.get(i).setS(false);
-		l.get(i).setR(0);
-		db.sv(l.get(i));
-		}
-		}
-		}`}</pre>
+									<pre>{`public void prc(List<T> l, int f) {
+  for (int i = 0; i < l.size(); i++) {
+    if (l.get(i).getF() > f) {
+      l.get(i).setS(true);
+      db.sv(l.get(i));
+    } else {
+      l.get(i).setS(false);
+      l.get(i).setR(0);
+      db.sv(l.get(i));
+    }
+  }
+}`}</pre>
 								</div>
 							</div>
 
 							<div>
 								<h5 className="font-medium mb-2 text-green-600">重构后</h5>
 								<div className="code-block">
-		                  <pre>{`
-		/**
-		 * 处理项目列表，根据阈值设置状态
-		 * @param items 要处理的项目列表
-		 * @param threshold 状态判断阈值
-		*/
-		public void processItems(List<Item> items, int threshold) {
-			for (Item item : items) {
-				if (item.getFlag() > threshold) {
-					markItemAsSelected(item);
-				} else {
-					markItemAsNotSelected(item);
-				}
-			}
-		}
+									<pre>{`/**
+ * 处理项目列表，根据阈值设置状态
+ * @param items 要处理的项目列表
+ * @param threshold 状态判断阈值
+ */
+public void processItems(List<Item> items, int threshold) {
+  for (Item item : items) {
+    if (item.getFlag() > threshold) {
+      markItemAsSelected(item);
+    } else {
+      markItemAsNotSelected(item);
+    }
+  }
+}
 
-		                  private void markItemAsSelected(Item item) {
-		                  item.setSelected(true);
-		                  database.saveItem(item);
-		                  }
+private void markItemAsSelected(Item item) {
+  item.setSelected(true);
+  database.saveItem(item);
+}
 
-		                  private void markItemAsNotSelected(Item item) {
-		                  item.setSelected(false);
-		                  item.setRank(0);
-		                  database.saveItem(item);
-		                  }`}</pre>
+private void markItemAsNotSelected(Item item) {
+  item.setSelected(false);
+  item.setRank(0);
+  database.saveItem(item);
+}`}</pre>
 								</div>
 							</div>
 						</div>
@@ -570,7 +570,6 @@ public class Ctrl {
 				</div>
 			</div>
 
-			{/* 智能代码检索 */}
 			<div ref={retrievalToolRef} className="mt-12">
 				<div className="section-header">
 					<h2 className="section-title bg-pink-500">智能代码检索</h2>
@@ -872,27 +871,28 @@ public class Ctrl {
 							<h5 className="font-medium mb-2">Project Rule 示例</h5>
 							<div className="code-block">
 		                <pre>{`// Project Rules for AI Code Generation
-		{
-		"naming": {
-		"classes": "PascalCase",
-		"methods": "camelCase",
-		"variables": "camelCase",
-		"constants": "UPPER_SNAKE_CASE"
-		},
-		"architecture": {
-		"layers": ["controller", "service", "repository"],
-		"patterns": ["dependency-injection", "repository-pattern"]
-		},
-		"documentation": {
-		"methods": "required",
-		"classes": "required",
-		"publicApi": "detailed"
-		},
-		"testing": {
-		"coverage": "minimum-80-percent",
-		"unitTests": "required"
-		}
-		}`}</pre>
+{
+  "naming": {
+    "classes": "PascalCase",
+    "methods": "camelCase",
+    "variables": "camelCase",
+    "constants": "UPPER_SNAKE_CASE"
+  },
+  "architecture": {
+    "layers": ["controller", "service", "repository"],
+    "patterns": ["dependency-injection", "repository-pattern"]
+  },
+  "patterns": ["dependency-injection", "repository-pattern"]
+  "documentation": {
+    "methods": "required",
+    "classes": "required",
+    "publicApi": "detailed"
+  },
+  "testing": {
+    "coverage": "minimum-80-percent",
+    "unitTests": "required"
+  }
+}`}</pre>
 							</div>
 						</div>
 					</div>
