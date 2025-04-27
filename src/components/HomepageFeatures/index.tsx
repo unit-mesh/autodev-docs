@@ -24,7 +24,7 @@ function useFeatureList() {
         </>
       ) : (
         <>
-          利用 AutoDev Planner 结合 AI 模型，自动规划与执行复杂的开发任务（编码、测试、构建等），支持手动调整，简化工作流程。
+          结合强大的推理模型，AutoDev Planner 能自动规划与执行复杂的开发任务（编码、测试、构建等），支持手动调整，简化工作流程。
         </>
       ),
       icon: <div className={styles.featureIconBrain} />
