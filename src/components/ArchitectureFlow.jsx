@@ -70,7 +70,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.slate100}
 						/>
 						<text x="680" y="207" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
-							问题/需求精炼
+							问题精炼/定义意图
 						</text>
 					</g>
 
