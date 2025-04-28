@@ -122,6 +122,19 @@ g.cursor-pointer:hover rect {
   padding: .75rem;
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
