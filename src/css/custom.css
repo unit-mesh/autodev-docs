@@ -216,9 +216,9 @@ button {
   border-radius: .75rem;
 }
 
-.theme-doc-markdown menu,
-.theme-doc-markdown ol,
-.theme-doc-markdown ul {
+.aife menu,
+.aife ol,
+.aife ul {
   list-style: none;
   margin: 0;
   padding: 0;
