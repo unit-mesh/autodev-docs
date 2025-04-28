@@ -35,8 +35,11 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							rx="4"
 							fill={colors.purple700}
 						/>
-						<text x="686" y="87" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							领域语言/知识
+						<text x="686" y="80" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							领域语言
+						</text>
+						<text x="686" y="100" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
+							（研发知识工程）
 						</text>
 					</g>
 
@@ -128,8 +131,11 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							rx="4"
 							fill={colors.purple700}
 						/>
-						<text x="420" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							团队编码规范
+						<text x="420" y="442" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							编码规范
+						</text>
+						<text x="420" y="462" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
+							（研发知识工程）
 						</text>
 					</g>
 
@@ -179,8 +185,8 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							rx="4"
 							fill={colors.pink500}
 						/>
-						<text x="1200" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							智能代码检索
+						<text x="1200" y="452" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							语义化代码检索
 						</text>
 					</g>
 
@@ -232,7 +238,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							markerEnd="url(#arrowhead)"
 						/>
 
-						{/* 智能任务规划 到 智能代码检索 */}
+						{/* 智能任务规划 到 语义化代码检索 */}
 						<path
 							d="M1156 232 C1156 300 1200 350 1200 415"
 							stroke="red"
@@ -244,7 +250,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						{/* 面向生成的重构 到 自文档化代码 */}
 						<path d="M850 445 L770 445" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
-						{/* 智能代码检索 到 代码库 */}
+						{/* 语义化代码检索 到 代码库 */}
 						<path
 							d="M1200 475 C1200 520 1000 550 940 570"
 							stroke="red"
