@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const ArchitectureFlow = ({ onClickSection }) => {
 	// 定义颜色常量，与您原始代码中的颜色对应
@@ -24,7 +24,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					{/* 节点 */}
 					{/* 顶部行 */}
 					<g
-						onClick={() => onClickSection('domain-language')}
+						onClick={(e) => onClickSection('domain-language', e)}
 						className="cursor-pointer"
 					>
 						<rect
@@ -58,7 +58,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					</g>
 
 					<g
-						onClick={() => onClickSection('refined-question')}
+						onClick={(e) => onClickSection('refined-question', e)}
 						className="cursor-pointer"
 					>
 						<rect
@@ -75,7 +75,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					</g>
 
 					<g
-						onClick={() => onClickSection('planner')}
+						onClick={(e) => onClickSection('planner', e)}
 						className="cursor-pointer"
 					>
 						<rect
@@ -105,6 +105,23 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						</text>
 					</g>
 
+					<g
+						onClick={(e) => onClickSection('validation', e)}
+						className="cursor-pointer"
+						>
+						<rect
+							x="1340"
+							y="415"
+							width="180"
+							height="60"
+							rx="4"
+							fill={colors.green600}
+						/>
+						<text x="1430" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							AI 驱动的自验证
+						</text>
+					</g>
+
 					<g>
 						<rect
 							x="67"
@@ -120,7 +137,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					</g>
 
 					<g
-						onClick={() => onClickSection('spec-practice')}
+						onClick={(e) => onClickSection('spec-practice', e)}
 						className="cursor-pointer"
 					>
 						<rect
@@ -140,7 +157,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					</g>
 
 					<g
-						onClick={() => onClickSection('semantic-code')}
+						onClick={(e) => onClickSection('semantic-code', e)}
 						className="cursor-pointer"
 					>
 						<rect
@@ -157,7 +174,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					</g>
 
 					<g
-						onClick={() => onClickSection('refactor-tool')}
+						onClick={(e) => onClickSection('refactor-tool', e)}
 						className="cursor-pointer"
 					>
 						<rect
@@ -174,7 +191,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					</g>
 
 					<g
-						onClick={() => onClickSection('retrieval-tool')}
+						onClick={(e) => onClickSection('retrieval-tool', e)}
 						className="cursor-pointer"
 					>
 						<rect
@@ -222,6 +239,9 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 
 						{/* 智能任务规划 到 Action */}
 						<path d="M1246 202 L1340 202" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+
+						{/* Action 到 AI 驱动的自验证 */}
+						<path d="M1430 232 L1430 415" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 代码补全 到 团队编码规范 */}
 						<path d="M247 445 L330 445" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />

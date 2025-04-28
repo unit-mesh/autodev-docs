@@ -19,6 +19,8 @@ export const AIFriendlyArchitecture = () => {
 	const retrievalToolRef = useRef(null);
 	const refinedQuestionRef = useRef(null);
 	const specPracticeRef = useRef(null);
+	const actionRef = useRef(null);
+	const validationRef = useRef(null);
 
 	const scrollToSection = (section) => {
 		setActiveSection(section);
@@ -30,7 +32,9 @@ export const AIFriendlyArchitecture = () => {
 				'refactor-tool': refactorToolRef,
 				'retrieval-tool': retrievalToolRef,
 				'refined-question': refinedQuestionRef,
-				'spec-practice': specPracticeRef
+				'spec-practice': specPracticeRef,
+				'action': actionRef,
+				'validation': validationRef
 			};
 
 			const ref = refs[section];
@@ -912,6 +916,82 @@ prompts/rules/
 `}
 								</CodeBlock>
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div ref={validationRef} className="mt-12">
+				<div className="section-header">
+					<h2 className="section-title bg-green-600">AI 驱动的自验证</h2>
+					<p className="text-slate-600">通过自动化工具确保代码质量和系统可靠性</p>
+				</div>
+				<div className="grid-2">
+					<div className="card">
+						<div className="icon-circle bg-green-600">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"></path>
+								<path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
+								<path d="M12 2v20"></path>
+							</svg>
+						</div>
+						<h3 className="text-xl font-semibold mb-2">自动化验证</h3>
+						<p className="text-slate-600 mb-4">通过自动化手段确认代码或系统是否满足预定标准、规范或要求</p>
+
+						<div className="bg-slate-100 p-4 rounded-lg">
+							<h4 className="font-medium mb-2">验证类型</h4>
+							<ul className="space-y-2">
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>自动化测试：单元测试、集成测试、端到端测试</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>代码质量检查：风格检查、复杂度分析、安全扫描</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>规则检查：业务规则验证、架构约束检查</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>幻觉检测：AI 生成内容的准确性和合理性验证</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div className="card">
+						<div className="icon-circle bg-green-600">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+							</svg>
+						</div>
+						<h3 className="text-xl font-semibold mb-2">持续集成与交付</h3>
+						<p className="text-slate-600 mb-4">在 CI/CD 流水线中集成自动化验证，确保代码质量和系统可靠性</p>
+
+						<div className="bg-slate-100 p-4 rounded-lg">
+							<h4 className="font-medium mb-2">验证流程</h4>
+							<ul className="space-y-2">
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>代码提交前：本地预提交检查</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>构建阶段：编译检查和依赖验证</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>测试阶段：自动化测试套件执行</span>
+								</li>
+								<li className="flex items-start">
+									<span className="text-green-600 mr-2">•</span>
+									<span>部署前：环境配置和兼容性检查</span>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
