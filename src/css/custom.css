@@ -56,10 +56,6 @@ g.cursor-pointer:hover rect {
   overflow: hidden;
 }
 
-.theme-doc-markdown p {
-  margin: 0;
-}
-
 .theme-doc-markdown menu,
 .theme-doc-markdown ol,
 .theme-doc-markdown ul {

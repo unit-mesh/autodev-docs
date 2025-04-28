@@ -1,5 +1,5 @@
 ---
-title: AI 友好型架构
+title: AI 友好架构
 hide_table_of_contents: true
 hide_title: true
 ---
@@ -43,7 +43,7 @@ export const AIFriendlyArchitecture = () => {
 	return (
 		<div className="theme-doc-markdown">
 			<div className="text-center mb-12">
-				<h1 className="gradient-text font-bold mb-4">AI 友好型架构</h1>
+				<h1 className="gradient-text font-bold mb-4">AI 友好架构</h1>
 				<p className="text-center text-lg text-slate-600 mt-2">点击架构图中的任意元素，了解详细信息</p>
 			</div>
 
@@ -136,7 +136,8 @@ export const AIFriendlyArchitecture = () => {
 				<div className="mt-12 bg-purple-50 rounded-lg p-8">
 					<h3 className="text-2xl font-bold mb-4 text-center">领域语言实施步骤</h3>
 					<p className="text-slate-600 text-center p-2">借助生成 AI 生成领域特定语言：
-						<a target={"_blank"} href="https://ide.unitmesh.cc/composer/workspace">AutoDev Workspace</a>
+						<a target={"_blank"} href="https://ide.unitmesh.cc/composer/workspace">AutoDev Workspace</a> 采用 domain.csv 作为
+						人类与 AI 之间的桥梁，帮助 AI 理解领域特定的术语和概念
 					</p>
 
 					<div className="grid-3">
@@ -162,9 +163,7 @@ export const AIFriendlyArchitecture = () => {
 			<div ref={plannerRef} className="mt-12">
 				<div className="section-header">
 					<h2 className="section-title bg-orange-500">智能任务规划</h2>
-					<p className="text-slate-600">将需求转化为可执行任务的智能系统，
-						（详细见：<a target={"_blank"} href="https://ide.unitmesh.cc/composer/planner">AutoDev Planner</a>）
-					</p>
+					<p className="text-slate-600">将需求转化为可执行任务的智能系统</p>
 				</div>
 
 				<div className="card">
@@ -260,9 +259,11 @@ export const AIFriendlyArchitecture = () => {
 					<div className="mt-12 p-6 bg-orange-50 rounded-lg">
 						<h4 className="font-semibold mb-4 text-center">规划与执行的协同工作</h4>
 						<p className="text-slate-700">
-							AutoDev Planner 利用 AI 的能力来理解需求、分析代码库并生成实施计划。它结合了领域语言的知识，
+							AutoDev Planner 利用 AI 的能力来理解需求、分析代码库并生成实施计划，模型按需更新计划。它结合了领域语言的知识，
 							确保生成的计划符合团队的规范和最佳实践。通过这种方式，AutoDev Planner 成为开发人员和 Sketch 编码智能体的桥梁，
 							大大提高了开发效率和代码质量。
+
+							（详细见：<a target={"_blank"} href="https://ide.unitmesh.cc/composer/planner">AutoDev Planner</a>）
 						</p>
 					</div>
 				</div>
@@ -773,8 +774,9 @@ private void markItemAsNotSelected(Item item) {
 					<div className="mt-12 p-6 bg-blue-50 rounded-lg">
 						<h4 className="font-semibold mb-4 text-center">结合 DDD 的问题上下文丰富</h4>
 						<p className="text-slate-700 mb-4">
-							使用统一的领域语言和明确的业务概念，使问题描述更加准确和有意义，详细见：
-							<a target={"_blank"}  href="https://ide.unitmesh.cc/composer/workspace">AutoDev Workspace 术语表</a>
+							使用统一的领域语言和明确的业务概念，使问题描述更加准确和有意义。
+							在 <a target={"_blank"}  href="https://ide.unitmesh.cc/composer/workspace">AutoDev</a> 中，我们通过术语表
+							来优化用户的需求（提示词），转换为包含领域模型的上下文丰富问题。
 						</p>
 
 						<div className="bg-white p-4 rounded-lg">
