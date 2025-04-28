@@ -46,6 +46,10 @@ g.cursor-pointer {
   cursor: pointer;
 }
 
+p.mb-0 {
+  margin-bottom: 0;
+}
+
 g.cursor-pointer:hover rect {
   /* change background */
   fill: var(--ifm-color-primary);
