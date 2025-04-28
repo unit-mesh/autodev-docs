@@ -226,80 +226,208 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 					{/* 顶部行连接 */}
 					<g className="arrows">
 						{/* 统一领域语言 到 需求精炼 */}
-						<path d="M680 112 L680 172" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M686 112 C686 140 686 150 686 172"
+							stroke="black"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-black)"
+							className="flow-path"
+						/>
 
 						{/* 统一领域语言 到 智能任务规划 */}
-						<path d="M786 77 L1066 172" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M786 77 C900 100 1000 150 1066 172"
+							stroke="black"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-black)"
+							className="flow-path"
+						/>
 
 						{/* 问题/任务 到 需求精炼 */}
-						<path d="M247 202 L590 202" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M247 202 C400 202 500 202 590 202"
+							stroke="black"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-black)"
+							className="flow-path"
+						/>
 
 						{/* 需求精炼 到 智能任务规划 */}
-						<path d="M770 202 L1066 202" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M770 202 C850 202 950 202 1066 202"
+							stroke="black"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-black)"
+							className="flow-path"
+						/>
 
 						{/* 智能任务规划 到 Action */}
-						<path d="M1246 202 L1340 202" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M1246 202 C1280 202 1310 202 1340 202"
+							stroke="green"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-green)"
+							className="flow-path"
+						/>
 
 						{/* Action 到 AI 代码自校验 */}
-						<path d="M1430 232 L1430 415" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M1430 232 C1430 300 1430 350 1430 415"
+							stroke="green"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-green)"
+							className="flow-path"
+						/>
 
 						{/* 代码补全 到 团队编码规范 */}
-						<path d="M247 445 L330 445" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M247 445 C280 445 310 445 330 445"
+							stroke="black"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-black)"
+							className="flow-path"
+						/>
 
 						{/* 团队编码规范 到 自文档化代码 */}
-						<path d="M510 445 L590 445" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M510 445 C540 445 570 445 590 445"
+							stroke="black"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-black)"
+							className="flow-path"
+						/>
 
 						{/* 智能任务规划 到 面向生成的重构 */}
 						<path
 							d="M1156 232 C1156 300 1000 350 940 415"
 							stroke="green"
-							strokeWidth="1.5"
+							strokeWidth="2"
 							fill="none"
-							markerEnd="url(#arrowhead)"
+							markerEnd="url(#arrowhead-green)"
+							className="flow-path"
 						/>
 
 						{/* 智能任务规划 到 语义化代码检索 */}
 						<path
 							d="M1156 232 C1156 300 1200 350 1200 415"
 							stroke="red"
-							strokeWidth="1.5"
+							strokeWidth="2"
 							fill="none"
-							markerEnd="url(#arrowhead)"
+							markerEnd="url(#arrowhead-red)"
+							className="flow-path"
 						/>
 
 						{/* 面向生成的重构 到 自文档化代码 */}
-						<path d="M850 445 L770 445" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M850 445 C820 445 790 445 770 445"
+							stroke="green"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-green)"
+							className="flow-path"
+						/>
 
 						{/* 语义化代码检索 到 代码库 */}
 						<path
 							d="M1200 475 C1200 520 1000 550 940 570"
 							stroke="red"
-							strokeWidth="1.5"
+							strokeWidth="2"
 							fill="none"
-							markerEnd="url(#arrowhead)"
+							markerEnd="url(#arrowhead-red)"
+							className="flow-path"
 						/>
 
 						<defs>
-							<marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-								<polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+							{/* Black arrow */}
+							<marker
+								id="arrowhead-black"
+								markerWidth="12"
+								markerHeight="8"
+								refX="10"
+								refY="4"
+								orient="auto"
+							>
+								<path
+									d="M0,0 L10,4 L0,8 L2,4 Z"
+									fill="black"
+									className="arrow-head"
+								/>
 							</marker>
-							<marker id="arrowhead-start" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-								<polygon points="10 0, 0 3.5, 10 7" fill="currentColor" />
+							{/* Green arrow */}
+							<marker
+								id="arrowhead-green"
+								markerWidth="12"
+								markerHeight="8"
+								refX="10"
+								refY="4"
+								orient="auto"
+							>
+								<path
+									d="M0,0 L10,4 L0,8 L2,4 Z"
+									fill="#16a34a"
+									className="arrow-head"
+								/>
+							</marker>
+							{/* Red arrow */}
+							<marker
+								id="arrowhead-red"
+								markerWidth="12"
+								markerHeight="8"
+								refX="10"
+								refY="4"
+								orient="auto"
+							>
+								<path
+									d="M0,0 L10,4 L0,8 L2,4 Z"
+									fill="#ec4899"
+									className="arrow-head"
+								/>
+							</marker>
+							{/* Start markers for bidirectional paths */}
+							<marker
+								id="arrowhead-start-black"
+								markerWidth="12"
+								markerHeight="8"
+								refX="2"
+								refY="4"
+								orient="auto"
+							>
+								<path
+									d="M10,0 L0,4 L10,8 L8,4 Z"
+									fill="black"
+									className="arrow-head"
+								/>
 							</marker>
 						</defs>
 
 						{/* 自文档化代码 与 代码库 的双向关系 */}
 						<path
-							d="M680 475 C680 520 800 550 850 570"
+							d="M680 475 C680 520 800 550 940 570"
 							stroke="black"
-							strokeWidth="1.5"
+							strokeWidth="2"
 							fill="none"
-							markerEnd="url(#arrowhead)"
-							markerStart="url(#arrowhead-start)"
+							markerEnd="url(#arrowhead-black)"
+							markerStart="url(#arrowhead-start-black)"
+							className="flow-path"
 						/>
 
 						{/* 需求精炼 到 自文档化代码 */}
-						<path d="M680 232 L680 415" stroke="black" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
+						<path
+							d="M680 232 C680 300 680 350 680 415"
+							stroke="black"
+							strokeWidth="2"
+							fill="none"
+							markerEnd="url(#arrowhead-black)"
+							className="flow-path"
+						/>
 					</g>
 
 					{/* 图例 */}
