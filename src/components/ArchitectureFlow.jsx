@@ -118,7 +118,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.green600}
 						/>
 						<text x="1430" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							AI 驱动的自验证
+							AI 代码自校验
 						</text>
 					</g>
 
@@ -240,7 +240,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 						{/* 智能任务规划 到 Action */}
 						<path d="M1246 202 L1340 202" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
-						{/* Action 到 AI 驱动的自验证 */}
+						{/* Action 到 AI 代码自校验 */}
 						<path d="M1430 232 L1430 415" stroke="green" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead)" />
 
 						{/* 代码补全 到 团队编码规范 */}
