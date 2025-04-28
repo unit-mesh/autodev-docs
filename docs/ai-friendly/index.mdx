@@ -8,6 +8,7 @@ import { useState, useRef } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import ArchitectureFlow from '../../src/components/ArchitectureFlow';
 import CodeBlock from '@theme/CodeBlock';
+import { Shield, GitCommit, RefreshCw, CheckCircle, AlertTriangle } from "lucide-react"
 
 export const AIFriendlyArchitecture = () => {
 	const [activeSection, setActiveSection] = useState(null);
@@ -926,72 +927,181 @@ prompts/rules/
 					<h2 className="section-title bg-green-600">AI 代码自校验</h2>
 					<p className="text-slate-600">通过自动化工具确保代码质量和系统可靠性</p>
 				</div>
-				<div className="grid-2">
-					<div className="card">
-						<div className="icon-circle bg-green-600">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-							     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-								<path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"></path>
-								<path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
-								<path d="M12 2v20"></path>
-							</svg>
-						</div>
-						<h3 className="text-xl font-semibold mb-2">自动化验证</h3>
-						<p className="text-slate-600 mb-4">通过自动化手段确认代码或系统是否满足预定标准、规范或要求</p>
+				<div className="container mx-auto px-4">
+					<div className="text-center mb-12">
+						<h2 className="text-3xl md:text-4xl font-bold mb-4">AI 代码自校验</h2>
+						<div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+						<p className="text-slate-600 max-w-3xl mx-auto">
+							通过自动化工具确保 AI 生成代码的质量和系统可靠性，实现快速小步迭代
+						</p>
+					</div>
 
-						<div className="bg-slate-100 p-4 rounded-lg">
-							<h4 className="font-medium mb-2">验证类型</h4>
-							<ul className="space-y-2">
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>自动化测试：单元测试、集成测试、端到端测试</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>代码质量检查：风格检查、复杂度分析、安全扫描</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>规则检查：业务规则验证、架构约束检查</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>幻觉检测：AI 生成内容的准确性和合理性验证</span>
-								</li>
-							</ul>
+					<div className="grid md:grid-cols-2 gap-8">
+						<div className="bg-white rounded-xl shadow-lg p-6 border border-slate-100">
+							<div className="bg-blue-600 icon-circle text-white">
+								<Shield className="h-6 w-6" />
+							</div>
+							<h3 className="text-xl font-semibold mb-4">验证技术</h3>
+
+							<div className="space-y-4">
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">形式化验证</h4>
+									<p className="text-slate-600 text-sm">使用数学证明验证代码是否符合形式规约，特别适用于安全关键系统</p>
+								</div>
+
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">自动化测试</h4>
+									<p className="text-slate-600 text-sm">单元测试、属性测试、变异测试、模糊测试等，验证功能正确性和鲁棒性</p>
+								</div>
+
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">静态分析</h4>
+									<p className="text-slate-600 text-sm">在不执行代码的情况下分析源代码，查找缺陷、漏洞和风格问题</p>
+								</div>
+
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">动态分析</h4>
+									<p className="text-slate-600 text-sm">在代码执行期间测试其行为，包括性能和运行时错误检测</p>
+								</div>
+							</div>
+						</div>
+
+						<div className="bg-white rounded-xl shadow-lg p-6 border border-slate-100">
+							<div className="bg-blue-600 icon-circle text-white">
+								<GitCommit className="h-6 w-6" />
+							</div>
+							<h3 className="text-xl font-semibold mb-4">快速小步迭代</h3>
+
+							<div className="space-y-4">
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">小步提交</h4>
+									<p className="text-slate-600 text-sm">将大型任务拆分为小的、可独立验证的改动，频繁提交，便于追踪和回滚</p>
+									<div className="mt-2 flex items-center text-sm text-green-600">
+										<CheckCircle className="h-4 w-4 mr-1" />
+										<span>每次提交专注于单一功能或修复</span>
+									</div>
+								</div>
+
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">小步校验</h4>
+									<p className="text-slate-600 text-sm">每个小步骤后立即进行自动化验证，及早发现并修复问题</p>
+									<div className="mt-2 flex items-center text-sm text-green-600">
+										<CheckCircle className="h-4 w-4 mr-1" />
+										<span>IDE 实时检查 + CI/CD 流水线自动验证</span>
+									</div>
+								</div>
+
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">快速反馈</h4>
+									<p className="text-slate-600 text-sm">构建快速反馈循环，验证结果立即可见，指导下一步开发</p>
+									<div className="mt-2 flex items-center text-sm text-green-600">
+										<CheckCircle className="h-4 w-4 mr-1" />
+										<span>缩短从编码到验证的时间间隔</span>
+									</div>
+								</div>
+
+								<div className="bg-slate-50 p-4 rounded-lg">
+									<h4 className="font-medium text-blue-700 mb-2">便捷回滚</h4>
+									<p className="text-slate-600 text-sm">小步迭代使回滚更加精确和简单，降低修复成本</p>
+									<div className="mt-2 flex items-center text-sm text-green-600">
+										<CheckCircle className="h-4 w-4 mr-1" />
+										<span>问题隔离在小范围内，易于定位和修复</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<div className="card">
-						<div className="icon-circle bg-green-600">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-							     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-								<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-							</svg>
+					<div className="mt-12 bg-white rounded-xl shadow-lg p-6">
+						<div className="flex items-center mb-6">
+							<div className="bg-blue-600 icon-circle text-white">
+								<RefreshCw className="h-6 w-6" />
+							</div>
+							<h3 className="text-xl font-semibold">自校验流程</h3>
 						</div>
-						<h3 className="text-xl font-semibold mb-2">持续集成与交付</h3>
-						<p className="text-slate-600 mb-4">在 CI/CD 流水线中集成自动化验证，确保代码质量和系统可靠性</p>
 
-						<div className="bg-slate-100 p-4 rounded-lg">
-							<h4 className="font-medium mb-2">验证流程</h4>
-							<ul className="space-y-2">
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>代码提交前：本地预提交检查</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>构建阶段：编译检查和依赖验证</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>测试阶段：自动化测试套件执行</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-green-600 mr-2">•</span>
-									<span>部署前：环境配置和兼容性检查</span>
-								</li>
-							</ul>
+						<div className="grid md:grid-cols-3 gap-6">
+							<div className="bg-slate-50 p-4 rounded-lg">
+								<h4 className="font-medium mb-2 text-blue-700">1. 代码生成</h4>
+								<p className="text-slate-600 text-sm mb-3">AI 根据提示生成初始代码，可能包含潜在问题</p>
+								<div className="flex items-center text-amber-600 text-sm">
+									<AlertTriangle className="h-4 w-4 mr-1" />
+									<span>AI 生成代码可能存在质量和安全隐患</span>
+								</div>
+							</div>
+
+							<div className="bg-slate-50 p-4 rounded-lg">
+								<h4 className="font-medium mb-2 text-blue-700">2. 自动验证</h4>
+								<p className="text-slate-600 text-sm mb-3">应用多层次验证技术，检查功能正确性、安全性、代码风格等</p>
+								<div className="flex items-center text-blue-600 text-sm">
+									<Shield className="h-4 w-4 mr-1" />
+									<span>多种验证工具协同工作，形成纵深防御</span>
+								</div>
+							</div>
+
+							<div className="bg-slate-50 p-4 rounded-lg">
+								<h4 className="font-medium mb-2 text-blue-700">3. 修复与优化</h4>
+								<p className="text-slate-600 text-sm mb-3">基于验证结果，修复问题并优化代码，可能利用 AI 辅助修复</p>
+								<div className="flex items-center text-green-600 text-sm">
+									<CheckCircle className="h-4 w-4 mr-1" />
+									<span>小步修复，每次聚焦单一问题</span>
+								</div>
+							</div>
+						</div>
+
+						<div className="mt-8 p-4 bg-blue-50 rounded-lg text-center">
+							<p className="text-blue-700 font-medium">
+								AI 代码自校验不仅是一种技术，更是一种开发理念，强调通过自动化验证和小步迭代来确保 AI 生成代码的质量和可靠性
+							</p>
+						</div>
+					</div>
+
+					<div className="mt-8 bg-white rounded-xl shadow-lg p-6">
+						<h3 className="text-xl font-semibold mb-6 text-center">小步迭代的优势</h3>
+						<div className="grid md:grid-cols-2 gap-6">
+							<div className="flex items-start">
+								<div className="bg-green-100 icon-circle text-white">
+									<CheckCircle className="h-5 w-5" />
+								</div>
+								<div>
+									<h4 className="font-medium mb-1">降低风险</h4>
+									<p className="text-slate-600 text-sm">
+										小步骤意味着每次变更的风险范围有限，即使出现问题，影响也被控制在最小范围内
+									</p>
+								</div>
+							</div>
+
+							<div className="flex items-start">
+								<div className="bg-green-100 text-green-600 p-2 rounded-full mr-3 flex-shrink-0">
+									<CheckCircle className="h-5 w-5" />
+								</div>
+								<div>
+									<h4 className="font-medium mb-1">提高可追溯性</h4>
+									<p className="text-slate-600 text-sm">清晰记录每个小步骤的目的和变更，便于理解代码演化历史和决策原因</p>
+								</div>
+							</div>
+
+							<div className="flex items-start">
+								<div className="bg-green-100 text-green-600 p-2 rounded-full mr-3 flex-shrink-0">
+									<CheckCircle className="h-5 w-5" />
+								</div>
+								<div>
+									<h4 className="font-medium mb-1">加速反馈</h4>
+									<p className="text-slate-600 text-sm">快速获得验证结果，及早发现并解决问题，避免问题累积和复合</p>
+								</div>
+							</div>
+
+							<div className="flex items-start">
+								<div className="bg-green-100 text-green-600 p-2 rounded-full mr-3 flex-shrink-0">
+									<CheckCircle className="h-5 w-5" />
+								</div>
+								<div>
+									<h4 className="font-medium mb-1">简化调试</h4>
+									<p className="text-slate-600 text-sm">
+										当问题出现时，更容易定位到具体的小步骤，缩小排查范围，加速问题解决
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
