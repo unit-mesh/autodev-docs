@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { CheckCircle2 } from "lucide-react"
 
 const implementationSteps = [
@@ -78,7 +77,7 @@ export default function ImplementationGuide() {
           ))}
         </div>
 
-        <motion.div
+        <div
           key={activeStep}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,7 +96,7 @@ export default function ImplementationGuide() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         <div className="mt-12 text-center">
           <button className="bg-purple-700 hover:bg-purple-800 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-colors">
@@ -107,4 +106,4 @@ export default function ImplementationGuide() {
       </div>
     </section>
   )
-} 
+}
