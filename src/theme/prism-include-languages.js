@@ -28,6 +28,4 @@ export default function prismIncludeLanguages (PrismObject) {
 	if (typeof PrismBefore !== 'undefined') {
 		globalThis.Prism = PrismObject
 	}
-
-	console.log(PrismObject)
 }
