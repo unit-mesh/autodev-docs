@@ -60,7 +60,7 @@ export default function ImplementationGuide() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">实施指南</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">AI 友好架构实施指南</h2>
         <p className="text-slate-600 text-center max-w-3xl mx-auto mb-12">在组织中实施 AI 友好型架构的分步骤方法</p>
 
         <div className="grid md:grid-cols-5 gap-4 mb-8">
@@ -100,7 +100,7 @@ export default function ImplementationGuide() {
 
         <div className="mt-12 text-center">
           <button className="bg-purple-700 hover:bg-purple-800 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-colors">
-            下载完整实施指南
+            下载完整 AI 编程实施指南
           </button>
         </div>
       </div>

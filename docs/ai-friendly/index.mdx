@@ -336,6 +336,10 @@ public class UserController {
 
     /**
      * 获取用户信息
+     * @requires id != null && id > 0
+     * @ensures 返回的UserResponse不为null，且包含id对应用户的完整信息
+     * @invariant 所有用户ID在系统中唯一
+     *
      * @param id 用户ID
      * @return 用户信息
      */
@@ -507,12 +511,7 @@ public class UserController {
 								<h5 className="font-medium mb-2 text-green-600">重构后</h5>
 								<div className="code-block">
 									<CodeBlock language="java" title="重构后代码示例">
-										{`/**
- * 处理项目列表，根据阈值设置状态
- * @param items 要处理的项目列表
- * @param threshold 状态判断阈值
- */
-public void processItems(List<Item> items, int threshold) {
+										{`public void processItems(List<Item> items, int threshold) {
   for (Item item : items) {
     if (item.getFlag() > threshold) {
       markItemAsSelected(item);
@@ -969,7 +968,9 @@ prompts/rules/
 					</div>
 				</div>
 
-				<ImplementationGuide />
+				<div className="mt-8">
+					<ImplementationGuide />
+				</div>
 			</div>
 		</div>
 	);
