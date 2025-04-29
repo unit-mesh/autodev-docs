@@ -244,6 +244,79 @@ function Community() {
   );
 }
 
+function AIFriendlyArchitecture() {
+  const { i18n: { currentLocale } } = useDocusaurusContext();
+  const isEnglish = currentLocale === 'en';
+
+  return (
+    <section className={styles.architectureSection}>
+      <div className="container">
+        <div className={styles.architectureHeader}>
+          <Heading as="h2">{isEnglish ? 'AI-Friendly Architecture' : 'AI 友好架构'}</Heading>
+          <p>{isEnglish ? 'A four-tier approach to effective AI collaboration in development' : '一个面向高效 AI 协作开发的方法'}</p>
+        </div>
+
+        <div className={styles.architectureTiers}>
+          <div className={`${styles.tier} ${styles.tier1}`}>
+            <div className={styles.tierNumber}>1</div>
+            <div className={styles.tierContent}>
+              <Heading as="h3">{isEnglish ? 'Foundational Knowledge & Structure' : '基础规范与知识结构层'}</Heading>
+              <p>
+                {isEnglish
+                  ? 'Creates clear domain models and well-structured code that both humans and AI can understand. This layer focuses on meaningful naming, self-documenting code, and knowledge engineering to build a solid foundation for AI collaboration.'
+                  : '构建清晰的领域模型和结构良好的代码，使人类和AI都能理解。关注有意义的命名、自文档化代码和知识工程，为AI协作奠定坚实基础。'}
+              </p>
+            </div>
+          </div>
+
+          <div className={`${styles.tier} ${styles.tier2}`}>
+            <div className={styles.tierNumber}>2</div>
+            <div className={styles.tierContent}>
+              <Heading as="h3">{isEnglish ? 'Contextualized Interaction' : '交互情境化层'}</Heading>
+              <p>
+                {isEnglish
+                  ? 'Enhances AI understanding by providing rich, relevant context at key interaction points. Uses techniques like RAG and Tool Memory to inject project-specific knowledge, precise requirements, and historical information when needed.'
+                  : '在关键交互点为AI提供丰富、相关的上下文信息，增强其理解能力。通过 RAG 和 Tool Memory等技术，在需要时注入项目特定知识、精确需求和历史信息。'}
+              </p>
+            </div>
+          </div>
+
+          <div className={`${styles.tier} ${styles.tier3}`}>
+            <div className={styles.tierNumber}>3</div>
+            <div className={styles.tierContent}>
+              <Heading as="h3">{isEnglish ? 'Guided Generation & Validation' : '引导生成与验证层'}</Heading>
+              <p>
+                {isEnglish
+                  ? 'Enables AI to generate high-quality code based on layers 1 and 2, while enforcing rigorous Validation-First Development (VFD). Combines automated tests, static analysis, and human review to ensure reliability and security.'
+                  : 'AI 基于前两层生成高质量代码，同时强制执行严格的验证优先开发(VFD)流程。结合自动化测试、静态分析和人工审查，确保可靠性和安全性。'}
+              </p>
+            </div>
+          </div>
+
+          <div className={`${styles.tier} ${styles.tier4}`}>
+            <div className={styles.tierNumber}>4</div>
+            <div className={styles.tierContent}>
+              <Heading as="h3">{isEnglish ? 'Continuous Improvement Feedback Loop' : '持续改进反馈层'}</Heading>
+              <p>
+                {isEnglish
+                  ? 'Validation results feed back to optimize prompts, update knowledge bases, and trigger code improvements. This closed-loop ensures AI assistance evolves with your project and team.'
+                  : '将验证结果反馈用于优化提示词、更新知识库和触发代码改进。这种闭环确保AI辅助能力随着项目和团队一起演进。'}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.architectureLearnMore}>
+          <Link to="/ai-friendly">
+            {isEnglish ? 'Learn More About AI-Friendly Architecture' : '了解更多 AI 友好架构'}
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.25 8.75-5.5 5.5-5.5-5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomepageFeatures(): ReactNode {
   const featureList = useFeatureList();
 
@@ -258,6 +331,7 @@ export default function HomepageFeatures(): ReactNode {
           </div>
         </div>
       </section>
+      <AIFriendlyArchitecture />
       <QuickLinks />
       <ComparisonTable />
       <Community />
