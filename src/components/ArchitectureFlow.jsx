@@ -86,11 +86,11 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							rx="4"
 							fill={colors.orange500}
 						/>
-						<text x="1156" y="207" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							基于项目知识与规范
+						<text x="1156" y="197" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							知识导向任务规划
 						</text>
-						<text x="1156" y="227" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
-							的智能生成
+						<text x="1156" y="217" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
+							(基于知识与规范的内容生成)
 						</text>
 					</g>
 
@@ -104,7 +104,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.green600}
 						/>
 						<text x="1430" y="207" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							Action
+							Actions
 						</text>
 					</g>
 
@@ -192,7 +192,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.green600}
 						/>
 						<text x="940" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							面向AI理解的代码重构
+							面向 AI 理解的重构
 						</text>
 					</g>
 
@@ -287,7 +287,6 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							stroke="green"
 							strokeWidth="2"
 							fill="none"
-							markerEnd="url(#arrowhead-green)"
 							className="flow-path"
 						/>
 
