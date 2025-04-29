@@ -189,6 +189,7 @@ const sidebars = {
 	],
 	friendlySidebar: [
 		'ai-friendly/index',
+		'ai-friendly-codebase',
 		{
 			type: 'category',
 			label: 'AI-Friendly Question',
