@@ -36,10 +36,10 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.purple700}
 						/>
 						<text x="686" y="80" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							领域语言
+							领域知识丰富上下文
 						</text>
 						<text x="686" y="100" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
-							（研发知识工程）
+							与问题定义
 						</text>
 					</g>
 
@@ -70,7 +70,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.slate100}
 						/>
 						<text x="680" y="207" textAnchor="middle" fill="black" fontSize="18" fontWeight="500">
-							问题精炼/定义意图
+							问题精炼与意图定义
 						</text>
 					</g>
 
@@ -87,7 +87,10 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.orange500}
 						/>
 						<text x="1156" y="207" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							智能任务规划
+							基于项目知识与规范
+						</text>
+						<text x="1156" y="227" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
+							的智能生成
 						</text>
 					</g>
 
@@ -118,7 +121,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.green600}
 						/>
 						<text x="1430" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							AI 代码自校验
+							验证优先开发(VFD)
 						</text>
 					</g>
 
@@ -168,8 +171,11 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							rx="4"
 							fill={colors.purple400}
 						/>
-						<text x="680" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							自文档化代码
+						<text x="680" y="442" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
+							自文档化代码增强
+						</text>
+						<text x="680" y="462" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
+							语义化表达
 						</text>
 					</g>
 
@@ -186,7 +192,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.green600}
 						/>
 						<text x="940" y="450" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							面向生成的重构
+							面向AI理解的代码重构
 						</text>
 					</g>
 

@@ -67,18 +67,19 @@ export const AIFriendlyArchitecture = () => {
 		<div className="aife">
 			<div className="text-center mb-12">
 				<h1 className="gradient-text font-bold mb-4">AI 友好架构</h1>
-				<p className="text-center text-lg text-slate-600 mt-2">点击架构图中的任意元素，了解详细信息</p>
+				<p className="text-center text-lg text-slate-600 mt-2">创建既便于人类协作，又能被AI高效理解、分析、生成和持续演进的代码资产与系统环境</p>
 			</div>
 
 			<div className="mb-4">
 				<ArchitectureFlow onClickSection={scrollToSection}/>
+				<p className="text-center text-lg text-slate-600 mt-2">点击架构图中的任意元素，了解详细信息</p>
 			</div>
 
 			{/* 领域语言（研发知识工程） */}
 			<div ref={domainLanguageRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-purple-700">领域语言（研发知识工程）</h2>
-					<p className="text-slate-600">构建统一的语言，使团队和 AI 都能理解的标准术语</p>
+					<h2 className="section-title bg-purple-700">领域知识丰富上下文与问题定义</h2>
+					<p className="text-slate-600">通过领域驱动设计原则，将业务领域知识结构化，为AI提供更丰富、精确的上下文信息</p>
 				</div>
 
 				<div className="grid-2">
@@ -175,8 +176,8 @@ export const AIFriendlyArchitecture = () => {
 			{/* 智能任务规划 */}
 			<div ref={plannerRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-orange-500">智能任务规划</h2>
-					<p className="text-slate-600">将需求转化为可执行任务的智能系统</p>
+					<h2 className="section-title bg-orange-500">基于项目知识与规范的智能生成</h2>
+					<p className="text-slate-600">使用Project Rule和Agent Memories等机制，预先定义项目上下文信息，让AI遵循项目规范</p>
 				</div>
 
 				<div className="card">
@@ -262,8 +263,8 @@ export const AIFriendlyArchitecture = () => {
 			{/* 自文档化代码 */}
 			<div ref={semanticCodeRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-purple-400">自文档化代码</h2>
-					<p className="text-slate-600">自文档化的代码，具有明确的命名约定和结构</p>
+					<h2 className="section-title bg-purple-400">自文档化代码增强语义化表达</h2>
+					<p className="text-slate-600">通过语义化命名、结构化设计与契约式编程，使代码本身成为最准确的"文档"</p>
 				</div>
 
 				<div className="grid-2">
@@ -437,8 +438,8 @@ public void deleteBlog(@PathVariable Long id) {
 			{/* 面向生成的重构 */}
 			<div ref={refactorToolRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-green-600">面向生成的重构</h2>
-					<p className="text-slate-600">面向更快生成的代码重构，提高代码质量和AI理解能力</p>
+					<h2 className="section-title bg-green-600">面向AI理解的代码重构</h2>
+					<p className="text-slate-600">应用提炼函数、提炼类等经典重构技术，降低代码复杂度，使AI更易理解代码结构与业务逻辑</p>
 				</div>
 
 				<div className="card">
@@ -565,6 +566,7 @@ private void markItemAsNotSelected(Item item) {
 				</div>
 			</div>
 
+			{/* 语义化代码检索 */}
 			<div ref={retrievalToolRef} className="mt-12">
 				<div className="section-header">
 					<h2 className="section-title bg-pink-500">语义化代码检索</h2>
@@ -666,8 +668,8 @@ private void markItemAsNotSelected(Item item) {
 			{/* 问题精炼/定义意图 */}
 			<div ref={refinedQuestionRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-slate-100 text-slate-800">问题精炼/定义意图</h2>
-					<p className="text-slate-600">将模糊的需求转化为明确、结构化的问题，提高 AI 理解能力</p>
+					<h2 className="section-title bg-slate-100 text-slate-800">问题精炼与意图定义</h2>
+					<p className="text-slate-600">将模糊的需求结构化并丰富上下文，转化为明确、准确的问题提示词</p>
 				</div>
 
 				<div className="card">
@@ -757,6 +759,7 @@ private void markItemAsNotSelected(Item item) {
 				</div>
 			</div>
 
+			{/* 团队编码规范 */}
 			<div ref={specPracticeRef} className="mt-12">
 				<div className="section-header">
 					<h2 className="section-title bg-purple-700">团队编码规范</h2>
@@ -863,14 +866,13 @@ prompts/rules/
 				</div>
 			</div>
 
+			{/* AI 代码自校验 */}
 			<div ref={validationRef} className="mt-12">
 				<div className="section-header">
-					<h2 className="section-title bg-green-600">AI 代码自校验</h2>
-					<p className="text-slate-600">通过自动化工具确保代码质量和系统可靠性。
-						在 AutoDev Composer 中，我们通过 Lint、测试运行等方式来检查代码质量。同时通过 &nbsp;
-						<a href="/composer/observer" target={"_blank"}>Observer</a> 模式来监控和分析过程中的问题，诸如构建失败和测试失败。
-					</p>
+					<h2 className="section-title bg-green-600">验证优先开发(VFD)</h2>
+					<p className="text-slate-600">以"生成-审查-测试-优化"为核心循环，严格验证AI生成代码，应对不确定性与幻觉，保障软件质量</p>
 				</div>
+				
 				<div className="container mx-auto px-4">
 					<div className="grid md:grid-cols-2 gap-8">
 						<div className="bg-white rounded-xl shadow-lg p-6 border border-slate-100">
