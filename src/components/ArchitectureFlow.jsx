@@ -39,7 +39,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							领域知识丰富上下文
 						</text>
 						<text x="686" y="100" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
-							与问题定义
+							（研发知识工程）
 						</text>
 					</g>
 
@@ -152,7 +152,7 @@ export const ArchitectureFlow = ({ onClickSection }) => {
 							fill={colors.purple700}
 						/>
 						<text x="420" y="442" textAnchor="middle" fill="white" fontSize="18" fontWeight="500">
-							编码规范
+							团队编码规范
 						</text>
 						<text x="420" y="462" textAnchor="middle" fill="white" fontSize="12" fontWeight="500">
 							（研发知识工程）

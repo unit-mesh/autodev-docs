@@ -381,55 +381,29 @@ public class UserController {
 					</div>
 				</div>
 
-				<div className="mt-12 card">
-					<h3 className="text-2xl font-bold mb-6 text-center">基于上下文的 AI 代码生成</h3>
-					<p className="text-slate-600 text-center mb-8">龙生龙，凤生凤 - 好的代码会让 AI 生成更好的代码</p>
+				<div className="mt-8 bg-blue-50 rounded-lg p-8">
+					<h3 className="text-2xl font-bold mb-6 text-center">适应于 AI 理解的编程范式</h3>
 
-					<div className="bg-slate-100 p-6 rounded-lg">
-						<h4 className="font-semibold mb-4">示例：添加删除博客接口</h4>
+					<div className="grid-3">
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-blue-700">利用类型系统</h4>
+							<p className="text-slate-600">
+								在静态强类型语言（Java, C#, TypeScript）中，明确的类型注解提供了关于数据结构、函数签名和预期数据流的强形式化信息，AI 可利用这些信息生成类型安全且符合接口的代码
+							</p>
+						</div>
 
-						<div className="grid-2">
-							<div>
-								<h5 className="font-medium mb-2">已有代码</h5>
-								<div className="code-block">
-									<CodeBlock language="java" title="已有代码示例">
-										{`@RestController
-@RequestMapping("/blog")
-public class BlogController {
-    BlogService blogService;
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-blue-700">契约式设计 (DbC)</h4>
+							<p className="text-slate-600">
+								通过嵌入形式化的前置条件 (requires)、后置条件 (ensures) 和不变量 (invariant)，精确描述组件的责任和期望行为
+							</p>
+						</div>
 
-    public BlogController(BlogService blogService) {
-        this.blogService = blogService;
-    }
-
-    @ApiOperation(value = "Get Blog by id")
-    @GetMapping("/{id}")
-    public BlogPost getBlog(@PathVariable Long id) {
-        return blogService.getBlogById(id);
-    }
-    // delete blog by id`}
-									</CodeBlock>
-								</div>
-							</div>
-
-							<div>
-								<h5 className="font-medium mb-2">AI 生成的代码</h5>
-								<div className="code-block">
-									<CodeBlock language="java" title="AI 生成的代码示例">
-										{`@ApiOperation(value = "Delete Blog by id")
-@DeleteMapping("/{id}")
-public void deleteBlog(@PathVariable Long id) {
-    blogService.deleteBlogById(id);
-}`}
-									</CodeBlock>
-
-									<div className="text-green-600">
-										<p className="text-sm">✓ 遵循已有的命名规范</p>
-										<p className="text-sm">✓ 添加了适当的注解</p>
-										<p className="text-sm">✓ 保持了一致的代码风格</p>
-									</div>
-								</div>
-							</div>
+						<div className="bg-white p-5 rounded-lg shadow">
+							<h4 className="font-semibold mb-3 text-blue-700">函数式编程原则</h4>
+							<p className="text-slate-600">
+								采用纯函数（无副作用，输入相同则输出相同），不可变性（避免状态修改），以及高阶函数与组合（模块化和声明式风格），使代码更易于 AI 理解结构和意图
+							</p>
 						</div>
 					</div>
 				</div>
@@ -505,7 +479,7 @@ public void deleteBlog(@PathVariable Long id) {
 						</div>
 					</div>
 
-					<div className="mt-12 p-6 bg-green-50 rounded-lg">
+					<div className="mt-4 bg-green-50 rounded-lg">
 						<h4 className="font-semibold mb-4 text-center">重构前后对比</h4>
 
 						<div className="grid-2">
