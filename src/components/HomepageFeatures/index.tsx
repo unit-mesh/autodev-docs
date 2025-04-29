@@ -64,11 +64,10 @@ function useFeatureList() {
 
 function Feature({title, description, icon, image, index}: FeatureItem & { index: number }) {
   return (
-    <div className={clsx('col col--12')}>
-      <div className={styles.featureCard} data-index={index}>
-        <img src={image} alt={title} className={styles.featureImage} />
-        <div className={styles.featureContent}>
-          {icon && <div className={styles.featureIcon}>{icon}</div>}
+    <div className="col col--4">
+      <div className={styles.featureCardVertical}>
+        <img src={image} alt={title} className={styles.featureImageVertical} />
+        <div className={styles.featureContentVertical}>
           <Heading as="h3">{title}</Heading>
           <p>{description}</p>
         </div>
@@ -77,7 +76,6 @@ function Feature({title, description, icon, image, index}: FeatureItem & { index
   );
 }
 
-// Quick links section
 function QuickLinks() {
   const { i18n: { currentLocale } } = useDocusaurusContext();
   const isEnglish = currentLocale === 'en';
@@ -206,7 +204,6 @@ function ComparisonTable() {
   );
 }
 
-// Community section
 function Community() {
   const { i18n: { currentLocale } } = useDocusaurusContext();
   const isEnglish = currentLocale === 'en';
@@ -252,7 +249,9 @@ function AIFriendlyArchitecture() {
     <section className={styles.architectureSection}>
       <div className="container">
         <div className={styles.architectureHeader}>
-          <Heading as="h2">{isEnglish ? 'AI-Friendly Architecture' : 'AI 友好架构'}</Heading>
+          <Heading as="h2" className={styles.architectureTitle}>
+            {isEnglish ? 'AI-Friendly Architecture' : 'AI 友好架构'}
+          </Heading>
           <p>{isEnglish ? 'A four-tier approach to effective AI collaboration in development' : '一个面向高效 AI 协作开发的方法'}</p>
         </div>
 

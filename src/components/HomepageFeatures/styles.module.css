@@ -148,6 +148,17 @@
     margin-bottom: 2.5rem;
 }
 
+.architectureTitle {
+    font-size: 2.75rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
 .architectureTiers {
     display: flex;
     flex-direction: column;
@@ -263,7 +274,7 @@
     .tier {
         flex-direction: column;
     }
-    
+
     .tierNumber {
         margin-right: 0;
         margin-bottom: 1rem;
@@ -394,4 +405,53 @@
 
 .communityCard p {
     margin-bottom: 1.5rem;
+}
+
+.featureCardVertical {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--ifm-color-white);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+}
+
+.featureImageVertical {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.featureContentVertical {
+    padding: 1rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.featureContentVertical h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--ifm-color-emphasis-900);
+}
+
+.featureContentVertical p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ifm-color-emphasis-700);
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 996px) {
+    .col.col--4 {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .featureImageVertical {
+        height: 180px;
+    }
 }
