@@ -42,23 +42,21 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 									</tspan>
 								</text>
 								{/* Clickable Low Code Area */}
-								<g onClick={() => handleSectionClick('low-code')} style={clickableStyle}>
-									<rect id="Rectangle-lowcode" stroke="#FFA500" fillOpacity="0.2" fill="#FFA500" fillRule="nonzero"
-									      x="380" y="61" width="100" height="40" rx="5"></rect>
-									<text id="低代码系统-label" fill="#FFA500" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14"
-									      fontWeight="normal">
-										<tspan x="395" y="87">低代码系统</tspan>
-									</text>
-								</g>
-								{/* Clickable AI Templates Area */}
-								<g onClick={() => handleSectionClick('ai-templates')} style={clickableStyle}>
-									<rect id="Rectangle-aitemplate" stroke="#800080" fillOpacity="0.2" fill="#800080" fillRule="nonzero"
-									      x="380" y="10" width="100" height="40" rx="5"></rect>
-									<text id="AI模板应用-label" fill="#800080" fontFamily="Helvetica" fontSize="14" fontWeight="normal">
-										<tspan x="395" y="35">AI</tspan>
-										<tspan x="408.227539" y="35" fontFamily="PingFangSC-Regular, PingFang SC">模板应用</tspan>
-									</text>
-								</g>
+              <g onClick={() => handleSectionClick('low-code')} style={clickableStyle}>
+                <rect id="Rectangle-lowcode" stroke="#FFA500" fillOpacity="0.2" fill="#FFA500" fillRule="nonzero" x="340" y="45" width="140" height="60" rx="5"></rect>
+                <text id="低代码系统-label" fill="#FFA500" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
+                    <tspan x="355" y="75">低代码系统</tspan>
+                    <tspan x="355" y="95">via 组件库</tspan>
+                </text>
+              </g>
+              {/* Clickable AI Templates Area */}
+              <g onClick={() => handleSectionClick('ai-templates')} style={clickableStyle}>
+                <rect id="Rectangle-aitemplate" stroke="#800080" fillOpacity="0.2" fill="#800080" fillRule="nonzero" x="340" y="5" width="140" height="60" rx="5"></rect>
+                <text id="AI模板应用-label" fill="#800080" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
+                    <tspan x="355" y="30">AI 赋能的</tspan>
+                    <tspan x="355" y="50">模板应用</tspan>
+                </text>
+              </g>
 							</g>
 
 							{/* Arrow 1 */}
@@ -90,14 +88,13 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 									<tspan x="161.124023" y="99" fontFamily="PingFangSC-Regular, PingFang SC">任务协同</tspan>
 								</text>
 								{/* Clickable Knowledge Hub Area */}
-								<g onClick={() => handleSectionClick('knowledge-hub')} style={clickableStyle}>
-									<rect id="Rectangle-knowledgehub" stroke="#008000" fillOpacity="0.2" fill="#008000" fillRule="nonzero"
-									      x="380" y="40" width="100" height="40" rx="5"></rect>
-									<text id="知识中枢-label" fill="#008000" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14"
-									      fontWeight="normal">
-										<tspan x="402" y="66">知识中枢</tspan>
-									</text>
-								</g>
+              <g onClick={() => handleSectionClick('knowledge-hub')} style={clickableStyle}>
+                <rect id="Rectangle-knowledgehub" stroke="#008000" fillOpacity="0.2" fill="#008000" fillRule="nonzero" x="340" y="35" width="140" height="60" rx="5"></rect>
+                <text id="知识中枢-label" fill="#008000" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
+                    <tspan x="355" y="60">知识中枢</tspan>
+                    <tspan x="355" y="80">与团队 AI</tspan>
+                </text>
+              </g>
 							</g>
 
 							{/* Arrow 2 */}
@@ -127,15 +124,13 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 									</tspan>
 								</text>
 								{/* Clickable Platform API Area */}
-								<g onClick={() => handleSectionClick('standard-api')} style={clickableStyle}>
-									<rect id="Rectangle-platformapi" stroke="#0000FF" fillOpacity="0.2" fill="#0000FF" fillRule="nonzero"
-									      x="380" y="40" width="100" height="40" rx="5"></rect>
-									<text id="平台-API-label" fill="#0000FF" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14"
-									      fontWeight="normal">
-										<tspan x="403" y="66">平台</tspan>
-										<tspan x="431" y="66" fontFamily="Helvetica"> API</tspan>
-									</text>
-								</g>
+              <g onClick={() => handleSectionClick('standard-api')} style={clickableStyle}>
+                <rect id="Rectangle-platformapi" stroke="#0000FF" fillOpacity="0.2" fill="#0000FF" fillRule="nonzero" x="340" y="35" width="140" height="60" rx="5"></rect>
+                <text id="平台-API-label" fill="#0000FF" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
+                    <tspan x="355" y="60">标准化智能</tspan>
+                    <tspan x="355" y="80">API</tspan>
+                </text>
+              </g>
 							</g>
 						</g>
 
@@ -157,28 +152,26 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 									<tspan x="8.55175781" y="14" fontFamily="PingFangSC-Regular, PingFang SC">集中治理策略</tspan>
 								</text>
 								<text id="--权限管理" fill="#000000" fontFamily="Helvetica" fontSize="14" fontWeight="normal">
-									<tspan x="0" y="54">-</tspan>
+									<tspan x="0" y="54">- </tspan>
 									<tspan x="8.55175781" y="54" fontFamily="PingFangSC-Regular, PingFang SC">权限管理</tspan>
 								</text>
 								<text id="--上下文注入" fill="#000000" fontFamily="Helvetica" fontSize="14" fontWeight="normal">
-									<tspan x="0" y="94">-</tspan>
+									<tspan x="0" y="94">- </tspan>
 									<tspan x="8.55175781" y="94" fontFamily="PingFangSC-Regular, PingFang SC">上下文注入</tspan>
 								</text>
 								<text id="--统一审计" fill="#000000" fontFamily="Helvetica" fontSize="14" fontWeight="normal">
-									<tspan x="0" y="134">-</tspan>
+									<tspan x="0" y="134">- </tspan>
 									<tspan x="8.55175781" y="134" fontFamily="PingFangSC-Regular, PingFang SC">统一审计</tspan>
 								</text>
 								<text id="--资源编排" fill="#000000" fontFamily="Helvetica" fontSize="14" fontWeight="normal">
-									<tspan x="0" y="174">-</tspan>
+									<tspan x="0" y="174">- </tspan>
 									<tspan x="8.55175781" y="174" fontFamily="PingFangSC-Regular, PingFang SC">资源编排</tspan>
 								</text>
 								{/* Clickable Governance Hub Area */}
 								<g onClick={() => handleSectionClick('idp-governance')} style={clickableStyle}>
-									<rect id="Rectangle-governancehub" stroke="#4B0082" fillOpacity="0.2" fill="#4B0082"
-									      fillRule="nonzero" x="28" y="323" width="148" height="40" rx="5"></rect>
-									<text id="治理中枢-label" fill="#4B0082" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14"
-									      fontWeight="normal">
-										<tspan x="74" y="348">治理中枢</tspan>
+									<rect id="Rectangle-governancehub" stroke="#4B0082" fillOpacity="0.2" fill="#4B0082" fillRule="nonzero" x="8" y="323" width="188" height="60" rx="5"></rect>
+									<text id="治理中枢-label" fill="#4B0082" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
+										<tspan x="25" y="353">IDP 作为 AI 代理治理中枢</tspan>
 									</text>
 								</g>
 							</g>
@@ -192,10 +185,9 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 							      strokeDasharray="5,5"></line>
 							<line x1="500" y1="420" x2="550" y2="420" id="Connector-3" stroke="#FFD700" strokeWidth="2"
 							      strokeDasharray="5,5"></line>
-							{/* Adjusted y1/y2 for better alignment */}
 						</g>
-					</g>
 				</g>
+        </g>
 			</svg>
 		</div>
 	)
