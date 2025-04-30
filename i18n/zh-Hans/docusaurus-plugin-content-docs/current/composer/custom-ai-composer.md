@@ -11,6 +11,15 @@ nav_order: 1
 
 由于 LLM 的上下文限制，会影响到工具调用，进而影响 Sketch 的稳定性。Sketch 并不支持直接调用 MCP，需要间接调用。
 
+### Sketch 中使用 MCP：使用提示词覆盖加入 MCP
+
+1. 在 Bridge 中默认是开启 MCP 的，你可以打开聊天窗口中，获取当前的 MCP 工具示例，再加入到 Sketch 的 MCP 工具中
+2. 在 `prompt/code/sketch.vm` 中加入 MCP 工具的提示词（在 $context.toolList 后加入即可）
+
+```vtl
+$context.toolList
+```
+
 ### Sketch 中使用 MCP：手动使用 Command
 
 在 AutoDev 中，使用的 MCP Tools 会都转换成 MCP Tools。即你可以通过输入 `/` 来触发自动补全，从中选择你的 MCP 工具 
