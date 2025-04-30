@@ -81,6 +81,7 @@ const sidebars = {
 			],
 		},
 		'customize/prompt-override',
+		'composer/custom-ai-composer',
 		{
 			type: 'category',
 			label: 'Team Prompts',

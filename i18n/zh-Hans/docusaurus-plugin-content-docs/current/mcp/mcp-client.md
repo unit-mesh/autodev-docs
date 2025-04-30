@@ -65,7 +65,7 @@ Python + UV 示例：
 }
 ```
 
-### MCP 作为 DevIns 指令使用
+## MCP 作为 DevIns 指令使用
 
 在 AutoDev 中，MCP 工具会被转换为 DevIns 指令。例如 `read_multiple_files` 工具会被转换为：
 
@@ -87,7 +87,7 @@ Python + UV 示例：
 
 随后 Sketch 和 Bridge 智能体就可以在 DevIns 指令中使用该工具。
 
-### 借助本地智能体生成调用
+## 借助本地智能体生成调用
 
 在 AutoDev 2.1.0 版本中，您可以使用[本地智能体](/local-agent)来调用 MCP 工具。
 
@@ -134,16 +134,16 @@ You can use tools by writing a "<devin>" inside markdown code-block like the fol
 
     <devin>
     /FUNCTION_NAME
-    ```json
+    \```json
     { "$PARAMETER_NAME": "$PARAMETER_VALUE" }
-    ```
+    \```
 
 String and scalar parameters should be specified as is, while lists and objects should use JSON format.
 
 User's question: $input
 ```
 
-### 测试 MCP 服务器
+## 测试 MCP 服务器
 
 新建 `sample.devin` 文件并添加以下内容：
 
