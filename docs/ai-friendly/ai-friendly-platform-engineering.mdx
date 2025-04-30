@@ -1,0 +1,795 @@
+---
+title: 平台工程赋能 AI 编程
+hide_table_of_contents: true
+hide_title: true
+---
+
+import { useState, useRef } from 'react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import {
+  Shield,
+  GitCommit,
+  RefreshCw,
+  CheckCircle,
+  AlertTriangle,
+  FileText,
+  MessageSquare,
+  BrainCircuit,
+  ArrowLeftRight,
+  Search,
+  Database,
+  HelpCircle,
+  Settings,
+  Code,
+  Box,
+  Boxes,
+  CloudCog,
+  Cpu,
+  Network,
+  LayoutGrid,
+  Lock,
+  Users,
+  Workflow,
+  LibrarySquare,
+  Wrench,
+  Zap
+} from "lucide-react";
+
+export const PlatformEngFlow = ({ onClickSection }) => {
+  return (
+    <div className="platform-flow-placeholder bg-slate-100 p-8 rounded-lg text-center border-2 border-dashed border-slate-300">
+      <div className="grid grid-cols-5 gap-4">
+        <div onClick={() => onClickSection('standard-api')} className="flow-item bg-blue-100 p-4 rounded-lg cursor-pointer hover:bg-blue-200">
+          <Cpu className="h-8 w-8 mx-auto mb-2 text-blue-600" />
+          <p className="font-medium">标准化平台 API</p>
+        </div>
+        <div onClick={() => onClickSection('knowledge-hub')} className="flow-item bg-green-100 p-4 rounded-lg cursor-pointer hover:bg-green-200">
+          <Database className="h-8 w-8 mx-auto mb-2 text-green-600" />
+          <p className="font-medium">知识中枢与团队 AI</p>
+        </div>
+        <div onClick={() => onClickSection('ai-templates')} className="flow-item bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200">
+          <Code className="h-8 w-8 mx-auto mb-2 text-purple-600" />
+          <p className="font-medium">AI 赋能的模板应用</p>
+        </div>
+        <div onClick={() => onClickSection('low-code')} className="flow-item bg-orange-100 p-4 rounded-lg cursor-pointer hover:bg-orange-200">
+          <LayoutGrid className="h-8 w-8 mx-auto mb-2 text-orange-600" />
+          <p className="font-medium">低代码系统</p>
+        </div>
+        <div onClick={() => onClickSection('idp-governance')} className="flow-item bg-indigo-100 p-4 rounded-lg cursor-pointer hover:bg-indigo-200">
+          <CloudCog className="h-8 w-8 mx-auto mb-2 text-indigo-600" />
+          <p className="font-medium">IDP 作为 AI 代理治理中枢</p>
+        </div>
+      </div>
+      <div className="mt-4 flex justify-center">
+        <Workflow className="h-10 w-10 text-slate-500" />
+      </div>
+    </div>
+  );
+};
+
+export const PlatformEngineering = () => {
+  const [activeSection, setActiveSection] = useState(null);
+
+  const standardApiRef = useRef(null);
+  const knowledgeHubRef = useRef(null);
+  const aiTemplatesRef = useRef(null);
+  const lowCodeRef = useRef(null);
+  const idpGovernanceRef = useRef(null);
+
+  const scrollToSection = (section) => {
+    setActiveSection(section);
+    setTimeout(() => {
+      const refs = {
+        'standard-api': standardApiRef,
+        'knowledge-hub': knowledgeHubRef,
+        'ai-templates': aiTemplatesRef,
+        'low-code': lowCodeRef,
+        'idp-governance': idpGovernanceRef
+      };
+
+      const ref = refs[section];
+      if (ref && ref.current) {
+        ref.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
+  return (
+    <div className="platform-engineering">
+      <div className="text-center mb-12">
+        <h1 className="gradient-text font-bold mb-4">平台工程赋能 AI 编程</h1>
+        <p className="text-center text-lg text-slate-600 mt-2">构建智能基础设施，提供上下文，使 AI 工具成为开发者最有力的同行者</p>
+      </div>
+
+      <div className="mb-8">
+        <PlatformEngFlow onClickSection={scrollToSection}/>
+        <p className="text-center text-lg text-slate-600 mt-2">点击流程图中的任意元素，了解详细信息</p>
+      </div>
+
+      {/* 1. 标准化平台 API */}
+      <div ref={standardApiRef} className="mt-12">
+        <div className="section-header">
+          <h2 className="section-title bg-blue-600">标准化平台 API</h2>
+          <p className="text-slate-600">通过标准 API 集成 AI 能力，扩展现有工具生态系统并保持一致的开发体验</p>
+        </div>
+
+        <div className="grid-2">
+          <div className="card">
+            <div className="icon-circle bg-blue-600">
+              <Cpu className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">核心特点</h3>
+            <p className="text-slate-600 mb-4">标准化 API 提供一致的接口，使 AI 能力与开发工具无缝集成</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">优势</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>降低工具切换成本，提高开发者工作流连贯性</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>简化 AI 能力的接入与维护</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>基于现有权限模型进行访问控制</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>支持特定任务自动化</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="icon-circle bg-blue-600">
+              <Network className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">实现案例</h3>
+            <p className="text-slate-600 mb-4">知名平台如何通过 API 扩展 AI 能力</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">案例研究</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2 font-semibold">→</span>
+                  <div>
+                    <span className="font-medium">GitHub Copilot Extensions</span>
+                    <p className="text-sm text-slate-600">通过标准化 API 连接代码库、问题跟踪和项目管理，增强 AI 上下文理解</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2 font-semibold">→</span>
+                  <div>
+                    <span className="font-medium">Cline MCP</span>
+                    <p className="text-sm text-slate-600">使用命令行接口统一访问多种开发工具和服务，简化工作流</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 p-6 bg-blue-50 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4 text-center">实施复杂度与关键因素</h3>
+
+          <div className="grid-3">
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-blue-600">中等实施复杂性</h4>
+              <p className="text-slate-600">需要开发和维护 API 集成，但可以基于已有工具和权限模型</p>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-blue-600">上下文质量</h4>
+              <p className="text-slate-600">API 驱动的上下文范围受限于 API 定义和权限，质量依赖 API 设计</p>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-blue-600">主要适用场景</h4>
+              <p className="text-slate-600">
+                扩展现有 AI 助手功能；集成特定工具或数据源；实现特定任务自动化
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 bg-white p-4 rounded-lg border border-blue-100">
+            <h4 className="font-medium mb-3 text-center">实施路径</h4>
+            <ol className="space-y-2 ml-6 list-decimal">
+              <li className="text-slate-700">识别核心开发工具和流程，寻找 AI 集成机会</li>
+              <li className="text-slate-700">设计标准化 API 格式，确保一致性和可扩展性</li>
+              <li className="text-slate-700">通过插件或扩展架构实现集成</li>
+              <li className="text-slate-700">确保访问控制和安全措施</li>
+              <li className="text-slate-700">提供开发者文档和示例，促进采用</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. 知识中枢与团队 AI */}
+      <div ref={knowledgeHubRef} className="mt-12">
+        <div className="section-header">
+          <h2 className="section-title bg-green-600">知识中枢与团队 AI</h2>
+          <p className="text-slate-600">构建企业知识库，将团队经验和专业知识作为 AI 助手的上下文基础</p>
+        </div>
+
+        <div className="grid-2">
+          <div className="card">
+            <div className="icon-circle bg-green-600">
+              <Database className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">知识中枢模式</h3>
+            <p className="text-slate-600 mb-4">集中管理和访问团队知识，为 AI 工具提供高质量上下文</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">知识获取方式</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">•</span>
+                  <span><strong>显式知识注入</strong>：文档、链接、项目数据、架构图等</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">•</span>
+                  <span><strong>隐式知识收集</strong>：遥测数据、系统日志、团队互动等</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">•</span>
+                  <span><strong>知识结构化</strong>：标签、关系图谱和语义索引</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="icon-circle bg-green-600">
+              <Users className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">团队协作优势</h3>
+            <p className="text-slate-600 mb-4">基于团队知识的 AI 助手带来的协作价值</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">关键价值点</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <div>
+                    <span className="font-medium">知识民主化</span>
+                    <p className="text-sm text-slate-600">消除信息孤岛，让所有团队成员平等获取专家知识</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <div>
+                    <span className="font-medium">减少重复解答</span>
+                    <p className="text-sm text-slate-600">常见问题由 AI 回答，专家可专注于更有价值的工作</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <div>
+                    <span className="font-medium">基于历史数据的洞察</span>
+                    <p className="text-sm text-slate-600">AI 可分析历史数据发现模式和优化机会</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 p-6 bg-green-50 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4 text-center">实施案例与应用场景</h3>
+
+          <div className="grid-3">
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-green-600">Taskade</h4>
+              <p className="text-slate-600">团队知识库与 AI 助手集成，支持跨项目知识检索和任务管理自动化</p>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-green-600">Kubiya</h4>
+              <p className="text-slate-600">DevOps 知识中枢，结合 OPA 策略进行受控的 DevOps 操作自动化</p>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-green-600">Observability AI</h4>
+              <p className="text-slate-600">基于监控和日志数据的 AI 分析，提供系统异常检测和根因分析</p>
+            </div>
+          </div>
+
+          <div className="mt-6 bg-white p-4 rounded-lg border border-green-100">
+            <h4 className="font-medium mb-3 text-center">实施关键点</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <h5 className="font-medium text-green-600">实施复杂性：中到高</h5>
+                <ul className="space-y-1 text-sm text-slate-700 ml-4 list-disc">
+                  <li>需要构建和维护知识库</li>
+                  <li>集成多个复杂系统</li>
+                  <li>设计知识更新和验证流程</li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-medium text-green-600">治理能力：中到高</h5>
+                <ul className="space-y-1 text-sm text-slate-700 ml-4 list-disc">
+                  <li>平台提供访问控制和审计</li>
+                  <li>支持基于政策的访问</li>
+                  <li>知识质量控制流程</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. AI 赋能的模板应用 */}
+      <div ref={aiTemplatesRef} className="mt-12">
+        <div className="section-header">
+          <h2 className="section-title bg-purple-600">AI 赋能的模板应用</h2>
+          <p className="text-slate-600">使用智能模板快速生成应用骨架，加速项目启动和标准化</p>
+        </div>
+
+        <div className="grid-2">
+          <div className="card">
+            <div className="icon-circle bg-purple-600">
+              <Box className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">快速原型构建</h3>
+            <p className="text-slate-600 mb-4">通过 AI 辅助模板生成，缩短从创意到可用原型的时间</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">核心优势</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>低门槛：无需深入技术知识即可创建基础应用</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>高效率：减少样板代码编写，专注业务逻辑</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>标准化：生成符合最佳实践的基础架构</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>易于定制：模板作为起点，支持进一步开发</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="icon-circle bg-purple-600">
+              <Zap className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">实施简单度</h3>
+            <p className="text-slate-600 mb-4">相比其他平台工程方法，模板应用方案实施门槛最低</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">实施要点</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">1.</span>
+                  <div>
+                    <span className="font-medium">主要依赖提示工程</span>
+                    <p className="text-sm text-slate-600">通过精心设计的提示词指导 AI 生成合适的模板</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">2.</span>
+                  <div>
+                    <span className="font-medium">模板市场或库</span>
+                    <p className="text-sm text-slate-600">建立组织内通用模板库，便于复用和标准化</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">3.</span>
+                  <div>
+                    <span className="font-medium">引导式界面</span>
+                    <p className="text-sm text-slate-600">通过简单问答引导用户定义需求，降低使用门槛</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 bg-purple-50 rounded-lg p-6">
+          <h3 className="text-xl font-semibold mb-4 text-center">案例展示</h3>
+
+          <div className="grid-2">
+            <div className="bg-white p-5 rounded-lg shadow">
+              <div className="flex items-start">
+                <div className="bg-purple-100 p-2 rounded-lg mr-3">
+                  <LibrarySquare className="h-5 w-5 text-purple-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2 text-purple-600">Lovable</h4>
+                  <p className="text-slate-600 text-sm">通过自然语言描述生成 React 应用，自动创建组件、页面和路由</p>
+                  <div className="mt-2 p-2 bg-slate-50 rounded-lg text-xs">
+                    <p className="font-medium">示例提示：</p>
+                    <p className="text-slate-700">"创建一个电子商务网站，包含产品列表、购物车和结账流程，使用现代设计风格"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <div className="flex items-start">
+                <div className="bg-purple-100 p-2 rounded-lg mr-3">
+                  <Code className="h-5 w-5 text-purple-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2 text-purple-600">Bolt.new</h4>
+                  <p className="text-slate-600 text-sm">基于描述生成全栈应用框架，支持多种技术栈和部署选项</p>
+                  <div className="mt-2 p-2 bg-slate-50 rounded-lg text-xs">
+                    <p className="font-medium">示例提示：</p>
+                    <p className="text-slate-700">"创建一个团队任务管理应用，包含用户认证、任务分配和进度追踪功能，使用 MERN 技术栈"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 bg-white p-4 rounded-lg border border-purple-100">
+            <div className="flex items-center justify-center space-x-8 text-center">
+              <div>
+                <h4 className="font-medium text-purple-600 mb-1">实施复杂性</h4>
+                <div className="flex items-center justify-center">
+                  <span className="text-lg font-bold text-green-600">低</span>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-purple-600 mb-1">治理能力</h4>
+                <div className="flex items-center justify-center">
+                  <span className="text-lg font-bold text-amber-500">低</span>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-purple-600 mb-1">开发体验影响</h4>
+                <div className="flex items-center justify-center">
+                  <span className="text-lg font-bold text-green-600">良好</span>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-purple-600 mb-1">可扩展性</h4>
+                <div className="flex items-center justify-center">
+                  <span className="text-lg font-bold text-amber-500">低</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. 低代码系统 via 组件库 */}
+      <div ref={lowCodeRef} className="mt-12">
+        <div className="section-header">
+          <h2 className="section-title bg-orange-500">低代码系统 via 组件库</h2>
+          <p className="text-slate-600">结合设计系统和 AI，通过可视化界面快速构建应用前端</p>
+        </div>
+
+        <div className="grid-2">
+          <div className="card">
+            <div className="icon-circle bg-orange-500">
+              <LayoutGrid className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">设计驱动开发</h3>
+            <p className="text-slate-600 mb-4">从设计稿直接生成生产级代码，缩短设计到实现的周期</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">工作流程优势</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2">•</span>
+                  <span>设计师与开发者协作效率提升</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2">•</span>
+                  <span>减少设计还原偏差</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2">•</span>
+                  <span>基于组件库保持 UI 一致性</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2">•</span>
+                  <span>缩短前端开发周期</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="icon-circle bg-orange-500">
+              <Boxes className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">组件库驱动 AI</h3>
+            <p className="text-slate-600 mb-4">使用组件库作为 AI 代码生成的约束，确保输出符合设计系统</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">技术实现</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">设计稿解析</span>
+                    <p className="text-sm text-slate-600">AI 分析设计文件，识别布局、组件和样式</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">组件匹配</span>
+                    <p className="text-sm text-slate-600">将设计元素映射到组件库中的标准组件</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">代码生成</span>
+                    <p className="text-sm text-slate-600">生成符合组件库规范的可维护代码</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 p-6 bg-orange-50 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4 text-center">实施案例</h3>
+
+          <div className="bg-white p-5 rounded-lg shadow mb-6">
+            <div className="flex items-start">
+              <div className="bg-orange-100 p-2 rounded-lg mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 57" className="h-5 w-5">
+                  <path d="M19 28.5a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19z" fill="#ff7262"/>
+                  <path d="M19 28.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19z" fill="#0acf83"/>
+                  <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#1abcfe"/>
+                  <path d="M38 47.5A9.5 9.5 0 0 1 28.5 57H19v-9.5a9.5 9.5 0 0 1 9.5-9.5 9.5 9.5 0 0 1 9.5 9.5z" fill="#f24e1e"/>
+                  <path d="M0 28.5A9.5 9.5 0 0 1 9.5 19H19v19H9.5A9.5 9.5 0 0 1 0 28.5z" fill="#a259ff"/>
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2 text-orange-600">Figma + AI 代码生成</h4>
+                <p className="text-slate-600">从 Figma 设计稿直接生成基于组件库的前端代码，保持一致的视觉语言</p>
+                <div className="mt-3">
+                  <p className="font-medium text-sm">工作流程：</p>
+                  <ol className="ml-5 text-sm list-decimal text-slate-700">
+                    <li>设计师在 Figma 中创建 UI 设计</li>
+                    <li>使用 AI 插件分析设计并映射到组件库</li>
+                    <li>生成基于组件的代码（React, Vue 等）</li>
+                    <li>开发者审查和集成生成的代码</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-4 rounded-lg border border-orange-100">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-medium text-orange-600 mb-2">优势</h4>
+                <ul className="space-y-1 text-sm ml-4 list-disc">
+                  <li className="text-green-600">实施复杂度低到中等</li>
+                  <li className="text-green-600">显著改善设计与开发协作</li>
+                  <li className="text-green-600">加速 UI 开发周期</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-medium text-orange-600 mb-2">限制</h4>
+                <ul className="space-y-1 text-sm ml-4 list-disc">
+                  <li className="text-red-500">主要适用于前端开发</li>
+                  <li className="text-red-500">对代码逻辑上下文感知有限</li>
+                  <li className="text-red-500">需要完善的设计系统和组件库</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 5. IDP 作为 AI 代理治理中枢 */}
+      <div ref={idpGovernanceRef} className="mt-12">
+        <div className="section-header">
+          <h2 className="section-title bg-indigo-600">IDP 作为 AI 代理治理中枢</h2>
+          <p className="text-slate-600">将 AI 能力与内部开发平台深度集成，提供统一的治理框架和上下文管理</p>
+        </div>
+
+        <div className="grid-2">
+          <div className="card">
+            <div className="icon-circle bg-indigo-600">
+              <CloudCog className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">全面的上下文感知</h3>
+            <p className="text-slate-600 mb-4">IDP 作为核心上下文源，提供高质量、结构化的 AI 决策依据</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">上下文来源</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2">•</span>
+                  <span>软件目录与服务映射</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2">•</span>
+                  <span>团队与项目结构数据</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2">•</span>
+                  <span>组织标准与配置策略</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2">•</span>
+                  <span>技术栈与依赖关系</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2">•</span>
+                  <span>开发工作流与流程定义</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="icon-circle bg-indigo-600">
+              <Lock className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">强大的治理能力</h3>
+            <p className="text-slate-600 mb-4">提供集成的权限控制、策略执行和审计机制</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">治理机制</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">集成的 RBAC</span>
+                    <p className="text-sm text-slate-600">基于角色的访问控制，确保适当的 AI 功能访问权限</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">策略即代码</span>
+                    <p className="text-sm text-slate-600">定义和执行 AI 代理行为的组织策略和约束</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-indigo-600 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">全面审计</span>
+                    <p className="text-sm text-slate-600">记录 AI 活动，支持合规要求和持续改进</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 p-6 bg-indigo-50 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4 text-center">集成式架构优势</h3>
+
+          <div className="grid-3">
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-indigo-600">统一开发体验</h4>
+              <p className="text-slate-600">
+                提供一致的入口点和体验，减少切换成本和认知负荷，让 AI 工具成为开发流程的自然延伸
+              </p>
+              <div className="mt-2 flex items-center text-green-600 text-sm">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                <span>极大提升开发者体验</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-indigo-600">AI 代理编排</h4>
+              <p className="text-slate-600">
+                协调多个专业 AI 代理，形成工作流，解决复杂问题，每个代理专注于特定任务
+              </p>
+              <div className="mt-2 flex items-center text-green-600 text-sm">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                <span>处理复杂系统挑战</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-3 text-indigo-600">标准化 AI 接口</h4>
+              <p className="text-slate-600">
+                为内部工具和服务提供标准化 AI 接口，通过 IDP 作为中间层统一治理和集中管理
+              </p>
+              <div className="mt-2 flex items-center text-green-600 text-sm">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                <span>高度可扩展性</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 bg-white p-4 rounded-lg border border-indigo-100">
+            <h5 className="font-medium mb-3 text-center">实施考量</h5>
+            <div className="flex justify-between">
+              <div className="text-center px-4">
+                <div className="bg-red-100 text-red-600 rounded-full px-3 py-1 mb-1 inline-block text-sm font-medium">
+                  高实施复杂性
+                </div>
+                <p className="text-xs text-slate-600">需要成熟的 IDP 和平台工程实践</p>
+              </div>
+              <div className="text-center px-4">
+                <div className="bg-green-100 text-green-600 rounded-full px-3 py-1 mb-1 inline-block text-sm font-medium">
+                  高治理能力
+                </div>
+                <p className="text-xs text-slate-600">提供集成的安全控制和策略执行</p>
+              </div>
+              <div className="text-center px-4">
+                <div className="bg-green-100 text-green-600 rounded-full px-3 py-1 mb-1 inline-block text-sm font-medium">
+                  高可扩展性
+                </div>
+                <p className="text-xs text-slate-600">设计用于组织范围内扩展和演进</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-12 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg text-center">
+        <h2 className="text-2xl font-bold mb-4">平台工程模式选择指南</h2>
+        <p className="text-slate-700 mb-6">根据组织成熟度、资源和需求选择合适的平台工程模式</p>
+
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white rounded-lg overflow-hidden">
+            <thead className="bg-slate-100">
+              <tr>
+                <th className="py-2 px-4 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">适用场景</th>
+                <th className="py-2 px-4 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">推荐模式</th>
+                <th className="py-2 px-4 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">起点建议</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200">
+              <tr>
+                <td className="py-3 px-4 text-sm text-slate-700">初创企业或小型团队</td>
+                <td className="py-3 px-4 text-sm text-slate-700">
+                  <span className="font-medium text-purple-600">AI 赋能的模板应用</span>
+                </td>
+                <td className="py-3 px-4 text-sm text-slate-700">使用现有服务如 Bolt.new 或构建简单模板库</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 text-sm text-slate-700">设计与开发协作优化</td>
+                <td className="py-3 px-4 text-sm text-slate-700">
+                  <span className="font-medium text-orange-600">低代码系统 via 组件库</span>
+                </td>
+                <td className="py-3 px-4 text-sm text-slate-700">采用设计系统，投资 Figma 插件或类似工具</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 text-sm text-slate-700">知识密集型团队</td>
+                <td className="py-3 px-4 text-sm text-slate-700">
+                  <span className="font-medium text-green-600">知识中枢与团队 AI</span>
+                </td>
+                <td className="py-3 px-4 text-sm text-slate-700">从文档化开始，建立基本知识库和检索机制</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 text-sm text-slate-700">大型组织或复杂系统</td>
+                <td className="py-3 px-4 text-sm text-slate-700">
+                  <span className="font-medium text-indigo-600">IDP 作为 AI 代理治理中枢</span>
+                </td>
+                <td className="py-3 px-4 text-sm text-slate-700">从基础 IDP 功能开始，逐步集成 AI 能力</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 text-sm text-slate-700">扩展现有工具生态</td>
+                <td className="py-3 px-4 text-sm text-slate-700">
+                  <span className="font-medium text-blue-600">标准化平台 API</span>
+                </td>
+                <td className="py-3 px-4 text-sm text-slate-700">识别关键工具流程，实现点对点集成</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+<BrowserOnly>
+  {() => <PlatformEngineering />}
+</BrowserOnly>
