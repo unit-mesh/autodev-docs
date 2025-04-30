@@ -41,17 +41,15 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 									<tspan x="61.9033203" y="95" fontFamily="PingFangSC-Regular, PingFang SC">赋能模板应用，终端用户产品
 									</tspan>
 								</text>
-								{/* Clickable Low Code Area */}
               <g onClick={() => handleSectionClick('low-code')} style={clickableStyle}>
-                <rect id="Rectangle-lowcode" stroke="#FFA500" fillOpacity="0.2" fill="#FFA500" fillRule="nonzero" x="340" y="45" width="140" height="60" rx="5"></rect>
+                <rect id="Rectangle-lowcode" stroke="#FFA500" fillOpacity="0.2" fill="#FFA500" fillRule="nonzero" x="340" y="62" width="140" height="54" rx="5"></rect>
                 <text id="低代码系统-label" fill="#FFA500" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
-                    <tspan x="355" y="75">低代码系统</tspan>
-                    <tspan x="355" y="95">via 组件库</tspan>
+                    <tspan x="355" y="85">低代码系统</tspan>
+                    <tspan x="355" y="105">via 组件库</tspan>
                 </text>
               </g>
-              {/* Clickable AI Templates Area */}
               <g onClick={() => handleSectionClick('ai-templates')} style={clickableStyle}>
-                <rect id="Rectangle-aitemplate" stroke="#800080" fillOpacity="0.2" fill="#800080" fillRule="nonzero" x="340" y="5" width="140" height="60" rx="5"></rect>
+                <rect id="Rectangle-aitemplate" stroke="#800080" fillOpacity="0.2" fill="#800080" fillRule="nonzero" x="340" y="4" width="140" height="54" rx="5"></rect>
                 <text id="AI模板应用-label" fill="#800080" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
                     <tspan x="355" y="30">AI 赋能的</tspan>
                     <tspan x="355" y="50">模板应用</tspan>
