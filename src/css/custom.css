@@ -378,6 +378,11 @@ button {
   color: rgb(249 115 22 / var(--tw-text-opacity, 1));
 }
 
+.bg-green-50 {
+  --tw-bg-opacity: 1;
+  background-color: #f0fdf4;
+}
+
 .bg-green-600 {
   background-color: #16a34a;
   color: white;
@@ -440,6 +445,11 @@ button {
 
 .text-slate-600 {
   color: #475569;
+}
+
+.border-indigo-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(99 102 241 / var(--tw-border-opacity, 1));
 }
 
 .text-center {
