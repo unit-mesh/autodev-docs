@@ -55,7 +55,7 @@ export const PlatformEngineering = () => {
     <div className="platform-engineering">
       <div className="text-center mb-12">
         <h1 className="gradient-text font-bold mb-4">AI 友好架构：平台工程赋能 AI 编程</h1>
-        <p className="text-center text-lg text-slate-600 mt-2">构建智能基础设施，提供上下文，使 AI 工具成为开发者最有力的同行者</p>
+        <p className="text-center text-lg text-slate-600 mt-2">构建智能基础设施，提供上下文，使 AI 工具成为开发者最有力的 Copilot</p>
       </div>
 
       <div className="mb-8">
@@ -65,14 +65,14 @@ export const PlatformEngineering = () => {
       {/* 1. 标准化智能 API */}
       <div ref={standardApiRef} className="mt-12">
         <div className="section-header">
-          <h2 className="section-title bg-blue-600">标准化智能 API</h2>
+          <h2 className="section-title bg-blue-600 text-white">标准化“智能 API”</h2>
           <p className="text-slate-600">通过标准 API 集成 AI 能力，扩展现有工具生态系统并保持一致的开发体验</p>
         </div>
 
         <div className="grid-2">
           <div className="card">
             <div className="icon-circle bg-blue-600">
-              <Cpu className="h-6 w-6" />
+              <Cpu className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-xl font-semibold mb-2">核心特点</h3>
             <p className="text-slate-600 mb-4">标准化 API 提供一致的接口，使 AI 能力与开发工具无缝集成</p>
@@ -102,7 +102,7 @@ export const PlatformEngineering = () => {
 
           <div className="card">
             <div className="icon-circle bg-blue-600">
-              <Network className="h-6 w-6" />
+              <Network className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-xl font-semibold mb-2">实现案例</h3>
             <p className="text-slate-600 mb-4">知名平台如何通过 API 扩展 AI 能力</p>
@@ -134,25 +134,25 @@ export const PlatformEngineering = () => {
 
           <div className="grid-3">
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-blue-600">中等实施复杂性</h4>
+              <h4 className="font-semibold mb-2 text-blue-600">中等实施复杂性</h4>
               <p className="text-slate-600">需要开发和维护 API 集成，但可以基于已有工具和权限模型</p>
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-blue-600">上下文质量</h4>
+              <h4 className="font-semibold mb-2 text-blue-600">上下文质量</h4>
               <p className="text-slate-600">API 驱动的上下文范围受限于 API 定义和权限，质量依赖 API 设计</p>
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-blue-600">主要适用场景</h4>
+              <h4 className="font-semibold mb-2 text-blue-600">主要适用场景</h4>
               <p className="text-slate-600">
                 扩展现有 AI 助手功能；集成特定工具或数据源；实现特定任务自动化
               </p>
             </div>
           </div>
 
-          <div className="mt-6 bg-white p-4 rounded-lg border border-blue-100">
-            <h4 className="font-medium mb-3 text-center">实施路径</h4>
+          <div className="mt-4 bg-white p-4 rounded-lg border border-blue-100">
+            <h4 className="font-medium mb-2 text-center">实施路径</h4>
             <ol className="space-y-2 ml-6 list-decimal">
               <li className="text-slate-700">识别核心开发工具和流程，寻找 AI 集成机会</li>
               <li className="text-slate-700">设计标准化 API 格式，确保一致性和可扩展性</li>
@@ -239,24 +239,24 @@ export const PlatformEngineering = () => {
 
           <div className="grid-3">
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-green-600">Taskade</h4>
+              <h4 className="font-semibold mb-2 text-green-600">Taskade</h4>
               <p className="text-slate-600">团队知识库与 AI 助手集成，支持跨项目知识检索和任务管理自动化</p>
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-green-600">Kubiya</h4>
+              <h4 className="font-semibold mb-2 text-green-600">Kubiya</h4>
               <p className="text-slate-600">DevOps 知识中枢，结合 OPA 策略进行受控的 DevOps 操作自动化</p>
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-green-600">Observability AI</h4>
+              <h4 className="font-semibold mb-2 text-green-600">Observability AI</h4>
               <p className="text-slate-600">基于监控和日志数据的 AI 分析，提供系统异常检测和根因分析</p>
             </div>
           </div>
 
-          <div className="mt-6 bg-white p-4 rounded-lg border border-green-100">
-            <h4 className="font-medium mb-3 text-center">实施关键点</h4>
-            <div className="grid grid-cols-2 gap-4">
+          <div className="mt-4 bg-white p-4 rounded-lg border border-green-100">
+            <h4 className="font-medium mb-2 text-center">实施关键点</h4>
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <h5 className="font-medium text-green-600">实施复杂性：中到高</h5>
                 <ul className="space-y-1 text-sm text-slate-700 ml-4 list-disc">
@@ -389,7 +389,7 @@ export const PlatformEngineering = () => {
             </div>
           </div>
 
-          <div className="mt-6 bg-white p-4 rounded-lg border border-purple-100">
+          <div className="mt-4 bg-white p-4 rounded-lg border border-purple-100">
             <div className="flex items-center justify-center space-x-8 text-center">
               <div>
                 <h4 className="font-medium text-purple-600 mb-1">实施复杂性</h4>
@@ -496,7 +496,6 @@ export const PlatformEngineering = () => {
 
         <div className="mt-8 p-6 bg-orange-50 rounded-lg">
           <h3 className="text-xl font-semibold mb-4 text-center">实施案例</h3>
-
           <div className="bg-white p-5 rounded-lg shadow mb-6">
             <div className="flex items-start">
               <div className="bg-orange-100 p-2 rounded-lg mr-4">
@@ -525,7 +524,7 @@ export const PlatformEngineering = () => {
           </div>
 
           <div className="bg-white p-4 rounded-lg border border-orange-100">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <h4 className="font-medium text-orange-600 mb-2">优势</h4>
                 <ul className="space-y-1 text-sm ml-4 list-disc">
@@ -630,7 +629,7 @@ export const PlatformEngineering = () => {
 
           <div className="grid-3">
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-indigo-600">统一开发体验</h4>
+              <h4 className="font-semibold mb-2 text-indigo-600">统一开发体验</h4>
               <p className="text-slate-600">
                 提供一致的入口点和体验，减少切换成本和认知负荷，让 AI 工具成为开发流程的自然延伸
               </p>
@@ -641,7 +640,7 @@ export const PlatformEngineering = () => {
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-indigo-600">AI 代理编排</h4>
+              <h4 className="font-semibold mb-2 text-indigo-600">AI 代理编排</h4>
               <p className="text-slate-600">
                 协调多个专业 AI 代理，形成工作流，解决复杂问题，每个代理专注于特定任务
               </p>
@@ -652,7 +651,7 @@ export const PlatformEngineering = () => {
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-3 text-indigo-600">标准化 AI 接口</h4>
+              <h4 className="font-semibold mb-2 text-indigo-600">标准化 AI 接口</h4>
               <p className="text-slate-600">
                 为内部工具和服务提供标准化 AI 接口，通过 IDP 作为中间层统一治理和集中管理
               </p>
@@ -663,8 +662,8 @@ export const PlatformEngineering = () => {
             </div>
           </div>
 
-          <div className="mt-6 bg-white p-4 rounded-lg border border-indigo-100">
-            <h5 className="font-medium mb-3 text-center">实施考量</h5>
+          <div className="mt-4 bg-white p-4 rounded-lg border border-indigo-100">
+            <h5 className="font-medium mb-2 text-center">实施考量</h5>
             <div className="flex justify-between">
               <div className="text-center px-4">
                 <div className="bg-red-100 text-red-600 rounded-full px-3 py-1 mb-1 inline-block text-sm font-medium">
@@ -686,60 +685,6 @@ export const PlatformEngineering = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="mt-12 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg text-center">
-        <h2 className="text-2xl font-bold mb-4">平台工程模式选择指南</h2>
-        <p className="text-slate-700 mb-6">根据组织成熟度、资源和需求选择合适的平台工程模式</p>
-
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white rounded-lg overflow-hidden">
-            <thead className="bg-slate-100">
-              <tr>
-                <th className="py-2 px-4 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">适用场景</th>
-                <th className="py-2 px-4 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">推荐模式</th>
-                <th className="py-2 px-4 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">起点建议</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              <tr>
-                <td className="py-3 px-4 text-sm text-slate-700">初创企业或小型团队</td>
-                <td className="py-3 px-4 text-sm text-slate-700">
-                  <span className="font-medium text-purple-600">AI 赋能的模板应用</span>
-                </td>
-                <td className="py-3 px-4 text-sm text-slate-700">使用现有服务如 Bolt.new 或构建简单模板库</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 text-sm text-slate-700">设计与开发协作优化</td>
-                <td className="py-3 px-4 text-sm text-slate-700">
-                  <span className="font-medium text-orange-600">低代码系统 via 组件库</span>
-                </td>
-                <td className="py-3 px-4 text-sm text-slate-700">采用设计系统，投资 Figma 插件或类似工具</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 text-sm text-slate-700">知识密集型团队</td>
-                <td className="py-3 px-4 text-sm text-slate-700">
-                  <span className="font-medium text-green-600">知识中枢与团队 AI</span>
-                </td>
-                <td className="py-3 px-4 text-sm text-slate-700">从文档化开始，建立基本知识库和检索机制</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 text-sm text-slate-700">大型组织或复杂系统</td>
-                <td className="py-3 px-4 text-sm text-slate-700">
-                  <span className="font-medium text-indigo-600">IDP 作为 AI 代理治理中枢</span>
-                </td>
-                <td className="py-3 px-4 text-sm text-slate-700">从基础 IDP 功能开始，逐步集成 AI 能力</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 text-sm text-slate-700">扩展现有工具生态</td>
-                <td className="py-3 px-4 text-sm text-slate-700">
-                  <span className="font-medium text-blue-600">标准化智能 API</span>
-                </td>
-                <td className="py-3 px-4 text-sm text-slate-700">识别关键工具流程，实现点对点集成</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
