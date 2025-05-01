@@ -10,6 +10,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 import {
 	Box,
 	Boxes,
+	BarChart4,
 	CheckCircle,
 	CloudCog,
 	Code,
@@ -17,6 +18,7 @@ import {
 	Database,
 	LayoutGrid,
 	LibrarySquare,
+	LineChart,
 	Lock,
 	Network,
 	Users,
@@ -696,10 +698,7 @@ export const PlatformEngineering = () => {
         <div className="grid-2">
           <div className="card">
             <div className="icon-circle bg-green-700">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-line-chart">
-                <path d="M3 3v18h18"/>
-                <path d="m19 9-5 5-4-4-3 3"/>
-              </svg>
+              <LineChart className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-semibold mb-2">AI 质量评估</h3>
             <p className="text-slate-600 mb-4">通过多维指标评估 AI 模型及其在开发流程中的表现</p>
@@ -729,12 +728,7 @@ export const PlatformEngineering = () => {
 
           <div className="card">
             <div className="icon-circle bg-green-700">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bar-chart-4">
-                <path d="M3 3v18h18"/>
-                <path d="M13 17V9"/>
-                <path d="M18 17V5"/>
-                <path d="M8 17v-3"/>
-              </svg>
+              <BarChart4 className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-semibold mb-2">生产力提升量化</h3>
             <p className="text-slate-600 mb-4">量化 AI 对开发效率和团队生产力的实际影响</p>
