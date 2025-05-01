@@ -32,6 +32,7 @@ export const PlatformEngineering = () => {
   const aiTemplatesRef = useRef(null);
   const lowCodeRef = useRef(null);
   const idpGovernanceRef = useRef(null);
+  const aiMetricsRef = useRef(null); // 添加新的引用
 
   const scrollToSection = (section) => {
     setActiveSection(section);
@@ -41,7 +42,8 @@ export const PlatformEngineering = () => {
         'knowledge-hub': knowledgeHubRef,
         'ai-templates': aiTemplatesRef,
         'low-code': lowCodeRef,
-        'idp-governance': idpGovernanceRef
+        'idp-governance': idpGovernanceRef,
+        'ai-metrics': aiMetricsRef // 添加新的映射
       };
 
       const ref = refs[section];
@@ -682,6 +684,138 @@ export const PlatformEngineering = () => {
                   高可扩展性
                 </div>
                 <p className="text-xs text-slate-600">设计用于组织范围内扩展和演进</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 6. AI 效能度量 - 新增部分 */}
+      <div ref={aiMetricsRef} className="mt-12">
+        <div className="section-header">
+          <h2 className="section-title bg-green-700">度量 AI 质量与生产力</h2>
+          <p className="text-slate-600">建立全面的 AI 效能评估体系，优化投资回报并持续改进</p>
+        </div>
+
+        <div className="grid-2">
+          <div className="card">
+            <div className="icon-circle bg-green-700">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-line-chart">
+                <path d="M3 3v18h18"/>
+                <path d="m19 9-5 5-4-4-3 3"/>
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold mb-2">AI 质量评估</h3>
+            <p className="text-slate-600 mb-4">通过多维指标评估 AI 模型及其在开发流程中的表现</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">核心指标</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-green-700 mr-2">•</span>
+                  <span>模型效果评估：精确度、召回率与相关性</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-700 mr-2">•</span>
+                  <span>响应速度：延迟与处理时间</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-700 mr-2">•</span>
+                  <span>代码质量：生成代码的可靠性与安全性</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-700 mr-2">•</span>
+                  <span>上下文理解：对项目特定知识的掌握程度</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="icon-circle bg-green-700">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bar-chart-4">
+                <path d="M3 3v18h18"/>
+                <path d="M13 17V9"/>
+                <path d="M18 17V5"/>
+                <path d="M8 17v-3"/>
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold mb-2">生产力提升量化</h3>
+            <p className="text-slate-600 mb-4">量化 AI 对开发效率和团队生产力的实际影响</p>
+
+            <div className="bg-slate-100 p-4 rounded-lg">
+              <h4 className="font-medium mb-2">量化指标</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-green-700 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">使用频率与覆盖率</span>
+                    <p className="text-sm text-slate-600">各团队和项目中 AI 工具的使用率和覆盖范围</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-700 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">时间节省</span>
+                    <p className="text-sm text-slate-600">与传统方法相比，完成同等任务所节省的时间</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-700 mr-2 font-medium">→</span>
+                  <div>
+                    <span className="font-medium">加速指标</span>
+                    <p className="text-sm text-slate-600">项目交付周期、代码审查和问题解决速度的改进</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 p-6 bg-green-50 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4 text-center">评估框架与实践</h3>
+
+          <div className="grid-3">
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-green-700">持续监测</h4>
+              <p className="text-slate-600">
+                建立自动化监测系统，收集 AI 工具使用指标和效果数据，提供实时洞察
+              </p>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-green-700">反馈循环</h4>
+              <p className="text-slate-600">
+                结合用户反馈与量化指标，优化 AI 模型训练和上下文提供机制
+              </p>
+            </div>
+
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-green-700">成熟度模型</h4>
+              <p className="text-slate-600">
+                建立 AI 采用成熟度模型，帮助团队评估当前状态并制定改进路径
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 bg-white p-4 rounded-lg border border-green-100">
+            <h5 className="font-medium mb-2 text-center">实施步骤</h5>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h5 className="font-medium text-green-700">基础阶段</h5>
+                <ul className="space-y-1 text-sm text-slate-700 ml-4 list-disc">
+                  <li>定义关键指标和基准线</li>
+                  <li>实施基本遥测和日志记录</li>
+                  <li>建立定期审查机制</li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-medium text-green-700">高级阶段</h5>
+                <ul className="space-y-1 text-sm text-slate-700 ml-4 list-disc">
+                  <li>实施自动化数据收集和分析</li>
+                  <li>建立预测模型识别改进机会</li>
+                  <li>将 AI 效能指标与业务成果关联</li>
+                </ul>
               </div>
             </div>
           </div>

@@ -418,6 +418,11 @@ button {
   background-color: rgb(238 242 255 / var(--tw-bg-opacity, 1));
 }
 
+.text-green-700 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity, 1));
+}
+
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity, 1));
@@ -497,6 +502,11 @@ button {
 
 .text-green-600 {
   color: #16a34a;
+}
+
+.bg-green-700 {
+  background-color: #15803d;
+  color: white;
 }
 
 .text-slate-600 {
