@@ -237,27 +237,26 @@ export const PlatformEngineering = () => {
         </div>
 
         <div className="mt-8 p-6 bg-green-50 rounded-lg">
-          <h3 className="text-xl font-semibold mb-4 text-center">实施案例与应用场景</h3>
+          <h3 className="text-xl font-semibold mb-4 text-center">实施关键点</h3>
 
           <div className="grid-3">
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-2 text-green-600">Taskade</h4>
-              <p className="text-slate-600">团队知识库与 AI 助手集成，支持跨项目知识检索和任务管理自动化</p>
+              <h4 className="font-semibold mb-2 text-green-600">知识采集与更新</h4>
+              <p className="text-slate-600">建立自动化流程收集团队知识，确保知识库持续更新和保持相关性</p>
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-2 text-green-600">Kubiya</h4>
-              <p className="text-slate-600">DevOps 知识中枢，结合 OPA 策略进行受控的 DevOps 操作自动化</p>
+              <h4 className="font-semibold mb-2 text-green-600">权限与可见性管理</h4>
+              <p className="text-slate-600">实施细粒度权限控制，确保敏感信息安全的同时最大化知识共享</p>
             </div>
 
             <div className="bg-white p-5 rounded-lg shadow">
-              <h4 className="font-semibold mb-2 text-green-600">Observability AI</h4>
-              <p className="text-slate-600">基于监控和日志数据的 AI 分析，提供系统异常检测和根因分析</p>
+              <h4 className="font-semibold mb-2 text-green-600">知识质量保障</h4>
+              <p className="text-slate-600">建立知识审核和验证机制，确保 AI 基于准确和高质量的信息提供建议</p>
             </div>
           </div>
 
           <div className="mt-4 bg-white p-4 rounded-lg border border-green-100">
-            <h4 className="font-medium mb-2 text-center">实施关键点</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <h5 className="font-medium text-green-600">实施复杂性：中到高</h5>
@@ -497,35 +496,32 @@ export const PlatformEngineering = () => {
         </div>
 
         <div className="mt-8 p-6 bg-orange-50 rounded-lg">
-          <h3 className="text-xl font-semibold mb-4 text-center">实施案例</h3>
-          <div className="bg-white p-5 rounded-lg shadow mb-6">
-            <div className="flex items-start">
-              <div className="bg-orange-100 p-2 rounded-lg mr-4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 57" className="h-5 w-5">
-                  <path d="M19 28.5a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19z" fill="#ff7262"/>
-                  <path d="M19 28.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19z" fill="#0acf83"/>
-                  <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#1abcfe"/>
-                  <path d="M38 47.5A9.5 9.5 0 0 1 28.5 57H19v-9.5a9.5 9.5 0 0 1 9.5-9.5 9.5 9.5 0 0 1 9.5 9.5z" fill="#f24e1e"/>
-                  <path d="M0 28.5A9.5 9.5 0 0 1 9.5 19H19v19H9.5A9.5 9.5 0 0 1 0 28.5z" fill="#a259ff"/>
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2 text-orange-600">Figma + AI 代码生成</h4>
-                <p className="text-slate-600">从 Figma 设计稿直接生成基于组件库的前端代码，保持一致的视觉语言</p>
-                <div className="mt-3">
-                  <p className="font-medium text-sm">工作流程：</p>
-                  <ol className="ml-5 text-sm list-decimal text-slate-700">
-                    <li>设计师在 Figma 中创建 UI 设计</li>
-                    <li>使用 AI 插件分析设计并映射到组件库</li>
-                    <li>生成基于组件的代码（React, Vue 等）</li>
-                    <li>开发者审查和集成生成的代码</li>
-                  </ol>
-                </div>
-              </div>
+          <h3 className="text-xl font-semibold mb-4 text-center">实施关键点</h3>
+          
+          <div className="grid-3">
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-orange-600">设计与代码协同</h4>
+              <p className="text-slate-600">
+                建立设计系统与组件库的紧密映射关系，确保设计元素自动转换为可用代码
+              </p>
+            </div>
+            
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-orange-600">组件规范化</h4>
+              <p className="text-slate-600">
+                标准化组件定义和接口，使 AI 能准确理解和复用现有组件体系
+              </p>
+            </div>
+            
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-orange-600">工作流整合</h4>
+              <p className="text-slate-600">
+                将 AI 代码生成融入现有设计到开发流程，减少工具切换成本
+              </p>
             </div>
           </div>
 
-          <div className="bg-white p-4 rounded-lg border border-orange-100">
+          <div className="bg-white p-4 rounded-lg border border-orange-100 mt-4">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <h4 className="font-medium text-orange-600 mb-2">优势</h4>
