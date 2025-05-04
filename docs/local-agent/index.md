@@ -52,7 +52,29 @@ $spec
 The user's requirement is: $selection
 ```
 
-同时，在 onStreamingEnd，即执行完当前的 DevIns 之后，执行 parseCode、saveFile 和 openFile 三个 Processor，来处理当前的输出结果。
+对应的 fetch-teamai-spec.sh 示例：
+
+```bash
+curl https://tt.dts.plus/api/guideline
+```
+
+在上面的代码中，`$spec` 变量的内容为远程的规范内容。通过 `thread` 函数获取远程的规范内容，并通过 `jsonpath` 函数提取出你需要的内容。
+
+```json
+[
+  {
+    "id": 2,
+    "title": "Protobuf API Spec",
+    "category": {
+      "subcategory": "api-design"
+    },
+    "content": "## 1. Data Model Specification\n\nThe data model defines the structure and data types of messages within the service. The following design specifications are recommended for Protobuf:\n\n```protobuf\n// Define message structure with fields using camelCase naming\nsyntax = \"proto3\";\n\npackage example.api.v1;\n\n// Fields of the message should include numbers and use neat, orderly numbering\n// Define the base message for user information\nmessage User {\n  int32 id = 1;                  // User ID\n  string username = 2;           // Username\n  string email = 3;              // Email\n  repeated string roles = 4;     // Roles, supports multiple roles\n}\n```\n\n## 2. Service Interface Specification\n\nService interfaces define the various API RPC methods using `service`. The interface definition should:\n\n- Follow CRUD operation naming conventions (e.g., `GetUser`, `CreateUser`, etc.).\n- Clearly define the input and output message structures.\n- Return results encapsulated in a separate message structure for better extensibility and error handling.\n\n```protobuf\n// Define user service\nservice UserService {\n  // Get user information\n  rpc GetUser (GetUserRequest) returns (UserResponse);\n\n  // Create user\n  rpc CreateUser (CreateUserRequest) returns (UserResponse);\n\n  // Delete user\n  rpc DeleteUser (DeleteUserRequest) returns (EmptyResponse);\n}\n```\n\n## 3. Request and Response Message Specification\n\nEach RPC method should define corresponding request and response messages. It is recommended to use the naming convention `MethodName + Request` and `MethodName + Response`, as shown below:\n\n```protobuf\n// Request messages\nmessage GetUserRequest {\n  int32 id = 1;  // User ID\n}\n\nmessage CreateUserRequest {\n  string username = 1;\n  string email = 2;\n  repeated string roles = 3;\n}\n\n// Response messages\nmessage UserResponse {\n  User user = 1;\n}\n\nmessage EmptyResponse {} // Represents an empty response\n```\n\n## 4. Error Handling Specification\n\nIt is recommended to use standard error codes or custom error messages to handle API exceptions. This can be implemented through extension fields. Here is a simple error response example:\n\n```protobuf\n// Error message\nmessage ErrorResponse {\n  int32 code = 1;        // Error code\n  string message = 2;    // Error description\n  string details = 3;    // Additional error information\n}\n```\n\n## 5. Version Control Specification\n\nTo ensure backward compatibility, the `package` in Protobuf files should include version numbers to support different client versions as the service evolves.\n\n```protobuf\npackage example.api.v1; // Specify version number in the package\n```\n\n## 6. Commenting and Documentation Specification\n\nEach field, message, and service should have comments for documentation generation and to help future developers understand how to use them. You can use `///` or `//` for single-line comments, or `/* ... */` for multi-line comments.\n\n```protobuf\n// User service, providing interfaces to get, create, and delete users\nservice UserService {\n  // Get user information\n  rpc GetUser (GetUserRequest) returns (UserResponse);\n}\n```\n\n## 7. Complete Example of a Protobuf File\n\n```protobuf\nsyntax = \"proto3\";\n\npackage example.api.v1;\n\n// User information message\nmessage User {\n  int32 id = 1;                  // User ID\n  string username = 2;           // Username\n  string email = 3;              // Email\n  repeated string roles = 4;     // Roles, supports multiple roles\n}\n\n// User service interface\nservice UserService {\n  // Get user information\n  rpc GetUser (GetUserRequest) returns (UserResponse);\n\n  // Create user\n  rpc CreateUser (CreateUserRequest) returns (UserResponse);\n\n  // Delete user\n  rpc DeleteUser (DeleteUserRequest) returns (EmptyResponse);\n}\n\n// Request and response messages\nmessage GetUserRequest {\n  int32 id = 1;\n}\n\nmessage CreateUserRequest {\n  string username = 1;\n  string email = 2;\n  repeated string roles = 3;\n}\n\nmessage UserResponse {\n  User user = 1;\n}\n\nmessage EmptyResponse {}\n\n// Error message\nmessage ErrorResponse {\n  int32 code = 1;\n  string message = 2;\n  string details = 3;\n}\n```",
+    "status": "PUBLISHED"
+  }
+]
+```
+
+最后，在 onStreamingEnd，即执行完当前的 DevIns 之后，执行 parseCode、saveFile 和 openFile 三个 Processor，来处理当前的输出结果。
 
 ### 获取 Jira ID，生成提交信息
 
