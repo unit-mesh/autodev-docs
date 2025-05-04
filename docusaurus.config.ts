@@ -13,7 +13,7 @@ const config = {
   baseUrl: '/',
   trailingSlash: false,
   organizationName: 'unit-mesh',
-  projectName: 'auto-dev',
+  projectName: 'autodev-docs',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   i18n: {
