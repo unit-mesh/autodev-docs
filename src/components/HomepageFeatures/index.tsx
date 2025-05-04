@@ -252,7 +252,7 @@ function AIFriendlyArchitecture() {
           <Heading as="h2" className={styles.architectureTitle}>
             {isEnglish ? 'AI-Friendly Architecture' : 'AI 友好架构'}
           </Heading>
-          <p>{isEnglish ? 'A four-tier approach to effective AI collaboration in development' : '一个面向高效 AI 协作开发的方法'}</p>
+          <p>{isEnglish ? 'A strategic approach to unlock the full potential of AI in software development' : '释放 AI 在软件开发中全部潜力的战略方法'}</p>
         </div>
 
         <div className={styles.architectureTiers}>
@@ -262,8 +262,8 @@ function AIFriendlyArchitecture() {
               <Heading as="h3">{isEnglish ? 'Foundational Knowledge & Structure' : '基础规范与知识结构层'}</Heading>
               <p>
                 {isEnglish
-                  ? 'Creates clear domain models and well-structured code that both humans and AI can understand. This layer focuses on meaningful naming, self-documenting code, and knowledge engineering to build a solid foundation for AI collaboration.'
-                  : '构建清晰的领域模型和结构良好的代码，使人类和AI都能理解。关注有意义的命名、自文档化代码和知识工程，为AI协作奠定坚实基础。'}
+                  ? 'Design intuitive domain models and well-structured code that both humans and AI can easily comprehend. Emphasize meaningful naming, self-documenting patterns, and explicit knowledge representation to create a shared language between developers and AI.'
+                  : '设计直观的领域模型和结构清晰的代码，使人类和AI都能轻松理解。注重有意义的命名、自文档化模式和显式知识表示，为开发者和AI创建共享语言。'}
               </p>
             </div>
           </div>
@@ -274,8 +274,8 @@ function AIFriendlyArchitecture() {
               <Heading as="h3">{isEnglish ? 'Contextualized Interaction' : '交互情境化层'}</Heading>
               <p>
                 {isEnglish
-                  ? 'Enhances AI understanding by providing rich, relevant context at key interaction points. Uses techniques like RAG and Tool Memory to inject project-specific knowledge, precise requirements, and historical information when needed.'
-                  : '在关键交互点为AI提供丰富、相关的上下文信息，增强其理解能力。通过 RAG 和 Tool Memory等技术，在需要时注入项目特定知识、精确需求和历史信息。'}
+                  ? 'Amplify AI understanding with rich, relevant context at key interaction points. Leverage techniques like RAG and Tool Memory to dynamically inject project-specific knowledge, precise requirements, and historical insights exactly when needed.'
+                  : '在关键交互点提供丰富、相关的上下文信息，增强AI理解能力。运用RAG和Tool Memory等技术，在恰当时机动态注入项目专属知识、精准需求和历史洞察。'}
               </p>
             </div>
           </div>
@@ -286,8 +286,8 @@ function AIFriendlyArchitecture() {
               <Heading as="h3">{isEnglish ? 'Guided Generation & Validation' : '引导生成与验证层'}</Heading>
               <p>
                 {isEnglish
-                  ? 'Enables AI to generate high-quality code based on layers 1 and 2, while enforcing rigorous Validation-First Development (VFD). Combines automated tests, static analysis, and human review to ensure reliability and security.'
-                  : 'AI 基于前两层生成高质量代码，同时强制执行严格的验证优先开发(VFD)流程。结合自动化测试、静态分析和人工审查，确保可靠性和安全性。'}
+                  ? 'Enable AI to produce high-quality code guided by layers 1 and 2, while enforcing rigorous Validation-First Development (VFD). Combine automated testing, static analysis, and human review in a seamless validation pipeline to ensure reliability.'
+                  : '基于前两层引导AI生成高质量代码，同时实施严格的验证优先开发(VFD)流程。将自动化测试、静态分析和人工审查无缝集成到验证流水线中，确保可靠性。'}
               </p>
             </div>
           </div>
@@ -298,8 +298,8 @@ function AIFriendlyArchitecture() {
               <Heading as="h3">{isEnglish ? 'Continuous Improvement Feedback Loop' : '持续改进反馈层'}</Heading>
               <p>
                 {isEnglish
-                  ? 'Validation results feed back to optimize prompts, update knowledge bases, and trigger code improvements. This closed-loop ensures AI assistance evolves with your project and team.'
-                  : '将验证结果反馈用于优化提示词、更新知识库和触发代码改进。这种闭环确保AI辅助能力随着项目和团队一起演进。'}
+                  ? 'Create a virtuous cycle where validation results automatically refine prompts, update knowledge bases, and trigger targeted code improvements. This closed-loop system ensures AI capabilities evolve alongside your project and team.'
+                  : '建立良性循环，使验证结果自动优化提示词、更新知识库并触发针对性代码改进。这种闭环系统确保AI能力与项目和团队共同演进成长。'}
               </p>
             </div>
           </div>
@@ -307,7 +307,7 @@ function AIFriendlyArchitecture() {
 
         <div className={styles.architectureLearnMore}>
           <Link to="/ai-friendly">
-            {isEnglish ? 'Learn More About AI-Friendly Architecture' : '了解更多 AI 友好架构'}
+            {isEnglish ? 'Discover the Full AI-Friendly Architecture Framework' : '探索完整的 AI 友好架构框架'}
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.25 8.75-5.5 5.5-5.5-5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
           </Link>
         </div>
