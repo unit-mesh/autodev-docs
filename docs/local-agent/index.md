@@ -28,9 +28,7 @@ Explain code /file:src/main/java/com/example/Controller.java
 
 ![AutoDev DevIns](https://unitmesh.cc/auto-dev/autodev-devins.png)
 
-## 示例
-
-### 获取远程规范，调用 AI 编写代码
+## 示例：获取远程规范，调用 AI 编写代码
 
 在 variables 中，你可以通过 thread 函数获取远程的规范内容，并通过 jsonpath 函数提取出你需要的内容。
 
@@ -76,7 +74,7 @@ curl https://tt.dts.plus/api/guideline
 
 最后，在 onStreamingEnd，即执行完当前的 DevIns 之后，执行 parseCode、saveFile 和 openFile 三个 Processor，来处理当前的输出结果。
 
-### 获取 Jira ID，生成提交信息
+## 示例：获取 Jira ID，生成提交信息
 
 其中的 actionLocation 用于定义当前 DevIns 的执行位置，CommitMenu 表示在提交信息编写页面执行。
 
@@ -111,7 +109,7 @@ $currentChanges
 只返回提交信息，不使用 ``` 标记。
 ```
 
-### 多个 DevIns 编排示例
+## 示例：多个 DevIns 编排示例
 
 通过 afterStreaming 你可以在执行完当前的 DevIns 之后，执行下一个 DevIns。同时，可以把当前的变量以及 `$output` 传递给下一个
 DevIns。
