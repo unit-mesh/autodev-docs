@@ -18,7 +18,10 @@ import {
   Component,
   Users,
   MessageSquare,
-  ArrowRight
+  ArrowRight,
+  HistoryIcon,
+  CompassIcon,
+  BrainIcon
 } from 'lucide-react'
 
 export const DevKnowledgeArchitecture = () => {
@@ -114,35 +117,43 @@ export const DevKnowledgeArchitecture = () => {
       </div>
 
       <div className="bg-blue-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4 text-center">知识流转与反馈循环</h3>
+        <h3 className="text-xl font-semibold mb-4 text-center">核心目标</h3>
 
-        <div className="relative flex justify-between items-center mb-4 px-12">
-          <div className="flex flex-col items-center">
-            <div className="icon-circle bg-blue-600 mb-2">
-              <Code className="h-5 w-5 text-white" />
+        <div className="grid-3">
+          <div className="bg-white p-5 rounded-lg shadow">
+            <div className="flex items-center mb-3">
+              <div className="icon-circle bg-blue-600 mr-3">
+                <GitBranch className="h-5 w-5 text-white" />
+              </div>
+              <h4 className="font-semibold text-blue-800">可追溯性 (Traceability)</h4>
             </div>
-            <div className="text-center text-sm font-medium">数据收集</div>
+            <p className="text-slate-600">
+              能够沿着软件工件（如需求）的生命周期，向前追溯其实现、测试和部署，向后追溯其来源、目标和变更历史
+            </p>
           </div>
-          <ArrowRight className="text-blue-600" size={24} />
-          <div className="flex flex-col items-center">
-            <div className="icon-circle bg-green-600 mb-2">
-              <Database className="h-5 w-5 text-white" />
+
+          <div className="bg-white p-5 rounded-lg shadow">
+            <div className="flex items-center mb-3">
+              <div className="icon-circle bg-green-600 mr-3">
+                <Search className="h-5 w-5 text-white" />
+              </div>
+              <h4 className="font-semibold text-green-800">可发现性 (Discoverability)</h4>
             </div>
-            <div className="text-center text-sm font-medium">知识处理</div>
+            <p className="text-slate-600">
+              帮助开发者快速找到所需的相关信息、代码片段、文档、甚至领域专家，即使这些信息分散在不同的工具、代码库或团队中
+            </p>
           </div>
-          <ArrowRight className="text-blue-600" size={24} />
-          <div className="flex flex-col items-center">
-            <div className="icon-circle bg-purple-600 mb-2">
-              <Search className="h-5 w-5 text-white" />
+
+          <div className="bg-white p-5 rounded-lg shadow">
+            <div className="flex items-center mb-3">
+              <div className="icon-circle bg-purple-600 mr-3">
+                <Network className="h-5 w-5 text-white" />
+              </div>
+              <h4 className="font-semibold text-purple-800">可理解性 (Understanding)</h4>
             </div>
-            <div className="text-center text-sm font-medium">知识访问</div>
-          </div>
-          <ArrowRight className="text-blue-600" size={24} />
-          <div className="flex flex-col items-center">
-            <div className="icon-circle bg-indigo-600 mb-2">
-              <MessageSquare className="h-5 w-5 text-white" />
-            </div>
-            <div className="text-center text-sm font-medium">用户反馈</div>
+            <p className="text-slate-600">
+              促进开发者深入理解工件背后的上下文、依赖关系、设计原理以及它们之间相互连接的原因
+            </p>
           </div>
         </div>
 
