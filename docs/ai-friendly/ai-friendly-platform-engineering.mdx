@@ -25,6 +25,7 @@ import {
 	Zap
 } from 'lucide-react'
 import { PlatformEngFlow } from '../../src/components/PlatformEngFlow'
+import { DevKnowledgeArchitecture } from '../../src/components/DevKnowledgeArchitecture'
 
 export const PlatformEngineering = () => {
   const [activeSection, setActiveSection] = useState(null);
@@ -34,7 +35,8 @@ export const PlatformEngineering = () => {
   const aiTemplatesRef = useRef(null);
   const lowCodeRef = useRef(null);
   const idpGovernanceRef = useRef(null);
-  const aiMetricsRef = useRef(null); // 添加新的引用
+  const knowledgeArchRef = useRef(null); // 添加知识架构系统的引用
+  const aiMetricsRef = useRef(null);
 
   const scrollToSection = (section) => {
     setActiveSection(section);
@@ -45,7 +47,8 @@ export const PlatformEngineering = () => {
         'ai-templates': aiTemplatesRef,
         'low-code': lowCodeRef,
         'idp-governance': idpGovernanceRef,
-        'ai-metrics': aiMetricsRef // 添加新的映射
+        'knowledge-arch': knowledgeArchRef, // 添加知识架构系统的映射
+        'ai-metrics': aiMetricsRef
       };
 
       const ref = refs[section];
@@ -65,7 +68,7 @@ export const PlatformEngineering = () => {
       <div className="mb-8">
         <PlatformEngFlow onClickSection={scrollToSection}/>
       </div>
-
+      
       {/* 1. 标准化智能 API */}
       <div ref={standardApiRef} className="mt-12">
         <div className="section-header">
@@ -688,7 +691,45 @@ export const PlatformEngineering = () => {
         </div>
       </div>
 
-      {/* 6. AI 效能度量 - 新增部分 */}
+      {/* 知识系统架构 - 放在IDP部分之后 */}
+      <div ref={knowledgeArchRef} className="mt-12">
+        <div className="section-header">
+          <h2 className="section-title bg-cyan-600">开发者知识系统架构</h2>
+          <p className="text-slate-600">整合于IDP的知识图谱体系，为AI编程提供结构化上下文</p>
+        </div>
+        
+        <DevKnowledgeArchitecture />
+        
+        <div className="mt-4 p-6 bg-cyan-50 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4 text-center">知识系统与IDP治理的协同</h3>
+          
+          <div className="grid-2">
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-cyan-600">上下文增强循环</h4>
+              <p className="text-slate-600">
+                知识系统持续采集和结构化组织数据，IDP提供治理框架和访问控制，共同为AI工具提供高质量、安全可控的上下文
+              </p>
+              <div className="mt-2 flex items-center text-green-600 text-sm">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                <span>创建自我优化的知识闭环</span>
+              </div>
+            </div>
+            
+            <div className="bg-white p-5 rounded-lg shadow">
+              <h4 className="font-semibold mb-2 text-cyan-600">团队知识协作</h4>
+              <p className="text-slate-600">
+                将分散在不同团队和系统中的知识统一管理，通过IDP提供的治理能力确保知识共享的同时保障安全合规
+              </p>
+              <div className="mt-2 flex items-center text-green-600 text-sm">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                <span>打破组织信息孤岛</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 6. AI 效能度量 */}
       <div ref={aiMetricsRef} className="mt-12">
         <div className="section-header">
           <h2 className="section-title bg-green-700">度量 AI 质量与生产力</h2>

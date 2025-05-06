@@ -443,6 +443,11 @@ button {
   color: rgb(126 34 206 / var(--tw-text-opacity, 1));
 }
 
+.bg-purple-600 {
+  background-color: #7c3aed;
+  color: white;
+}
+
 .space-x-8 > * + * {
   --tw-space-x-reverse: 0;
   margin-right: calc(2rem * var(--tw-space-x-reverse));
