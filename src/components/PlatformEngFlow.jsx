@@ -151,7 +151,7 @@ export const PlatformEngFlow = ({ onClickSection }) => {
                 <g onClick={() => handleSectionClick('idp-governance')} style={clickableStyle}>
                   <rect stroke="#4B0082" fillOpacity="0.2" fill="#4B0082" x="8" y="323" width="188" height="54" rx="5" />
                   <text fill="#4B0082" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14">
-                    <tspan x="25" y="353">IDP 作为 AI 代理治理中枢</tspan>
+                    <tspan x="25" y="353">IDP 作为 AI 智能体治理中枢</tspan>
                   </text>
                 </g>
               </g>
