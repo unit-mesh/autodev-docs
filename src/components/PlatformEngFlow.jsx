@@ -20,9 +20,8 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 					<g id="sample" transform="translate(1.000000, 1.000000)">
 						{/* Main Layer Group */}
 						<g id="main-layers">
-							{/* 用户触点 Section Container (no longer clickable itself) */}
 							<g id="user-touchpoints-container">
-								<rect id="Rectangle" stroke="#FFA500" strokeWidth="2" fill="#FFFFFF" fillRule="nonzero" x="0" y="0"
+								<rect id="Rectangle" stroke="#FFA500" strokeWidth="2" fill="#FFFFFF" fillRule="nonzero" x="5" y="0"
 								      width="500" height="120" rx="8"></rect>
 								<text id="用户触点-title" fill="#FFA500" fontFamily="PingFangSC-Semibold, PingFang SC" fontSize="18"
 								      fontWeight="500">
@@ -44,25 +43,24 @@ export const PlatformEngFlow = ({ onClickSection }) => {
               <g onClick={() => handleSectionClick('low-code')} style={clickableStyle}>
                 <rect id="Rectangle-lowcode" stroke="#FFA500" fillOpacity="0.2" fill="#FFA500" fillRule="nonzero" x="340" y="62" width="140" height="54" rx="5"></rect>
                 <text id="低代码系统-label" fill="#FFA500" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
-                    <tspan x="355" y="92">低代码的智能生成</tspan>
+                    <tspan x="355" y="92">低代码强化生成</tspan>
                 </text>
               </g>
               <g onClick={() => handleSectionClick('ai-templates')} style={clickableStyle}>
                 <rect id="Rectangle-aitemplate" stroke="#800080" fillOpacity="0.2" fill="#800080" fillRule="nonzero" x="340" y="4" width="140" height="54" rx="5"></rect>
                 <text id="AI模板应用-label" fill="#800080" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
-                    <tspan x="355" y="36">AI 生成模板应用</tspan>
+                    <tspan x="355" y="36">AI 增强模板生成</tspan>
                 </text>
               </g>
 							</g>
 
-							{/* Arrow 1 */}
 							<g transform="translate(260.000000, 130.000000)" id="Arrow-1" stroke="#FFD700" strokeWidth="2">
 								<path d="M10,0 L10,30 M0,20 L10,30 L20,20"></path>
 							</g>
 
 							{/* 中间层 Section Container (no longer clickable itself) */}
 							<g id="middle-layer-container" transform="translate(0.000000, 180.000000)">
-								<rect id="Rectangle" stroke="#008000" strokeWidth="2" fill="#FFFFFF" fillRule="nonzero" x="0" y="0"
+								<rect id="Rectangle" stroke="#008000" strokeWidth="2" fill="#FFFFFF" fillRule="nonzero" x="5" y="0"
 								      width="500" height="120" rx="8"></rect>
 								<text id="中间层-title" fill="#008000" fontFamily="PingFangSC-Semibold, PingFang SC" fontSize="18"
 								      fontWeight="500">
@@ -92,14 +90,13 @@ export const PlatformEngFlow = ({ onClickSection }) => {
               </g>
 							</g>
 
-							{/* Arrow 2 */}
 							<g transform="translate(260.000000, 310.000000)" id="Arrow-2" stroke="#FFD700" strokeWidth="2">
 								<path d="M10,0 L10,30 M0,20 L10,30 L20,20"></path>
 							</g>
 
 							{/* 内部接口 Section Container (no longer clickable itself) */}
 							<g id="internal-interface-container" transform="translate(0.000000, 360.000000)">
-								<rect id="Rectangle" stroke="#0000FF" strokeWidth="2" fill="#FFFFFF" fillRule="nonzero" x="0" y="0"
+								<rect id="Rectangle" stroke="#0000FF" strokeWidth="2" fill="#FFFFFF" fillRule="nonzero" x="5" y="0"
 								      width="500" height="120" rx="8"></rect>
 								<text id="内部接口-title" fill="#0000FF" fontFamily="PingFangSC-Semibold, PingFang SC" fontSize="18"
 								      fontWeight="500">
@@ -151,14 +148,14 @@ export const PlatformEngFlow = ({ onClickSection }) => {
                 <g onClick={() => handleSectionClick('idp-governance')} style={clickableStyle}>
                   <rect stroke="#4B0082" fillOpacity="0.2" fill="#4B0082" x="8" y="323" width="188" height="54" rx="5" />
                   <text fill="#4B0082" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14">
-                    <tspan x="25" y="353">IDP 作为 AI 智能体治理中枢</tspan>
+                    <tspan x="35" y="353">IDP 作为智能治理中枢</tspan>
                   </text>
                 </g>
               </g>
             </g>
 
             {/* 新增模块：度量 AI 质量与生产力 */}
-            <g id="ai-metrics-container" transform="translate(550.000000, 0.000000)">
+            <g id="ai-metrics-container" transform="translate(540.000000, 0.000000)">
               <rect stroke="#2E8B57" strokeWidth="2" fill="#FFFFFF" width="250" height="480" rx="8" />
               <text fill="#2E8B57" fontFamily="Helvetica-Bold, Helvetica" fontSize="18" fontWeight="bold">
                 <tspan x="40" y="40">度量 AI 质量与生产力</tspan>
@@ -174,19 +171,28 @@ export const PlatformEngFlow = ({ onClickSection }) => {
                 <g onClick={() => handleSectionClick('ai-metrics')} style={clickableStyle}>
                   <rect stroke="#2E8B57" fillOpacity="0.2" fill="#2E8B57" x="0" y="323" width="210" height="54" rx="5" />
                   <text fill="#2E8B57" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14">
-                    <tspan x="20" y="353">AI 效能度量</tspan>
+                    <tspan x="45" y="353">度量改善 AI 生成质量</tspan>
                   </text>
                 </g>
               </g>
             </g>
 
             {/* Connecting Lines */}
-						<g id="connecting-lines">
-							<line x1="500" y1="56" x2="550" y2="56" id="Connector-1" stroke="#FFD700" strokeWidth="2"
+						<g id="connecting-lines-left">
+							<line x1="-30" y1="56" x2="10" y2="56" id="Connector-1" stroke="#4B0082" strokeWidth="2"
 							      strokeDasharray="5,5"></line>
-							<line x1="500" y1="240" x2="550" y2="240" id="Connector-2" stroke="#FFD700" strokeWidth="2"
+							<line x1="-30" y1="240" x2="10" y2="240" id="Connector-2" stroke="#4B0082" strokeWidth="2"
 							      strokeDasharray="5,5"></line>
-							<line x1="500" y1="420" x2="550" y2="420" id="Connector-3" stroke="#FFD700" strokeWidth="2"
+							<line x1="-30" y1="420" x2="10" y2="420" id="Connector-3" stroke="#4B0082" strokeWidth="2"
+							      strokeDasharray="5,5"></line>
+						</g>
+
+						<g id="connecting-lines-right">
+							<line x1="505" y1="56" x2={"540"} y2="56" id="Connector-4" stroke="#2E8B57" strokeWidth="2"
+							      strokeDasharray="5,5"></line>
+							<line x1="505" y1="240" x2="540" y2="240" id="Connector-5" stroke="#2E8B57" strokeWidth="2"
+							      strokeDasharray="5,5"></line>
+							<line x1="505" y1="420" x2="540" y2="420" id="Connector-6" stroke="#2E8B57" strokeWidth="2"
 							      strokeDasharray="5,5"></line>
 						</g>
 				</g>
