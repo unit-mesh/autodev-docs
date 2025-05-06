@@ -24,11 +24,6 @@ import {
 export const DevKnowledgeArchitecture = () => {
   return (
     <div>
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-slate-800 mb-2">开发者知识系统架构</h2>
-        <p className="text-slate-600">整合多源数据，构建知识图谱，为 AI 工具提供统一上下文</p>
-      </div>
-
       <div className="grid-3 mb-8">
         <div className="card">
           <div className="icon-circle bg-blue-600">
