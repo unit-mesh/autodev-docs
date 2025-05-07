@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight, Pause, Play, } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { executionStates } from '@site/src/components/ContextNav/ExecutionStates'
 
 // Helper function to get a unique list of all box IDs across all states
@@ -175,151 +175,151 @@ export default function TimeTravel() {
         <div className="relative w-full h-[400px] bg-gray-50 rounded-lg border border-gray-200 mb-6 overflow-hidden">
           <svg width="100%" height="100%" className="overflow-visible">
             {/* Draw connections with animations */}
-            {allConnectionIds.map((connId) => {
-              const [fromId, toId] = connId.split("-")
-              const connection = getConnection(fromId, toId)
-              const exists = hasConnection(fromId, toId)
+            <AnimatePresence>
+              {allConnectionIds.map((connId) => {
+                const [fromId, toId] = connId.split("-")
+                const connection = getConnection(fromId, toId)
+                const exists = hasConnection(fromId, toId)
 
-              if (!exists) return null
+                if (!exists) return null
 
-              const fromBox = findBox(fromId)
-              const toBox = findBox(toId)
+                const fromBox = findBox(fromId)
+                const toBox = findBox(toId)
 
-              const fromX = fromBox.x + fromBox.width / 2
-              const fromY = fromBox.y + fromBox.height / 2
-              const toX = toBox.x + toBox.width / 2
-              const toY = toBox.y + toBox.height / 2
+                const fromX = fromBox.x + fromBox.width / 2
+                const fromY = fromBox.y + fromBox.height / 2
+                const toX = toBox.x + toBox.width / 2
+                const toY = toBox.y + toBox.height / 2
 
-              return (
-                <motion.g
-                  key={`conn-${connId}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: exists ? 1 : 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <defs>
-                    <marker
-                      id={`arrowhead-${connId}`}
-                      markerWidth="10"
-                      markerHeight="7"
-                      refX="9"
-                      refY="3.5"
-                      orient="auto"
-                    >
-                      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
-                    </marker>
-                  </defs>
-                  <motion.line
-                    x1={fromX}
-                    y1={fromY}
-                    x2={toX}
-                    y2={toY}
-                    stroke="#94a3b8"
-                    strokeWidth="2"
-                    strokeDasharray={connection?.style === "dashed" ? "5,5" : "none"}
-                    markerEnd={`url(#arrowhead-${connId})`}
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  />
-                  {connection?.label && (
-                    <motion.text
-                      x={(fromX + toX) / 2}
-                      y={(fromY + toY) / 2 - 10}
-                      textAnchor="middle"
-                      fill="#64748b"
-                      fontSize="12"
-                      fontWeight="500"
-                      className="bg-white px-1"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.4 }}
-                    >
-                      {connection.label}
-                    </motion.text>
-                  )}
-                </motion.g>
-              )
-            })}
-
-            {/* Draw boxes with animations */}
-            {allBoxIds.map((boxId) => {
-              const box = findBox(boxId)
-              const exists = currentState.visual.boxes.some((b) => b.id === boxId)
-              const IconComponent = box.icon
-
-              if (!exists) return null
-
-              return (
-                <motion.g
-                  key={`box-${boxId}`}
-                  initial={{
-                    opacity: 0,
-                    scale: direction >= 0 ? 0.8 : 1.2,
-                  }}
-                  animate={{
-                    opacity: exists ? 1 : 0,
-                    scale: 1,
-                    x: 0,
-                    y: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: direction >= 0 ? 1.2 : 0.8,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                    duration: 0.5,
-                  }}
-                  className="cursor-pointer"
-                >
-                  <motion.rect
-                    x={box.x}
-                    y={box.y}
-                    width={box.width}
-                    height={box.height}
-                    rx="8"
-                    fill={box.color}
-                    stroke="#cbd5e1"
-                    strokeWidth="2"
-                    initial={{ fill: "#e5e7eb" }}
-                    animate={{
-                      fill: box.color,
-                      x: box.x,
-                      y: box.y,
-                      width: box.width,
-                      height: box.height,
-                    }}
+                return (
+                  <motion.g
+                    key={`conn-${connId}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: exists ? 1 : 0 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                  />
-                  <foreignObject x={box.x} y={box.y} width={box.width} height={box.height}>
-                    <div className="w-full h-full flex flex-col items-center justify-center text-center p-2 text-gray-800">
-                      {IconComponent && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.3 }}
-                          className="mb-1"
-                        >
-                          <IconComponent className="h-5 w-5 text-gray-600" />
-                        </motion.div>
-                      )}
-                      <motion.div
-                        className="font-medium text-sm"
+                  >
+                    <defs>
+                      <marker
+                        id={`arrowhead-${connId}`}
+                        markerWidth="10"
+                        markerHeight="7"
+                        refX="9"
+                        refY="3.5"
+                        orient="auto"
+                      >
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+                      </marker>
+                    </defs>
+                    <motion.line
+                      x1={fromX}
+                      y1={fromY}
+                      x2={toX}
+                      y2={toY}
+                      stroke="#94a3b8"
+                      strokeWidth="2"
+                      strokeDasharray={connection?.style === "dashed" ? "5,5" : "none"}
+                      markerEnd={`url(#arrowhead-${connId})`}
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                    />
+                    {connection?.label && (
+                      <motion.text
+                        x={(fromX + toX) / 2}
+                        y={(fromY + toY) / 2 - 10}
+                        textAnchor="middle"
+                        fill="#64748b"
+                        fontSize="12"
+                        fontWeight="500"
+                        className="bg-white px-1"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 0.2 }}
+                        transition={{ duration: 0.3, delay: 0.4 }}
                       >
-                        {box.label}
-                      </motion.div>
-                    </div>
-                  </foreignObject>
-                </motion.g>
-              )
-            })}
+                        {connection.label}
+                      </motion.text>
+                    )}
+                  </motion.g>
+                )
+              })}
+            </AnimatePresence>
+
+            {/* Draw boxes with animations - improved synchronization */}
+            <AnimatePresence>
+              {allBoxIds.map((boxId) => {
+                const box = findBox(boxId)
+                const exists = currentState.visual.boxes.some((b) => b.id === boxId)
+                const IconComponent = box.icon
+
+                if (!exists) return null
+
+                return (
+                  <motion.g
+                    key={`box-${boxId}`}
+                    layoutId={`box-${boxId}`}
+                    initial={{
+                      opacity: 0,
+                      scale: direction >= 0 ? 0.8 : 1.2,
+                    }}
+                    animate={{
+                      opacity: exists ? 1 : 0,
+                      scale: 1,
+                      x: box.x,
+                      y: box.y
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: direction >= 0 ? 1.2 : 0.8,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                      duration: 0.5,
+                    }}
+                    className="cursor-pointer"
+                  >
+                    {/* Box background */}
+                    <motion.rect
+                      width={box.width}
+                      height={box.height}
+                      rx="8"
+                      fill={box.color}
+                      stroke="#cbd5e1"
+                      strokeWidth="2"
+                      animate={{
+                        width: box.width,
+                        height: box.height,
+                        fill: box.color
+                      }}
+                      transition={{ duration: 0.5 }}
+                    />
+
+                    {/* Content synchronized with the box */}
+                    <foreignObject
+                      width={box.width}
+                      height={box.height}
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      <div
+                        xmlns="http://www.w3.org/1999/xhtml"
+                        className="w-full h-full flex flex-col items-center justify-center text-center p-2 text-gray-800"
+                      >
+                        {IconComponent && (
+                          <div className="mb-1">
+                            <IconComponent className="h-5 w-5 text-gray-600" />
+                          </div>
+                        )}
+                        <div className="font-medium text-sm">
+                          {box.label}
+                        </div>
+                      </div>
+                    </foreignObject>
+                  </motion.g>
+                )
+              })}
+            </AnimatePresence>
           </svg>
         </div>
 
@@ -399,3 +399,4 @@ export default function TimeTravel() {
     </div>
   )
 }
+
