@@ -34,7 +34,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#dbeafe',
+					color: '#dcfce7', // Light Green
 					icon: Trello,
 				},
 				{
@@ -44,7 +44,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#bfdbfe',
+					color: '#bbf7d0', // Medium Green
 					icon: FileText,
 				},
 				{
@@ -54,7 +54,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#93c5fd',
+					color: '#dbeafe', // Light Blue (AI)
 					icon: BrainCircuit,
 				},
 				{
@@ -64,7 +64,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#60a5fa',
+					color: '#93c5fd', // Dark Blue (Output)
 					icon: Clipboard,
 				},
 			],
@@ -90,7 +90,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#dbeafe',
+					color: '#dcfce7', // Light Green
 					icon: Layers,
 				},
 				{
@@ -100,7 +100,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#bfdbfe',
+					color: '#bbf7d0', // Medium Green
 					icon: Kanban,
 				},
 				{
@@ -110,7 +110,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#93c5fd',
+					color: '#dbeafe', // Light Blue (AI)
 					icon: BrainCircuit,
 				},
 				{
@@ -120,7 +120,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#60a5fa',
+					color: '#bfdbfe', // Medium Blue (AI)
 					icon: BrainCircuit,
 				},
 			],
@@ -147,7 +147,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#dbeafe',
+					color: '#ede9fe', // Light Purple
 					icon: GitBranch,
 				},
 				{
@@ -157,7 +157,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#bfdbfe',
+					color: '#ddd6fe', // Medium Purple
 					icon: Code2,
 				},
 				{
@@ -167,7 +167,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#93c5fd',
+					color: '#dbeafe', // Light Blue (AI)
 					icon: BrainCircuit,
 				},
 				{
@@ -177,7 +177,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#60a5fa',
+					color: '#bfdbfe', // Medium Blue (AI)
 					icon: BrainCircuit,
 				},
 			],
@@ -204,7 +204,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#dbeafe',
+					color: '#ede9fe', // Light Purple
 					icon: Cpu,
 				},
 				{
@@ -214,7 +214,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#bfdbfe',
+					color: '#ddd6fe', // Medium Purple
 					icon: Hammer,
 				},
 				{
@@ -224,7 +224,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#93c5fd',
+					color: '#dbeafe', // Light Blue (AI)
 					icon: BrainCircuit,
 				},
 				{
@@ -234,7 +234,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#60a5fa',
+					color: '#bfdbfe', // Medium Blue (AI)
 					icon: BrainCircuit,
 				},
 			],
@@ -261,7 +261,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#dbeafe',
+					color: '#ffedd5', // Light Orange
 					icon: Database,
 				},
 				{
@@ -271,7 +271,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#bfdbfe',
+					color: '#fed7aa', // Medium Orange
 					icon: Server,
 				},
 				{
@@ -281,7 +281,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#93c5fd',
+					color: '#dbeafe', // Light Blue (AI)
 					icon: BrainCircuit,
 				},
 				{
@@ -291,7 +291,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#60a5fa',
+					color: '#bfdbfe', // Medium Blue (AI)
 					icon: BrainCircuit,
 				},
 			],
@@ -318,7 +318,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#dbeafe',
+					color: '#ffedd5', // Light Orange
 					icon: BarChart,
 				},
 				{
@@ -328,7 +328,7 @@ export const executionStates = [
 					y: 100,
 					width: 100,
 					height: 80,
-					color: '#bfdbfe',
+					color: '#fed7aa', // Medium Orange
 					icon: MessageSquare,
 				},
 				{
@@ -338,7 +338,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#93c5fd',
+					color: '#dbeafe', // Light Blue (AI)
 					icon: BrainCircuit,
 				},
 				{
@@ -348,7 +348,7 @@ export const executionStates = [
 					y: 220,
 					width: 100,
 					height: 80,
-					color: '#60a5fa',
+					color: '#bfdbfe', // Medium Blue (AI)
 					icon: BrainCircuit,
 				},
 			],
@@ -375,7 +375,7 @@ export const executionStates = [
 					y: 50,
 					width: 100,
 					height: 70,
-					color: '#dbeafe',
+					color: '#dcfce7', // Light Green
 					icon: Clipboard,
 				},
 				{
@@ -385,7 +385,7 @@ export const executionStates = [
 					y: 50,
 					width: 100,
 					height: 70,
-					color: '#bfdbfe',
+					color: '#bbf7d0', // Medium Green
 					icon: Layers,
 				},
 				{
@@ -395,7 +395,7 @@ export const executionStates = [
 					y: 150,
 					width: 100,
 					height: 70,
-					color: '#93c5fd',
+					color: '#ede9fe', // Light Purple
 					icon: Code2,
 				},
 				{
@@ -405,7 +405,7 @@ export const executionStates = [
 					y: 250,
 					width: 100,
 					height: 70,
-					color: '#60a5fa',
+					color: '#ddd6fe', // Medium Purple
 					icon: Bug,
 				},
 				{
@@ -415,7 +415,7 @@ export const executionStates = [
 					y: 350,
 					width: 100,
 					height: 70,
-					color: '#3b82f6',
+					color: '#ffedd5', // Light Orange
 					icon: Rocket,
 				},
 				{
@@ -425,7 +425,7 @@ export const executionStates = [
 					y: 250,
 					width: 100,
 					height: 70,
-					color: '#2563eb',
+					color: '#fed7aa', // Medium Orange
 					icon: Hammer,
 				},
 				{
@@ -435,7 +435,7 @@ export const executionStates = [
 					y: 200,
 					width: 100,
 					height: 70,
-					color: '#dbeafe',
+					color: '#dbeafe', // Light Blue (Central AI)
 					icon: BrainCircuit,
 				},
 			],
