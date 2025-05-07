@@ -144,7 +144,7 @@ export default function TimeTravel() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200">
+    <div className="card">
       {/* Main visualization */}
       <div className="p-6 flex flex-col items-center">
         <motion.h2
@@ -274,6 +274,7 @@ export default function TimeTravel() {
                     damping: 30,
                     duration: 0.5,
                   }}
+                  className="cursor-pointer"
                 >
                   <motion.rect
                     x={box.x}
@@ -331,30 +332,33 @@ export default function TimeTravel() {
             transition={{ duration: 0.4, delay: 0.3 }}
             className="bg-gray-50 p-4 rounded-lg border border-gray-200 w-full mb-6"
           >
-            <p className="text-gray-700 leading-relaxed">{currentState.explanation}</p>
+            <p className="text-gray-700">{currentState.explanation}</p>
           </motion.div>
         )}
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-4 mb-6">
           <button
-            className="h-10 w-10 rounded-md border border-gray-300 inline-flex items-center justify-center text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="h-10 w-10 rounded border border-gray-300 inline-block flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors"
             onClick={stepBackward}
             disabled={currentStep === 0 || isAnimating}
+            style={{opacity: (currentStep === 0 || isAnimating) ? 0.5 : 1, cursor: (currentStep === 0 || isAnimating) ? 'not-allowed' : 'pointer'}}
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
-            className={`h-10 w-10 rounded-md inline-flex items-center justify-center text-white disabled:opacity-50 disabled:cursor-not-allowed ${isPlaying ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'}`}
+            className={`h-10 w-10 rounded inline-block flex items-center justify-center text-white transition-colors ${isPlaying ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-600'}`}
             onClick={togglePlayPause}
             disabled={isAnimating && currentStep === totalSteps}
+            style={{opacity: (isAnimating && currentStep === totalSteps) ? 0.5 : 1, cursor: (isAnimating && currentStep === totalSteps) ? 'not-allowed' : 'pointer'}}
           >
             {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
           </button>
           <button
-            className="h-10 w-10 rounded-md border border-gray-300 inline-flex items-center justify-center text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="h-10 w-10 rounded border border-gray-300 inline-block flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors"
             onClick={stepForward}
             disabled={currentStep === totalSteps || isAnimating}
+            style={{opacity: (currentStep === totalSteps || isAnimating) ? 0.5 : 1, cursor: (currentStep === totalSteps || isAnimating) ? 'not-allowed' : 'pointer'}}
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -365,14 +369,14 @@ export default function TimeTravel() {
       <div className="border-t border-gray-200 bg-gray-50 p-4">
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto pb-2 gap-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+          className="flex overflow-x-auto pb-2 gap-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
         >
           {executionStates.map((state, idx) => (
             <motion.div key={idx} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <div
                 data-thumbnail
-                className={`flex-shrink-0 w-24 h-24 cursor-pointer transition-all duration-200 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden ${
-                  currentStep === idx ? "ring-2 ring-blue-500 scale-105 shadow-md" : "hover:ring-1 hover:ring-gray-300"
+                className={`flex-shrink-0 w-24 h-24 cursor-pointer transition-all bg-white border border-gray-200 rounded shadow ${
+                  currentStep === idx ? "ring-2 ring-blue-500 scale-105 shadow-md" : "hover:ring-1 hover:ring-blue-500"
                 }`}
                 onClick={() => {
                   if (!isAnimating) {
@@ -382,8 +386,8 @@ export default function TimeTravel() {
                 }}
               >
                 <div className="w-full h-full p-2 flex flex-col items-center justify-center text-center">
-                  <div className="text-xs font-medium text-gray-700 mb-1">步骤 {idx + 1}</div>
-                  <div className="w-full h-12 bg-gray-100 rounded flex items-center justify-center">
+                  <div className="text-sm font-medium text-gray-700 mb-1">步骤 {idx + 1}</div>
+                  <div className="w-full h-12 bg-gray-50 rounded flex items-center justify-center">
                     {state.title.substring(0, 6)}...
                   </div>
                 </div>
@@ -395,4 +399,3 @@ export default function TimeTravel() {
     </div>
   )
 }
-
