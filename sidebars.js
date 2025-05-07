@@ -199,7 +199,8 @@ const sidebars = {
 				'ai-friendly/ai-friendly-question-chatgpt',
 				'ai-friendly/ai-friendly-question-gemini',
 			],
-		}
+		},
+		'ai-friendly/context-navigator',
 	]
 }
 

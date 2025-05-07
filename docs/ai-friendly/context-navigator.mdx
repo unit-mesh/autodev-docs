@@ -1,0 +1,16 @@
+---
+title: 上下文导航
+hide_table_of_contents: true
+hide_title: true
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly'
+import TimeTravel from '../../src/components/ContextNav/TimeTravel';
+
+export const ContextNavigator = () => {
+	return <TimeTravel/>
+}
+
+<BrowserOnly>
+	{() => <ContextNavigator/>}
+</BrowserOnly>
