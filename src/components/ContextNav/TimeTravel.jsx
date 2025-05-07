@@ -237,13 +237,11 @@ export default function TimeTravel() {
         </div>
       </div>
 
-      {/* 强化的3D幻灯片视图 - 使用更直接的宽度样式 */}
       <div className="relative w-full h-[550px] perspective-1000 overflow-hidden mb-6 slide-container">
-        <AnimatePresence initial={false} custom={direction}>
+        <AnimatePresence initial={true} custom={direction}>
           {executionStates.map((state, idx) => {
             const offset = idx - currentStep;
-            // 计算可见性 - 只有当位置在屏幕范围内时才显示
-            const isVisible = Math.abs(offset) <= 2 || currentStep === 0;
+            const isVisible = Math.abs(offset) <= 2;
             
             if (!isVisible) return null;
             
@@ -277,7 +275,7 @@ export default function TimeTravel() {
                   stiffness: 300,
                   damping: 30
                 }}
-                className="preserve-3d absolute top-0 left-1/2 slide-width h-[500px] bg-white rounded-lg shadow-2xl"
+                className="preserve-3d absolute top-0 left-1/2 slide-width h-[550px] bg-white rounded-lg shadow-2xl"
                 style={{
                   cursor: offset !== 0 && !isAnimating ? 'pointer' : 'default',
                   border: '1px solid rgba(0,0,0,0.1)',

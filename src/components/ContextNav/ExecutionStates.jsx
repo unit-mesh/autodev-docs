@@ -23,27 +23,6 @@ import {
 export const executionStates = [
 	{
 		step: 0,
-		title: 'AI驱动的软件开发知识导航',
-		description: 'AI如何提升软件工程中的知识连接',
-		visual: {
-			boxes: [
-				{
-					id: 'knowledge-nav',
-					label: 'AI知识导航',
-					x: 250,
-					y: 150,
-					width: 120,
-					height: 100,
-					color: '#dbeafe',
-					icon: Workflow,
-				},
-			],
-			connections: [],
-		},
-		explanation: '',
-	},
-	{
-		step: 1,
 		title: 'AI辅助需求分析',
 		description: '',
 		visual: {
@@ -99,7 +78,7 @@ export const executionStates = [
 		explanation: '',
 	},
 	{
-		step: 2,
+		step: 1,
 		title: 'AI辅助设计',
 		description: '',
 		visual: {
@@ -156,7 +135,7 @@ export const executionStates = [
 		explanation: '',
 	},
 	{
-		step: 3,
+		step: 2,
 		title: 'AI辅助开发',
 		description: '',
 		visual: {
@@ -213,7 +192,7 @@ export const executionStates = [
 		explanation: '',
 	},
 	{
-		step: 4,
+		step: 3,
 		title: 'AI辅助测试',
 		description: '',
 		visual: {
@@ -270,7 +249,7 @@ export const executionStates = [
 		explanation: '',
 	},
 	{
-		step: 5,
+		step: 4,
 		title: 'AI辅助部署',
 		description: '',
 		visual: {
@@ -327,7 +306,7 @@ export const executionStates = [
 		explanation: '',
 	},
 	{
-		step: 6,
+		step: 5,
 		title: 'AI辅助维护',
 		description: '',
 		visual: {
@@ -384,7 +363,7 @@ export const executionStates = [
 		explanation: '',
 	},
 	{
-		step: 7,
+		step: 6,
 		title: 'AI驱动的知识循环',
 		description: '',
 		visual: {
@@ -473,62 +452,6 @@ export const executionStates = [
 				{ from: 'ai-knowledge-center', to: 'testing-phase', label: '' },
 				{ from: 'ai-knowledge-center', to: 'deployment-phase', label: '' },
 				{ from: 'ai-knowledge-center', to: 'maintenance-phase', label: '' },
-			],
-		},
-		explanation: '',
-	},
-	{
-		step: 8,
-		title: 'AI知识导航的价值',
-		description: '',
-		visual: {
-			boxes: [
-				{
-					id: 'efficiency',
-					label: '提高效率',
-					x: 150,
-					y: 100,
-					width: 100,
-					height: 80,
-					color: '#dbeafe',
-					icon: Zap,
-				},
-				{
-					id: 'quality',
-					label: '提高质量',
-					x: 350,
-					y: 100,
-					width: 100,
-					height: 80,
-					color: '#bfdbfe',
-					icon: CheckSquare,
-				},
-				{
-					id: 'knowledge-extraction',
-					label: '知识提取',
-					x: 150,
-					y: 220,
-					width: 100,
-					height: 80,
-					color: '#93c5fd',
-					icon: BrainCircuit,
-				},
-				{
-					id: 'knowledge-connection',
-					label: '知识连接',
-					x: 350,
-					y: 220,
-					width: 100,
-					height: 80,
-					color: '#60a5fa',
-					icon: BrainCircuit,
-				},
-			],
-			connections: [
-				{ from: 'efficiency', to: 'quality', label: '' },
-				{ from: 'quality', to: 'knowledge-connection', label: '' },
-				{ from: 'knowledge-connection', to: 'knowledge-extraction', label: '' },
-				{ from: 'knowledge-extraction', to: 'efficiency', label: '' },
 			],
 		},
 		explanation: '',
