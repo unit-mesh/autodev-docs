@@ -1,7 +1,28 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, Pause, Play, } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Pause, Play, 
+  // 导入所有需要的图标组件
+  BarChart,
+  BrainCircuit,
+  Bug,
+  CheckSquare,
+  Clipboard,
+  Code2,
+  Cpu,
+  Database,
+  FileText,
+  GitBranch,
+  Hammer,
+  Kanban,
+  Layers,
+  MessageSquare,
+  Rocket,
+  Server,
+  Trello,
+  Workflow,
+  Zap,
+} from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { executionStates } from '@site/src/components/ContextNav/ExecutionStates'
 
@@ -42,6 +63,36 @@ export default function TimeTravel() {
 
   // Track direction of animation for proper transitions
   const [direction, setDirection] = useState(0) // 0: initial, 1: forward, -1: backward
+
+  // 创建一个图标映射对象，用于根据名称渲染对应的图标
+  const iconMap = {
+    BarChart,
+    BrainCircuit,
+    Bug,
+    CheckSquare,
+    Clipboard,
+    Code2,
+    Cpu,
+    Database,
+    FileText,
+    GitBranch,
+    Hammer,
+    Kanban,
+    Layers,
+    MessageSquare,
+    Rocket,
+    Server,
+    Trello,
+    Workflow,
+    Zap,
+  }
+
+  // 渲染图标的辅助函数
+  const renderIcon = (iconComponent, props = {}) => {
+    if (!iconComponent) return null;
+    const IconComponent = iconComponent;
+    return <IconComponent {...props} />;
+  }
 
   useEffect(() => {
     if (currentStep > previousStep) {
@@ -144,259 +195,212 @@ export default function TimeTravel() {
   }
 
   return (
-    <div className="card">
-      {/* Main visualization */}
-      <div className="p-6 flex flex-col items-center">
-        <motion.h2
-          key={`title-${currentStep}`}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
-          className="text-xl font-semibold mb-2"
-        >
-          {currentState.title}
-        </motion.h2>
-
-        {currentState.description && (
-          <motion.p
-            key={`desc-${currentStep}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="text-gray-600 mb-6"
-          >
-            {currentState.description}
-          </motion.p>
-        )}
-
-        {/* Visual representation */}
-        <div className="relative w-full h-[400px] bg-gray-50 rounded-lg border border-gray-200 mb-6 overflow-hidden">
-          <svg width="100%" height="100%" className="overflow-visible">
-            {/* Draw connections with animations */}
-            <AnimatePresence>
-              {allConnectionIds.map((connId) => {
-                const [fromId, toId] = connId.split("-")
-                const connection = getConnection(fromId, toId)
-                const exists = hasConnection(fromId, toId)
-
-                if (!exists) return null
-
-                const fromBox = findBox(fromId)
-                const toBox = findBox(toId)
-
-                const fromX = fromBox.x + fromBox.width / 2
-                const fromY = fromBox.y + fromBox.height / 2
-                const toX = toBox.x + toBox.width / 2
-                const toY = toBox.y + toBox.height / 2
-
-                return (
-                  <motion.g
-                    key={`conn-${connId}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: exists ? 1 : 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <defs>
-                      <marker
-                        id={`arrowhead-${connId}`}
-                        markerWidth="10"
-                        markerHeight="7"
-                        refX="9"
-                        refY="3.5"
-                        orient="auto"
-                      >
-                        <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
-                      </marker>
-                    </defs>
-                    <motion.line
-                      x1={fromX}
-                      y1={fromY}
-                      x2={toX}
-                      y2={toY}
-                      stroke="#94a3b8"
-                      strokeWidth="2"
-                      strokeDasharray={connection?.style === "dashed" ? "5,5" : "none"}
-                      markerEnd={`url(#arrowhead-${connId})`}
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    />
-                    {connection?.label && (
-                      <motion.text
-                        x={(fromX + toX) / 2}
-                        y={(fromY + toY) / 2 - 10}
-                        textAnchor="middle"
-                        fill="#64748b"
-                        fontSize="12"
-                        fontWeight="500"
-                        className="bg-white px-1"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 0.4 }}
-                      >
-                        {connection.label}
-                      </motion.text>
-                    )}
-                  </motion.g>
-                )
-              })}
-            </AnimatePresence>
-
-            {/* Draw boxes with animations - improved synchronization */}
-            <AnimatePresence>
-              {allBoxIds.map((boxId) => {
-                const box = findBox(boxId)
-                const exists = currentState.visual.boxes.some((b) => b.id === boxId)
-                const IconComponent = box.icon
-
-                if (!exists) return null
-
-                return (
-                  <motion.g
-                    key={`box-${boxId}`}
-                    layoutId={`box-${boxId}`}
-                    initial={{
-                      opacity: 0,
-                      scale: direction >= 0 ? 0.8 : 1.2,
-                    }}
-                    animate={{
-                      opacity: exists ? 1 : 0,
-                      scale: 1,
-                      x: box.x,
-                      y: box.y
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: direction >= 0 ? 1.2 : 0.8,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 30,
-                      duration: 0.5,
-                    }}
-                    className="cursor-pointer"
-                  >
-                    {/* Box background */}
-                    <motion.rect
-                      width={box.width}
-                      height={box.height}
-                      rx="8"
-                      fill={box.color}
-                      stroke="#cbd5e1"
-                      strokeWidth="2"
-                      animate={{
-                        width: box.width,
-                        height: box.height,
-                        fill: box.color
-                      }}
-                      transition={{ duration: 0.5 }}
-                    />
-
-                    {/* Content synchronized with the box */}
-                    <foreignObject
-                      width={box.width}
-                      height={box.height}
-                      style={{ pointerEvents: 'none' }}
-                    >
-                      <div
-                        xmlns="http://www.w3.org/1999/xhtml"
-                        className="w-full h-full flex flex-col items-center justify-center text-center p-2 text-gray-800"
-                      >
-                        {IconComponent && (
-                          <div className="mb-1">
-                            <IconComponent className="h-5 w-5 text-gray-600" />
-                          </div>
-                        )}
-                        <div className="font-medium text-sm">
-                          {box.label}
-                        </div>
-                      </div>
-                    </foreignObject>
-                  </motion.g>
-                )
-              })}
-            </AnimatePresence>
-          </svg>
-        </div>
-
-        {currentState.explanation && (
-          <motion.div
-            key={`explanation-${currentStep}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            className="bg-gray-50 p-4 rounded-lg border border-gray-200 w-full mb-6"
-          >
-            <p className="text-gray-700">{currentState.explanation}</p>
-          </motion.div>
-        )}
-
-        {/* Controls */}
-        <div className="flex items-center justify-center gap-4 mb-6">
+    <div className="card relative">
+      {/* 顶部控制条 */}
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 mb-4">
+        <div className="flex items-center space-x-3">
           <button
-            className="h-10 w-10 rounded border border-gray-300 inline-block flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors"
+            className="h-10 w-10 rounded hover:bg-gray-100"
             onClick={stepBackward}
             disabled={currentStep === 0 || isAnimating}
-            style={{opacity: (currentStep === 0 || isAnimating) ? 0.5 : 1, cursor: (currentStep === 0 || isAnimating) ? 'not-allowed' : 'pointer'}}
+            style={{opacity: (currentStep === 0 || isAnimating) ? 0.5 : 1}}
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5 mx-auto" />
           </button>
           <button
-            className={`h-10 w-10 rounded inline-block flex items-center justify-center text-white transition-colors ${isPlaying ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-600'}`}
+            className={`h-10 w-10 rounded inline-flex items-center justify-center ${isPlaying ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-600'}`}
             onClick={togglePlayPause}
             disabled={isAnimating && currentStep === totalSteps}
-            style={{opacity: (isAnimating && currentStep === totalSteps) ? 0.5 : 1, cursor: (isAnimating && currentStep === totalSteps) ? 'not-allowed' : 'pointer'}}
           >
             {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
           </button>
           <button
-            className="h-10 w-10 rounded border border-gray-300 inline-block flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors"
+            className="h-10 w-10 rounded hover:bg-gray-100"
             onClick={stepForward}
             disabled={currentStep === totalSteps || isAnimating}
-            style={{opacity: (currentStep === totalSteps || isAnimating) ? 0.5 : 1, cursor: (currentStep === totalSteps || isAnimating) ? 'not-allowed' : 'pointer'}}
+            style={{opacity: (currentStep === totalSteps || isAnimating) ? 0.5 : 1}}
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-5 w-5 mx-auto" />
           </button>
+        </div>
+        <div className="flex items-center space-x-2">
+          <label className="text-sm text-gray-600">速度：</label>
+          <select
+            value={playbackSpeed}
+            onChange={(e) => setPlaybackSpeed(Number(e.target.value))}
+            className="border rounded p-1 text-sm"
+          >
+            <option value={3000}>1×</option>
+            <option value={2000}>1.5×</option>
+            <option value={1000}>2×</option>
+          </select>
         </div>
       </div>
 
-      {/* Gallery view at bottom */}
-      <div className="border-t border-gray-200 bg-gray-50 p-4">
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto pb-2 gap-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
-        >
-          {executionStates.map((state, idx) => (
-            <motion.div key={idx} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <div
-                data-thumbnail
-                className={`flex-shrink-0 w-24 h-24 cursor-pointer transition-all bg-white border border-gray-200 rounded shadow ${
-                  currentStep === idx ? "ring-2 ring-blue-500 scale-105 shadow-md" : "hover:ring-1 hover:ring-blue-500"
-                }`}
+      {/* 强化的3D幻灯片视图 - 使用更直接的宽度样式 */}
+      <div className="relative w-full h-[550px] perspective-1000 overflow-hidden mb-6 slide-container">
+        <AnimatePresence initial={false} custom={direction}>
+          {executionStates.map((state, idx) => {
+            const offset = idx - currentStep;
+            // 计算可见性 - 只有当位置在屏幕范围内时才显示
+            const isVisible = Math.abs(offset) <= 2 || currentStep === 0;
+            
+            if (!isVisible) return null;
+            
+            return (
+              <motion.div
+                key={idx}
+                custom={direction}
+                initial={{
+                  x: `calc(-50% + ${direction >= 0 ? 600 : -600}px)`,
+                  rotateY: direction >= 0 ? 45 : -45,
+                  opacity: 0,
+                  scale: 0.8,
+                  zIndex: offset === 0 ? 20 : 10
+                }}
+                animate={{
+                  x: `calc(-50% + ${offset * 80}px)`, // 增加间距
+                  rotateY: offset * 15, // 增强旋转角度
+                  opacity: offset === 0 ? 1 : 0.6,
+                  scale: offset === 0 ? 1 : 0.85,
+                  zIndex: offset === 0 ? 20 : 10
+                }}
+                exit={{
+                  x: `calc(-50% + ${direction >= 0 ? -600 : 600}px)`,
+                  rotateY: direction >= 0 ? -45 : 45,
+                  opacity: 0,
+                  scale: 0.8,
+                  zIndex: offset === 0 ? 20 : 10
+                }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30
+                }}
+                className="preserve-3d absolute top-0 left-1/2 slide-width h-[500px] bg-white rounded-lg shadow-2xl"
+                style={{
+                  cursor: offset !== 0 && !isAnimating ? 'pointer' : 'default',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  boxShadow: offset === 0 
+                    ? '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 15px rgba(0, 0, 0, 0.1)' 
+                    : '0 15px 30px -5px rgba(0, 0, 0, 0.2)'
+                }}
                 onClick={() => {
-                  if (!isAnimating) {
-                    setCurrentStep(idx)
-                    if (isPlaying) setIsPlaying(false)
+                  if (offset !== 0 && !isAnimating) {
+                    setCurrentStep(idx);
                   }
                 }}
               >
-                <div className="w-full h-full p-2 flex flex-col items-center justify-center text-center">
-                  <div className="text-sm font-medium text-gray-700 mb-1">步骤 {idx + 1}</div>
-                  <div className="w-full h-12 bg-gray-50 rounded flex items-center justify-center">
-                    {state.title.substring(0, 6)}...
+                <div className="p-6 h-full flex flex-col overflow-hidden">
+                  <h2 className="text-xl font-semibold mb-4 text-center">{state.title}</h2>
+                  
+                  {state.description && (
+                    <p className="text-gray-600 mb-4 text-center">{state.description}</p>
+                  )}
+                  
+                  {/* 可视化区域 - 增加高度使其填充空间 */}
+                  <div className="flex-1 relative bg-gray-50 rounded-lg border border-gray-200 p-4 overflow-hidden">
+                    {/* 使用实际的状态数据而不是简单指示器 */}
+                    <svg width="100%" height="100%" className="overflow-visible">
+                      {/* 先渲染连接线 */}
+                      {state.visual && state.visual.connections && state.visual.connections.map((conn, connIdx) => {
+                        const fromBox = state.visual.boxes.find(b => b.id === conn.from);
+                        const toBox = state.visual.boxes.find(b => b.id === conn.to);
+                        if (!fromBox || !toBox) return null;
+                        
+                        const fromX = fromBox.x + (fromBox.width || 100) / 2;
+                        const fromY = fromBox.y + (fromBox.height || 60) / 2;
+                        const toX = toBox.x + (toBox.width || 100) / 2;
+                        const toY = toBox.y + (toBox.height || 60) / 2;
+                        
+                        return (
+                          <g key={`conn-${connIdx}-slide-${idx}`}>
+                            <line
+                              x1={fromX}
+                              y1={fromY}
+                              x2={toX}
+                              y2={toY}
+                              stroke="#94a3b8"
+                              strokeWidth="2"
+                              strokeDasharray={conn.style === 'dashed' ? "5,5" : ""}
+                            />
+                            {conn.label && (
+                              <text
+                                x={(fromX + toX) / 2}
+                                y={(fromY + toY) / 2}
+                                dy="-5"
+                                textAnchor="middle"
+                                fill="#64748b"
+                                fontSize="12"
+                              >
+                                {conn.label}
+                              </text>
+                            )}
+                          </g>
+                        );
+                      })}
+                      
+                      {/* 渲染框和图标 */}
+                      {state.visual && state.visual.boxes && state.visual.boxes.map((box) => (
+                        <g key={`box-${box.id}-slide-${idx}`}>
+                          <rect
+                            x={box.x}
+                            y={box.y}
+                            width={box.width || 100}
+                            height={box.height || 60}
+                            rx="8"
+                            fill={box.color || "#f3f4f6"}
+                            stroke="#cbd5e1"
+                            strokeWidth="2"
+                          />
+                          {box.icon && (
+                            <foreignObject
+                              x={box.x + (box.width || 100)/2 - 12}
+                              y={box.y + 10}
+                              width="24"
+                              height="24"
+                            >
+                              <div className="flex justify-center">
+                                {renderIcon(box.icon, { className: "h-5 w-5 text-gray-700" })}
+                              </div>
+                            </foreignObject>
+                          )}
+                          <text
+                            x={box.x + (box.width || 100)/2}
+                            y={box.y + (box.height || 60)/2 + (box.icon ? 10 : 0)}
+                            textAnchor="middle"
+                            dominantBaseline="middle"
+                            fill="#1f2937"
+                            fontSize="14"
+                            fontWeight="500"
+                          >
+                            {box.label}
+                          </text>
+                        </g>
+                      ))}
+                    </svg>
                   </div>
+                  
+                  {state.explanation && (
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg text-sm text-gray-700">
+                      {state.explanation}
+                    </div>
+                  )}
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
+
+      {/* 进度条 */}
+      <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-4 mx-4">
+        <div
+          className="h-full bg-blue-600 transition-all duration-300"
+          style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+        />
       </div>
     </div>
-  )
+  );
 }
 

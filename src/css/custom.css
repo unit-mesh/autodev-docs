@@ -749,3 +749,160 @@ button {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* 3D 幻灯片效果所需样式 */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.max-w-lg {
+  max-width: 32rem;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.left-1\/2 {
+  left: 50%;
+}
+
+.-translate-x-1\/2 {
+  transform: translateX(-50%);
+}
+
+.h-\[450px\] {
+  height: 450px;
+}
+
+.slide-content {
+  overflow: auto;
+  max-height: 100%;
+  padding: 1rem;
+}
+
+/* 增强3D效果的额外样式 */
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.h-\[500px\] {
+  height: 500px;
+}
+
+.h-\[550px\] {
+  height: 550px;
+}
+
+.relative {
+  position: relative;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+/* 修复宽度定义 */
+.w-\[90\%\] {
+  width: 90% !important; /* 添加!important确保优先级 */
+}
+
+/* 添加备选宽度类供选择 */
+.slide-width {
+  width: 90%;
+  max-width: 800px;
+}
+
+/* 滑动效果所需的上层固定宽度容器 */
+.slide-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+}
+
+/* 优化初始加载时的幻灯片展示 */
+.slide-container .preserve-3d {
+  transform-origin: center center;
+  width: 90%;
+  max-width: 800px;
+}
+
+/* 确保幻灯片在屏幕上显示清晰 */
+.slide-width {
+  width: 90%;
+  max-width: 800px;
+}
+
+/* 更多精确的定位控制 */
+.slide-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+}
+
+/* 优化滚动条 */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* 让内联元素水平居中 */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 增强的阴影效果 */
+.shadow-win7 {
+  box-shadow: 
+    0 1px 2px rgba(0,0,0,0.15),
+    0 5px 10px rgba(0,0,0,0.12),
+    0 10px 20px rgba(0,0,0,0.1),
+    0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* 增强的边框效果 */
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
