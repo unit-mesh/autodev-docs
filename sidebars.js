@@ -190,8 +190,8 @@ const sidebars = {
 	],
 	friendlySidebar: [
 		'ai-friendly/index',
-		'ai-friendly/ai-friendly-codebase',
-		'ai-friendly/ai-friendly-platform-engineering',
+		'codebase',
+		'platform-engineering',
 		{
 			type: 'category',
 			label: 'AI-Friendly Question',
