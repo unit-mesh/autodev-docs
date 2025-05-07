@@ -7,7 +7,6 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 		}
 	}
 
-	// Basic style to indicate clickable areas
 	const clickableStyle = { cursor: 'pointer' }
 
 	return (
@@ -25,7 +24,7 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 								      width="500" height="120" rx="8"></rect>
 								<text id="用户触点-title" fill="#FFA500" fontFamily="PingFangSC-Semibold, PingFang SC" fontSize="18"
 								      fontWeight="500">
-									<tspan x="37" y="31">用户触点</tspan>
+									<tspan x="37" y="31">用户触点：AI 增强的自服务</tspan>
 								</text>
 								<text id="--低代码系统，快速-UI/原型构建" fill="#000000" fontFamily="Helvetica" fontSize="14"
 								      fontWeight="normal">
@@ -64,8 +63,7 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 								      width="500" height="120" rx="8"></rect>
 								<text id="中间层-title" fill="#008000" fontFamily="PingFangSC-Semibold, PingFang SC" fontSize="18"
 								      fontWeight="500">
-									<tspan x="29" y="34">中间层：知识中枢与团队</tspan>
-									<tspan x="227" y="34" fontFamily="Helvetica-Bold, Helvetica" fontWeight="bold"> AI</tspan>
+									<tspan x="29" y="34">中间层：知识与上下文中枢</tspan>
 								</text>
 								<text id="--连接南向和北向，知识聚合与分发" fill="#000000" fontFamily="Helvetica" fontSize="14"
 								      fontWeight="normal">
@@ -85,7 +83,7 @@ export const PlatformEngFlow = ({ onClickSection }) => {
               <g onClick={() => handleSectionClick('knowledge-hub')} style={clickableStyle}>
                 <rect id="Rectangle-knowledgehub" stroke="#008000" fillOpacity="0.2" fill="#008000" fillRule="nonzero" x="340" y="35" width="140" height="54" rx="5"></rect>
                 <text id="知识中枢-label" fill="#008000" fontFamily="PingFangSC-Regular, PingFang SC" fontSize="14" fontWeight="normal">
-                    <tspan x="355" y="68">知识中枢与团队 AI</tspan>
+                    <tspan x="355" y="68">知识与上下文中枢</tspan>
                 </text>
               </g>
 							</g>
@@ -100,7 +98,7 @@ export const PlatformEngFlow = ({ onClickSection }) => {
 								      width="500" height="120" rx="8"></rect>
 								<text id="内部接口-title" fill="#0000FF" fontFamily="PingFangSC-Semibold, PingFang SC" fontSize="18"
 								      fontWeight="500">
-									<tspan x="27" y="26">内部接口：平台内部层</tspan>
+									<tspan x="27" y="26">内部接口：标准化 API 提供上下文</tspan>
 								</text>
 								<text id="--提供编辑器、代码库等内部-API" fill="#000000" fontFamily="Helvetica" fontSize="14"
 								      fontWeight="normal">
@@ -128,8 +126,7 @@ export const PlatformEngFlow = ({ onClickSection }) => {
             <g id="ai-governance-container" transform="translate(-280.000000, 0.000000)">
               <rect stroke="#4B0082" strokeWidth="2" fill="#FFFFFF" width="250" height="480" rx="8" />
               <text fill="#4B0082" fontFamily="Helvetica-Bold, Helvetica" fontSize="18" fontWeight="bold">
-                <tspan x="77" y="40">AI</tspan>
-                <tspan x="100" y="40" fontFamily="PingFangSC-Semibold, PingFang SC" fontWeight="500">治理中枢</tspan>
+                <tspan x="57" y="40" fontFamily="PingFangSC-Semibold, PingFang SC" fontWeight="500">智能体治理中枢</tspan>
               </text>
               <line x1="75" y1="50" x2="175" y2="50" stroke="#4B0082" strokeWidth="2" />
               <g transform="translate(32, 78)">
@@ -154,7 +151,6 @@ export const PlatformEngFlow = ({ onClickSection }) => {
               </g>
             </g>
 
-            {/* 新增模块：度量 AI 质量与生产力 */}
             <g id="ai-metrics-container" transform="translate(540.000000, 0.000000)">
               <rect stroke="#2E8B57" strokeWidth="2" fill="#FFFFFF" width="250" height="480" rx="8" />
               <text fill="#2E8B57" fontFamily="Helvetica-Bold, Helvetica" fontSize="18" fontWeight="bold">
