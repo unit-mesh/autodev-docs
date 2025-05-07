@@ -393,6 +393,36 @@ export default function TimeTravel() {
         </AnimatePresence>
       </div>
 
+      {/* 缩略图导航栏 */}
+      <div 
+        ref={scrollContainerRef} 
+        className="flex overflow-x-auto space-x-2 p-4 bg-gray-100 rounded-lg mb-4 mx-4"
+        style={{ scrollbarWidth: 'thin' }} // For Firefox
+      >
+        {executionStates.map((state, index) => (
+          <button
+            key={`thumb-${index}`}
+            data-thumbnail // Used by useEffect to scroll into view
+            onClick={() => {
+              setCurrentStep(index);
+              if (isPlaying) setIsPlaying(false);
+            }}
+            className={`p-2 rounded-md text-xs shrink-0 transition-all duration-200 ease-in-out
+                        ${currentStep === index 
+                          ? 'bg-blue-600 text-white shadow-lg transform scale-105' 
+                          : 'bg-white text-gray-700 hover:bg-gray-200 hover:shadow-md'}`}
+            title={state.title}
+          >
+            <div className="w-28 h-20 flex flex-col items-center justify-center border border-gray-300 rounded-md overflow-hidden">
+              <span className="block truncate w-full text-center px-1 font-medium">{state.title}</span>
+              <span className={`mt-1 text-xxs ${currentStep === index ? 'text-blue-200' : 'text-gray-500'}`}>
+                步骤 {index + 1}
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+
       {/* 进度条 */}
       <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-4 mx-4">
         <div
