@@ -288,7 +288,7 @@ export const SPAREFramework = () => {
           {/* 支柱得分卡视图 */}
           <div className="mb-6">
             <h5 className="text-lg font-medium mb-3 text-blue-700">SPARE支柱得分 - 整体健康状况</h5>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               {/* 支柱A得分卡 */}
               <div className="bg-blue-50 rounded-lg border border-blue-100 p-4 relative">
                 <div className="flex items-center mb-2">
@@ -334,10 +334,6 @@ export const SPAREFramework = () => {
                       <div className="bg-blue-600 h-1.5 rounded-full" style={{width: '75%'}}></div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="absolute bottom-2 right-2">
-                  <button className="text-xs text-blue-600 hover:underline">详情</button>
                 </div>
               </div>
               
@@ -387,10 +383,6 @@ export const SPAREFramework = () => {
                     </div>
                   </div>
                 </div>
-                
-                <div className="absolute bottom-2 right-2">
-                  <button className="text-xs text-green-600 hover:underline">详情</button>
-                </div>
               </div>
               
               {/* 支柱C得分卡 */}
@@ -438,10 +430,6 @@ export const SPAREFramework = () => {
                       <div className="bg-purple-600 h-1.5 rounded-full" style={{width: '82%'}}></div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="absolute bottom-2 right-2">
-                  <button className="text-xs text-purple-600 hover:underline">详情</button>
                 </div>
               </div>
               
@@ -491,16 +479,12 @@ export const SPAREFramework = () => {
                     </div>
                   </div>
                 </div>
-                
-                <div className="absolute bottom-2 right-2">
-                  <button className="text-xs text-amber-600 hover:underline">详情</button>
-                </div>
               </div>
             </div>
           </div>
           
           {/* 多维度趋势图表 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-2 gap-6 mb-6">
             {/* DORA指标趋势图 */}
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
               <div className="flex justify-between items-center mb-3">
@@ -558,7 +542,7 @@ export const SPAREFramework = () => {
             </div>
             
             {/* 关键AI指标雷达图 */}
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 w-90 h-90">
               <h6 className="font-medium text-blue-700 mb-3">AI价值实现 - 雷达分析</h6>
               
               {/* 模拟雷达图 */}
@@ -575,8 +559,8 @@ export const SPAREFramework = () => {
                 
                 {/* 雷达数据多边形 (模拟) */}
                 <div className="absolute inset-0">
-                  <svg viewBox="-100 -100 200 200">
-                    <polygon points="0,-80 60,-40 45,70 -45,70 -60,-40" 
+                  <svg viewBox="-100 -100 200 200" className="w-56 h-56 relative" style={{ left: "16%" }}>
+                    <polygon points="0,-80 76,25 47,77 -47,77 -76,25" 
                              fill="rgba(59, 130, 246, 0.3)" stroke="#3b82f6" strokeWidth="2" />
                   </svg>
                 </div>
@@ -610,7 +594,7 @@ export const SPAREFramework = () => {
             
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm">
-                <thead>
+                <thead className=''>
                   <tr className="bg-slate-100">
                     <th className="py-2 px-3 text-left font-medium text-slate-700">SPARE指标</th>
                     <th className="py-2 px-3 text-left font-medium text-slate-700">当前值</th>
@@ -688,7 +672,7 @@ export const SPAREFramework = () => {
                   AI建议采纳与代码质量的关联
                 </h6>
                 <p className="text-sm text-slate-600 mb-2">
-                  数据表明，AI建议接受率与代码流失率之间存在负相关 (-0.72)。当AI建议接受率超过75%时，代码流失率倾向于增加，表明可能需要更严格的质量审查机制。
+                  数据表明，AI建议接受率与代码流失率之间存在负相关 (-0.72)。当AI建议接受率超过 xx% 时，代码流失率倾向于增加，表明可能需要更严格的质量审查机制。
                 </p>
                 <div className="flex space-x-2">
                   <button className="text-xs border border-blue-200 rounded px-2 py-1 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors">
@@ -706,7 +690,7 @@ export const SPAREFramework = () => {
                   开发者体验改进机会
                 </h6>
                 <p className="text-sm text-slate-600 mb-2">
-                  复杂模块中AI采纳率较低(45%)，但对应的开发者满意度也较低。调研数据显示，针对复杂逻辑的AI建议质量是主要痛点。改进AI对复杂业务逻辑的理解能显著提升开发者体验。
+                  复杂模块中AI采纳率较低(xx%)，但对应的开发者满意度也较低。调研数据显示，针对复杂逻辑的AI建议质量是主要痛点。改进AI对复杂业务逻辑的理解能显著提升开发者体验。
                 </p>
                 <div className="flex space-x-2">
                   <button className="text-xs border border-green-200 rounded px-2 py-1 bg-green-50 text-green-700 hover:bg-green-100 transition-colors">
@@ -769,7 +753,7 @@ export const SPAREFramework = () => {
             <h6 className="font-medium text-blue-700">AI生成的洞察</h6>
           </div>
           <p className="text-slate-600 mb-3">
-            系统分析表明，自引入AI代码审查后，代码缺陷密度下降了18%，但在复杂模块中AI建议的采纳率仅为45%。提升采纳率将有望进一步改善代码质量指标。
+            系统分析表明，自引入AI代码审查后，代码缺陷密度下降了18%，但在复杂模块中AI建议的采纳率仅为xx%。提升采纳率将有望进一步改善代码质量指标。
           </p>
           <div className="flex space-x-3">
             <button className="text-sm border border-blue-200 rounded px-3 py-1 bg-white text-blue-700 hover:bg-blue-50 transition-colors">
@@ -833,58 +817,6 @@ export const SPAREFramework = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          
-          {/* 透镜功能 */}
-          <div className="border-t border-blue-100 pt-4">
-            <div className="flex justify-between items-center mb-3">
-              <h6 className="font-semibold text-blue-700">透镜视角</h6>
-              <div className="flex space-x-2">
-                <button className="text-sm border border-blue-200 rounded px-3 py-1 bg-blue-50 text-blue-700 flex items-center">
-                  <Eye className="h-4 w-4 mr-1" />
-                  伦理AI视角
-                </button>
-                <button className="text-sm border border-green-200 rounded px-3 py-1 bg-green-50 text-green-700 flex items-center">
-                  <Shield className="h-4 w-4 mr-1" />
-                  安全合规视角
-                </button>
-              </div>
-            </div>
-            <p className="text-slate-500 italic">
-              透镜功能允许您从不同视角审视SPARE框架指标，发现潜在问题与机会
-            </p>
-          </div>
-        </div>
-        
-        {/* 与业务成果关联 */}
-        <div className="bg-white p-5 rounded-lg shadow mb-6">
-          <h4 className="text-xl font-semibold mb-3 text-center text-blue-700">与业务成果关联</h4>
-          <p className="text-slate-600 mb-4 text-center">SPARE框架指标与核心业务目标的直接关联</p>
-          
-          <div className="grid-3 gap-4">
-            <div className="p-4 rounded-lg bg-blue-50 border border-blue-100">
-              <div className="flex items-center mb-2">
-                <Target className="h-5 w-5 text-blue-600 mr-2" />
-                <h5 className="font-semibold text-blue-700">更快的上市时间</h5>
-              </div>
-              <p className="text-sm text-slate-600">由支柱A (AI辅助任务周期时间) 和支柱B (变更前置时间、部署频率) 共同促进</p>
-            </div>
-            
-            <div className="p-4 rounded-lg bg-green-50 border border-green-100">
-              <div className="flex items-center mb-2">
-                <Star className="h-5 w-5 text-green-600 mr-2" />
-                <h5 className="font-semibold text-green-700">改进的产品质量</h5>
-              </div>
-              <p className="text-sm text-slate-600">由支柱C (缺陷密度、变更失败率) 和维度D (AI代码漏洞识别) 共同保障</p>
-            </div>
-            
-            <div className="p-4 rounded-lg bg-purple-50 border border-purple-100">
-              <div className="flex items-center mb-2">
-                <Lightbulb className="h-5 w-5 text-purple-600 mr-2" />
-                <h5 className="font-semibold text-purple-700">提升的创新能力</h5>
-              </div>
-              <p className="text-sm text-slate-600">由支柱A (AI建议的新颖功能) 和支柱B (释放开发者创新时间) 共同驱动</p>
             </div>
           </div>
         </div>
