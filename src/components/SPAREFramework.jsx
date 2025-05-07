@@ -59,126 +59,129 @@ export const SPAREFramework = () => {
         </p>
         
         {/* 四大支柱/维度卡片 */}
-        <div className="grid-4 mb-6 gap-4">
-          {/* 支柱A */}
-          <div 
-            className={`card cursor-pointer transition-all ${expandedPillar === 'A' ? 'border-blue-500 shadow-lg' : 'hover:border-blue-300'}`}
-            onClick={() => togglePillar('A')}
-          >
-            <div className="flex justify-between items-center mb-3">
-              <div className="flex items-center">
-                <div className="icon-circle bg-blue-600 mr-3">
-                  <Zap className="h-6 w-6 text-white" />
+        <div className="mb-6 space-y-4"> {/* 修改：移除 grid-4，使用 space-y-4 来分隔纵向和横向组 */}
+          {/* 纵向支柱 A, B, C */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4"> {/* 新增：包裹纵向支柱的 div */}
+            {/* 支柱A */}
+            <div 
+              className={`card cursor-pointer transition-all ${expandedPillar === 'A' ? 'border-blue-500 shadow-lg' : 'hover:border-blue-300'}`}
+              onClick={() => togglePillar('A')}
+            >
+              <div className="flex justify-between items-center mb-3">
+                <div className="flex items-center">
+                  <div className="icon-circle bg-blue-600 mr-3">
+                    <Zap className="h-6 w-6 text-white" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-blue-800">纵向支柱A</h4>
                 </div>
-                <h4 className="text-xl font-semibold text-blue-800">支柱A</h4>
+                {expandedPillar === 'A' ? <ChevronUp className="h-5 w-5 text-blue-500" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
               </div>
-              {expandedPillar === 'A' ? <ChevronUp className="h-5 w-5 text-blue-500" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
-            </div>
-            <h5 className="text-lg font-medium mb-2">AI赋能与价值实现</h5>
-            <p className="text-slate-600 mb-2">评估AI对研发效率、生产力和创新的切实贡献</p>
-            
-            {expandedPillar === 'A' && (
-              <div className="mt-4 bg-white p-4 rounded-lg border border-blue-100">
-                <h6 className="font-semibold mb-2 text-blue-700">核心指标类别</h6>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>AI采纳与信任度：</strong>工具使用率、建议接受率、开发者AI信任度</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>AI驱动的效率与生产力：</strong>任务周期时间缩短、重复性工作减少</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>AI对创新的贡献：</strong>AI建议的新颖解决方案、AI改进的创新速度</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>AI辅助质量：</strong>AI输出相关性、连贯性、内容真实性</span>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
-          
-          {/* 支柱B */}
-          <div 
-            className={`card cursor-pointer transition-all ${expandedPillar === 'B' ? 'border-green-500 shadow-lg' : 'hover:border-green-300'}`}
-            onClick={() => togglePillar('B')}
-          >
-            <div className="flex justify-between items-center mb-3">
-              <div className="flex items-center">
-                <div className="icon-circle bg-green-600 mr-3">
-                  <Heart className="h-6 w-6 text-white" />
+              <h5 className="text-lg font-medium mb-2">AI赋能与价值实现</h5>
+              <p className="text-slate-600 mb-2">评估AI对研发效率、生产力和创新的切实贡献</p>
+              
+              {expandedPillar === 'A' && (
+                <div className="mt-4 bg-white p-4 rounded-lg border border-blue-100">
+                  <h6 className="font-semibold mb-2 text-blue-700">核心指标类别</h6>
+                  <ul className="space-y-2">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>AI采纳与信任度：</strong>工具使用率、建议接受率、开发者AI信任度</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>AI驱动的效率与生产力：</strong>任务周期时间缩短、重复性工作减少</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>AI对创新的贡献：</strong>AI建议的新颖解决方案、AI改进的创新速度</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>AI辅助质量：</strong>AI输出相关性、连贯性、内容真实性</span>
+                    </li>
+                  </ul>
                 </div>
-                <h4 className="text-xl font-semibold text-green-800">支柱B</h4>
-              </div>
-              {expandedPillar === 'B' ? <ChevronUp className="h-5 w-5 text-green-500" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
+              )}
             </div>
-            <h5 className="text-lg font-medium mb-2">协同式开发者体验与心流</h5>
-            <p className="text-slate-600 mb-2">创建促进开发者福祉、高效工作流与心流状态的环境</p>
             
-            {expandedPillar === 'B' && (
-              <div className="mt-4 bg-white p-4 rounded-lg border border-green-100">
-                <h6 className="font-semibold mb-2 text-green-700">核心指标类别</h6>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>开发者福祉与敬业度：</strong>满意度、净推荐值、认知负荷、倦怠信号</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>工作流顺畅度与效率：</strong>变更前置时间、部署频率、心流效率</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>AI协作与技能演进：</strong>AI工具融入度、AI技能提升、协作质量</span>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
-          
-          {/* 支柱C */}
-          <div 
-            className={`card cursor-pointer transition-all ${expandedPillar === 'C' ? 'border-purple-500 shadow-lg' : 'hover:border-purple-300'}`}
-            onClick={() => togglePillar('C')}
-          >
-            <div className="flex justify-between items-center mb-3">
-              <div className="flex items-center">
-                <div className="icon-circle bg-purple-600 mr-3">
-                  <Code2 className="h-6 w-6 text-white" />
+            {/* 支柱B */}
+            <div 
+              className={`card cursor-pointer transition-all ${expandedPillar === 'B' ? 'border-green-500 shadow-lg' : 'hover:border-green-300'}`}
+              onClick={() => togglePillar('B')}
+            >
+              <div className="flex justify-between items-center mb-3">
+                <div className="flex items-center">
+                  <div className="icon-circle bg-green-600 mr-3">
+                    <Heart className="h-6 w-6 text-white" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-green-800">纵向支柱B</h4>
                 </div>
-                <h4 className="text-xl font-semibold text-purple-800">支柱C</h4>
+                {expandedPillar === 'B' ? <ChevronUp className="h-5 w-5 text-green-500" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
               </div>
-              {expandedPillar === 'C' ? <ChevronUp className="h-5 w-5 text-purple-500" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
+              <h5 className="text-lg font-medium mb-2">协同式开发者体验与心流</h5>
+              <p className="text-slate-600 mb-2">创建促进开发者福祉、高效工作流与心流状态的环境</p>
+              
+              {expandedPillar === 'B' && (
+                <div className="mt-4 bg-white p-4 rounded-lg border border-green-100">
+                  <h6 className="font-semibold mb-2 text-green-700">核心指标类别</h6>
+                  <ul className="space-y-2">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>开发者福祉与敬业度：</strong>满意度、净推荐值、认知负荷、倦怠信号</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>工作流顺畅度与效率：</strong>变更前置时间、部署频率、心流效率</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>AI协作与技能演进：</strong>AI工具融入度、AI技能提升、协作质量</span>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
-            <h5 className="text-lg font-medium mb-2">智能化代码质量与系统韧性</h5>
-            <p className="text-slate-600 mb-2">确保AI辅助开发产出高质量、安全且具韧性的软件系统</p>
             
-            {expandedPillar === 'C' && (
-              <div className="mt-4 bg-white p-4 rounded-lg border border-purple-100">
-                <h6 className="font-semibold mb-2 text-purple-700">核心指标类别</h6>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-purple-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>AI影响下的代码完整性：</strong>代码流失率、缺陷密度、测试覆盖率</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-purple-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>系统稳定性与性能：</strong>变更失败率、MTTR、系统可用性</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-purple-500 mr-2 mt-1 flex-shrink-0" />
-                    <span><strong>主动技术债务管理：</strong>技术债务比率、代码健康度、重构成本</span>
-                  </li>
-                </ul>
+            {/* 支柱C */}
+            <div 
+              className={`card cursor-pointer transition-all ${expandedPillar === 'C' ? 'border-purple-500 shadow-lg' : 'hover:border-purple-300'}`}
+              onClick={() => togglePillar('C')}
+            >
+              <div className="flex justify-between items-center mb-3">
+                <div className="flex items-center">
+                  <div className="icon-circle bg-purple-600 mr-3">
+                    <Code2 className="h-6 w-6 text-white" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-purple-800">纵向支柱C</h4>
+                </div>
+                {expandedPillar === 'C' ? <ChevronUp className="h-5 w-5 text-purple-500" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
               </div>
-            )}
-          </div>
+              <h5 className="text-lg font-medium mb-2">智能化代码质量与系统韧性</h5>
+              <p className="text-slate-600 mb-2">确保AI辅助开发产出高质量、安全且具韧性的软件系统</p>
+              
+              {expandedPillar === 'C' && (
+                <div className="mt-4 bg-white p-4 rounded-lg border border-purple-100">
+                  <h6 className="font-semibold mb-2 text-purple-700">核心指标类别</h6>
+                  <ul className="space-y-2">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-purple-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>AI影响下的代码完整性：</strong>代码流失率、缺陷密度、测试覆盖率</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-purple-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>系统稳定性与性能：</strong>变更失败率、MTTR、系统可用性</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-purple-500 mr-2 mt-1 flex-shrink-0" />
+                      <span><strong>主动技术债务管理：</strong>技术债务比率、代码健康度、重构成本</span>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div> {/* 新增：结束包裹纵向支柱的 div */}
           
-          {/* 维度D */}
+          {/* 横向支柱D */}
           <div 
             className={`card cursor-pointer transition-all ${expandedPillar === 'D' ? 'border-amber-500 shadow-lg' : 'hover:border-amber-300'}`}
             onClick={() => togglePillar('D')}
@@ -188,7 +191,7 @@ export const SPAREFramework = () => {
                 <div className="icon-circle bg-amber-600 mr-3">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-amber-800">横向维度D</h4>
+                <h4 className="text-xl font-semibold text-amber-800">横向支柱D</h4>
               </div>
               {expandedPillar === 'D' ? <ChevronUp className="h-5 w-5 text-amber-500" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
             </div>
