@@ -1686,3 +1686,44 @@ button {
 .shadow-sm {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
+
+/* 补充缺失的 CSS 工具类 */
+
+/* Sizing Utilities */
+.h-64 {
+  height: 16rem; /* 256px */
+}
+
+.w-1 {
+  width: 0.25rem; /* 4px */
+}
+
+/* Flexbox Utilities */
+.flex-grow {
+  flex-grow: 1;
+}
+
+/* Background Color Utilities */
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity)); /* blue-500 */
+}
+
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity)); /* slate-200 */
+}
+
+.bg-slate-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity)); /* slate-300 */
+}
+
+/* Grid Template Columns Utilities */
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
