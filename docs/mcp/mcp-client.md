@@ -15,6 +15,24 @@ parent: MCP
 ```json
 {
   "mcpServers": {
+    "autodev": {
+      "command": "npx",
+      "args": ["--package=@autodev/context-mcp", "autodev-context-mcp", "--preset=AutoDev", "-y"],
+      "env": {
+        "PROJECT_ID": "cmaqby8oo0002l704skfwgpjy"
+      }
+    }
+  }
+}
+```
+
+AutoDev with AutoDev Workbench to fetch context.
+
+### MCP Examples
+
+```json
+{
+  "mcpServers": {
     "filesystem": {
       "command": "npx",
       "args": [
