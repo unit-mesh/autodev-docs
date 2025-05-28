@@ -14,7 +14,7 @@ permalink: /features/devops
 
 Which will generate build system info and template file, then render to prompt
 
-impl code: [GenerateGitHubActionsAction](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/genius/actions/GenerateGitHubActionsAction.kt)
+impl code: [GenerateGitHubActionsAction](https://github.com/unit-mesh/auto-dev/blob/v1.8.11/src/main/kotlin/cc/unitmesh/devti/actions/GenerateGitHubActionsAction.kt)
 
 ```kotlin
 val githubActions = BuildSystemProvider.guess(project);
@@ -27,7 +27,7 @@ val template = templateRender.getTemplate("generate-github-action.vm")
 
 Which will generate build system info and template file, then render to prompt
 
-impl code: [GenerateDockerfileAction](https://github.com/unit-mesh/auto-dev/blob/master/src/main/kotlin/cc/unitmesh/genius/actions/GenerateDockerfileAction.kt)
+impl code: [GenerateDockerfileAction](https://github.com/unit-mesh/auto-dev/blob/v1.8.11/src/main/kotlin/cc/unitmesh/devti/actions/GenerateDockerfileAction.kt)
 
 ```kotlin
 val dockerContexts = BuildSystemProvider.guess(project)
