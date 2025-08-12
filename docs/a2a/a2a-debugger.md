@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MCP Debugger
+title: A2A Debugger
 nav_order: 2
 parent: MCP
 permalink: /a2a/a2a-debugger
