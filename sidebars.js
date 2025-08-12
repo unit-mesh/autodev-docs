@@ -179,6 +179,14 @@ const sidebars = {
 		},
 		{
 			type: 'category',
+			label: 'A2A',
+			items: [
+				'a2a/index',
+				'a2a/a2a-debugger',
+			],
+		},
+		{
+			type: 'category',
 			label: 'AI Agent Language',
 			items: [
 				'devins/devins',
