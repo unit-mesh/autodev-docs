@@ -20,8 +20,28 @@ permalink: /a2a
 - A2A Agent 即 Tool。即你可以将支持 A2A 的 Agent，作为类似于 MCP 中的 Tool 来使用。
 - A2A Debugger。即你可以通过 A2A Debugger 来调试 A2A Agent。
 
-
 ### A2A Agent as Tool
+
+Enable the MCP server in AutoDev settings, and Config with A2A
+
+```JSON
+{
+  "mcpServers": {
+    "weather": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/Volumes/source/ai/autodev-mcp-test/java-mcp/target/mcp-0.0.1-SNAPSHOT.jar"
+      ]
+    }
+  },
+  "a2aServers": {
+    "remote-example": {
+      "url": "http://localhost:9999"
+    }
+  }
+}
+```
 
 如下是示例的 DevIns Command:
 

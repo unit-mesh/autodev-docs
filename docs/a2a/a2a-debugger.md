@@ -12,6 +12,15 @@ create a file end with `.mcp.json` in your project root directory, and add the f
 
 ```json
 {
+  "mcpServers": {
+    "weather": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/Volumes/source/ai/autodev-mcp-test/java-mcp/target/mcp-0.0.1-SNAPSHOT.jar"
+      ]
+    }
+  },
   "a2aServers": {
     "remote-example": {
       "url": "http://localhost:9999"
