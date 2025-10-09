@@ -1,6 +1,6 @@
 ---
 layout: default
-title: A2A Overview
+title: Multiple Agents - A2A Overview
 nav_order: 7
 has_children: true
 permalink: /a2a
@@ -12,7 +12,7 @@ permalink: /a2a
 > 促进它们在动态多智能体环境下的有效通信和协作。简单来说，A2A协议就像是为AI智能体之间提供了一套标准化的“语言”，
 > 使得不同厂商、不同技术框架的AI智能体能够像人与人交流一样，互相理解、互相协作，共同完成任务
 
-## AutoDev A2A 
+## AutoDev Multiple Agents - A2A 
 
 在 AutoDev 中，我们使用 https://github.com/a2aproject/a2a-java 实现了对 A2A 协议的支持。当前 AutoDev 支持
 两种的 A2A 功能：
