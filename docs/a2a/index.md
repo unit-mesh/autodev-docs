@@ -20,7 +20,7 @@ permalink: /a2a
 - A2A Agent 即 Tool。即你可以将支持 A2A 的 Agent，作为类似于 MCP 中的 Tool 来使用。
 - A2A Debugger。即你可以通过 A2A Debugger 来调试 A2A Agent。
 
-### A2A Agent as Tool
+### A2A Agent as Tool: `/a2a`
 
 Enable the MCP server in AutoDev settings, and Config with A2A
 
@@ -45,17 +45,34 @@ Enable the MCP server in AutoDev settings, and Config with A2A
 
 如下是示例的 DevIns Command:
 
-```devin
+<devin>
 /a2a
 ```json
 {
   "agent": "code-reviewer",
   "message": "Please review this code for potential security vulnerabilities"
 }
-\`\`\`
-
+```
 Legacy format also supported:
 /a2a code-reviewer "Please review this code for potential issues"
 /a2a documentation-writer "Generate documentation for this module"
 /a2a test-generator "Create unit tests for the PaymentService class"
+</devin>
+
+### Agent Tool: `/agents`
+
+List all available agents.
+
+/agents
+
+Invoke a specific agent with JSON format:
+
+<devin>
+/agents
+```json
+{
+  "agent": "code-reviewer",
+  "message": "Please review this code for potential security vulnerabilities"
+}
 ```
+</devin>
