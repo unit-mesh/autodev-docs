@@ -152,6 +152,15 @@ const sidebars = {
 		},
 		{
 			type: 'category',
+			label: 'Spec Driven',
+			items: [
+				'spec/index',
+				'spec/github-spec-kit',
+				'spec/claude-skill',
+			],
+		},
+		{
+			type: 'category',
 			label: 'Local Agents',
 			items: [
 				'local-agent/index',
