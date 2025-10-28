@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Github Spec Kit
+title: GitHub Spec Kit
 nav_order: 2
 parent: Spec Driven Development
 permalink: /spec/github-spec-kit
