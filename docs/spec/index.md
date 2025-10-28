@@ -13,6 +13,30 @@ permalink: /spec-driven
 
 这两个集成允许 AI 代理利用预定义的工作流、模板和最佳实践，提供一致的高质量结果。
 
+```mermaid
+graph TD
+    A[SketchRunContext.create] --> B{Check SpecKit Available}
+    B -->|Yes| C[Load SpecKit Commands]
+    B -->|No| D[Return Empty String]
+    C --> E[Format as Markdown]
+    E --> F[Include in System Prompt]
+    F --> G[sketch.vm Template]
+    
+    H[.github/prompts/] --> I[speckit.plan.prompt.md]
+    H --> J[speckit.clarify.prompt.md]
+    H --> K[speckit.*.prompt.md]
+    
+    I --> C
+    J --> C
+    K --> C
+    
+    G --> L[AI Assistant Context]
+    
+    style A fill:#e1f5ff
+    style G fill:#fff4e1
+    style L fill:#e8f5e9
+    style H fill:#f3e5f5
+```
 
 ### 快速开始：Spec-Kit
 
