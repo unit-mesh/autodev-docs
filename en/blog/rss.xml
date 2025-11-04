@@ -4,10 +4,75 @@
         <title>AutoDev - Tailor Your AI Coding Experience Blog</title>
         <link>https://ide.unitmesh.cc/en/blog</link>
         <description>AutoDev - Tailor Your AI Coding Experience Blog</description>
-        <lastBuildDate>Fri, 25 Apr 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 04 Nov 2025 07:14:04 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[AutoDev 架构升级：多端（CLI/Desktop/Mobile）编程 Agent，欢迎一起参与演进]]></title>
+            <link>https://ide.unitmesh.cc/en/blog/autodev-3-poc</link>
+            <guid>https://ide.unitmesh.cc/en/blog/autodev-3-poc</guid>
+            <pubDate>Tue, 04 Nov 2025 07:14:04 GMT</pubDate>
+            <description><![CDATA[半年前，我在《AutoDev Next》那篇文章中介绍了 AutoDev 的下一代架构，其中一个核心方向就是：多端支持。]]></description>
+            <content:encoded><![CDATA[<p>半年前，我在《AutoDev Next》那篇文章中介绍了 AutoDev 的下一代架构，其中一个核心方向就是：<strong>多端支持</strong>。
+之后，一直在忙项目交付——从 AI 参与遗留系统现代化，到做 AI 辅助的软件工程培训。一直到国庆，才终于有整块时间继续推进 AutoDev
+的演进。</p>
+<p>这段时间里，我不断做 POC，验证不同技术模型的可行性，尝试新的交互与架构思路。直到最近，新的重构方向基本成型，并成功跑通了关键链路，也顺手
+Vibe Coding 了一波。</p>
+<p>TL;DR：代码：<a href="https://github.com/unit-mesh/auto-dev" target="_blank" rel="noopener noreferrer">https://github.com/unit-mesh/auto-dev</a> （似乎是目前国内最好的开源 AI 编程工具）</p>
+<p><img decoding="async" loading="lazy" src="https://ide.unitmesh.cc/en/assets/images/autodev-github-3318284894a4351ca8794a805bf2e40a.png" width="2516" height="940" class="img_ev3q"></p>
+<p>欢迎来一起加入演进。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="基于-kmp--compose-的-autodev-多平台重构实践">基于 KMP + Compose 的 AutoDev 多平台重构实践<a href="https://ide.unitmesh.cc/en/blog/autodev-3-poc#%E5%9F%BA%E4%BA%8E-kmp--compose-%E7%9A%84-autodev-%E5%A4%9A%E5%B9%B3%E5%8F%B0%E9%87%8D%E6%9E%84%E5%AE%9E%E8%B7%B5" class="hash-link" aria-label="Direct link to 基于 KMP + Compose 的 AutoDev 多平台重构实践" title="Direct link to 基于 KMP + Compose 的 AutoDev 多平台重构实践">​</a></h2>
+<p>新的 AutoDev 架构如下：</p>
+<p><img decoding="async" loading="lazy" alt="新 AutoDev 架构" src="https://ide.unitmesh.cc/en/assets/images/autodev-next-arch-a78eedadb989dd698670093152b6c9f4.png" width="2324" height="1142" class="img_ev3q"></p>
+<blockquote>
+<p>PS：之所以叫重构，是我们在 AutoDev 上已经有大量的经验，尽管架构上是紧耦合的，但是利于 AI 阅读后重写，比如，我们的 DevIns 语言。
+在这几个月里，我也尝试使用 Rust/TypeScript/Kotlin 来开发的 CLI，但是发现多数时间在写之前的重复性代码。所以，基于 KMP
+（Kotlin Multiplatform）是一个更合理的架构。</p>
+</blockquote>
+<p>在新的架构里，MPP-Core 是我们的核心，基于 Kotlin 的 Multiplatform 技术，我们构建出了 JS 和 JVM 版本的两个核心接口和实现，基于
+这两个实现。基于多平台的 Core + Compose UI，我们就可以构建出：</p>
+<ul>
+<li>基于 JS 版本的 <code>@autodev/cli</code> 的 CLI （Command Line Interface）和 TUI （Terminal UI）版本</li>
+<li>基于 JVM 版本的 AutoDev IDEA，AutoDev Desktop 和 AutoDev Android，以及未来的 AutoDev iOS</li>
+</ul>
+<p>而为了在当前 AI Token 还不便宜、Agent grep 还不理想的情况下，我们还是构建了基于 TreeSitter 的 MPP-CodeGraph，通过树和图的方式
+来节省上下文，近而节省企业的成本。Codex、Gemini CLI、Claude Code 都是 AI 厂商卖 token 的，自然可以不考虑那么多。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="codegraph基于树和代码图的上下文压缩引擎">CodeGraph：基于树和代码图的上下文压缩引擎<a href="https://ide.unitmesh.cc/en/blog/autodev-3-poc#codegraph%E5%9F%BA%E4%BA%8E%E6%A0%91%E5%92%8C%E4%BB%A3%E7%A0%81%E5%9B%BE%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8E%8B%E7%BC%A9%E5%BC%95%E6%93%8E" class="hash-link" aria-label="Direct link to CodeGraph：基于树和代码图的上下文压缩引擎" title="Direct link to CodeGraph：基于树和代码图的上下文压缩引擎">​</a></h3>
+<p>尽管 Gemini CLI 和 Claude Code 提供了近似无限上下文的能力，但是对于重构等一系列复杂问题的分析，它们依然非常不靠谱，而且非常贵。
+所以，我们还是要引入 CodeGraph 来解决复杂问题下的代码搜索等问题。而 TreeSitter 是目标 “跨平台” 最好的方式之一，毕竟 wasm + binary
+可以运行在各种平台上。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autodev-idea核心能力即-mcp-能力">AutoDev IDEA：核心能力即 MCP 能力<a href="https://ide.unitmesh.cc/en/blog/autodev-3-poc#autodev-idea%E6%A0%B8%E5%BF%83%E8%83%BD%E5%8A%9B%E5%8D%B3-mcp-%E8%83%BD%E5%8A%9B" class="hash-link" aria-label="Direct link to AutoDev IDEA：核心能力即 MCP 能力" title="Direct link to AutoDev IDEA：核心能力即 MCP 能力">​</a></h3>
+<p>在新版本的 IDEA 里，MCP 已经是内置的能力，而我们还是预期 AutoDev 作为 MCP 服务端，来为其它的 Agent 提供服务。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="为什么是-autodev-desktop-和-autodev-android-">为什么是 AutoDev Desktop 和 AutoDev Android ？<a href="https://ide.unitmesh.cc/en/blog/autodev-3-poc#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-autodev-desktop-%E5%92%8C-autodev-android-" class="hash-link" aria-label="Direct link to 为什么是 AutoDev Desktop 和 AutoDev Android ？" title="Direct link to 为什么是 AutoDev Desktop 和 AutoDev Android ？">​</a></h3>
+<p>半年前，我一直在思考如果做一个新 AI IDE 我们是否需要语法高亮，是否需要代码跳转，AutoDev 是不是优势会越来越小。直到，最近的新版本的
+Cursor 给出了一个答案，独立 UI 下的 Agents 模式。在简单的任务下，我们并不需要一直坐在电脑前面，比如我在 iPad 上用 VNC Viewer
+来看电脑上的进度， 并可以一边看娃。</p>
+<p>既然如此，Android 和 iOS 版本就更有意义了，你可以从踏上地铁、公交车的时候，就可以远程 Vibe Coding。然后到了公司，就可以美滋滋地去
+<del>吃个早饭</del>（修 AI 的 bug）。</p>
+<p><img decoding="async" loading="lazy" src="https://ide.unitmesh.cc/en/assets/images/autodev-android-415c56e4439797ac8d487b8b8199344c.jpg" width="1440" height="3200" class="img_ev3q"></p>
+<p>毕竟，Android 上可不写不了代码。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="用-compose-重塑-autodev-的界面与交互">用 Compose 重塑 AutoDev 的界面与交互<a href="https://ide.unitmesh.cc/en/blog/autodev-3-poc#%E7%94%A8-compose-%E9%87%8D%E5%A1%91-autodev-%E7%9A%84%E7%95%8C%E9%9D%A2%E4%B8%8E%E4%BA%A4%E4%BA%92" class="hash-link" aria-label="Direct link to 用 Compose 重塑 AutoDev 的界面与交互" title="Direct link to 用 Compose 重塑 AutoDev 的界面与交互">​</a></h2>
+<p>在几个月前，在和 @iptton 尝试使用 Intellij Compose 构建了一个新的 AutoDev IDE UI 之后，
+我也尝试了在 2025.2 的版本 IDEA 上 Vibe Coding 了一个新的 UI。显然，与 Swing 相比，有大量语料的 Compose 表现得更加稳定和可靠，不会
+像 Swing 报一堆错误。</p>
+<p><img decoding="async" loading="lazy" src="https://ide.unitmesh.cc/en/assets/images/autodev-desktop-d434669036711a040073305c91f4c269.png" width="2400" height="1600" class="img_ev3q"></p>
+<p>既然，我们有了更好的 Vibe Coding，那传统的 IDE 交互方式是不是就不需要了，非专业人士只需要一个聊天界面，以及可以实时预览和交互的
+UI 就行了？</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="mpp-coreautodev-的跨平台核心引擎">MPP-Core：AutoDev 的跨平台核心引擎<a href="https://ide.unitmesh.cc/en/blog/autodev-3-poc#mpp-coreautodev-%E7%9A%84%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A0%B8%E5%BF%83%E5%BC%95%E6%93%8E" class="hash-link" aria-label="Direct link to MPP-Core：AutoDev 的跨平台核心引擎" title="Direct link to MPP-Core：AutoDev 的跨平台核心引擎">​</a></h2>
+<p>如下是我们去年的 AutoDev 架构图，你可以看到在不同平台（JetBrains、VSCode）上的架构差异：</p>
+<p><img decoding="async" loading="lazy" alt="autodev-jetbrains-vscode.png" src="https://ide.unitmesh.cc/en/assets/images/autodev-jetbrains-vscode-c97762f5feb5604099af38c702f5c05b.png" width="2710" height="1420" class="img_ev3q"></p>
+<p>而在今天来看，尽管架构发生了巨大的变化，一切都围绕着 Tool 和 Agent：</p>
+<p><img decoding="async" loading="lazy" alt="Coding Agent" src="https://ide.unitmesh.cc/en/assets/images/simple-coding-agents-09fc32422e931b3871cbddacde6c6569.png" width="2702" height="1272" class="img_ev3q"></p>
+<p>我们可以通过 Tool 接口和抽象很好地剥离平台间的差异，进而把各种能力都放在 core 上，进而更好地实现跨平台能力：</p>
+<p><img decoding="async" loading="lazy" alt="AutoDev CLI" src="https://ide.unitmesh.cc/en/assets/images/autodev-cli-21bb077a9d9fa95fd99672bf97ec0196.png" width="1488" height="612" class="img_ev3q"></p>
+<p>近而，我们就可以构建出如上图所示的 AutoDev CLI。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="欢迎加入-autodev-的多端编程世界">欢迎加入 AutoDev 的多端编程世界<a href="https://ide.unitmesh.cc/en/blog/autodev-3-poc#%E6%AC%A2%E8%BF%8E%E5%8A%A0%E5%85%A5-autodev-%E7%9A%84%E5%A4%9A%E7%AB%AF%E7%BC%96%E7%A8%8B%E4%B8%96%E7%95%8C" class="hash-link" aria-label="Direct link to 欢迎加入 AutoDev 的多端编程世界" title="Direct link to 欢迎加入 AutoDev 的多端编程世界">​</a></h2>
+<p>作为一个刚完成 POC 的版本，我们依然有大量的工作要做。</p>
+<p>如果你对 AI 编程、跨平台 Agent、或者像 AutoDev 这样前沿的多端架构感兴趣，无论你是开发者、研究者，还是想玩玩 Vibe Coding
+的爱好者，都欢迎加入我们！</p>
+<p>我们在 GitHub 上持续更新代码、分享实践经验，也期待你的反馈、PR、甚至新点子——让 AutoDev 的多平台之路走得更稳、更远。</p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[AutoDev 本地智能体，你的 Agent 自由工坊]]></title>
             <link>https://ide.unitmesh.cc/en/blog/2025/04/25/autodev-local-agent</link>
