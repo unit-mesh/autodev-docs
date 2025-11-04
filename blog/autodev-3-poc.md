@@ -11,7 +11,7 @@ Vibe Coding 了一波。
 
 TL;DR：代码：https://github.com/unit-mesh/auto-dev （似乎是目前国内最好的开源 AI 编程工具）
 
-![](images/autodev-github.png)
+![](/img/next/autodev-github.png)
 
 欢迎来一起加入演进。
 
@@ -19,7 +19,7 @@ TL;DR：代码：https://github.com/unit-mesh/auto-dev （似乎是目前国内�
 
 新的 AutoDev 架构如下：
 
-![新 AutoDev 架构](images/autodev-next-arch.png)
+![新 AutoDev 架构](/img/next/autodev-next-arch.png)
 
 > PS：之所以叫重构，是我们在 AutoDev 上已经有大量的经验，尽管架构上是紧耦合的，但是利于 AI 阅读后重写，比如，我们的 DevIns 语言。
 > 在这几个月里，我也尝试使用 Rust/TypeScript/Kotlin 来开发的 CLI，但是发现多数时间在写之前的重复性代码。所以，基于 KMP
@@ -53,7 +53,7 @@ Cursor 给出了一个答案，独立 UI 下的 Agents 模式。在简单的任�
 既然如此，Android 和 iOS 版本就更有意义了，你可以从踏上地铁、公交车的时候，就可以远程 Vibe Coding。然后到了公司，就可以美滋滋地去
 ~~吃个早饭~~（修 AI 的 bug）。
 
-![](images/autodev-android.jpg)
+![](/img/next/autodev-android.jpg)
 
 毕竟，Android 上可不写不了代码。
 
@@ -63,7 +63,7 @@ Cursor 给出了一个答案，独立 UI 下的 Agents 模式。在简单的任�
 我也尝试了在 2025.2 的版本 IDEA 上 Vibe Coding 了一个新的 UI。显然，与 Swing 相比，有大量语料的 Compose 表现得更加稳定和可靠，不会
 像 Swing 报一堆错误。
 
-![](images/autodev-desktop.png)
+![](/img/next/autodev-desktop.png)
 
 既然，我们有了更好的 Vibe Coding，那传统的 IDE 交互方式是不是就不需要了，非专业人士只需要一个聊天界面，以及可以实时预览和交互的
 UI 就行了？
@@ -72,15 +72,15 @@ UI 就行了？
 
 如下是我们去年的 AutoDev 架构图，你可以看到在不同平台（JetBrains、VSCode）上的架构差异： 
 
-![autodev-jetbrains-vscode.png](images/autodev-jetbrains-vscode.png)
+![autodev-jetbrains-vscode.png](/img/next/autodev-jetbrains-vscode.png)
 
 而在今天来看，尽管架构发生了巨大的变化，一切都围绕着 Tool 和 Agent：
 
-![Coding Agent](images/simple-coding-agents.png)
+![Coding Agent](/img/next/simple-coding-agents.png)
 
 我们可以通过 Tool 接口和抽象很好地剥离平台间的差异，进而把各种能力都放在 core 上，进而更好地实现跨平台能力：
 
-![AutoDev CLI](images/autodev-cli.png)
+![AutoDev CLI](/img/next/autodev-cli.png)
 
 近而，我们就可以构建出如上图所示的 AutoDev CLI。
 
