@@ -14,7 +14,7 @@ AutoDev MPP 是 AutoDev 的多平台版本，它基于 Kotlin 的 Multiplatform 
 
 ## Renderer
 
-![](/img/next/renderer_architecture.svg))
+![](/img/next/renderer_architecture.svg)
 
 统一了所有平台的渲染器接口规范，确保跨平台一致性。
 
@@ -30,4 +30,3 @@ AutoDev MPP 是 AutoDev 的多平台版本，它基于 Kotlin 的 Multiplatform 
 | **ServerRenderer** | mpp-server | extends BaseRenderer | ✅ 已统一 |
 | **TuiRenderer** | React/Ink TUI | implements Interface | ✅ 特殊架构 |
 | **ComposeRenderer** | Desktop/Android | extends BaseRenderer | ✅ 已统一 |
-
