@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ide.unitmesh.cc/en/blog</id>
     <title>AutoDev - Tailor Your AI Coding Experience Blog</title>
-    <updated>2025-11-10T07:51:38.000Z</updated>
+    <updated>2025-11-10T08:09:16.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ide.unitmesh.cc/en/blog"/>
     <subtitle>AutoDev - Tailor Your AI Coding Experience Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[AutoDev 架构升级：多端（CLI/Desktop/Mobile）编程 Agent，欢迎一起参与演进]]></title>
         <id>https://ide.unitmesh.cc/en/blog/autodev-3-poc</id>
         <link href="https://ide.unitmesh.cc/en/blog/autodev-3-poc"/>
-        <updated>2025-11-10T07:51:38.000Z</updated>
+        <updated>2025-11-10T08:09:16.000Z</updated>
         <summary type="html"><![CDATA[半年前，我在《AutoDev Next》那篇文章中介绍了 AutoDev 的下一代架构，其中一个核心方向就是：多端支持。]]></summary>
         <content type="html"><![CDATA[<p>半年前，我在《AutoDev Next》那篇文章中介绍了 AutoDev 的下一代架构，其中一个核心方向就是：<strong>多端支持</strong>。
 之后，一直在忙项目交付——从 AI 参与遗留系统现代化，到做 AI 辅助的软件工程培训。一直到国庆，才终于有整块时间继续推进 AutoDev
