@@ -205,6 +205,9 @@ const sidebars = {
 			],
 		},
 	],
+    multiplatformSidebar: [
+		'mpp/index'
+	],
 	friendlySidebar: [
 		'ai-friendly/index',
 		'ai-friendly/codebase',

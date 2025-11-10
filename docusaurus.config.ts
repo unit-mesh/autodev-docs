@@ -90,6 +90,12 @@ const config = {
             },
             {
               type: 'docSidebar',
+              sidebarId: 'multiplatformSidebar',
+              position: 'left',
+              label: 'MultiPlatform',
+            },
+            {
+              type: 'docSidebar',
               sidebarId: 'friendlySidebar',
               position: 'left',
               label: 'AI Friendly',
