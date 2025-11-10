@@ -206,7 +206,12 @@ const sidebars = {
 		},
 	],
     multiplatformSidebar: [
-		'mpp/index'
+		'mpp/index',
+        'mpp/autodev-mpp-quickstart',
+        'mpp/autodev-cli-tui',
+        'mpp/autodev-remote',
+        'mpp/autodev-mpp-android',
+        'mpp/autodev-mpp-desktop',
 	],
 	friendlySidebar: [
 		'ai-friendly/index',
