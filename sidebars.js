@@ -212,6 +212,7 @@ const sidebars = {
         'mpp/autodev-remote',
         'mpp/autodev-mpp-android',
         'mpp/autodev-mpp-desktop',
+        'mpp/autodev-mpp-docql',
 	],
 	friendlySidebar: [
 		'ai-friendly/index',
