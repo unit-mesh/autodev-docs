@@ -188,6 +188,17 @@ const sidebars = {
 		},
 		{
 			type: 'category',
+			label: 'ACP',
+			items: [
+				'acp/index',
+				'acp/configuration',
+				'acp/usage',
+				'acp/development',
+				'acp/troubleshooting',
+			],
+		},
+		{
+			type: 'category',
 			label: 'A2A',
 			items: [
 				'a2a/index',
